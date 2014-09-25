@@ -40,6 +40,10 @@ There are a few README.md files within the project that explain specific parts o
 
 ![text-editor](http://fannon.de/p/mobo-intro/img/st.png)
 
+> mobo is a console application. It validates, generates and uploads your model - in realtime by default:
+
+![cli](http://fannon.de/p/mobo-intro/img/cli2.png)
+
 > There is a webapp that allows you to browse your current model and the resulting wikitext:
 
 ![webapp](http://fannon.de/p/mobo-intro/img/webgui.png)
