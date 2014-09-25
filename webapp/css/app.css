@@ -1,0 +1,88 @@
+.container {
+    min-width: 360px;
+    max-width: 880px;
+}
+
+h1 {
+    text-align: center;
+    color: #777;
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.4rem;
+    border-bottom: 1px dotted #CCC;
+    margin-top: 1.2em;
+}
+
+h4 {
+    margin: 1em 0 0.4em 0;
+}
+
+#form h3 {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 3px;
+    padding: 4px 8px;
+    color: #FFF;
+    font-size: 1.2em;
+    line-height: 1.4em;
+}
+
+pre {
+    font-size: 0.85em;
+    padding: 5px 10px;
+}
+
+textarea {
+    min-height: 200px !important;
+}
+
+.select2-container {
+    margin-right: 8px;
+}
+
+p.description {
+    display: block;
+    background: #27A4C9;
+    color: #FFF;
+    margin: 8px 0;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+div[data-schematype] {
+
+}
+
+.well {
+    background: rgba(0, 0, 0, 0.016);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+}
+
+.json-editor-btn-edit {
+    display: none;
+}
+
+.help-block {
+    color: #777;
+    font-style: italic;
+}
+
+.nav-pills {
+    margin-bottom: 8px;
+}
+
+.valid {
+    border: 1px solid #A6E224 !important;
+    background: #E4F1C8;
+}
+
+.invalid {
+    border: 1px solid #910A0A !important;
+    background: #F7D7D7;
+}
+
+.clearfix {
+    clear: both;
+}

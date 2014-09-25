@@ -1,0 +1,161 @@
+body {
+    background: #222;
+    color: #EEE;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+a, a:visited {
+    color: #6C9CCA;
+}
+
+a:hover {
+    color: #A6C0D9;
+    text-decoration: none;
+}
+
+.container {
+    margin-top: 80px;
+    max-width: 640px;
+}
+
+h2{
+    text-align: center;
+}
+
+h3, h4  {
+    margin: 2px 0 8px 0;
+    padding-bottom: 2px;
+    border-bottom: 1px dotted #333;
+}
+
+#graph {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+}
+
+#details, #color-legend {
+
+    position: absolute;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.8);
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /*pointer-events:none;*/
+}
+
+#details {
+
+    padding: 4px 8px;
+    color: #BBB;
+    font-size: 0.85em;
+
+    top: 0;
+    right: 0;
+
+    max-height: 100%;
+    width: 440px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#color-legend {
+    padding: 2px 8px;
+    color: #444;
+    font-size: 0.8em;
+
+    bottom: 0;
+    left: 0;
+
+    height: 20px;
+    width: auto;
+
+    border-radius: 0 3px 0 0;
+}
+
+
+#details h5 {
+    font-weight: bold;
+    padding-bottom: 2px;
+    margin: 3px 0;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.2);
+}
+
+ol, ul {
+    padding-left: 20px;
+}
+
+ul {
+    list-style: square;
+}
+
+strong {
+    color: #EEE;
+    font-weight: bold;
+}
+
+#node-details li {
+    font-size: 0.8em;
+}
+
+.publications-title, .connections-title {
+    margin-top: 8px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+}
+
+.node-title {
+    color: #EEE;
+    font-size: 1.6em;
+    font-weight: bold;
+    padding-bottom: 0px;
+    margin-bottom: 8px;
+    border-bottom: 3px solid #CCC;
+}
+
+.connections-table {
+    margin: 4px 0;
+    width: 100%;
+    font-size: 1.08rem;
+}
+
+.connections-table tr {
+    /*border-bottom: 1px solid #333;*/
+}
+
+.connections-table td {
+    padding: 1px 4px;
+    border: 1px solid #222;
+    border-bottom: 1px solid #777;
+}
+
+h1 {
+    text-align: center;
+    color: #777;
+    font-size: 3rem;
+}
+
+
+hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: 0;
+    border-top: 1px dotted rgba(255, 255, 255, 0.3);
+}

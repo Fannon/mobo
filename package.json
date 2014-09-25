@@ -1,0 +1,48 @@
+{
+  "name": "mobo",
+  "version": "0.0.0",
+  "main": "lib/mobo.js",
+  "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
+
+      "homepage": "https://github.com/Fannon/mobo",
+
+    "bugs": "https://github.com/Fannon/mobo/issues",
+  "author": {
+    "name": "Simon Heimler",
+    "email": "heimlersimon@gmail.com"  ,
+        "url": "http://www.fannon.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fannon/mobo"
+  },
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "mobo"  ,
+        "JSON Schema"  ,
+        " MediaWiki"  ,
+        " Semantic MediaWiki"  ,
+        " SMF"  ,
+        " Bot"
+  ],
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0",
+    "time-grunt": "^0.3.1",
+    "grunt-mocha-cli": "^1.9.0",
+    "jshint-stylish": "^0.2.0" ,
+    "fs-extra": "^0.9.1"
+  },
+  "scripts": {
+    "test": "grunt"
+  }  ,
+      "bin": {
+        "mobo": "cli.js"
+    },
+    "preferGlobal": "true"
+}

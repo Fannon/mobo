@@ -1,0 +1,16 @@
+{
+    "displayInfos": true,
+    "verbose": false,
+    "cleanUp": false,
+    "writeFiles": false,
+
+    "buildGraph": true,
+    "concurrency": 4,
+    "forceUpload": false,
+    "autoUpload": true,
+    "deleteSites": true,
+
+    "serveWebapp": true,
+    "watchFilesystem": true,
+    "port": 8080
+}

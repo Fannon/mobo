@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graph Explorer</title>
+    <link href="lib/bootstrap.min.css" rel="stylesheet">
+    <link href="css/graph.css" rel="stylesheet">
+</head>
+<body>
+<div id="graph"></div>
+
+<div id="details">
+    <div id="node-details"></div>
+</div>
+
+<div id="color-legend"></div>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+
+<script src="lib/sigmajs/sigma.min.js"></script>
+<script src="lib/sigmajs/sigma.canvas.edges.arrow.js"></script>
+<script src="lib/sigmajs/sigma.canvas.labels.def.js"></script>
+
+<script src="lib/sigmajs/plugins/sigma.layout.forceAtlas2.min.js"></script>
+<script src="lib/sigmajs/plugins/sigma.parsers.gexf.min.js"></script>
+<script src="lib/sigmajs/plugins/sigma.plugins.neighborhoods.min.js"></script>
+
+<script src="js/graph.js"></script>
+
+<script>
+    $(document).ready(function() {
+        cbm.prepareGraph();
+        cbm.drawGraph();
+    });
+</script>
+
+</body>
+</html>
+
+

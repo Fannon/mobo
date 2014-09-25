@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CB Model Development</title>
+
+    <script src="lib/jquery-1.11.1.min.js"></script>
+
+    <script src="lib/select2/select2.js"></script>
+
+    <script src="lib/require.js"></script>
+
+    <link href="lib/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/docson/css/docson.css" rel="stylesheet">
+    <link href="lib/select2/select2.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="container">
+    <h1>CB Model <small><br><a href="graph.html">Graph View of model</a></small></h1>
+
+    <h2>Select Schema / Wikitext</h2>
+
+    <select id="select-schema" style="width: 300px" data-placeholder="Select Schema">
+        <option></option>
+    </select>
+
+    <select id="select-wikitext" style="width: 300px" data-placeholder="Select Wikitext">
+        <option></option>
+    </select>
+
+    <div id="default-view">
+        <h2>Documentation</h2>
+        <div id="doc"></div>
+
+        <h2>Schema</h2>
+        <pre><code id="schema"></code></pre>
+
+        <h2>Generiertes MediaWiki Markup</h2>
+        <div id="smw_markup"></div>
+
+        <h2>Form</h2>
+        <div id="form"></div>
+
+        <h2>Form Result</h2>
+        <pre><code id="result"></code></pre>
+    </div>
+
+    <div id="detail-view">
+        <h2>Detail View</h2>
+        <pre><code id="detail-markup"></code></pre>
+    </div>
+
+
+</div>
+
+<script src="lib/bootstrap.min.js"></script>
+
+<script src="js/app.js"></script>
+<script src="_processed/_registry.js"></script>
+<script src="_processed/_generated.js"></script>
+
+</body>
+</html>
