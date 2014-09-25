@@ -17,6 +17,7 @@ Install the module (globally) with: `npm install mobo -g`
 $ npm install -g mobo               # Installs mobo globally
 $ mkdir new_model && cd new_model   # Creates and enters new directory
 $ mobo --init                       # Initializes the empty directory with the default structure
+$ nano settings.json                # Adjust / enter options (login data for the bot..)
 $ mobo                              # Runs mobo in interactive mode
 ```
 
@@ -45,7 +46,7 @@ There are a few README.md files around that explain specific parts of the develo
 
 > mobo can generate a graph model (has to be layouted via Gephi) that can be explored interactively:
 
-![graph](http://fannon.de/p/mobo/img/webgui2.png)
+![graph](http://fannon.de/p/mobo/img/graphselect.png)
 
 
 ## Demo

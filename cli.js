@@ -105,7 +105,9 @@ if (settings) {
 
         request.addListener('end', function () {
 
-            if (request.url === '/_processed/_registry.js' || request.url === '/_processed/_generated.js') {
+            if (request.url === '/_processed/_registry.js' ||
+                request.url === '/_processed/_generated.js'||
+                request.url === '/_processed/_graph_layouted.gexf' ) {
 
                 var filename = path.join(process.cwd(), request.url);
                 fs.exists(filename, function(exists) {
@@ -137,6 +139,7 @@ if (settings) {
     var chokidar = require('chokidar');
 
     log('> [INFO] Watching for changes in the filesystem');
+    log('> [INFO] PRESS CRTL-C to quit the interactive mode');
 
     // Create filesystem watcher
     var watcher = chokidar.watch(

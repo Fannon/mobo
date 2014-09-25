@@ -29,7 +29,7 @@ cbm.drawGraph = function() {
 
     $('#graph').html('');
 
-    sigma.parsers.gexf('_processed_model/_graph_layouted.gexf', {
+    sigma.parsers.gexf('_processed/_graph_layouted.gexf', {
 
             renderers: [
                 {
