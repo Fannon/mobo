@@ -165,10 +165,9 @@ if (settings) {
             log('> File changed: ' + path.basename(file) + '');
             log('#########################################################################');
 
+            // Update Settings, generate new model
             settings = mobo.getSettings();
-
             mobo.generate(settings);
-
             if (settings.autoUpload) {
                 mobo.upload(settings);
             }

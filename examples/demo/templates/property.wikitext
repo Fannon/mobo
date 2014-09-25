@@ -1,0 +1,7 @@
+==Beschreibung:==
+{{#if description}}{{description}}
+{{/if}}
+Dies ist ein Attribut des Datentyps [[Datentyp::{{type}}]].
+{{#if model~}}Es verlinkt auf Seiten, die das Formular „[[Hat Standardformular::{{model}}]]“ nutzen.{{/if}}
+== JSON Schema==
+<pre class="json-schema">{{{json}}}</pre>
