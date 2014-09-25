@@ -14,12 +14,9 @@
 //////////////////////////////////////////
 
 var path       = require('path');
-
 var fs         = require('fs-extra');
-var _          = require('lodash');
 var fileServer = require('node-static');
 
-var settings   = require('./lib/settings.json');
 var mobo       = require('./lib/mobo');
 
 var logger            = require('./lib/logger.js');
@@ -34,32 +31,8 @@ var userArgs    = process.argv;
 var searchParam = userArgs[2];
 var cwd         = process.cwd();
 var start       = (new Date).getTime();
+var settings    = mobo.getSettings();
 
-
-
-//////////////////////////////////////////
-// GET AND EXTEND SETTINGS              //
-//////////////////////////////////////////
-
-// Get and parse Settings
-try {
-    var projectSettings = JSON.parse(fs.readFileSync(cwd + '/settings.json').toString());
-
-    // Calculate paths
-    settings.cwd = cwd;
-    settings.importModelDir = cwd;
-    settings.templateDir =  cwd + '\\templates\\';
-    settings.logDir =  cwd + '\\_logfiles\\';
-    settings.processedModelDir = cwd + '\\_processed\\';
-
-    // Project settings overwrites default settings!
-    _.merge(settings, projectSettings);
-
-} catch(e) {
-    log('> [WARNING] No valid settings.json file found!');
-    log(e);
-    settings = false;
-}
 
 
 //////////////////////////////////////////
@@ -125,6 +98,9 @@ if (settings) {
 
     var file = new fileServer.Server(__dirname + '/webapp');
 
+    log('');
+    log('> [INFO] Serving the webapp at http://localhost:' + settings.port + '/');
+
     require('http').createServer(function (request, response) {
 
         request.addListener('end', function () {
@@ -158,7 +134,49 @@ if (settings) {
     // WATCH MODEL (FILESYSTEM)             //
     //////////////////////////////////////////
 
-    // TODO!
+    var chokidar = require('chokidar');
+
+    log('> [INFO] Watching for changes in the filesystem');
+
+    // Create filesystem watcher
+    var watcher = chokidar.watch(
+        [
+            cwd + '/settings.json',
+            cwd + '/field',
+            cwd + '/form',
+            cwd + '/model',
+            cwd + '/smw_query',
+            cwd + '/smw_site',
+            cwd + '/smw_template',
+            cwd + '/templates'
+        ],
+        {
+            ignored: /[\/\\]\./,
+            persistent: true
+        }
+    );
+
+    // Watcher events
+    watcher
+        .on('change', function(file) {
+
+            log('');
+            log('#########################################################################');
+            log('> File changed: ' + path.basename(file) + '');
+            log('#########################################################################');
+
+            settings = mobo.getSettings();
+
+            mobo.generate(settings);
+
+            if (settings.autoUpload) {
+                mobo.upload(settings);
+            }
+        })
+        .on('error', function(error) {
+            log('> [ERROR] Watching failed with error', error);
+        })
+    ;
 
 }
 

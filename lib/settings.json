@@ -1,5 +1,5 @@
 {
-    "displayInfos": true,
+    "displayNotices": false,
     "verbose": false,
     "cleanUp": false,
     "writeFiles": false,
