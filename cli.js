@@ -22,6 +22,9 @@ var fileServer = require('node-static');
 var settings   = require('./lib/settings.json');
 var mobo       = require('./lib/mobo');
 
+var logger            = require('./lib/logger.js');
+var log               = logger.log;
+
 
 //////////////////////////////////////////
 // VARIABLES                            //
@@ -41,21 +44,22 @@ var start       = (new Date).getTime();
 // Get and parse Settings
 try {
     var projectSettings = JSON.parse(fs.readFileSync(cwd + '/settings.json').toString());
+
+    // Calculate paths
+    settings.cwd = cwd;
+    settings.importModelDir = cwd;
+    settings.templateDir =  cwd + '\\templates\\';
+    settings.logDir =  cwd + '\\_logfiles\\';
+    settings.processedModelDir = cwd + '\\_processed\\';
+
+    // Project settings overwrites default settings!
+    _.merge(settings, projectSettings);
+
 } catch(e) {
-    console.log('No valid settings.json file found!');
-    console.log(e);
-    return;
+    log('> [WARNING] No valid settings.json file found!');
+    log(e);
+    settings = false;
 }
-
-// Calculate paths
-settings.cwd = cwd;
-settings.importModelDir = cwd;
-settings.templateDir =  cwd + '\\templates\\';
-settings.logDir =  cwd + '\\_logfiles\\';
-settings.processedModelDir = cwd + '\\_processed\\';
-
-// Project settings overwrites default settings!
-_.merge(settings, projectSettings);
 
 
 //////////////////////////////////////////
@@ -83,8 +87,8 @@ if (userArgs.indexOf('-c') !== -1 || userArgs.indexOf('--config') !== -1) {
 }
 
 if (userArgs.indexOf('-i') !== -1 || userArgs.indexOf('--init') !== -1 ) {
-    // TODO!
-    return console.log('CLI INIT');
+    mobo.init('init');
+    return;
 }
 
 // Run-through mode
@@ -100,54 +104,62 @@ if (userArgs.indexOf('-f') !== -1 || userArgs.indexOf('--force') !== -1) {
 }
 
 
-//////////////////////////////////////////
-// PROCESS MODEL                        //
-//////////////////////////////////////////
 
-mobo.generate(settings);
+// If settings are provided
+if (settings) {
 
-if (settings.autoUpload) {
-    mobo.upload(settings);
+    //////////////////////////////////////////
+    // PROCESS MODEL                        //
+    //////////////////////////////////////////
+
+    mobo.generate(settings);
+
+    if (settings.autoUpload) {
+        mobo.upload(settings);
+    }
+
+
+    //////////////////////////////////////////
+    // SERVE WEBAPP                         //
+    //////////////////////////////////////////
+
+    var file = new fileServer.Server(__dirname + '/webapp');
+
+    require('http').createServer(function (request, response) {
+
+        request.addListener('end', function () {
+
+            if (request.url === '/_processed/_registry.js' || request.url === '/_processed/_generated.js') {
+
+                var filename = path.join(process.cwd(), request.url);
+                fs.exists(filename, function(exists) {
+                    if(!exists) {
+                        console.log("> 404 Not Found: " + filename);
+                        response.writeHead(200, {'Content-Type': 'text/plain'});
+                        response.write('404 Not Found\n');
+                        response.end();
+                    } else {
+                        response.writeHead(200, 'text/javascript');
+                        var fileStream = fs.createReadStream(filename);
+                        fileStream.pipe(response);
+                    }
+                });
+
+            } else  {
+                file.serve(request, response);
+            }
+
+        }).resume();
+
+    }).listen(settings.port);
+
+
+    //////////////////////////////////////////
+    // WATCH MODEL (FILESYSTEM)             //
+    //////////////////////////////////////////
+
+    // TODO!
+
 }
 
-//////////////////////////////////////////
-// SERVE WEBAPP                         //
-//////////////////////////////////////////
 
-
-var file = new fileServer.Server(__dirname + '/webapp');
-
-require('http').createServer(function (request, response) {
-
-    request.addListener('end', function () {
-
-        if (request.url === '/_processed/_registry.js' || request.url === '/_processed/_generated.js') {
-
-            var filename = path.join(process.cwd(), request.url);
-            fs.exists(filename, function(exists) {
-                if(!exists) {
-                    console.log("> 404 Not Found: " + filename);
-                    response.writeHead(200, {'Content-Type': 'text/plain'});
-                    response.write('404 Not Found\n');
-                    response.end();
-                } else {
-                    response.writeHead(200, 'text/javascript');
-                    var fileStream = fs.createReadStream(filename);
-                    fileStream.pipe(response);
-                }
-            });
-
-        } else  {
-            file.serve(request, response);
-        }
-
-    }).resume();
-
-}).listen(settings.port);
-
-
-//////////////////////////////////////////
-// WATCH MODEL (FILESYSTEM)             //
-//////////////////////////////////////////
-
-// TODO!

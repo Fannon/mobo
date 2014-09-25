@@ -1,0 +1,15 @@
+{{description}}
+{{~#if form}}
+== Formular ==
+* Erstelle [[Hat Standardformular::{{name}}|{{title}}]]
+{{~/if}}
+== Template ==
+* Verwendet [[Template:{{name}}]]
+==Tabellarische Übersicht==
+\{{#ask: [[Kategorie:{{name}}]]
+{{~#each attr}}| ?{{@key}}
+{{/each~}}
+| format=broadtable
+| limit=0
+| searchlabel=Hier klicken um eine tabellarische Ansicht zu öffnen
+}}

@@ -1,0 +1,10 @@
+<noinclude>==Verwendung==
+<pre>\{{ {{~name~}}-ask}}</pre>
+==Query Text==
+<pre>{{{query}}}</pre>
+==Query Ergebnis==
+Anmerkung: Einige Queries sind vom Kontext abhängig, funktionieren also nur wenn sie an der richtigen Stelle eingebettet sind.
+{{{query}}}
+[[category:Query]][[category:ASK-Query]]
+</noinclude>
+<includeonly>{{{query}}}</includeonly>
