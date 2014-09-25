@@ -1,32 +1,27 @@
 #  [![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
 
-> mobo is JSON Schema based modeling bot for Semantic MediaWiki!
+> Work in progress! Not ready for release yet.
 
-Work in progress! Not ready for release yet.
-
-## Abstract
+## Why mobo?
 The structure of a Semantic MediaWiki (SMW) can become hard to develop and maintain as it increases in size and complexity. 
-With this project an object oriented modeling approach based on the JSON Schema format is introduced. 
+With this project an object oriented modeling approach based on the JSON Schema format is used. 
 Instead of creating SMW Attributes, Templates and Forms by hand in wikitext, Fields, Models and Forms are defined through JSON Files. 
 Properties can be inherited and overwritten which keeps the model DRY.
-A Node.js based toolset has been created that validates, visualizes, converts and uploads the model in real-time. 
-While in early stages, this approach worked well for the specific needs of the company that sponsored this project.
+mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time. 
 
 ## Getting Started
 Requirements: [Node.js](http://nodejs.org/)
 Install the module (globally) with: `npm install mobo -g`
 
-Create a new directory for your model. mobo --init will initialize it with the default structure. 
-Entering ´mobo´ without parameters enters the interactive mode.
-
 ```sh
-$ npm install -g mobo
-$ mkdir new_model && cd new_model
-$ mobo --init
-$ mobo
+$ npm install -g mobo               # Installs mobo globally
+$ mkdir new_model && cd new_model   # Creates and enters new directory
+$ mobo --init                       # Initializes the empty directory with the default structure
+$ mobo                              # Runs mobo in interactive mode
 ```
 
 ## Documentation
+Watch the [mobo presentation](http://fannon.de/p/mobo)!
 Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
 
 There are a few README.md files around that explain specific parts of the development model:
@@ -39,7 +34,21 @@ There are a few README.md files around that explain specific parts of the develo
 * [SMW Template](examples/init/smw_template/README.md)
 * [Templates](examples/init/templates/README.md)
 
-## Examples
+## Screenshots
+> Your model is developed with your favorite text editor:
+
+![text-editor](http://fannon.de/p/mobo/img/st.png)
+
+> There is a webapp that allows you to browse your current model and the resulting wikitext:
+
+![webapp](http://fannon.de/p/mobo/img/webgui.png)
+
+> mobo can generate a graph model (has to be layouted via Gephi) that can be explored interactively:
+
+![graph](http://fannon.de/p/mobo/img/webgui2.png)
+
+
+## Demo
 
 _(Coming soon)_
 
