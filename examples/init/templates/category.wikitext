@@ -1,9 +1,11 @@
 {{description}}
-{{~#if form}}
-== Formular ==
+{{#if form}}
+
+==Formular==
 * Erstelle [[Hat Standardformular::{{name}}|{{title}}]]
 {{~/if}}
-== Template ==
+
+==Template==
 * Verwendet [[Template:{{name}}]]
 ==Tabellarische Übersicht==
 \{{#ask: [[Kategorie:{{name}}]]

@@ -30,6 +30,7 @@
 <headertabs />
 
 {{~#if this.freetext}}
+
 ==Freitext==
 \{{{standard input|free text|rows=8}}}
 {{/if}}

@@ -50,11 +50,11 @@ There are a few README.md files within the project that explain specific parts o
 
 > The final SMW structure makes use of Semantic Forms:
 
-![graph](http://fannon.de/p/mobo-intro/img/edit.png)
+![forms](http://fannon.de/p/mobo-intro/img/edit.png)
 
 > Templates are auto-documented:
 
-![graph](http://fannon.de/p/mobo-intro/img/docs.png)
+![docs](http://fannon.de/p/mobo-intro/img/docs.png)
 
 ## Demo
 
