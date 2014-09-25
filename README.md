@@ -10,8 +10,8 @@ Properties can be inherited and overwritten which keeps the model DRY.
 mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time. 
 
 ## Getting Started
-Requirements: [Node.js](http://nodejs.org/)
-Install the module (globally) with: `npm install mobo -g`
+* Requirements: [Node.js](http://nodejs.org/)
+* Install the module (globally) with: `npm install mobo -g`
 
 ```sh
 $ npm install -g mobo               # Installs mobo globally
@@ -22,8 +22,8 @@ $ mobo                              # Runs mobo in interactive mode
 ```
 
 ## Documentation
-Watch the [mobo presentation](http://fannon.de/p/mobo)!
-Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
+* Watch the [mobo presentation](http://fannon.de/p/mobo)!
+* Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
 
 There are a few README.md files around that explain specific parts of the development model:
 * [Command Line Options](cli.md)
@@ -38,15 +38,15 @@ There are a few README.md files around that explain specific parts of the develo
 ## Screenshots
 > Your model is developed with your favorite text editor:
 
-![text-editor](http://fannon.de/p/mobo/img/st.png)
+![text-editor](http://fannon.de/p/mobo-intro/img/st.png)
 
 > There is a webapp that allows you to browse your current model and the resulting wikitext:
 
-![webapp](http://fannon.de/p/mobo/img/webgui.png)
+![webapp](http://fannon.de/p/mobo-intro/img/webgui.png)
 
 > mobo can generate a graph model (has to be layouted via Gephi) that can be explored interactively:
 
-![graph](http://fannon.de/p/mobo/img/graphselect.png)
+![graph](http://fannon.de/p/mobo-intro/img/graphselect.png)
 
 
 ## Demo
