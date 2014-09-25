@@ -30,14 +30,14 @@ $ mobo
 Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
 
 There are a few README.md files around that explain specific parts of the development model:
-
+* [Command Line Options](cli.md)
 * [Field](examples/init/field/README.md)
-* [Form](examples/init/field/README.md)
-* [Model](examples/init/field/README.md)
-* [SMW Query](examples/init/field/README.md)
-* [SMW Site](examples/init/field/README.md)
-* [SMW Template](examples/init/field/README.md)
-* [Templates](examples/init/field/README.md)
+* [Form](examples/init/form/README.md)
+* [Model](examples/init/model/README.md)
+* [SMW Query](examples/init/smw_query/README.md)
+* [SMW Site](examples/init/smw_site/README.md)
+* [SMW Template](examples/init/smw_template/README.md)
+* [Templates](examples/init/templates/README.md)
 
 ## Examples
 
