@@ -1,16 +1,17 @@
 {
     "displayNotices": false,
     "verbose": false,
-    "cleanUp": false,
-    "writeFiles": false,
 
+    "generate": true,
+    "writeExportFiles": false,
     "buildGraph": true,
-    "concurrency": 4,
-    "forceUpload": false,
-    "autoUpload": true,
+    "upload": true,
     "deleteSites": true,
+    "forceUpload": false,
 
-    "serveWebapp": true,
+    "concurrency": 4,
+
     "watchFilesystem": true,
+    "serveWebapp": true,
     "port": 8080
 }

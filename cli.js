@@ -14,13 +14,14 @@
 //////////////////////////////////////////
 
 var path       = require('path');
+var readline   = require('readline');
 var fs         = require('fs-extra');
 var fileServer = require('node-static');
 
 var mobo       = require('./lib/mobo');
 
-var logger            = require('./lib/logger.js');
-var log               = logger.log;
+var logger     = require('./lib/logger.js');
+var log        = logger.log;
 
 
 //////////////////////////////////////////
@@ -85,11 +86,7 @@ if (settings) {
     // PROCESS MODEL                        //
     //////////////////////////////////////////
 
-    mobo.generate(settings);
-
-    if (settings.autoUpload) {
-        mobo.upload(settings);
-    }
+    mobo.run(settings);
 
 
     //////////////////////////////////////////
@@ -139,7 +136,7 @@ if (settings) {
     var chokidar = require('chokidar');
 
     log('> [INFO] Watching for changes in the filesystem');
-    log('> [INFO] PRESS CRTL-C to quit the interactive mode');
+    log('> [INFO] Enter q to quit the interactive mode');
 
     // Create filesystem watcher
     var watcher = chokidar.watch(
@@ -164,21 +161,42 @@ if (settings) {
         .on('change', function(file) {
 
             log('');
-            log('#########################################################################');
+            log('=========================================================================');
             log('> File changed: ' + path.basename(file) + '');
-            log('#########################################################################');
+            log('=========================================================================');
 
             // Update Settings, generate new model
             settings = mobo.getSettings();
-            mobo.generate(settings);
-            if (settings.autoUpload) {
-                mobo.upload(settings);
-            }
+            mobo.run(settings);
+
         })
         .on('error', function(error) {
             log('> [ERROR] Watching failed with error', error);
         })
     ;
+
+    //////////////////////////////////////////
+    // LISTEN FOR USER INPUT                //
+    //////////////////////////////////////////
+
+    var stdin = process.stdin;
+
+    stdin.setRawMode(true);
+    stdin.resume();
+    stdin.setEncoding( 'utf8' );
+
+    stdin.on('data', function(key){
+
+        if (key === '\u0003' ) { // CTRL-C
+            process.exit();
+        } else if (key === 'q') {
+            process.exit();
+        } else if (key === '\u2386') { // ENTER
+            mobo.run(settings);
+        } else {
+            mobo.run(settings);
+        }
+    });
 
 }
 
