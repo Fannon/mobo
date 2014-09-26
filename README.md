@@ -20,6 +20,11 @@ $ mobo --init                       # Initializes the empty directory with the d
 $ nano settings.json                # Adjust / enter options (login data for the bot...)
 $ mobo                              # Runs mobo in interactive mode
 ```
+If mobo can't be added to your global path, it can be run manually:
+```sh
+$ node /path/to/mobo/cli.js 
+```
+
 
 ## Documentation
 * Watch the [mobo presentation](http://fannon.de/p/mobo-intro/)!

@@ -77,8 +77,6 @@ if (userArgs.indexOf('-f') !== -1 || userArgs.indexOf('--force') !== -1) {
     settings.forceUpload = true;
 }
 
-
-
 // If settings are provided
 if (settings) {
 
@@ -161,9 +159,7 @@ if (settings) {
         .on('change', function(file) {
 
             log('');
-            log('=========================================================================');
-            log('> File changed: ' + path.basename(file) + '');
-            log('=========================================================================');
+            log(' C File changed: ' + path.basename(file) + '');
 
             // Update Settings, generate new model
             settings = mobo.getSettings();
@@ -179,22 +175,20 @@ if (settings) {
     // LISTEN FOR USER INPUT                //
     //////////////////////////////////////////
 
-    var stdin = process.stdin;
+    process.stdin.setEncoding('utf8');
 
-    stdin.setRawMode(true);
-    stdin.resume();
-    stdin.setEncoding( 'utf8' );
+    process.stdin.on('readable', function() {
+        var line = process.stdin.read();
 
-    stdin.on('data', function(key){
+        if (line !== null) {
 
-        if (key === '\u0003' ) { // CTRL-C
-            process.exit();
-        } else if (key === 'q') {
-            process.exit();
-        } else if (key === '\u2386') { // ENTER
-            mobo.run(settings);
-        } else {
-            mobo.run(settings);
+            var input = line.trim();
+
+            if (input === 'q' || input === 'exit' || input === 'quit') {
+                process.exit();
+            } else {
+                mobo.run(settings);
+            }
         }
     });
 
