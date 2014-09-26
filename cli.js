@@ -14,7 +14,6 @@
 //////////////////////////////////////////
 
 var path       = require('path');
-var readline   = require('readline');
 var fs         = require('fs-extra');
 var fileServer = require('node-static');
 
@@ -41,7 +40,6 @@ var settings    = mobo.getSettings();
 //////////////////////////////////////////
 
 // TODO: Missing Features:
-// * Init blank model
 // * Create demo project
 // * validate only
 
@@ -81,7 +79,7 @@ if (userArgs.indexOf('-f') !== -1 || userArgs.indexOf('--force') !== -1) {
 if (settings) {
 
     //////////////////////////////////////////
-    // PROCESS MODEL                        //
+    // RUN MOBO                             //
     //////////////////////////////////////////
 
     mobo.run(settings);
