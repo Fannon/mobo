@@ -17,6 +17,6 @@ CONSOLE COMMANDS
 -i  --init          Creates a new raw project in the current directory
 -f  --force         Forces the upload of the complete model
 
-    --dont-watch    Skips Watching the filesystem and serving the webapp
+-r  --run-through   Skips Watching the filesystem and serving the webapp
                     mobo will exit after completion
                     This might be useful if mobo is triggered in other skripts

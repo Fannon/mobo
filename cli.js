@@ -42,15 +42,14 @@ var settings    = mobo.getSettings();
 // * Create demo project
 // * validate only
 
-
 if (userArgs.indexOf('-h') !== -1 || userArgs.indexOf('--help') !== -1 ) {
-    var helpText = fs.readFileSync(__dirname + '/cli.md').toString();
-    log(helpText);
+    log(mobo.getHelp());
     return;
 }
 
 if (userArgs.indexOf('-v') !== -1 || userArgs.indexOf('--version') !== -1) {
-    return console.log(require('./package').version);
+    log(mobo.getVersion());
+    return;
 }
 
 if (userArgs.indexOf('-c') !== -1 || userArgs.indexOf('--config') !== -1) {
@@ -67,7 +66,7 @@ if (userArgs.indexOf('-i') !== -1 || userArgs.indexOf('--init') !== -1 ) {
 }
 
 // Run-through mode
-if (userArgs.indexOf('--dont-watch') !== -1) {
+if (userArgs.indexOf('--run-through') !== -1) {
     settings.serveWebapp = false;
     settings.watchFilesystem = false;
 }
@@ -217,6 +216,17 @@ if (settings) {
         });
     }
 
+    //////////////////////////////////////////
+    // WORST CASE HANDLING                  //
+    //////////////////////////////////////////
+
+    process.on('uncaughtException', function (e) {
+        log('> [ERROR] Uncaught Exception! The program will exit.');
+        log('> This -can- be caused by invalid login/upload attempts to the wiki');
+        log(e);
+        logger.report();
+        process.exit(1);
+    });
 
 }
 

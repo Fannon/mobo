@@ -1,6 +1,6 @@
 {
     "name": "mobo",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "main": "lib/mobo.js",
     "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
     "homepage": "https://github.com/Fannon/mobo",
@@ -19,7 +19,9 @@
         "JSON Schema",
         "MediaWiki",
         "Semantic MediaWiki",
-        "SMF",
+        "Semantic Forms",
+        "Data Model",
+        "SMW",
         "Bot"
     ],
     "devDependencies": {

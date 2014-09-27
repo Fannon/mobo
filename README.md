@@ -11,14 +11,15 @@ Properties can be inherited and overwritten which keeps the model DRY.
 mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time to your wiki.
 
 ## Getting Started
+### Requirements
 * [Node.js](http://nodejs.org/) is required for mobo to install/run.
-* A Semantic MediaWiki Installation is required as the upload target
-* * Semantic Forms Extension is required
-* * HeaderTabs Extension is supported
-* * TemplateData Extension is supported
+* A Semantic MediaWiki Installation is required as upload target:
+  * REQUIRED: Semantic Forms Extension
+  * SUPPORTED: HeaderTabs Extension
+  * SUPPORTED: TemplateData Extension
 * Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and eventually the "administrator" (if you want to upload special pages) privileges.
 
-
+### Installation
 Install mobo and create a new project:
 ```sh
 $ npm install -g mobo               # Installs mobo globally
@@ -37,14 +38,13 @@ $ node /path/to/mobo/cli.js
 To overwrite the default settings, just add them to your settings.json.
 
 Enter `mobo -c` to print out the currently used configuration, including all inherited default values.
-If you want to change a setting, simply copy it to your settings.json and change it.
-
+If you want to change a setting, simply copy it into your settings.json and adjust it.
 
 ## Documentation
 * Watch the [mobo presentation](http://fannon.de/p/mobo-intro/)!
 * Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
 
-There are a few README.md files within the project that explain specific parts of it:
+There are a few context specific README.md files within the project:
 * [Command Line Options](cli.md)
 * [Field](examples/init/field/README.md)
 * [Form](examples/init/form/README.md)

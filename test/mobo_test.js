@@ -1,10 +1,11 @@
 /*global describe,it*/
 'use strict';
-var assert = require('assert'),
-  mobo = require('../lib/mobo.js');
+var assert = require('assert');
+var fs = require('fs');
+var mobo = require('../lib/mobo.js');
 
 describe('mobo node module.', function() {
-  it('must be awesome', function() {
-    assert( mobo.awesome(), 'awesome');
+  it('has a version number', function() {
+    assert(mobo.getVersion(), fs.readFileSync(__dirname + '/../cli.md').toString());
   });
 });
