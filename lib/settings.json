@@ -1,4 +1,7 @@
 {
+    "watchFilesystem": true,
+    "serveWebapp": true,
+
     "displayNotices": false,
     "verbose": false,
 
@@ -11,7 +14,5 @@
 
     "concurrency": 4,
 
-    "watchFilesystem": true,
-    "serveWebapp": true,
     "port": 8080
 }
