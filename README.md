@@ -7,12 +7,19 @@ The structure of a Semantic MediaWiki (SMW) can become hard to develop and maint
 With this project an object oriented modeling approach based on the JSON Schema format is used.
 Instead of creating SMW Attributes, Templates and Forms by hand in wikitext, Fields, Models and Forms are defined through JSON Files.
 Properties can be inherited and overwritten which keeps the model DRY.
-mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time.
+
+mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time to your wiki.
 
 ## Getting Started
-* Requirements: [Node.js](http://nodejs.org/)
-* Install the module (globally) with: `npm install mobo -g`
+* [Node.js](http://nodejs.org/) is required for mobo to install/run.
+* A Semantic MediaWiki Installation is required as the upload target
+* * Semantic Forms Extension is required
+* * HeaderTabs Extension is supported
+* * TemplateData Extension is supported
+* Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and eventually the "administrator" (if you want to upload special pages) privileges.
 
+
+Install mobo and create a new project:
 ```sh
 $ npm install -g mobo               # Installs mobo globally
 $ mkdir new_model && cd new_model   # Creates and enters new directory
@@ -20,10 +27,17 @@ $ mobo --init                       # Initializes the empty directory with the d
 $ nano settings.json                # Adjust / enter options (login data for the bot...)
 $ mobo                              # Runs mobo in interactive mode
 ```
+
 If mobo can't be added to your global path, it can be run manually:
 ```sh
 $ node /path/to/mobo/cli.js 
 ```
+
+## Configuration
+To overwrite the default settings, just add them to your settings.json.
+
+Enter `mobo -c` to print out the currently used configuration, including all inherited default values.
+If you want to change a setting, simply copy it to your settings.json and change it.
 
 
 ## Documentation

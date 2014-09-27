@@ -15,7 +15,6 @@
 
 var path       = require('path');
 var fs         = require('fs-extra');
-var fileServer = require('node-static');
 
 var mobo       = require('./lib/mobo');
 
@@ -46,7 +45,8 @@ var settings    = mobo.getSettings();
 
 if (userArgs.indexOf('-h') !== -1 || userArgs.indexOf('--help') !== -1 ) {
     var helpText = fs.readFileSync(__dirname + '/cli.md').toString();
-    return console.log(helpText);
+    log(helpText);
+    return;
 }
 
 if (userArgs.indexOf('-v') !== -1 || userArgs.indexOf('--version') !== -1) {
@@ -93,6 +93,9 @@ if (settings) {
     //////////////////////////////////////////
 
     if (settings.serveWebapp) {
+
+        var fileServer = require('node-static');
+
         var file = new fileServer.Server(__dirname + '/webapp');
 
         log('');
@@ -102,9 +105,9 @@ if (settings) {
 
             request.addListener('end', function () {
 
-                if (request.url === '/_processed/_registry.js' ||
-                    request.url === '/_processed/_generated.js'||
-                    request.url === '/_processed/_graph_layouted.gexf' ) {
+                // If the webapp requests a file from the /_processed/ directory
+                // Serve it from the current project dir, not the mobo /webapp/ dir
+                if (request.url.indexOf("_processed/") > -1) {
 
                     var filename = path.join(process.cwd(), request.url);
                     fs.exists(filename, function(exists) {
@@ -121,6 +124,7 @@ if (settings) {
                     });
 
                 } else  {
+                    // Serve static files from /webapp/
                     file.serve(request, response);
                 }
 
@@ -134,13 +138,11 @@ if (settings) {
             if (err.errno === 'EADDRINUSE') {
                 log('> [ERROR] Webserver failed, port ' + settings.port + ' is already in use!');
             } else {
+                log('> [ERROR] Webserver failed to run!');
                 console.log(err);
             }
-
         });
     }
-
-
 
 
     //////////////////////////////////////////
@@ -148,6 +150,7 @@ if (settings) {
     //////////////////////////////////////////
 
     if (settings.watchFilesystem) {
+
         var chokidar = require('chokidar');
 
         log('> [INFO] Watching for changes in the filesystem');
@@ -155,7 +158,6 @@ if (settings) {
         // Create filesystem watcher
         var watcher = chokidar.watch(
             [
-                    cwd + '/settings.json',
                     cwd + '/field',
                     cwd + '/form',
                     cwd + '/model',
@@ -177,8 +179,7 @@ if (settings) {
                 log('');
                 log(' C File changed: ' + path.basename(file) + '');
 
-                // Update Settings, generate new model
-                settings = mobo.getSettings();
+                // Re-run mobo
                 mobo.run(settings);
 
             })
