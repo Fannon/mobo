@@ -2,6 +2,7 @@
 
 <p align="center">
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
+    
     > Work in progress! Not ready for release yet.
 </p>
 
