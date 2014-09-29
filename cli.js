@@ -106,7 +106,7 @@ if (settings) {
 
                 // If the webapp requests a file from the /_processed/ directory
                 // Serve it from the current project dir, not the mobo /webapp/ dir
-                if (request.url.indexOf("_processed/") > -1) {
+                if (request.url.indexOf("_processed/") > -1 || request.url === '/settings.json') {
 
                     var filename = path.join(process.cwd(), request.url);
                     fs.exists(filename, function(exists) {

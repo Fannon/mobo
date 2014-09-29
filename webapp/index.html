@@ -22,8 +22,11 @@
 </head>
 <body>
 <div class="container">
-    <h1>mobo Viewer <small><br><a href="graph.html">Graph View of model</a></small></h1>
 
+
+    <h1><img src="img/logo.svg" alt="mobo" id="logo" /> Viewer
+        <small><br><a href="graph.html">Graph View of model</a></small>
+    </h1>
     <h2>Select Schema / Wikitext</h2>
 
     <select id="select-schema" style="width: 300px" data-placeholder="Select Schema">
@@ -38,7 +41,6 @@
 
         <br>
 
-
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a data-target="#jsonschema"  data-toggle="tab">JSON Schema</a></li>
             <li><a data-target="#markup" data-toggle="tab">Generated Markup</a></li>
@@ -49,10 +51,11 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane active" id="jsonschema">
-                <br>
+                <p class="helptext">Displays the final JSON Schema with all processing and inheritance applied</p>
                 <pre><code id="schema"></code></pre>
             </div>
             <div class="tab-pane" id="markup">
+                <p class="helptext">Displays the generated wikitext. Warning: This might not be complete!</p>
                 <div id="smw_markup"></div>
             </div>
             <div class="tab-pane" id="docs">
@@ -60,6 +63,7 @@
                 <div id="doc"></div>
             </div>
             <div class="tab-pane" id="formexample">
+                <p class="helptext">An example form representaion. Visit your wiki for the real results.</p>
                 <div id="form"></div>
 
                 <h2>Form Result</h2>
@@ -81,8 +85,8 @@
 
 <script src="js/app.js"></script>
 <script src="lib/jsoneditor.min.js"></script>
-<script src="_processed/_registry.js"></script>
-<script src="_processed/_generated.js"></script>
+<!--<script id="registry" src="_processed/_registry.json" type="application/json"></script>-->
+<!--<script id="generated" src="_processed/_generated.json" type="application/json"></script>-->
 
 </body>
 </html>

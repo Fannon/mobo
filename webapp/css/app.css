@@ -28,6 +28,11 @@ h4 {
     line-height: 1.4em;
 }
 
+#logo {
+    height: 42px;
+    margin-top: -4px;
+}
+
 pre {
     font-size: 0.85em;
     padding: 5px 10px;
@@ -41,13 +46,24 @@ textarea {
     margin-right: 8px;
 }
 
-p.description {
+.description {
     display: block;
     background: #27A4C9;
     color: #FFF;
     margin: 8px 0;
     padding: 2px 8px;
     border-radius: 3px;
+}
+
+.helptext {
+    display: block;
+    font-style: italic;
+    /*background: #EEE;*/
+    color: #333;
+    margin: 12px 0;
+    padding: 2px 8px;
+    /*border-radius: 3px;*/
+    border-left: 4px solid #6499CB;
 }
 
 div[data-schematype] {

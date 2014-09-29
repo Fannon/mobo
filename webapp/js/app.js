@@ -1,47 +1,73 @@
 /* global $, document, window, JSONEditor */
 
-var cbm = {};
+/** global namespace */
+var mobo = {};
 
 
 //////////////////////////////////////////
 // Options / Config                     //
 //////////////////////////////////////////
 
-cbm.remoteWiki = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php';
-cbm.displayForm = true;
+mobo.remoteWiki = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php';
+mobo.displayForm = true;
 
 require.config({
     baseUrl: ".."
 });
 
-//////////////////////////////////////////
-// Bootstrap                            //
-//////////////////////////////////////////
 
+//////////////////////////////////////////
+// ON DOCUMENT READY                    //
+//////////////////////////////////////////
 
 $(document).ready(function() {
 
-    cbm.route();
+    // Get registry.json first
+    $.getJSON( "_processed/_registry.json", function(registry) {
 
-    $(window).on('hashchange', function() {
-        cbm.route();
-    });
+        mobo.registry = registry;
 
-    $('#select-schema').select2().on("change", function(e) {
-        var selection = e.val.split('/');
-        window.location.hash = '#' + selection[0] + '/' + selection[1];
-    });
+        // Then get the generated wikitext
+        $.getJSON( "_processed/_generated.json", function(wikitext) {
 
-    $('#select-wikitext').select2().on("change", function(e) {
-        window.location.hash = '#' + e.val;
-    });
+            mobo.wikitext = wikitext;
 
-    cbm.populateSelect('selection');
+            // Get project settings (for URL to external wiki)
+            $.getJSON("settings.json", function(settings) {
 
-    $(function () {
-        $('#tabs a').on('click', function() {
-            $(this).tab('show');
+                mobo.remoteWiki = settings.mw_server_url + settings.mw_server_path + '/index.php';
+
+                //////////////////////////////////////////
+                // BOOTSTRAP WEBAPP                     //
+                //////////////////////////////////////////
+
+                if (Object.keys(mobo.wikitext).length > 0) {
+                    mobo.route();
+
+                    $(window).on('hashchange', function() {
+                        mobo.route();
+                    });
+
+                    $('#select-schema').select2().on("change", function(e) {
+                        var selection = e.val.split('/');
+                        window.location.hash = '#' + selection[0] + '/' + selection[1];
+                    });
+
+                    $('#select-wikitext').select2().on("change", function(e) {
+                        window.location.hash = '#' + e.val;
+                    });
+
+                    mobo.populateSelect('selection');
+
+                } else {
+                    $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
+                }
+
+            });
+
         });
+
+
     });
 
 });
@@ -51,12 +77,23 @@ $(document).ready(function() {
 // Main Functions                       //
 //////////////////////////////////////////
 
-cbm.route = function() {
+/**
+ * Displays a specific part of the model depending on the current URL Hash
+ */
+mobo.route = function() {
 
     var hash = window.location.hash;
 
+    // If no hash, use the first model as default entry point
     if (!hash) {
-        hash = '#form/Bereich';
+
+        for (var title in mobo.registry.model) {
+            if (title) {
+                hash = '#model/' + title;
+                window.location.hash = hash;
+                break;
+            }
+        }
     }
 
     hash = hash.replace('#', '');
@@ -65,7 +102,7 @@ cbm.route = function() {
     if (hash.indexOf(":") > -1) {
 
         hashArray = hash.split(':');
-        cbm.showDetail(hashArray[0], hashArray[1]);
+        mobo.showDetail(hashArray[0], hashArray[1]);
 
     } else {
 
@@ -74,18 +111,29 @@ cbm.route = function() {
 
         require(["lib/docson/docson"], function(docson) {
 
-            cbm.docson = docson;
+            mobo.docson = docson;
 
             if (hashArray.length === 2) {
-                cbm.loadSchema(hashArray[0], hashArray[1]);
+                mobo.loadSchema(hashArray[0], hashArray[1]);
             } else {
-                cbm.loadSchema('model', 'Abteilung');
+//                mobo.loadSchema('model', 'Abteilung');
+                console.log('Invalid url-hash');
             }
         });
     }
 };
 
-cbm.loadSchema = function(type, name) {
+/**
+ * Displays a specific part of the model
+ *
+ * Uses Docson for documentation
+ * Uses JSONEditor for forms
+ * Uses jQuery for raw text
+ *
+ * @param type
+ * @param name
+ */
+mobo.loadSchema = function(type, name) {
 
     var schema;
 
@@ -96,29 +144,29 @@ cbm.loadSchema = function(type, name) {
     $('#smw_markup').html('');
 
     if (type === 'model') {
-        schema = cbm.registry.deep[name];
+        schema = mobo.registry.deep[name];
     } else if (type === 'form') {
-        schema = cbm.registry.deepForm[name];
+        schema = mobo.registry.deepForm[name];
     } else if (type === 'field') {
-        schema = cbm.registry.field[name];
+        schema = mobo.registry.field[name];
     }
 
-    cbm.schemaOrig = schema;
+    mobo.schemaOrig = schema;
 
     $('#schema-orig').text(JSON.stringify(schema, false, 4));
 
-    cbm.docson.templateBaseUrl = "../lib/docson/templates";
+    mobo.docson.templateBaseUrl = "../lib/docson/templates";
 
-    cbm.docson.doc("doc", schema);
-    cbm.schemaFull = schema;
+    mobo.docson.doc("doc", schema);
+    mobo.schemaFull = schema;
     $('#schema').text(JSON.stringify(schema, false, 4));
-    cbm.printMediaWikiMarkup(type, name);
+    mobo.printMediaWikiMarkup(type, name);
 
 
-    if (cbm.displayForm) {
+    if (mobo.displayForm) {
 
         var element = document.getElementById('form');
-        cbm.editor = new JSONEditor(element, {
+        mobo.editor = new JSONEditor(element, {
             schema: schema,
             theme: 'bootstrap3',
             iconlib: "fontawesome4",
@@ -128,40 +176,42 @@ cbm.loadSchema = function(type, name) {
             ajax: true
         });
 
-        cbm.editor.on('ready', function() {
+        mobo.editor.on('ready', function() {
 
         });
 
-        cbm.editor.on('change', function() {
-            cbm.getResult();
+        mobo.editor.on('change', function() {
+            mobo.getResult();
         });
     }
 
 };
 
-
-cbm.populateSelect = function() {
+/**
+ * Populates the (Select2) Selection box with available options
+ */
+mobo.populateSelect = function() {
 
     var html = '';
     var name;
 
     // Forms
     html += ('<optgroup label="Form">');
-    for (name in cbm.registry.form) {
+    for (name in mobo.registry.form) {
         html += '<option value="form/' + name + '">' + name + '</option>';
     }
     html += '</optgroup>';
 
     // Models
     html += ('<optgroup label="Model">');
-    for (name in cbm.registry.deep) {
+    for (name in mobo.registry.deep) {
         html += '<option value="model/' + name + '">' + name + '</option>';
     }
     html += '</optgroup>';
 
     // Fields
     html += ('<optgroup label="Field">');
-    for (name in cbm.registry.field) {
+    for (name in mobo.registry.field) {
         html += '<option value="field/' + name + '">' + name + '</option>';
     }
     html += '</optgroup>';
@@ -170,42 +220,49 @@ cbm.populateSelect = function() {
 
 
     html = '';
-    for (var siteName in cbm.wikitext) {
+    for (var siteName in mobo.wikitext) {
         html += '<option value="' + siteName + '">' + siteName + '</option>';
     }
     $('#select-wikitext').append(html);
 
 };
 
+/**
+ * Validates the example forms. Displays the success / error messages
+ */
+mobo.getResult = function() {
 
-cbm.getResult = function() {
-
-    var errors = cbm.editor.validate();
+    var errors = mobo.editor.validate();
 
     if (errors.length) {
         $('#result').text(JSON.stringify(errors, false, 4));
         $('#result').parent().removeClass('valid');
         $('#result').parent().addClass('invalid');
     } else {
-        var value = cbm.editor.getValue();
+        var value = mobo.editor.getValue();
         $('#result').text(JSON.stringify(value, false, 4));
         $('#result').parent().removeClass('invalid');
         $('#result').parent().addClass('valid');
     }
 };
 
+/**
+ * Handles the markup rendering of wikitext sites
+ *
+ * @param type
+ * @param name
+ */
+mobo.printMediaWikiMarkup = function(type, name) {
 
-cbm.printMediaWikiMarkup = function(type, name) {
-
-    for (var siteName in cbm.wikitext) {
+    for (var siteName in mobo.wikitext) {
 
         var fileName = siteName.replace(':', '-');
-        var wikitext = cbm.wikitext[siteName];
+        var wikitext = mobo.wikitext[siteName];
 
         if (siteName.indexOf(name) !== -1) {
 
             var html = '<h4><a href="#' + type + ':' + name + '">' + siteName + '</a>';
-            html    += ' <small><a href="' + cbm.remoteWiki + '/' +  siteName + '" target="_blank">[remote]</a></small></h4>';
+            html    += ' <small><a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">[remote]</a></small></h4>';
             html    += '<pre>' + wikitext.escape() + '</pre>';
 
             $('#smw_markup').append(html);
@@ -214,20 +271,26 @@ cbm.printMediaWikiMarkup = function(type, name) {
 
 };
 
-cbm.showDetail = function(type, name) {
+/**
+ * Handles the JSON Schema text rendering
+ *
+ * @param type
+ * @param name
+ */
+mobo.showDetail = function(type, name) {
 
     var schema;
 
     if (type === 'model') {
-        schema = cbm.registry.deep[name];
+        schema = mobo.registry.deep[name];
     } else if (type === 'form') {
-        schema = cbm.registry.deepForm[name];
+        schema = mobo.registry.deepForm[name];
     } else if (type === 'field') {
-        schema = cbm.registry.field[name];
+        schema = mobo.registry.field[name];
     }
 
     $('#default-view').hide();
-    $('#detail-markup').text(cbm.wikitext[type + ':' + name]);
+    $('#detail-markup').text(mobo.wikitext[type + ':' + name]);
     $('#detail-view').show();
 };
 
@@ -236,8 +299,13 @@ cbm.showDetail = function(type, name) {
 // Helper Functions
 //////////////////////////////////////////
 
-
-cbm.sortObjectByKey = function(obj){
+/**
+ * Sorts objects alphabetically by key
+ *
+ * @param obj
+ * @returns {{}}
+ */
+mobo.sortObjectByKey = function(obj){
     var keys = [];
     var sorted_obj = {};
 
@@ -258,7 +326,11 @@ cbm.sortObjectByKey = function(obj){
     return sorted_obj;
 };
 
-
+/**
+ * Escapes special HTML characters
+ *
+ * @returns {string}
+ */
 String.prototype.escape = function() {
     var tagsToReplace = {
         '&': '&amp;',
