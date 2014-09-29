@@ -1,4 +1,4 @@
-/* global sigma */
+/* global $, document, window, JSONEditor */
 
 var cbm = {};
 
@@ -8,7 +8,7 @@ var cbm = {};
 //////////////////////////////////////////
 
 cbm.remoteWiki = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php';
-cbm.displayForm = false;
+cbm.displayForm = true;
 
 require.config({
     baseUrl: ".."
@@ -37,6 +37,12 @@ $(document).ready(function() {
     });
 
     cbm.populateSelect('selection');
+
+    $(function () {
+        $('#tabs a').on('click', function() {
+            $(this).tab('show');
+        });
+    });
 
 });
 
@@ -110,11 +116,12 @@ cbm.loadSchema = function(type, name) {
 
 
     if (cbm.displayForm) {
+
         var element = document.getElementById('form');
         cbm.editor = new JSONEditor(element, {
             schema: schema,
             theme: 'bootstrap3',
-            iconlib: "bootstrap3",
+            iconlib: "fontawesome4",
             disable_edit_json: true,
             disable_collapse: true,
             no_additional_properties: true,
@@ -136,6 +143,7 @@ cbm.loadSchema = function(type, name) {
 cbm.populateSelect = function() {
 
     var html = '';
+    var name;
 
     // Forms
     html += ('<optgroup label="Form">');
@@ -194,7 +202,7 @@ cbm.printMediaWikiMarkup = function(type, name) {
         var fileName = siteName.replace(':', '-');
         var wikitext = cbm.wikitext[siteName];
 
-        if (siteName.indexOf(name) !=-1) {
+        if (siteName.indexOf(name) !== -1) {
 
             var html = '<h4><a href="#' + type + ':' + name + '">' + siteName + '</a>';
             html    += ' <small><a href="' + cbm.remoteWiki + '/' +  siteName + '" target="_blank">[remote]</a></small></h4>';
@@ -207,6 +215,8 @@ cbm.printMediaWikiMarkup = function(type, name) {
 };
 
 cbm.showDetail = function(type, name) {
+
+    var schema;
 
     if (type === 'model') {
         schema = cbm.registry.deep[name];
@@ -241,7 +251,7 @@ cbm.sortObjectByKey = function(obj){
     keys.sort();
 
     // create new array based on Sorted Keys
-    jQuery.each(keys, function(i, key){
+    $.each(keys, function(i, key){
         sorted_obj[key] = obj[key];
     });
 
