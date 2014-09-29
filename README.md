@@ -1,8 +1,9 @@
-#  [![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
+[![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
 
-<div style="text-align: center"><img src ="http://fannon.de/p/mobo-intro/img/logo.png" /></div>
-
-> Work in progress! Not ready for release yet.
+<p align="center">
+    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
+    > Work in progress! Not ready for release yet.
+</p>
 
 ## Why mobo?
 The structure of a Semantic MediaWiki (SMW) can become hard to develop and maintain as it increases in size and complexity.
