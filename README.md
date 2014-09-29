@@ -1,5 +1,7 @@
 #  [![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
 
+<div style="text-align: center"><img src ="http://fannon.de/p/mobo-intro/img/logo.png" /></div>
+
 > Work in progress! Not ready for release yet.
 
 ## Why mobo?
@@ -32,6 +34,11 @@ $ mobo                              # Runs mobo in interactive mode
 If mobo can't be added to your global path, it can be run manually:
 ```sh
 $ node /path/to/mobo/cli.js 
+```
+
+### Update
+```sh
+$ npm update -g mobo
 ```
 
 ## Configuration
