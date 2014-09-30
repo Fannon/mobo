@@ -16,6 +16,8 @@
 var path       = require('path');
 var fs         = require('fs-extra');
 
+var argv       = require('minimist')(process.argv.slice(2));
+
 var mobo       = require('./lib/mobo');
 
 var logger     = require('./lib/logger.js');
@@ -26,59 +28,73 @@ var log        = logger.log;
 // VARIABLES                            //
 //////////////////////////////////////////
 
-var userArgs    = process.argv;
-var searchParam = userArgs[2];
 var cwd         = process.cwd();
 var start       = (new Date).getTime();
 var settings    = mobo.getSettings();
 
 
-
 //////////////////////////////////////////
-// CLI COMMANDS                         //
+// CLI COMMANDS (1/2)                   //
 //////////////////////////////////////////
 
-// TODO: Missing Features:
-// * Create demo project
-// * validate only
-
-if (userArgs.indexOf('-h') !== -1 || userArgs.indexOf('--help') !== -1 ) {
+// Returns the contents of the /cli.md help file
+if (argv.h ||argv.help) {
     log(mobo.getHelp());
     return;
 }
 
-if (userArgs.indexOf('-v') !== -1 || userArgs.indexOf('--version') !== -1) {
+// Returns the version number of mobo
+if (argv.v || argv.version) {
     log(mobo.getVersion());
     return;
 }
 
-if (userArgs.indexOf('-c') !== -1 || userArgs.indexOf('--config') !== -1) {
-    if (settings) {
-        log('> Currently used settings:');
-        log(settings);
+// Initializes a new project
+if (argv.i || argv.init) {
+    mobo.create('init');
+    return;
+}
+
+// Installs an example project.
+if (argv.example) {
+    if (argv.example === true) {
+        log('> [WARNING] You must provide the name of an existing example:');
+        log('> E.g. mobo --example shapes');
+    } else {
+        mobo.create(argv.example);
     }
+
     return;
-}
-
-if (userArgs.indexOf('-i') !== -1 || userArgs.indexOf('--init') !== -1 ) {
-    mobo.init('init');
-    return;
-}
-
-// Run-through mode
-if (userArgs.indexOf('--run-through') !== -1) {
-    settings.serveWebapp = false;
-    settings.watchFilesystem = false;
-}
-
-// Force upload
-if (userArgs.indexOf('-f') !== -1 || userArgs.indexOf('--force') !== -1) {
-    console.log('Forcing upload of all sites!');
-    settings.forceUpload = true;
 }
 
 // If settings are provided
 if (settings) {
+
+
+    //////////////////////////////////////////
+    // CLI COMMANDS (2/2)                   //
+    //////////////////////////////////////////
+
+    // Returns the currently used settings including all calculated and inherited attributes
+    if (argv.s || argv.c || argv.settings) {
+        if (settings) {
+            log('> Currently used settings:');
+            log(settings);
+        }
+        return;
+    }
+
+    // Run-through mode (will exit after run, no filewatcher or webapp is available)
+    if (argv.r || argv['run-through']) {
+        settings.serveWebapp = false;
+        settings.watchFilesystem = false;
+    }
+
+    // Force upload: Will upload everything and ignore the DIFF
+    if (argv.f || argv.force) {
+        log('> [INFO] Forcing upload of all sites!');
+        settings.forceUpload = true;
+    }
 
     //////////////////////////////////////////
     // RUN MOBO                             //
