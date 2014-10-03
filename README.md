@@ -24,7 +24,7 @@ mobo is a Node.js based toolset that validates, visualizes, converts and uploads
 ### Installation
 Install mobo and create a new project:
 ```sh
-$ npm install -g mobo               # Installs mobo globally
+$ npm install -g mobo               # Installs mobo globally. If this fails: "sudo npm install -g mobo"
 $ mkdir new_model && cd new_model   # Creates and enters new directory
 $ mobo --init                       # Initializes the empty directory with the default structure
 $ nano settings.json                # Adjust / enter options (login data for the bot...)
