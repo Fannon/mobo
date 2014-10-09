@@ -27,7 +27,7 @@
 \{{{end template}}}
 {{~/if}} {{~/if}}
 {{/each}}
-<headertabs />
+{{#if this.headertabs}}<headertabs />{{/if}}
 
 {{~#if this.freetext}}
 

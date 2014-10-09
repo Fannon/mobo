@@ -5,7 +5,11 @@
 
     "properties": {
 
-        "circleHeader": { "wikitext": "=Circles=" },
+        "circleHeader": {
+            "$extend": "/smw_template/HeaderCircle.wikitext",
+            "showForm": true,
+            "showSite": true
+        },
         "circle": {
             "type": "array",
             "items": {
@@ -13,7 +17,11 @@
             }
         },
 
-        "qualityHeader": { "wikitext": "=Quality=" },
+        "qualityHeader": {
+            "$extend": "/smw_template/HeaderQuality.wikitext",
+            "showForm": true,
+            "showSite": true
+        },
         "quality": { "$extend": "/model/Quality.json" }
     }
 }

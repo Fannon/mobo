@@ -9,5 +9,7 @@
     },
     "required": ["x", "y", "radius"],
 
+    "smw_subobject": true,
+
     "abstract": false
 }
