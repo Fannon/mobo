@@ -7,19 +7,15 @@
 ## Why mobo?
 The structure of a Semantic MediaWiki (SMW) can become hard to develop and maintain as it increases in size and complexity.
 With this project an object oriented modeling approach based on the JSON Schema format is used.
-Instead of creating SMW Attributes, Templates and Forms by hand in wikitext, Fields, Models and Forms are defined through JSON Files.
-Properties can be inherited and overwritten which keeps the model DRY.
+Instead of creating SMW Attributes, Templates and Forms by hand in wikitext, Fields, Models and Forms are defined through JSON Files. Properties can be inherited and overwritten which keeps the model DRY.
 
 mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time to your wiki.
 
 ## Getting Started
 ### Requirements
 * [Node.js](http://nodejs.org/) is required for mobo to install/run.
-* A Semantic MediaWiki Installation is required as upload target:
-  * REQUIRED: Semantic Forms Extension
-  * SUPPORTED: HeaderTabs Extension
-  * SUPPORTED: TemplateData Extension
-* Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and eventually the "administrator" (if you want to upload special pages) privileges.
+* A Semantic MediaWiki Installation is required as upload target. Semantic Forms is required, the HeaderTabs and TemplateData extension are supported.
+* Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
 
 ### Installation
 Install mobo and create a new project:
@@ -48,8 +44,8 @@ Enter `mobo -c` to print out the currently used configuration, including all inh
 If you want to change a setting, simply copy it into your settings.json and adjust it.
 
 ## Documentation
-* Watch the [mobo presentation](http://fannon.de/p/mobo-intro/)!
-* Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation.
+* Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
+* Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation and tutorials.
 
 There are a few context specific README.md files within the project:
 * [Command Line Options](cli.md)
