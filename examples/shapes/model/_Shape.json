@@ -6,12 +6,8 @@
     "type": "object",
 
     "properties": {
-        "x": {
-            "type": "integer"
-        },
-        "y": {
-            "type": "integer"
-        }
+        "x": { "$extend": "/field/x.json" },
+        "y": { "$extend": "/field/y.json" }
     },
     "required": ["x", "y"],
 

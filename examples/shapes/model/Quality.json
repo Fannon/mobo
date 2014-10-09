@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "description": "Quality of a wiki entry",
+    "type": "object",
+
+    "properties": {
+        "inProcess": { "$extend": "/field/inProcess.json" },
+        "deprecated": { "$extend": "/field/deprecated.json" },
+        "completeness": { "$extend": "/field/completeness.json" }
+    },
+    "required": [],
+
+    "smw_category": false
+}

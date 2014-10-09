@@ -1,0 +1,6 @@
+{
+    "title": "Deprecated",
+    "description": "Mark this site as deprecated",
+
+    "type": "boolean"
+}

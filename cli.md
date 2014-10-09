@@ -1,5 +1,5 @@
 ABOUT MOBO
-------------------------------------------------------------------------------
+----------
 mobo is a Semantic MediaWiki Modeling Bot.
 
 You will find more detailed documentation in the various README.md files
@@ -8,17 +8,17 @@ that will be created as part of the init project.
 Further documentation can be found at: https://github.com/Fannon/mobo
 
 CONSOLE COMMANDS
-------------------------------------------------------------------------------
+----------------
 
 -v  --version           Display version
 -h  --help              Display help text
 -s  --settings          Displays current settings
                         Includes inherited and calculated settings
-
+                        
 -i  --init              Creates a new raw project in the current directory
     --example shapes    Creates a new "shapes" sample project
     
 -f  --force             Forces the upload of the complete model
--r  --run-through       Skips Watching the filesystem and serving the webapp
-                        mobo will exit after completion
-                        This might be useful if mobo is triggered in other skripts
+-r  --run-through       Skips watching the filesystem and serving the webapp
+                        mobo will exit after completion. This might be 
+                        useful if mobo is triggered through other skripts.

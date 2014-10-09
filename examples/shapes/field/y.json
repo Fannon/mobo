@@ -1,0 +1,10 @@
+{
+    "title": "y",
+    "description": "Y Coordinate",
+
+    "type": "number",
+
+    "smw_form": {
+        "input type": "text"
+    }
+}

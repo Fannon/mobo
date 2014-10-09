@@ -5,7 +5,7 @@
     "type": "object",
 
     "properties": {
-        "radius": { "$extend": "/field/radius.json" },
+        "radius": { "$extend": "/field/radius.json" }
     },
     "required": ["x", "y", "radius"],
 

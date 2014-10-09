@@ -1,0 +1,20 @@
+{
+    "title": "Circle",
+    "description": "Circle Form",
+    "type": "object",
+
+    "properties": {
+
+        "problemfallHeader": { "wikitext": "=Circles=" },
+        "problemfall": {
+            "type": "array",
+            "items": {
+                "$extend": "/model/Circle.json"
+            }
+        },
+
+        "qualityHeader": { "wikitext": "=Quality=" },
+        "quality": { "$extend": "/model/Quality.json" }
+    }
+}
+

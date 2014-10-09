@@ -19,7 +19,6 @@ var fs         = require('fs-extra');
 var argv       = require('minimist')(process.argv.slice(2));
 
 var mobo       = require('./lib/mobo');
-
 var logger     = require('./lib/logger.js');
 var log        = logger.log;
 
@@ -29,8 +28,7 @@ var log        = logger.log;
 //////////////////////////////////////////
 
 var cwd         = process.cwd();
-var start       = (new Date).getTime();
-var settings    = mobo.getSettings();
+
 
 
 //////////////////////////////////////////
@@ -66,6 +64,8 @@ if (argv.example) {
 
     return;
 }
+
+var settings    = mobo.getSettings();
 
 // If settings are provided
 if (settings) {
@@ -237,8 +237,7 @@ if (settings) {
     //////////////////////////////////////////
 
     process.on('uncaughtException', function (e) {
-        log('> [ERROR] Uncaught Exception! The program will exit.');
-        log('> This -can- be caused by invalid login/upload attempts to the wiki');
+        log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
         log(e);
         logger.report();
         process.exit(1);
