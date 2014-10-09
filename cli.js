@@ -213,6 +213,7 @@ if (settings) {
     if (settings.watchFilesystem || settings.serveWebapp) {
 
         log('> [INFO] Enter q to quit the interactive mode');
+        log('');
 
         process.stdin.setEncoding('utf8');
 

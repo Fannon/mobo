@@ -5,8 +5,8 @@
 
     "properties": {
 
-        "problemfallHeader": { "wikitext": "=Circles=" },
-        "problemfall": {
+        "circleHeader": { "wikitext": "=Circles=" },
+        "circle": {
             "type": "array",
             "items": {
                 "$extend": "/model/Circle.json"
