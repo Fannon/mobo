@@ -3,7 +3,7 @@
 {{description}}{{~/if}}
 
 {{~#if this.naming}}
-<div class="naming-box"><strong>Namenskonvention:</strong> {{naming}}</div>{{~/if}}
+<div class="naming-box"><strong>Naming convention:</strong> {{naming}}</div>{{~/if}}
 
 
 \{{#forminput:form={{~name~}} }}
@@ -31,7 +31,7 @@
 
 {{~#if this.freetext}}
 
-==Freitext==
+==Freetext==
 \{{{standard input|free text|rows=8}}}
 {{/if}}
 {{#if this.summary}}

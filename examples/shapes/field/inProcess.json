@@ -1,6 +1,6 @@
 {
     "title": "In Process",
-    "description": "This site is currently in process",
+    "description": "Marks a site as currently in process",
 
     "type": "boolean"
 }

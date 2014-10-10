@@ -1,17 +1,18 @@
 {{description}}
 {{#if form}}
 
-==Formular==
-* Erstelle [[Hat Standardformular::{{name}}|{{title}}]]
+==Form==
+* Create [[Hat Standardformular::{{name}}|{{title}}]]
 {{~/if}}
 
 ==Template==
-* Verwendet [[Template:{{name}}]]
-==Tabellarische Übersicht==
+* Uses [[Template:{{name}}]]
+
+==Tabular Overview==
 \{{#ask: [[Kategorie:{{name}}]]
 {{~#each attr}}| ?{{@key}}
 {{/each~}}
 | format=broadtable
 | limit=0
-| searchlabel=Hier klicken um eine tabellarische Ansicht zu öffnen
+| searchlabel=Click here to open this table view
 }}

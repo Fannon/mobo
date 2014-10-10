@@ -1,6 +1,6 @@
-<noinclude>==Beschreibung==
+<noinclude>==Description==
 <templatedata>{{{templatedata}}}</templatedata>
-==Verwendung==
+==Usage==
 <pre>\{{ {{~name}}
 {{#each attr}}|{{@key}}=
 {{/each~}} \}}</pre>

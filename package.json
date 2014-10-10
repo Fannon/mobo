@@ -1,6 +1,6 @@
 {
   "name": "mobo",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "main": "lib/mobo.js",
   "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
   "homepage": "https://github.com/Fannon/mobo",

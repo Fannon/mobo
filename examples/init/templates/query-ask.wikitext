@@ -1,9 +1,9 @@
-<noinclude>==Verwendung==
+<noinclude>==Usage==
 <pre>\{{ {{~name~}}-ask}}</pre>
 ==Query Text==
 <pre>{{{query}}}</pre>
-==Query Ergebnis==
-Anmerkung: Einige Queries sind vom Kontext abhängig, funktionieren also nur wenn sie an der richtigen Stelle eingebettet sind.
+==Query Result==
+Note: Some querys are context dependend, those won't work on this site and show no result.
 {{{query}}}
 [[category:Query]][[category:ASK-Query]]
 </noinclude>

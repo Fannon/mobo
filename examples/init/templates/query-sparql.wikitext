@@ -1,0 +1,10 @@
+<noinclude>==Usage==
+<pre>\{{ {{~name~}}-ask}}</pre>
+==Query Text==
+<pre>{{{query}}}</pre>
+==Query Result==
+Note: Some querys are context dependend, those won't work on this site and show no result.
+{{{query}}}
+[[category:Query]][[category:SPARQL-Query]]
+</noinclude>
+<includeonly>{{{query}}}</includeonly>

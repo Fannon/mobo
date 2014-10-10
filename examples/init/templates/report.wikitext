@@ -1,6 +1,6 @@
 ''{{description}}''
-* '''Letzter Import''': {{now}}
-* '''Übersicht aller Reporte''': [[:Kategorie:{{name}}Report]]
+* '''Last import''': {{now}}
+* '''View all reports''': [[:Kategorie:{{name}}Report]]
 
 ==Changes==
 {{#if removed~}}=== Removed Sites ===

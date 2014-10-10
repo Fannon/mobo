@@ -10,6 +10,6 @@
     "required": ["x", "y", "radius"],
 
     "smw_subobject": true,
-
+    "smw_category": true,
     "abstract": false
 }
