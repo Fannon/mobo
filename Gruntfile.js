@@ -27,6 +27,13 @@ module.exports = function(grunt) {
                 src: ['test/**/*.js']
             }
         },
+        jscs: {
+            src: "lib/**/*.js",
+            options: {
+                config: ".jscsrc",
+                force: true
+            }
+        },
         mochacli: {
             options: {
                 reporter: 'nyan',
@@ -51,5 +58,5 @@ module.exports = function(grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', ['jshint', 'mochacli']);
+    grunt.registerTask('default', ['jshint', 'jscs', 'mochacli']);
 };

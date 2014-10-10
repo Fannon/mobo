@@ -9,7 +9,7 @@
     "writeExportFiles": false,
     "buildGraph": true,
     "upload": true,
-    "deleteSites": true,
+    "deleteSites": false,
     "forceUpload": false,
 
     "concurrency": 4,

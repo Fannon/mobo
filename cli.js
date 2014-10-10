@@ -94,6 +94,8 @@ if (settings) {
     if (argv.f || argv.force) {
         log('> [INFO] Forcing upload of all sites!');
         settings.forceUpload = true;
+        settings.serveWebapp = false;
+        settings.watchFilesystem = false;
     }
 
     //////////////////////////////////////////
@@ -237,12 +239,12 @@ if (settings) {
     // WORST CASE HANDLING                  //
     //////////////////////////////////////////
 
-    process.on('uncaughtException', function (e) {
-        log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
-        log(e);
-        logger.report();
-        process.exit(1);
-    });
+//    process.on('uncaughtException', function (e) {
+//        log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
+//        log(e);
+//        logger.report(settings.processedModelDir + '/logfiles/');
+//        process.exit(1);
+//    });
 
 }
 

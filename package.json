@@ -1,56 +1,57 @@
 {
-  "name": "mobo",
-  "version": "0.1.6",
-  "main": "lib/mobo.js",
-  "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
-  "homepage": "https://github.com/Fannon/mobo",
-  "bugs": "https://github.com/Fannon/mobo/issues",
-  "author": {
-    "name": "Simon Heimler",
-    "email": "heimlersimon@gmail.com",
-    "url": "http://www.fannon.de"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Fannon/mobo"
-  },
-  "license": "MIT",
-  "keywords": [
-    "JSON Schema",
-    "MediaWiki",
-    "Semantic MediaWiki",
-    "Semantic Forms",
-    "Data Model",
-    "SMW",
-    "Bot"
-  ],
-  "devDependencies": {
-    "load-grunt-tasks": "^0.6.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-cli": "^1.10.0",
-    "jshint-stylish": "^1.0.0",
-    "time-grunt": "^1.0.0"
-  },
-  "dependencies": {
-    "chokidar": "^0.9.0",
-    "colors": "^0.6.2",
-    "fs-extra": "^0.12.0",
-    "handlebars": "^2.0.0",
-    "lodash": "^2.4.1",
-    "minimist": "^1.1.0",
-    "moment": "^2.8.3",
-    "ncp": "^1.0.0",
-    "node-static": "^0.7.6",
-    "nodemw": "^0.3.15",
-    "readdir-recursive": "0.0.4"
-  },
-  "scripts": {
-    "test": "grunt"
-  },
-  "bin": {
-    "mobo": "cli.js"
-  },
-  "preferGlobal": "true"
+    "name": "mobo",
+    "version": "0.1.7",
+    "main": "lib/mobo.js",
+    "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
+    "homepage": "https://github.com/Fannon/mobo",
+    "bugs": "https://github.com/Fannon/mobo/issues",
+    "author": {
+        "name": "Simon Heimler",
+        "email": "heimlersimon@gmail.com",
+        "url": "http://www.fannon.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Fannon/mobo"
+    },
+    "license": "MIT",
+    "keywords": [
+        "JSON Schema",
+        "MediaWiki",
+        "Semantic MediaWiki",
+        "Semantic Forms",
+        "Data Model",
+        "SMW",
+        "Bot"
+    ],
+    "devDependencies": {
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-contrib-nodeunit": "^0.4.1",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-jscs": "^0.7.1",
+        "grunt-mocha-cli": "^1.10.0",
+        "jshint-stylish": "^1.0.0",
+        "load-grunt-tasks": "^0.6.0",
+        "time-grunt": "^1.0.0"
+    },
+    "dependencies": {
+        "chokidar": "^0.9.0",
+        "colors": "^0.6.2",
+        "fs-extra": "^0.12.0",
+        "handlebars": "^2.0.0",
+        "lodash": "^2.4.1",
+        "minimist": "^1.1.0",
+        "moment": "^2.8.3",
+        "ncp": "^1.0.0",
+        "node-static": "^0.7.6",
+        "nodemw": "^0.3.15",
+        "readdir-recursive": "0.0.4"
+    },
+    "scripts": {
+        "test": "grunt"
+    },
+    "bin": {
+        "mobo": "cli.js"
+    },
+    "preferGlobal": "true"
 }
