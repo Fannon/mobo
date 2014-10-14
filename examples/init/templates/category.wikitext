@@ -21,6 +21,11 @@ Sites tagged with this category can be edited through [[Has default form::{{name
 {{/each~}}
 | format=broadtable
 | limit=0
-| searchlabel=Click here for a tabular overview]
+| searchlabel=Click here for a tabular overview
 }}
 {{~/if~}}
+
+{{~#if hidden}}
+__HIDDENCAT__
+
+{{/if~}}

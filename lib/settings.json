@@ -16,5 +16,7 @@
 
     "port": 8080,
 
-    "headerTabs": false
+    "headerTabs": false,
+    "formEditHelper": false,
+    "hideFormEditHelper": false
 }
