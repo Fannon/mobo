@@ -1,18 +1,26 @@
-{{description}}
-{{#if form}}
+{{#if description}}<div class="description">{{description}}</div>
 
+{{~/if~}}
+
+{{~#if form}}
 ==Form==
-* Create [[Hat Standardformular::{{name}}|{{title}}]]
-{{~/if}}
+Sites tagged with this category can be edited through [[Has default form::{{name}}|{{title}}]]
 
+{{~/if~}}
+
+{{~#if template}}
 ==Template==
-* Uses [[Template:{{name}}]]
+[[Template:{{name}}]]
 
+{{/if~}}
+
+{{~#if overview}}
 ==Tabular Overview==
-\{{#ask: [[Kategorie:{{name}}]]
+\{{#ask: [[Category:{{name}}]]
 {{~#each attr}}| ?{{@key}}
 {{/each~}}
 | format=broadtable
 | limit=0
-| searchlabel=Click here to open this table view
+| searchlabel=Click here for a tabular overview]
 }}
+{{~/if~}}

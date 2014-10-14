@@ -27,7 +27,12 @@
 \{{{end template}}}
 {{~/if}} {{~/if}}
 {{/each}}
-{{#if this.headertabs}}<headertabs />{{/if}}
+
+{{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}} {{~/if~}}
+
+{{~#if this.headerTabs}}
+\{{{for template|HeaderTabs}}} \{{{end template}}}<headertabs />
+{{/if~}}
 
 {{~#if this.freetext}}
 
@@ -38,5 +43,5 @@
 \{{{standard input|summary}}}
 
 {{~/if~}}
-<div class="formbuttons">\{{{standard input|save}}} \{{{standard input|preview}}} \{{{standard input|changes}}} \{{{standard input|watch}}}</div>
-</includeonly>
+
+<div class="formbuttons">\{{{standard input|save}}} \{{{standard input|preview}}} \{{{standard input|changes}}} \{{{standard input|watch}}}</div></includeonly>
