@@ -16,6 +16,14 @@ mobo is a Node.js based toolset that validates, visualizes, converts and uploads
 * [Node.js](http://nodejs.org/) is required for mobo to install/run.
 * A Semantic MediaWiki Installation is required as upload target. Semantic Forms is required, the HeaderTabs and TemplateData extension are supported.
 * Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
+* Your wiki needs to have the API enabled with write access. Please adjust your LocalSettings.php for this:
+
+```php
+// WARNING: This opens public write access. If you don't want this, you'll need additional restriction.
+$wgEnableAPI = true;
+$wgEnableWriteAPI = true;
+$wgCrossSiteAJAXdomains = array( '*' );
+```
 
 ### Installation
 Install mobo and create a new project:
