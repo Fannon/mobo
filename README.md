@@ -37,6 +37,13 @@ $ node /path/to/mobo/cli.js
 $ npm update -g mobo
 ```
 
+Note that new versions of mobo can introduce changed default templates. 
+You might have to update your project templates with the current version. 
+To do so use the update command. It will make a backup of your current templates.
+```sh
+$ mobo --update
+```
+
 ## Configuration
 To overwrite the default settings, just add them to your settings.json.
 

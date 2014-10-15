@@ -8,6 +8,14 @@ Additional properties
 * `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
 * `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too. 
 
+Including Templates
+-------------------
+If you want to include (existing!) templates into the form, you can do so by $extending an smw_template.
+There are two options, both true by default: 
+ * "showForm" decides if the template is rendered while displaying the form in edit mode
+ * "showSite" decides if the template should be rendered when displaying the site. (Notice: The Site has to be (re)saved through the form to make this work.
+
+This is useful for introducion headers into a form / resulting site. If you use the HeaderTabs Extension you are required to use this.
 
 Examples
 --------
@@ -21,7 +29,11 @@ Examples
 
     "properties": {
 
-        "circleHeader": { "wikitext": "=Circles=" },
+        "CircleHeader": {
+            "$extend": "/smw_template/CircleHeader.wikitext",
+            "showForm": true,
+            "showSite": true
+        },
         "circle": {
             "type": "array",
             "items": {
