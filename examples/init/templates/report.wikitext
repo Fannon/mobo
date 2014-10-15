@@ -1,4 +1,4 @@
-''{{description}}''
+<div class="description-box">{{description}}</div>
 * '''Last import''': {{now}}
 * '''View all reports''': [[:Kategorie:{{name}}Report]]
 
@@ -18,4 +18,5 @@
 [[Kategorie:{{name}}Report]]
 
 ==Logfile==
+Note: The logfile is incomplete, since it is uploaded before the process is completed.
 <pre>{{logfile}}</pre>

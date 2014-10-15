@@ -1,8 +1,10 @@
 {{#if description}}==Description==
-{{description}}
+<div class="description-box">{{description}}</div>
 
-{{/if}}
-This is an attribute of the datatype [[Has type::{{type}}]].
-{{~#if model~}}
+{{/if~}}
+* This is an attribute of the datatype [[Has type::{{type}}]].
 
-It uses the form  „[[Has default form::{{model}}]]“.{{/if}}
+{{~#if model}}
+
+* It uses the form  „[[Has default form::{{model}}]]“.
+{{~/if~}}

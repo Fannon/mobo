@@ -1,12 +1,18 @@
-{{#if description}}<div class="description">{{description}}</div>
+{{#if description}}<div class="description-box">{{description}}</div>
 
-{{~/if~}}
+{{/if~}}
 
 {{~#if form}}
 ==Form==
 Sites tagged with this category can be edited through [[Has default form::{{name}}|{{title}}]]
 
-{{~/if~}}
+{{/if~}}
+
+{{~#if formCategory}}
+==Form==
+Create a new [[Form:{{name}}|{{title}}]]
+
+{{/if~}}
 
 {{~#if template}}
 ==Template==
@@ -25,7 +31,4 @@ Sites tagged with this category can be edited through [[Has default form::{{name
 }}
 {{~/if~}}
 
-{{~#if hidden}}
-__HIDDENCAT__
-
-{{/if~}}
+{{~#if hidden}} __HIDDENCAT__ {{/if~}}

@@ -1,10 +1,12 @@
 <noinclude>
 {{~#if this.description~}}
-{{description}}{{~/if}}
+<div class="description-box">{{description}}</div>
+{{/if~}}
 
 {{~#if this.naming}}
-<div class="naming-box"><strong>Naming convention:</strong> {{naming}}</div>{{~/if}}
+<div class="naming-box"><strong>Naming convention:</strong> {{naming}}</div>
 
+{{/if}}
 
 \{{#forminput:form={{~name~}} }}
 </noinclude>
@@ -28,20 +30,24 @@
 {{~/if}} {{~/if}}
 {{/each}}
 
-{{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}} {{~/if~}}
+{{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}}
+{{/if~}}
 
 {{~#if this.headerTabs}}
 \{{{for template|HeaderTabs}}} \{{{end template}}}<headertabs />
+
 {{/if~}}
 
 {{~#if this.freetext}}
-
 ==Freetext==
 \{{{standard input|free text|rows=8}}}
-{{/if}}
-{{#if this.summary}}
+
+{{/if~}}
+
+
+{{~#if this.summary}}
 \{{{standard input|summary}}}
 
-{{~/if~}}
+{{/if~}}
 
 <div class="formbuttons">\{{{standard input|save}}} \{{{standard input|preview}}} \{{{standard input|changes}}} \{{{standard input|watch}}}</div></includeonly>
