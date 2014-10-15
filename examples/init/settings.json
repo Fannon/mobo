@@ -1,7 +1,7 @@
 {
-
     "mw_server_url": "http://localhost",
     "mw_server_path": "/wiki",
+    "mw_server_port": 80,
     "mw_username": "username",
     "mw_password": "password"
 }

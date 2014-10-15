@@ -15,7 +15,7 @@
 {{#each added}}* [[:{{@key}}]]
 {{/each}}{{/if}}
 
-[[Kategorie:{{name}}Report]]
+[[Category:{{name}}Report]]
 
 ==Logfile==
 Note: The logfile is incomplete, since it is uploaded before the process is completed.
