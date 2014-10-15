@@ -15,6 +15,10 @@ CONSOLE COMMANDS
 -s  --settings          Displays current settings
                         Includes inherited and calculated settings
                         
+-u  --update            Updates the current project templates with the latest mobo default templates
+                        This might be necessary if new features are introduced
+                        Creates a Backup from your current templates first.
+                        
 -i  --init              Creates a new raw project in the current directory
     --example shapes    Creates a new "shapes" sample project
     

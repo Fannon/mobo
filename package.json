@@ -1,6 +1,6 @@
 {
     "name": "mobo",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "main": "lib/mobo.js",
     "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
     "homepage": "https://github.com/Fannon/mobo",
@@ -36,13 +36,13 @@
     },
     "dependencies": {
         "chokidar": "^0.9.0",
-        "colors": "^0.6.2",
+        "colors": "^1.0.3",
         "fs-extra": "^0.12.0",
         "handlebars": "^2.0.0",
         "lodash": "^2.4.1",
         "minimist": "^1.1.0",
         "moment": "^2.8.3",
-        "ncp": "^1.0.0",
+        "ncp": "^1.0.1",
         "node-static": "^0.7.6",
         "nodemw": "^0.3.15",
         "readdir-recursive": "0.0.4"

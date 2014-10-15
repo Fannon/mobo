@@ -76,6 +76,12 @@ if (settings) {
     //////////////////////////////////////////
 
     // Returns the currently used settings including all calculated and inherited attributes
+    if (argv.u || argv.update) {
+        mobo.update();
+        return;
+    }
+
+    // Returns the currently used settings including all calculated and inherited attributes
     if (argv.s || argv.c || argv.settings) {
         if (settings) {
             log('> Currently used settings:');
