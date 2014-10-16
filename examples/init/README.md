@@ -13,7 +13,7 @@ Each subdirectory contains a README.md which contains further detail on this par
 * /form/            Forms
 * /model/           Models
 * /smw_query/       SMW Queries (ASK or SPARQL)
-* /smw_site/        MediaWiki Sites in plain wikitext (will overwrite the model)
+* /smw_page/        MediaWiki Sites in plain wikitext (will overwrite the model)
 * /smw_template/    Custom MediaWiki templates (will overwrite the model)
 * /templates/       Handlebars.js Templates. Specify how sites will be generated.
 * /settings.json    Project specific settings

@@ -3,5 +3,9 @@
     "mw_server_path": "/wiki",
     "mw_server_port": false,
     "mw_username": "username",
-    "mw_password": "password"
+    "mw_password": "password",
+
+    "watchFilesystem": true,
+    "serveWebapp": true,
+    "uploadToWiki": true
 }

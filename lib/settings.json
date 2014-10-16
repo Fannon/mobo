@@ -1,18 +1,23 @@
 {
+    "mw_server_url": "http://localhost",
+    "mw_server_path": "/wiki",
+    "mw_server_port": false,
+    "mw_username": "username",
+    "mw_password": "password",
+
+    "debug": false,
+    "verbose": false,
     "watchFilesystem": true,
-    "serveWebapp": true,
-    "upload": true,
+    "serveWebApp": true,
+    "uploadToWiki": true,
     "forceUpload": false,
     "deleteSites": false,
-    "generate": true,
+    "generateWikiPages": true,
     "buildGraph": true,
     "writeExportFiles": false,
 
-    "displayNotices": false,
-    "verbose": false,
-
     "uploadConcurrency": 4,
-    "webGuiPort": 8080,
+    "webAppPort": 8080,
 
     "headerTabs": false,
     "formEditHelper": false,

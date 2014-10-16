@@ -144,9 +144,9 @@ mobo.loadSchema = function(type, name) {
     $('#smw_markup').html('');
 
     if (type === 'model') {
-        schema = mobo.registry.deep[name];
+        schema = mobo.registry.expandedModel[name];
     } else if (type === 'form') {
-        schema = mobo.registry.deepForm[name];
+        schema = mobo.registry.expandedForm[name];
     } else if (type === 'field') {
         schema = mobo.registry.field[name];
     }
@@ -204,7 +204,7 @@ mobo.populateSelect = function() {
 
     // Models
     html += ('<optgroup label="Model">');
-    for (name in mobo.registry.deep) {
+    for (name in mobo.registry.expandedModel) {
         html += '<option value="model/' + name + '">' + name + '</option>';
     }
     html += '</optgroup>';
@@ -282,9 +282,9 @@ mobo.showDetail = function(type, name) {
     var schema;
 
     if (type === 'model') {
-        schema = mobo.registry.deep[name];
+        schema = mobo.registry.expandedModel[name];
     } else if (type === 'form') {
-        schema = mobo.registry.deepForm[name];
+        schema = mobo.registry.expandedForm[name];
     } else if (type === 'field') {
         schema = mobo.registry.field[name];
     }

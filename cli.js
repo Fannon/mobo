@@ -92,7 +92,7 @@ if (settings) {
 
     // Run-through mode (will exit after run, no filewatcher or webapp is available)
     if (argv.r || argv['run-through']) {
-        settings.serveWebapp = false;
+        settings.serveWebApp = false;
         settings.watchFilesystem = false;
     }
 
@@ -100,7 +100,7 @@ if (settings) {
     if (argv.f || argv.force) {
         log('> [INFO] Forcing upload of all sites!');
         settings.forceUpload = true;
-        settings.serveWebapp = false;
+        settings.serveWebApp = false;
         settings.watchFilesystem = false;
     }
 
@@ -115,14 +115,14 @@ if (settings) {
     // SERVE WEBAPP                         //
     //////////////////////////////////////////
 
-    if (settings.serveWebapp) {
+    if (settings.serveWebApp) {
 
         var fileServer = require('node-static');
 
         var file = new fileServer.Server(__dirname + '/webapp');
 
         log('');
-        log('> [INFO] Serving the webapp at http://localhost:' + settings.port + '/');
+        log('> [INFO] INTERACTIVE MODE: Serving the webapp at http://localhost:' + settings.webAppPort + '/');
 
         var webserver = require('http').createServer(function (request, response) {
 
@@ -155,11 +155,11 @@ if (settings) {
 
         });
 
-        webserver.listen(settings.webGuiPort);
+        webserver.listen(settings.webAppPort);
 
         webserver.on('error', function(err) {
             if (err.errno === 'EADDRINUSE') {
-                log('> [ERROR] Webserver failed, port ' + settings.webGuiPort + ' is already in use!');
+                log('> [ERROR] Webserver failed, port ' + settings.webAppPort + ' is already in use!');
             } else {
                 log('> [ERROR] Webserver failed to run!');
                 console.log(err);
@@ -176,7 +176,7 @@ if (settings) {
 
         var chokidar = require('chokidar');
 
-        log('> [INFO] Watching for changes in the filesystem');
+        log('> [INFO] INTERACTIVE MODE: Watching for changes in the filesystem');
 
         // Create filesystem watcher
         var watcher = chokidar.watch(
@@ -185,7 +185,7 @@ if (settings) {
                     cwd + '/form',
                     cwd + '/model',
                     cwd + '/smw_query',
-                    cwd + '/smw_site',
+                    cwd + '/smw_page',
                     cwd + '/smw_template',
                     cwd + '/templates'
             ],
@@ -220,7 +220,7 @@ if (settings) {
 
     if (settings.watchFilesystem || settings.serveWebapp) {
 
-        log('> [INFO] Enter q to quit the interactive mode');
+        log('> [INFO] Enter q to quit');
         log('');
 
         process.stdin.setEncoding('utf8');
@@ -234,7 +234,11 @@ if (settings) {
 
                 if (input === 'q' || input === 'exit' || input === 'quit') {
                     process.exit();
-                } else {
+                } else if (input === 'f' || input === 'force') {
+                    settings.forceUpload = true;
+                    mobo.run(settings);
+                    settings.forceUpload = false;
+                }else {
                     mobo.run(settings);
                 }
             }
@@ -245,12 +249,18 @@ if (settings) {
     // WORST CASE HANDLING                  //
     //////////////////////////////////////////
 
-    process.on('uncaughtException', function (e) {
-        log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
-        log(e);
-        logger.report(settings.processedModelDir + '/logfiles/');
-        process.exit(1);
-    });
+    // If debug mode is deactivated quit mobo through a nicer error message if something fails completely
+    // NOTE: The nodemw module has bad exeption handling, if mobo crashes it is very likely it happens there.
+
+    if (!settings.debug) {
+        process.on('uncaughtException', function (e) {
+            log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
+            log(e);
+            logger.report(settings.processedModelDir + '/logfiles/');
+            process.exit(1);
+        });
+    }
+
 
 }
 
