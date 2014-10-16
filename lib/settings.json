@@ -9,10 +9,10 @@
     "verbose": false,
     "watchFilesystem": true,
     "serveWebApp": true,
-    "uploadToWiki": true,
-    "forceUpload": false,
-    "deleteSites": false,
     "generateWikiPages": true,
+    "uploadWikiPages": true,
+    "deleteWikiPages": false,
+    "forceUpload": false,
     "buildGraph": true,
     "writeExportFiles": false,
 
