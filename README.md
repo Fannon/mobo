@@ -64,6 +64,7 @@ If you want to change a setting, simply copy it into your settings.json and adju
 
 There are a few context specific README.md files within the project:
 * [Command Line Options](cli.md)
+* [Available Project Settings](examples/init/settings.md)
 * [Field](examples/init/field/README.md)
 * [Form](examples/init/form/README.md)
 * [Model](examples/init/model/README.md)

@@ -220,7 +220,7 @@ if (settings) {
 
     if (settings.watchFilesystem || settings.serveWebapp) {
 
-        log('> [INFO] Enter q to quit');
+        log('> [INFO] Enter: q to quit; f to force upload');
         log('');
 
         process.stdin.setEncoding('utf8');
