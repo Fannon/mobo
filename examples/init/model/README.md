@@ -9,6 +9,7 @@ Additional properties
 * `"smw_subobject"`: [Boolean] If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances. 
 * `"smw_category"`: [Boolean] If true, the template will include a category tag. This is necessary for mapping forms to already created sites. 
 * `"smw_categories"`: [Array] Array of Strings. Add any additional categories here. 
+* `"propertyOrder"`: [Array]  Array that sets the display order of all (including inherited) properties
 * `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too. 
 
 $extend

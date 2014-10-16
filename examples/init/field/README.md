@@ -11,17 +11,43 @@ Additional properties
 
 Examples
 --------
-### /field/radius.json
+### Simple (number) field
 ```json
 {
     "title": "radius",
     "description": "The radius of a shape",
 
     "type": "number",
-    "minimum": 0,
-
+    
     "smw_form": {
-        "input type": "text with autocomplete"
+        "input type": "text"
     }
+}
+```
+
+### Multiple Links to a Model
+```json
+{
+    "title": "Anwendungen",
+    "description": "",
+
+    "type": "array",
+    "items": {
+        "type": "string",
+        "format": "/form/Anwendung.json"
+    }
+}
+```
+
+### Enum (Dropdown Menu)
+```json
+{
+    "title": "color",
+    "type": "string",
+    "enum": [
+        "red",
+        "green",
+        "blue"
+    ]
 }
 ```

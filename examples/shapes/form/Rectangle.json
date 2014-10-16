@@ -1,0 +1,28 @@
+{
+    "title": "Rectangle",
+    "description": "Rectangle Form",
+    "type": "object",
+
+    "properties": {
+
+        "circleHeader": {
+            "$extend": "/smw_template/HeaderRectangle.wikitext",
+            "showForm": true,
+            "showSite": true
+        },
+        "Rectangle": {
+            "type": "array",
+            "items": {
+                "$extend": "/model/Rectangle.json"
+            }
+        },
+
+        "qualityHeader": {
+            "$extend": "/smw_template/HeaderQuality.wikitext",
+            "showForm": true,
+            "showSite": true
+        },
+        "quality": { "$extend": "/model/Quality.json" }
+    }
+}
+

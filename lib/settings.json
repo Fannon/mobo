@@ -1,20 +1,18 @@
 {
     "watchFilesystem": true,
     "serveWebapp": true,
+    "upload": true,
+    "forceUpload": false,
+    "deleteSites": false,
+    "generate": true,
+    "buildGraph": true,
+    "writeExportFiles": false,
 
     "displayNotices": false,
     "verbose": false,
 
-    "generate": true,
-    "writeExportFiles": false,
-    "buildGraph": true,
-    "upload": true,
-    "deleteSites": false,
-    "forceUpload": false,
-
-    "concurrency": 4,
-
-    "port": 8080,
+    "uploadConcurrency": 4,
+    "webGuiPort": 8080,
 
     "headerTabs": false,
     "formEditHelper": false,

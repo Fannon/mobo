@@ -1,0 +1,9 @@
+{
+    "title": "color",
+    "type": "string",
+    "enum": [
+        "red",
+        "green",
+        "blue"
+    ]
+}

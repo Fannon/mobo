@@ -1,22 +1,29 @@
-<div class="description-box">{{description}}</div>
+<div class="description-box">This is a [https://github.com/Fannon/mobo mobo] report.
+All uploaded, changed and deleted sites together with the logfile and currently used settings are listed here.</div>
 * '''Last import''': {{now}}
-* '''View all reports''': [[:Kategorie:{{name}}Report]]
+* '''View all reports''': [[:Category:{{name}}Report]]
 
 ==Changes==
-{{#if removed~}}=== Removed Sites ===
+{{#if removed}}
+=== Removed Sites ===
 {{#each removed}}* [[:{{@key}}]]
-{{/each}}{{/if}}
+{{/each}}
+{{/if~}}
 
-{{#if changed~}}=== Changed Sites ===
+{{#if changed~}}
+=== Changed Sites ===
 {{#each changed}}* [[:{{@key}}]]
-{{/each}}{{/if}}
+{{/each}}
+{{/if~}}
 
-{{#if added~}}=== Added Sites ===
+{{#if added~}}
+=== Added Sites ===
 {{#each added}}* [[:{{@key}}]]
-{{/each}}{{/if}}
-
-[[Category:{{name}}Report]]
+{{/each}}
+{{/if}}
 
 ==Logfile==
 Note: The logfile is incomplete, since it is uploaded before the process is completed.
 <pre>{{logfile}}</pre>
+
+[[Category:{{name}}Report]]

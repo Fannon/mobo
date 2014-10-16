@@ -7,7 +7,8 @@
 
     "properties": {
         "x": { "$extend": "/field/x.json" },
-        "y": { "$extend": "/field/y.json" }
+        "y": { "$extend": "/field/y.json" },
+        "color": { "$extend": "/field/color.json" }
     },
     "required": ["x", "y"],
 

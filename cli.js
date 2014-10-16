@@ -155,11 +155,11 @@ if (settings) {
 
         });
 
-        webserver.listen(settings.port);
+        webserver.listen(settings.webGuiPort);
 
         webserver.on('error', function(err) {
             if (err.errno === 'EADDRINUSE') {
-                log('> [ERROR] Webserver failed, port ' + settings.port + ' is already in use!');
+                log('> [ERROR] Webserver failed, port ' + settings.webGuiPort + ' is already in use!');
             } else {
                 log('> [ERROR] Webserver failed to run!');
                 console.log(err);

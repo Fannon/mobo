@@ -1,0 +1,18 @@
+{
+    "$extend": "/model/_Shape.json",
+
+    "title": "Rectangle",
+    "type": "object",
+
+    "properties": {
+        "width": { "$extend": "/field/width.json" },
+        "height": { "$extend": "/field/height.json" }
+    },
+
+    "required": ["x", "y", "width", "height"],
+    "propertyOrder": ["x", "y", "width", "height", "color"],
+
+    "smw_subobject": true,
+    "smw_category": true,
+    "abstract": false
+}
