@@ -25,6 +25,16 @@ Examples
 }
 ```
 
+### Boolean (checkbox) field
+```json
+{
+    "title": "activated",
+    "description": "",
+
+    "type": "boolean"
+}
+```
+
 ### Multiple Links to a Model
 ```json
 {

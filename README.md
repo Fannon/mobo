@@ -16,10 +16,11 @@ mobo is a Node.js based toolset that validates, visualizes, converts and uploads
 * [Node.js](http://nodejs.org/) is required for mobo to install/run.
 * A Semantic MediaWiki Installation is required as upload target. Semantic Forms is required, the HeaderTabs and TemplateData extension are supported.
 * Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
-* Your wiki needs to have the API enabled with write access. Please adjust your LocalSettings.php for this:
+* Your wiki needs to have the API enabled with write access. This is enabled by default since MW 1.14, but if not adjust your LocalSettings.php:
 
 ```php
-// WARNING: This opens public write access. If you don't want this, you'll need additional restriction.
+// WARNING: This opens public write access. 
+// If you don't want this, you'll need to setup additional restrictions.
 $wgEnableAPI = true;
 $wgEnableWriteAPI = true;
 $wgCrossSiteAJAXdomains = array( '*' );
@@ -61,9 +62,12 @@ If you want to change a setting, simply copy it into your settings.json and adju
 ## Documentation
 * Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
 * Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation and tutorials.
+* For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
+* For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
 There are a few context specific README.md files within the project:
-* [Command Line Options](cli.md)
+If you create a new project via `mobo --init` they will be placed in your project directory.
+* [Command Line Options](cli.md) (`mobo -h`)
 * [Available Project Settings](examples/init/settings.md)
 * [Field](examples/init/field/README.md)
 * [Form](examples/init/form/README.md)
