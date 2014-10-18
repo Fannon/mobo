@@ -25,6 +25,9 @@ Available settings
     // This will also tighten the model validation and display notices too
     "verbose": false,
     
+    // Displays "todo" properties from your JSON files
+    "displayTodos": true,
+    
     // Watches the (development) project files for changed and automatically triggers re-generation. 
     "watchFilesystem": true,
     
@@ -57,7 +60,13 @@ Available settings
     
     // Port the WebApp is served on the localhost
     "webAppPort": 8080,
-
+    
+    // WebGui is automatically refreshed if the server makes changes to the model
+    "autoRefreshWebGui": true,
+    
+    // WebSocket port the server and the WebGui are using to notify the change
+    "autoRefreshPort": 8081,
+        
     // If true, the HeaderTabs Extension will be used with the generated forms
     // Keep in mind that you still have to create the headings to make this work!
     "headerTabs": false,

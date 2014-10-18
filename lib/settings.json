@@ -7,6 +7,7 @@
 
     "debug": false,
     "verbose": false,
+    "displayTodos": true,
     "watchFilesystem": true,
     "serveWebApp": true,
     "generateWikiPages": true,
