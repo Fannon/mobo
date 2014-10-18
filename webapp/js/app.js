@@ -22,6 +22,44 @@ require.config({
 
 $(document).ready(function() {
 
+
+
+    // Get project settings (for URL to external wiki)
+    $.getJSON("settings.json", function(settings) {
+
+        mobo.settings = settings;
+        mobo.remoteWiki = settings.mw_server_url + settings.mw_server_path + '/index.php';
+
+        $(window).on('hashchange', function() {
+            mobo.route();
+        });
+
+        mobo.loadData();
+
+        // Connect to WebSocket Server, if available
+        // This allows automatically triggering of GUI Refreshes from the server
+        var webSockets = settings.autoRefreshWebGui || true;
+
+        if (webSockets) {
+            var host = window.document.location.host.replace(/:.*/, '');
+            var port = settings.autoRefreshPort || 8081;
+
+            var ws = new WebSocket('ws://' + host + ':' + port);
+            ws.onmessage = function (event) {
+                mobo.loadData();
+                console.log('Refreshing data...');
+                $('#refresh').show().delay(500).fadeOut(300);
+            };
+        }
+
+    });
+
+
+
+});
+
+mobo.loadData = function() {
+
     // Get registry.json first
     $.getJSON( "_processed/_registry.json", function(registry) {
 
@@ -32,45 +70,34 @@ $(document).ready(function() {
 
             mobo.wikitext = wikitext;
 
-            // Get project settings (for URL to external wiki)
-            $.getJSON("settings.json", function(settings) {
 
-                mobo.remoteWiki = settings.mw_server_url + settings.mw_server_path + '/index.php';
+            //////////////////////////////////////////
+            // BOOTSTRAP WEBAPP                     //
+            //////////////////////////////////////////
 
-                //////////////////////////////////////////
-                // BOOTSTRAP WEBAPP                     //
-                //////////////////////////////////////////
+            if (Object.keys(mobo.wikitext).length > 0) {
 
-                if (Object.keys(mobo.wikitext).length > 0) {
-                    mobo.route();
+                mobo.route();
 
-                    $(window).on('hashchange', function() {
-                        mobo.route();
-                    });
+                $('#select-schema').select2().on("change", function(e) {
+                    var selection = e.val.split('/');
+                    window.location.hash = '#' + selection[0] + '/' + selection[1];
+                });
 
-                    $('#select-schema').select2().on("change", function(e) {
-                        var selection = e.val.split('/');
-                        window.location.hash = '#' + selection[0] + '/' + selection[1];
-                    });
+                $('#select-wikitext').select2().on("change", function(e) {
+                    window.location.hash = '#' + e.val;
+                });
 
-                    $('#select-wikitext').select2().on("change", function(e) {
-                        window.location.hash = '#' + e.val;
-                    });
+                mobo.populateSelect('selection');
 
-                    mobo.populateSelect('selection');
-
-                } else {
-                    $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
-                }
-
-            });
+            } else {
+                $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
+            }
 
         });
 
-
     });
-
-});
+};
 
 
 //////////////////////////////////////////

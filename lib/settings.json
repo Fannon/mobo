@@ -18,6 +18,8 @@
 
     "uploadConcurrency": 4,
     "webAppPort": 8080,
+    "autoRefreshWebGui": true,
+    "autoRefreshPort": 8081,
 
     "headerTabs": false,
     "formEditHelper": false,

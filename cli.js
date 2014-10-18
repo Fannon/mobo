@@ -27,8 +27,10 @@ var log        = logger.log;
 // VARIABLES                            //
 //////////////////////////////////////////
 
-var cwd         = process.cwd();
+var cwd             = process.cwd();
 
+/** If refreshWebGui setting is true, this will become a function that triggers the refresh */
+var refreshWebGui   = false;
 
 
 //////////////////////////////////////////
@@ -165,6 +167,28 @@ if (settings) {
                 console.log(err);
             }
         });
+
+    }
+
+    //////////////////////////////////////////
+    // RefreshWebGui                        //
+    //////////////////////////////////////////
+
+    if (settings.serveWebApp && settings.autoRefreshWebGui) {
+
+        var WebSocketServer = require('ws').Server;
+        var wss = new WebSocketServer({port: settings.autoRefreshPort});
+
+        wss.broadcast = function(data) {
+            for(var i in this.clients) {
+                this.clients[i].send(data);
+            }
+        };
+
+        refreshWebGui = function() {
+            wss.broadcast();
+        };
+
     }
 
 
@@ -203,7 +227,7 @@ if (settings) {
                 log(' C File changed: ' + path.basename(file) + '');
 
                 // Re-run mobo
-                mobo.run(settings);
+                mobo.run(settings, refreshWebGui);
 
             })
             .on('error', function(error) {
@@ -236,10 +260,10 @@ if (settings) {
                     process.exit();
                 } else if (input === 'f' || input === 'force') {
                     settings.forceUpload = true;
-                    mobo.run(settings);
+                    mobo.run(settings, refreshWebGui);
                     settings.forceUpload = false;
-                }else {
-                    mobo.run(settings);
+                } else {
+                    mobo.run(settings, refreshWebGui);
                 }
             }
         });

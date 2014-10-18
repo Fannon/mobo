@@ -102,3 +102,13 @@ div[data-schematype] {
 .clearfix {
     clear: both;
 }
+
+#refresh {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #1F6AB4;
+    color: #FFF;
+    padding: 2px 8px;
+    border-radius: 0 0 3px 0;
+}

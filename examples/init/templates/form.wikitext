@@ -1,16 +1,18 @@
 <noinclude>
 {{~#if this.description~}}
 <div class="description-box">{{description}}</div>
+
 {{/if~}}
 
 {{~#if this.naming}}
 <div class="naming-box"><strong>Naming convention:</strong> {{naming}}</div>
 
-{{/if}}
+{{/if~}}
+
 
 \{{#forminput:form={{~name~}} }}
 </noinclude>
-<includeonly>
+<includeonly>{{~#if this.smw_info~}}<div class="description-box">{{description}}</div>{{/if~}}
 {{~#if this.description~}}<div class="description-box">{{description}}</div>{{/if~}}
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 
