@@ -219,7 +219,7 @@ mobo.loadSchema = function(type, name) {
  */
 mobo.populateSelect = function() {
 
-    var html = '';
+    var html = '<option></option>';
     var name;
 
     // Forms
@@ -243,14 +243,14 @@ mobo.populateSelect = function() {
     }
     html += '</optgroup>';
 
-    $('#select-schema').append(html);
+    $('#select-schema').html(html);
 
 
-    html = '';
+    html = '<option></option>';
     for (var siteName in mobo.wikitext) {
         html += '<option value="' + siteName + '">' + siteName + '</option>';
     }
-    $('#select-wikitext').append(html);
+    $('#select-wikitext').html(html);
 
 };
 

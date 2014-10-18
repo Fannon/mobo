@@ -68,8 +68,8 @@ If you want to change a setting, simply copy it into your settings.json and adju
 
 ### Specific Documentation
 There are a few context specific README.md files within the project.
-
 If you create a new project via `mobo --init` they will be placed in your project directory.
+
 * [Command Line Options](cli.md) (`mobo -h`)
 * [Available Project Settings](examples/init/settings.md)
 * [Field](examples/init/field/README.md)
