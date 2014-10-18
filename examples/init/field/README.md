@@ -7,6 +7,7 @@ Additional properties
 ---------------------
 * `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
 * `"abstract"`: [Boolean]  If true this file will be used for inheritance but not uploaded to the actual model.
+* `"todo"`: [String] Adds a todo note
 * `"smw_form"`: [Object] Contains [Semantic Forms field options](http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag). 
 
 Examples

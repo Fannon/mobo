@@ -6,6 +6,7 @@ Models can be either implemented as a single instance or multiple instance. If a
 Additional properties
 ---------------------
 * `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
+* `"todo"`: [String] Adds a todo note
 * `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too. 
 
 Including Templates

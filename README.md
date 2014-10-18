@@ -60,18 +60,21 @@ Enter `mobo -c` to print out the currently used configuration, including all inh
 If you want to change a setting, simply copy it into your settings.json and adjust it.
 
 ## Documentation
+### General Documentation
 * Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
 * Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation and tutorials.
 * For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
 * For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
-There are a few context specific README.md files within the project:
+### Specific Documentation
+There are a few context specific README.md files within the project.
+
 If you create a new project via `mobo --init` they will be placed in your project directory.
 * [Command Line Options](cli.md) (`mobo -h`)
 * [Available Project Settings](examples/init/settings.md)
 * [Field](examples/init/field/README.md)
-* [Form](examples/init/form/README.md)
 * [Model](examples/init/model/README.md)
+* [Form](examples/init/form/README.md)
 * [SMW Query](examples/init/smw_query/README.md)
 * [SMW Site](examples/init/smw_site/README.md)
 * [SMW Template](examples/init/smw_template/README.md)

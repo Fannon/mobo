@@ -1,11 +1,14 @@
 Models
 ======
-Put your model JSON files here.
+Models represent MediaWiki Categories and Templates. 
+They define which fields they consist of to form a specific "Thing".
+Models can extend from other models and inherit their properties. 
 
 Additional properties
 ---------------------
 * `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
 * `"abstract"`: [Boolean]  If true this file will be used for inheritance but not uploaded to the actual model.
+* `"todo"`: [String] Adds a todo note
 * `"smw_subobject"`: [Boolean] If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances. 
 * `"smw_category"`: [Boolean] If true, the template will include a category tag. This is necessary for mapping forms to already created sites. 
 * `"smw_categories"`: [Array] Array of Strings. Add any additional categories here. 
