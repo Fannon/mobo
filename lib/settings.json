@@ -16,6 +16,7 @@
     "forceUpload": false,
     "buildGraph": true,
     "writeExportFiles": false,
+    "writeLogFile": false,
 
     "uploadConcurrency": 4,
     "webAppPort": 8080,

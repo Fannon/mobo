@@ -10,6 +10,7 @@ Additional properties
 * `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too. 
 * `"smw_forminput"`: [Object] Object (Set) of all {{{forminput}}} parameters. (http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Linking_to_forms#Using_.23forminput)
 * `"smw_forminfo"`: [Object] Object (Set) of all {{{info}}} parameters. 
+* `"smw_summary"`: [Boolean] If true, a summary field will be displayed at the bottom of the form. 
 
 Including Templates
 -------------------
