@@ -286,11 +286,11 @@ mobo.printMediaWikiMarkup = function(type, name) {
         var fileName = siteName.replace(':', '-');
         var wikitext = mobo.wikitext[siteName];
 
-        if (siteName.indexOf(name) !== -1) {
+        if (wikitext && siteName.indexOf(name) !== -1) {
 
             var html = '<h4><a href="#' + type + ':' + name + '">' + siteName + '</a>';
             html    += ' <small><a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">[remote]</a></small></h4>';
-            html    += '<pre>' + wikitext.escape() + '</pre>';
+            html    += '<pre>' + mobo.escapeWikitext(wikitext) + '</pre>';
 
             $('#smw_markup').append(html);
         }
@@ -358,13 +358,25 @@ mobo.sortObjectByKey = function(obj){
  *
  * @returns {string}
  */
-String.prototype.escape = function() {
-    var tagsToReplace = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;'
-    };
-    return this.replace(/[&<>]/g, function(tag) {
-        return tagsToReplace[tag] || tag;
-    });
+mobo.escapeWikitext = function(wikitext) {
+
+    if (wikitext) {
+
+        if (!wikitext.replace) {
+            console.dir(wikitext);
+        }
+
+
+        var tagsToReplace = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;'
+        };
+        return wikitext.replace(/[&<>]/g, function(tag) {
+            return tagsToReplace[tag] || tag;
+        });
+    } else {
+        return '';
+    }
+
 };

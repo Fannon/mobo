@@ -1,1 +1,4 @@
-/_processed/
+.DS_Store
+.svn
+_processed/
+node_modules/
