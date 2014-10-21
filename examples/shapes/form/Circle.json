@@ -1,6 +1,6 @@
 {
     "title": "Circle",
-    "description": "Circle Form",
+    "description": "Create a new Circle through a form",
     "type": "object",
 
     "properties": {
@@ -23,6 +23,16 @@
             "showSite": true
         },
         "quality": { "$extend": "/model/Quality.json" }
+    },
+
+    "smw_forminput": {
+        "button text": "Create a new Circle",
+        "autocomplete on category": "Circle"
+    },
+
+    "smw_forminfo": {
+        "add title": "Create a new Circle",
+        "edit title": "Edit Circle"
     }
 }
 
