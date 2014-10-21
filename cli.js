@@ -51,7 +51,7 @@ if (argv.v || argv.version) {
 
 // Initializes a new project
 if (argv.i || argv.init) {
-    mobo.create('init');
+    mobo.install('init');
     return;
 }
 
@@ -61,7 +61,7 @@ if (argv.example) {
         log('> [WARNING] You must provide the name of an existing example:');
         log('> E.g. mobo --example shapes');
     } else {
-        mobo.create(argv.example);
+        mobo.install(argv.example);
     }
 
     return;

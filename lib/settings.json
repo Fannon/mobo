@@ -25,5 +25,15 @@
 
     "headerTabs": false,
     "formEditHelper": false,
-    "hideFormEditHelper": false
+    "hideFormEditHelper": false,
+
+    "buildGraphSettings": {
+        "dataTypeNodeSize": 8,
+        "templateNodeSize": 12,
+        "modelNodeSize": 20,
+        "formNodeSize": 32,
+
+        "edgeWeight": 2.0,
+        "multipleEdgeWeight": 2.0
+    }
 }
