@@ -116,7 +116,7 @@ If you create a new project via `mobo --init` they will be placed in your projec
 
 > mobo is a console application. It validates, generates and uploads your model - in realtime by default:
 
-![cli](http://fannon.de/p/mobo-intro/img/cli2.png)
+![cli](http://fannon.de/p/mobo-intro/img/cli4.png)
 
 > There is a webapp that allows you to browse your current model and the resulting wikitext:
 
