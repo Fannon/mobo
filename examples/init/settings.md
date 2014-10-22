@@ -54,6 +54,9 @@ Available settings
     // If true mobo will write every generated file as a single file into the filesystem. 
     // This can be slow due to a lot of HDD I/O
     "writeExportFiles": false,
+    
+    // If this is enabled, mobo will create logfiles in /_processed/logfiles/*
+    "writeLogFile": false,
 
     // Concurrent upload processes
     "uploadConcurrency": 4,
@@ -76,7 +79,18 @@ Available settings
     "formEditHelper": false,
     
     // If true this will hide the introduced Helper Categories from the display
-    "hideFormEditHelper": false
+    "hideFormEditHelper": false,
+    
+    // These settings define how the .gefx graph is generated. 
+    "buildGraphSettings": {
+        "dataTypeNodeSize": 8,
+        "templateNodeSize": 12,
+        "modelNodeSize": 20,
+        "formNodeSize": 32,
+
+        "edgeWeight": 2.0,
+        "multipleEdgeWeight": 2.0
+    }
     
 }
 ```

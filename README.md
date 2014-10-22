@@ -5,11 +5,12 @@
 </p>
 
 ## Why mobo?
-The structure of a Semantic MediaWiki (SMW) can become hard to develop and maintain as it increases in size and complexity.
-With this project an object oriented modeling approach based on the JSON Schema format is used.
-Instead of creating SMW Attributes, Templates and Forms by hand in wikitext, Fields, Models and Forms are defined through JSON Files. Properties can be inherited and overwritten which keeps the model DRY.
+mobo is a command line tool that generates Semantic MediaWiki structure from object oriented JSON Schema files.
+It is built to provide a fast, automated and DRY (don't repeat yourself) model development workflow. 
 
-mobo is a Node.js based toolset that validates, visualizes, converts and uploads your development model in real-time to your wiki.
+## Features
+With mobo your model is written in plain [JSON Schema](http://json-schema.org/) on your local filesystem. 
+mobo converts, validates, visualizes (through a WebGui and a visual Graph Explorer) and uploads your development model in realtime to your wiki. 
 
 ## Getting Started
 ### Requirements
@@ -28,7 +29,8 @@ $wgCrossSiteAJAXdomains = array( '*' );
 
 ### Installation
 mobo should be installed on the machine you're developing your model on. It doesn't have to be installed on the server itself.
-Install mobo and create a new project:
+
+First install mobo and create a default project structure:
 ```sh
 $ npm install -g mobo               # Installs mobo globally. If this fails: "sudo npm install -g mobo"
 $ mkdir new_model && cd new_model   # Creates and enters new directory
@@ -36,7 +38,7 @@ $ mobo --init                       # Initializes the empty directory with the d
 ```
 
 Sometimes it makes sense to install mobo locally into your project directory. 
-That way you can make sure the project uses a specific version of mobo. Other projects could use different versions.
+That way you can make sure the project uses a specific version of mobo (this is stored in the `package.json` file. Other projects could use different versions.
 ```sh
 $ npm install mobo --save           # Installs mobo locally into the project directory
 ```
@@ -54,8 +56,9 @@ Example:
     "mw_password": "verysafepassword"
 }
 ```
-Enter `mobo -c` to print out the currently used configuration, including all inherited default values.
-If you want to change a setting, simply copy it into your settings.json and adjust it.
+
+For more customization, enter `mobo -c` to print out the currently used configuration, including all inherited default values.
+If you want to change a setting, simply copy it into your settings.json and adjust it. Enter `mobo -c` again to check if it was applied.
 
 ```sh
 $ mobo -c               # prints out all settings and their current state
@@ -65,7 +68,7 @@ $ mobo -c               # prints out all settings and their current state
 mobo can be run in different modes. Usually the interactive mode is most useful.
 ```sh
 $ mobo            # Runs mobo in interactive mode
-$ mobo -r         # Runs mobo without interactive mode (will exit after run)
+$ mobo -r         # Runs mobo in non-interactive mode (will exit after run)
 $ mobo -f         # Forces the upload of all files (will exit after run)
 ```
 
@@ -75,22 +78,22 @@ $ node /path/to/mobo/cli.js
 ```
 
 ### Update
-Update mobo through npm:
+Update mobo to the latest version through npm:
 ```sh
 $ npm update -g mobo
 ```
 
 Note that new versions of mobo can introduce changed default templates. 
 You might have to update your project templates with the current version. 
-To do so use the update command. It will make a backup of your current templates.
+To do so use the `mobo --update` command. It will make a backup of your current templates.
 ```sh
 $ mobo --update
 ```
 
 ## Documentation
 ### General Documentation
-* Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
 * Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation and tutorials.
+* Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
 * For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
 * For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
