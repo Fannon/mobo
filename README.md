@@ -27,13 +27,46 @@ $wgCrossSiteAJAXdomains = array( '*' );
 ```
 
 ### Installation
+mobo should be installed on the machine you're developing your model on. It doesn't have to be installed on the server itself.
 Install mobo and create a new project:
 ```sh
 $ npm install -g mobo               # Installs mobo globally. If this fails: "sudo npm install -g mobo"
 $ mkdir new_model && cd new_model   # Creates and enters new directory
 $ mobo --init                       # Initializes the empty directory with the default structure
-$ nano settings.json                # Adjust / enter options (login data for the bot...)
-$ mobo                              # Runs mobo in interactive mode
+```
+
+Sometimes it makes sense to install mobo locally into your project directory. 
+That way you can make sure the project uses a specific version of mobo. Other projects could use different versions.
+```sh
+$ npm install mobo --save           # Installs mobo locally into the project directory
+```
+
+### Configuration
+First you have to configure the upload settings, otherwise mobo will not work. 
+To do so adjust the `settings.json` in your project directory. 
+
+Example:
+```json
+{
+    "mw_server_url": "http://semwiki-exp01.multimedia.hs-augsburg.de",
+    "mw_server_path": "/mobo-demo",
+    "mw_username": "mobo",
+    "mw_password": "verysafepassword"
+}
+```
+Enter `mobo -c` to print out the currently used configuration, including all inherited default values.
+If you want to change a setting, simply copy it into your settings.json and adjust it.
+
+```sh
+$ mobo -c               # prints out all settings and their current state
+```
+
+### Run mobo
+mobo can be run in different modes. Usually the interactive mode is most useful.
+```sh
+$ mobo            # Runs mobo in interactive mode
+$ mobo -r         # Runs mobo without interactive mode (will exit after run)
+$ mobo -f         # Forces the upload of all files (will exit after run)
 ```
 
 If mobo can't be added to your global path, it can be run manually:
@@ -42,6 +75,7 @@ $ node /path/to/mobo/cli.js
 ```
 
 ### Update
+Update mobo through npm:
 ```sh
 $ npm update -g mobo
 ```
@@ -52,12 +86,6 @@ To do so use the update command. It will make a backup of your current templates
 ```sh
 $ mobo --update
 ```
-
-## Configuration
-To overwrite the default settings, just add them to your settings.json.
-
-Enter `mobo -c` to print out the currently used configuration, including all inherited default values.
-If you want to change a setting, simply copy it into your settings.json and adjust it.
 
 ## Documentation
 ### General Documentation
