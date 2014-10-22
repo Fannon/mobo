@@ -4,13 +4,11 @@
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
 </p>
 
-## Why mobo?
-mobo is a command line tool that generates Semantic MediaWiki structure from object oriented JSON Schema files.
+## About mobo
+mobo is a command line tool that generates Semantic MediaWiki structure from object oriented [JSON Schema](http://json-schema.org/) files.
 It is built to provide a fast, automated and DRY (don't repeat yourself) model development workflow. 
 
-## Features
-With mobo your model is written in plain [JSON Schema](http://json-schema.org/) on your local filesystem. 
-mobo converts, validates, visualizes (through a WebGui and a visual Graph Explorer) and uploads your development model in realtime to your wiki. 
+mobo converts, validates, visualizes and uploads your development model in realtime to your wiki. 
 
 ## Getting Started
 ### Requirements
