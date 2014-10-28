@@ -28,14 +28,14 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jscs": "^0.8.0",
+    "grunt-jscs": "^0.8.1",
     "grunt-mocha-cli": "^1.10.0",
     "jshint-stylish": "^1.0.0",
-    "load-grunt-tasks": "^0.6.0",
+    "load-grunt-tasks": "^1.0.0",
     "time-grunt": "^1.0.0"
   },
   "dependencies": {
-    "chokidar": "^0.10.0",
+    "chokidar": "^0.10.2",
     "colors": "^1.0.3",
     "fs-extra": "^0.12.0",
     "handlebars": "^2.0.0",
@@ -45,7 +45,7 @@
     "ncp": "^1.0.1",
     "node-static": "^0.7.6",
     "nodemw": "^0.3.16",
-    "readdir-recursive": "0.0.4",
+    "rsvp": "^3.0.14",
     "ws": "^0.4.32"
   },
   "scripts": {
