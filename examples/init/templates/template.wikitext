@@ -5,8 +5,7 @@
 {{#each attr}}|{{@key}}=
 {{/each~}} \}}</pre>
 </noinclude>
-<includeonly>
-{| class="wikitable formdata"
+<includeonly>{| class="wikitable formdata"
 ! colspan="2"|{{name}}
 |-
 {{#each attr}}
@@ -21,6 +20,7 @@
     | {{@key}}=\{{{ {{~@key}}|}}}
 {{/each~}}
 }}
-{{/if~}}
+{{~/if~}}
+
 {{~#if category~}}[[category:{{category}}]]{{~/if~}}
 {{~#if categories~}}{{#each categories~}}[[category:{{this}}]]{{/each~}}{{/if~}}</includeonly>
