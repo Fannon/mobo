@@ -27,13 +27,6 @@ module.exports = function(grunt) {
                 src: ['test/**/*.js']
             }
         },
-        jscs: {
-            src: "lib/**/*.js",
-            options: {
-                config: ".jscsrc",
-                force: true
-            }
-        },
         mochacli: {
             options: {
                 reporter: 'nyan',

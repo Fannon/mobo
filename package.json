@@ -1,6 +1,6 @@
 {
   "name": "mobo",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "main": "lib/mobo.js",
   "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
   "homepage": "https://github.com/Fannon/mobo",
@@ -28,7 +28,6 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jscs": "^0.8.1",
     "grunt-mocha-cli": "^1.10.0",
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^1.0.0",
