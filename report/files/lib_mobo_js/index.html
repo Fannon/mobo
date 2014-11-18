@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib\mobo.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib\mobo.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">66.56</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">333</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">29.04</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">2.01</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
+
+/**
+ * This is the main module that makes use of the several submodules.
+ *
+ * It triggers the generation and upload of the model.
+ */
+
+//////////////////////////////////////////
+// Requirements                         //
+//////////////////////////////////////////
+
+var _                 = require(&#039;lodash&#039;);
+var fs                = require(&#039;fs-extra&#039;);
+var moment            = require(&#039;moment&#039;);
+
+var settings          = require(&#039;./settings.json&#039;);
+var moboUtil          = require(&#039;./moboUtil.js&#039;);
+var buildRegistry     = require(&#039;./model/buildRegistry.js&#039;);
+var generateWikiText  = require(&#039;./model/generateWikiText.js&#039;);
+var buildGraph        = require(&#039;./model/buildGraph.js&#039;);
+var writeExportFiles  = require(&#039;./writeExportFiles.js&#039;);
+var uploadExportFiles = require(&#039;./uploadExportFiles.js&#039;);
+
+var logger            = require(&#039;./logger.js&#039;);
+var log               = logger.log;
+
+var packageJSON       = require(&#039;./../package&#039;);
+
+
+//////////////////////////////////////////
+// Variables                            //
+//////////////////////////////////////////
+
+var start;
+
+/**
+ * Global Log Object. This is used to share logging entries between the different modules
+ *
+ * @type {Array}
+ */
+global.moboLogObject = [];
+
+
+//////////////////////////////////////////
+// PROCESSING                           //
+//////////////////////////////////////////
+
+/**
+ * Reads the /cli.md file and returns it as a string
+ * @returns {string}
+ */
+exports.getHelp = function() {
+    return fs.readFileSync(__dirname + &#039;/../cli.md&#039;).toString();
+};
+
+/**
+ * Returns the current version of mobo.
+ * The version is defined in the package.json file in the root directory
+ *
+ * @returns {exports.version|*}
+ */
+exports.getVersion = function() {
+    return packageJSON.version;
+};
+
+/**
+ * Loads default settings, calculates paths and overwrites them with custom project settings
+ *
+ * @returns {{}} Settings Object
+ */
+exports.getSettings = function() {
+
+    start = (new Date()).getTime();
+    var cwd = process.cwd();
+
+    // Get and parse Settings
+    try {
+        var projectSettings = JSON.parse(fs.readFileSync(cwd + &#039;/settings.json&#039;).toString());
+
+        // Calculate paths
+        settings.cwd = cwd;
+        settings.importModelDir = cwd;
+        settings.templateDir =  cwd + &#039;/templates/&#039;;
+        settings.logDir =  cwd + &#039;/_logfiles/&#039;;
+        settings.processedModelDir = cwd + &#039;/_processed/&#039;;
+
+        // Sanitize settings
+        settings.mw_server_url = moboUtil.stripTrailingSlash(settings.mw_server_url);
+        settings.mw_server_path = moboUtil.stripTrailingSlash(settings.mw_server_path);
+
+        // User Feedback
+        if (settings.deleteWikiPages) {
+            log(&#039;&gt; [WARNING] The &quot;deleteWikiPages&quot; option can sometimes lead to problems. Use with care.&#039;);
+        }
+
+        // Project settings overwrites default settings!
+        _.merge(settings, projectSettings);
+
+    } catch(e) {
+
+        if (e.errno &amp;&amp; e.errno === 34) {
+            log(&#039;&gt; [WARNING] No settings.json file found!&#039;);
+            log(&#039;&gt; Use &quot;mobo --init&quot; to create a new project here.&#039;);
+        } else {
+            log(&#039;&gt; [ERROR] Could not parse settings.json!&#039;);
+            log(&#039;&gt; Check the settings.json for valid JSON syntax.&#039;);
+            log(e);
+        }
+
+        settings = false;
+    }
+
+    return settings;
+};
+
+/**
+ * Triggers the complete mobo generation process
+ *
+ * @param {{}}  settings  Settings Object
+ * @param {function|false}  refreshWebGui  refreshWebGui function
+ */
+exports.run = function(settings, refreshWebGui) {
+
+    logger.clear();
+
+    start = (new Date()).getTime();
+
+    // Put current settings into the log object, remove the password before
+    var safeSettings = JSON.parse(JSON.stringify(settings));
+    safeSettings.mw_password = &#039;**********&#039;;
+    log(safeSettings, true);
+
+    if (settings.generateWikiPages) {
+
+        exports.generate(settings, function() {
+
+            // If refreshWebGui is provided, execute it
+            if (refreshWebGui) {
+                refreshWebGui();
+            }
+
+            if (settings.uploadWikiPages || settings.forceUpload) {
+                exports.upload(settings);
+            }
+
+            if (settings.writeLogFile) {
+                logger.report(settings.processedModelDir + &#039;/logfiles/&#039;);
+            }
+
+        });
+
+    }
+
+
+};
+
+/**
+ * Generates the model from the development model
+ *
+ * Steps:
+ * * Apply inheritance and build an internal registry
+ * * Validates the complete development model
+ * * Build a graph from the model and its relationships
+ * * Generates wikitext from the complete model
+ * * Writes the registry (and resulting files) to filesystem
+ *
+ *  @param {{}}  settings  Settings Object
+ */
+exports.generate = function(settings, callback) {
+
+    log(&#039;&#039;);
+    log(&#039;&gt; mobo v&#039; + packageJSON.version + &#039;&#039;);
+    log(&#039;=========================================================================&#039;);
+
+    buildRegistry.exec(settings, function(error, registry) {
+
+        if (error) {
+            log(&#039;&gt; [ERROR] Error while building the registry! Aborting.&#039;);
+            return;
+        }
+
+        // Builds Graph (with further validation)
+        if (settings.buildGraph) {
+            buildGraph.exec(settings, registry);
+        }
+
+        var generated = generateWikiText.exec(settings, registry);
+
+        if (settings.writeExportFiles) {
+            writeExportFiles(generated, settings.processedModelDir + &#039;/wikitext/&#039;, &#039;wikitext&#039;);
+            writeExportFiles(registry.field, settings.processedModelDir + &#039;/json/field/&#039;, &#039;json&#039;);
+            writeExportFiles(registry.expandedModel, settings.processedModelDir + &#039;/json/model/&#039;, &#039;json&#039;);
+            writeExportFiles(registry.expandedForm, settings.processedModelDir + &#039;/json/form/&#039;, &#039;json&#039;);
+        }
+
+        var diff = (new Date()).getTime() - start;
+        log(&#039;&gt; Generation completed in: &#039; + diff + &#039;ms.&#039;);
+        log(&#039;-------------------------------------------------------------------------&#039;);
+
+        callback();
+
+    });
+
+
+};
+
+/**
+ * Uploads the resulting wikitext files to an external wiki
+ *
+ * @param {{}}  settings  Settings Object
+ */
+exports.upload = function (settings) {
+
+    uploadExportFiles.exec(settings, function() {
+        var diff = (new Date()).getTime() - start;
+        log(&#039;-------------------------------------------------------------------------&#039;);
+        log(&#039;&gt; Time total: &#039; + diff + &#039;ms.&#039;);
+        log(&#039;=========================================================================&#039;);
+    });
+};
+
+/**
+ * Creates a new model example in the current working directory
+ *
+ * @param {String}  name       Name of the example. Must match the folder name in /examples/
+ */
+exports.install = function(name) {
+
+    var fs  = require(&#039;fs-extra&#039;);
+    var cwd = process.cwd();
+
+    var ncp = require(&#039;ncp&#039;).ncp;
+    ncp.limit = 16;
+
+    var currentDir = fs.readdirSync(cwd);
+
+    var installExample = function(name) {
+        ncp(__dirname + &#039;/../examples/&#039; + name, cwd, {clobber: false}, function (err) {
+            if (err &amp;&amp; err.errno !== 47) {
+                log(err);
+            } else {
+                log(&#039;&gt; [SUCCESS] Created example &quot;&#039; + name + &#039;&quot; project structure!&#039;);
+            }
+        });
+    };
+
+    try {
+       fs.readdirSync(__dirname + &#039;/../examples/&#039; + name);
+    } catch (e) {
+        log(&#039;&gt; [ERROR] Example &quot;&#039; + name + &#039;&quot; does not exist.&#039;);
+        var examples = fs.readdirSync(__dirname + &#039;/../examples/&#039;);
+        log(&#039;&gt; Available examples: &#039; + examples.join(&#039;, &#039;));
+        return;
+    }
+
+    // Create a new init project structure if current directory is empty
+    if (currentDir.length &gt; 0) {
+        if (currentDir.indexOf(&#039;settings.json&#039;) &gt; -1) {
+            log(&#039;&gt; [INFO] Skipping init: Current directory has already a project structure!&#039;);
+
+            // If an example is to be installed, copy those files on top on the init structure
+            if (name !== &#039;init&#039;) {
+                installExample(name);
+            }
+
+        } else {
+            log(&#039;&gt; [ERROR] Aborting init process: Current directory is not empty!&#039;);
+        }
+
+    } else {
+        ncp(__dirname + &#039;/../examples/init/&#039;, cwd, function (err) {
+            if (err) {
+                return console.error(err);
+            } else {
+                log(&#039;&gt; [SUCCESS] Created initial project structure!&#039;);
+                log(&#039;&#039;);
+                log(&#039;&gt; [NOTE] Please adjust your settings.json now. &#039;);
+
+                // If an example is to be installed, copy those files on top on the init structure
+                if (name !== &#039;init&#039;) {
+                    installExample(name);
+                }
+            }
+        });
+    }
+
+};
+
+/**
+ * This updates the templates of the current directory with the current default templates from mobo
+ * Sometimes an update is necessary if new features are introduced.
+ * Creates a backup of the current project templates first.
+ */
+exports.update = function() {
+
+    var fs  = require(&#039;fs-extra&#039;);
+    var ncp = require(&#039;ncp&#039;).ncp;
+    ncp.limit = 16;
+    var cwd = process.cwd();
+
+    var templatesDir = cwd + &#039;/templates/&#039;;
+    var backupDir = cwd + &#039;/templates_backup/&#039; + moment().format(&quot;YYYY-MM-DD_HH-mm-ss&quot;) + &#039;/&#039;;
+    var templatesSourceDir = __dirname + &#039;/../examples/init/templates/&#039;;
+
+    log(&#039;&gt; [INFO] First use &quot;npm update mobo -g&quot; to update the mobo executable.&#039;);
+    log(&#039;&gt; [INFO] This command will update the project templates with the current mobo templates.&#039;);
+    log(&#039;&gt; [INFO] Your old templates will be backed up into /templates_backup/*&#039;);
+    log(&#039;&#039;);
+
+    fs.mkdirsSync(cwd + &#039;/templates_backup/&#039;);
+
+    fs.mkdir(backupDir, function() {
+
+        ncp(templatesDir, backupDir, function (err) {
+            if (err) {
+                return console.error(err);
+            } else {
+                log(&#039;&gt; [SUCCESS] Backup of project template files to \n  &quot;&#039; + backupDir + &#039;&quot;&#039;);
+
+                ncp(templatesSourceDir, templatesDir, function (err) {
+                    if (err) {
+                        return console.error(err);
+                    } else {
+                        log(&#039;&gt; [SUCCESS] Update of project template files&#039;);
+                    }
+                });
+            }
+        });
+
+    });
+
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

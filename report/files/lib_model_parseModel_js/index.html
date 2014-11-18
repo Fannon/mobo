@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib\model\parseModel.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib\model\parseModel.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">49.04</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">274</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">43.30</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.54</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">//////////////////////////////////////////
+// Requirements                         //
+//////////////////////////////////////////
+
+var fs         = require(&#039;fs&#039;);
+
+var handlebars = require(&#039;./../handlebarsExtended&#039;);
+var logger     = require(&#039;./../logger.js&#039;);
+var log        = logger.log;
+
+
+//////////////////////////////////////////
+// Outer Variables                      //
+//////////////////////////////////////////
+
+var categoryTemplateFile;
+var categoryTemplate;
+
+var templateTemplateFile;
+var templateTemplate;
+
+
+//////////////////////////////////////////
+// CORE FUNCTIONS                       //
+//////////////////////////////////////////
+
+/**
+ * Executes the parsing of the models
+ * Will generate SMW Category and Template Sites
+ *
+ * @param settings
+ * @param json
+ * @param name
+ * @param registry
+ * @returns {{}}
+ */
+exports.exec = function (settings, json, name, registry) {
+    &#039;use strict&#039;;
+
+    //////////////////////////////////////////
+    // Inner Variables                      //
+    //////////////////////////////////////////
+
+    /** Return Object, matching the data structure of the registry */
+    var returnObject = {
+        category: {},
+        template: {}
+    };
+
+
+    //////////////////////////////////////////
+    // Templates                            //
+    //////////////////////////////////////////
+
+    // If the templates are not loaded already, do so:
+    if (!categoryTemplateFile) {
+        categoryTemplateFile = fs.readFileSync(settings.templateDir + &#039;category.wikitext&#039;).toString();
+        categoryTemplate = handlebars.compile(categoryTemplateFile);
+    }
+
+    if (!templateTemplateFile) {
+        templateTemplateFile = fs.readFileSync(settings.templateDir + &#039;template.wikitext&#039;).toString();
+        templateTemplate = handlebars.compile(templateTemplateFile);
+    }
+
+
+    //////////////////////////////////////////
+    // Execution                            //
+    //////////////////////////////////////////
+
+    // Generate Category
+    var categoryWikitext = exports.generateCategory(json, name, registry, settings);
+    if (categoryWikitext) {
+        returnObject.category[name] = categoryWikitext;
+    }
+
+    // Generate Template
+    var templateWikitext = exports.generateTemplate(json, name, registry);
+    if (templateWikitext) {
+        returnObject.template[name] = templateWikitext;
+    }
+
+    return returnObject;
+};
+
+/**
+ * Generates Category for all models that are defined being a smw_form
+ *
+ * @param {{}}      json
+ * @param {string}  name
+ * @param {{}}      registry
+ * @param {{}}      settings
+ *
+ * @returns {*}
+ */
+exports.generateCategory = function(json, name, registry, settings) {
+
+    // If smw_category is set to false, don&#039;t create a category
+    if (json.smw_category === false) {
+        return false;
+    }
+
+    var title = json.title || name;
+    var form = false;
+    var formCategory = false;
+    var template = true;
+
+    // If this model is abstract, create a category for it
+    // No template will be generated, so don&#039;t link for one
+    // Removes all leading _ if they are used for indicating an abstract model
+    if (json.abstract) {
+        while (name.charAt(0) === &#039;_&#039;) {
+            name = name.substr(1);
+        }
+        template = false;
+    }
+
+
+    // If The FormEdit mode is NOT activated and there is a form with the name name as the model, display it.
+    if (!settings.formEditHelper &amp;&amp; registry.form[json.id]) {
+        form = true;
+        formCategory = false;
+    }
+
+    // If FormEdit mode is active and there is a form with the same name as the model, just display a link to it.
+    if (settings.formEditHelper &amp;&amp; registry.form[json.id]) {
+        form = false;
+        formCategory = true;
+    }
+
+    var data = {
+        name: name,
+        title: title,
+        form: form,
+        formCategory: formCategory,
+        template: template,
+        overview: true,
+        attr: json.properties
+    };
+
+    if (json.description) {
+        data.description = json.description;
+    }
+
+    return categoryTemplate(data);
+
+};
+
+/**
+ * Generates Template for all not abstract models
+ *
+ * @param json
+ * @param name
+ * @returns {*}
+ */
+exports.generateTemplate = function(json, name, registry) {
+
+    // If this is an abstract model, don&#039;t create a template for it
+    if (json.abstract) {
+        return false;
+    }
+
+    var title = json.title || name;
+    var arraymap = false;
+    var category = name;
+    var attr = json.properties;
+
+    if (json.title) {
+        title = json.title;
+    } else {
+        title = name;
+    }
+
+    // Check if property has to be implemented as arraymap
+    for (var propertyName in attr) {
+        if (registry.field[propertyName] &amp;&amp; registry.field[propertyName].items) {
+            attr[propertyName].smw_arraymap = true;
+        }
+    }
+
+    if (json.smw_category === false || (json.smw_subobject &amp;&amp; (json.smw_category !== true))) {
+        category = false;
+    }
+
+    var data = {
+        title: title,
+        name: name,
+        templatedata: exports.getTemplateData(json),
+        attr: json.properties,
+        category: category,
+        categories: json.smw_categories || false,
+        smw_subobject: json.smw_subobject || false,
+        arraymap: arraymap
+    };
+
+    if (json.description) {
+        data.description = json.description;
+    }
+
+    return templateTemplate(data);
+
+};
+
+/**
+ * Converts JSON Schema Model to MediaWiki Template Data Object
+ * http://www.mediawiki.org/wiki/Extension:TemplateData
+ *
+ * @param model
+ * @returns {string}    JSON String
+ */
+exports.getTemplateData = function(model) {
+
+    var templateData = {};
+
+    if (model.description) {
+        templateData.description = model.description;
+    }
+
+    if (model.properties) {
+
+        templateData.params = {};
+
+        for (var propertyName in model.properties) {
+
+            var property = model.properties[propertyName];
+
+            var param = {};
+
+            param.type = &quot;unknown&quot;; // Default Type
+            param.suggested = true;
+
+            if (property.title) {
+                param.label = property.title;
+            }
+
+            if (property.description) {
+                param.description = property.description;
+            } else {
+                param.description = &quot;&quot;;
+            }
+
+            if (model.required &amp;&amp; model.required.indexOf(propertyName) &gt; -1) {
+                param.required = true;
+            }
+
+            // Basic Content Types
+            if (property.type === &#039;string&#039;) {
+                param.type = &#039;line&#039;;
+            } else if (property.type === &#039;number&#039;) {
+                param.type = &#039;number&#039;;
+            }
+
+            // Textareas
+            if (property.smw_form &amp;&amp; property.smw_form[&#039;input type&#039;] &amp;&amp; property.smw_form[&#039;input type&#039;] === &#039;textarea&#039;) {
+                param.type = &#039;string&#039;;
+            }
+
+            // Links to Wiki Sites
+            if (property.format &amp;&amp; property.format.charAt(0) === &#039;/&#039; || (property.items &amp;&amp; property.items.format &amp;&amp; property.items.format.charAt(0) === &#039;/&#039;)) {
+                param.type = &#039;wiki-page-name&#039;;
+            }
+
+            // Links to SubObjects
+            if (property.items &amp;&amp; property.items.title) {
+                param.type = &#039;content&#039;;
+                param.description += &quot;(SMW SubObject)&quot;;
+            }
+
+            if (property.default) {
+                param.default = property.default;
+            }
+
+            templateData.params[propertyName] = param;
+        }
+    }
+
+    return JSON.stringify(templateData, false, 4);
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

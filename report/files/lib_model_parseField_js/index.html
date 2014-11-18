@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - lib\model\parseField.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>lib\model\parseField.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">48.97</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">262</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">21.24</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">0.97</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">//////////////////////////////////////////
+// Requirements                         //
+//////////////////////////////////////////
+
+var fs         = require(&#039;fs&#039;);
+
+var handlebars = require(&#039;./../handlebarsExtended&#039;);
+var logger     = require(&#039;./../logger.js&#039;);
+var log        = logger.log;
+
+
+//////////////////////////////////////////
+// Outer Variables                      //
+//////////////////////////////////////////
+
+var propertyTemplateFile;
+var propertyTemplate;
+
+
+//////////////////////////////////////////
+// CORE FUNCTIONS                       //
+//////////////////////////////////////////
+
+/**
+ * Execute the parsing of the fields
+ * Will generate SMW Attribute sites
+ *
+ * @param settings
+ * @param json
+ * @param name
+ *
+ * @returns {*}
+ */
+exports.exec = function(settings, json, name) {
+
+    &#039;use strict&#039;;
+
+    // Do not create abstract or ignored fields
+    if (json.abstract || json.ignore) {
+        return {};
+    }
+
+    //////////////////////////////////////////
+    // Inner Variables                      //
+    //////////////////////////////////////////
+
+    /** Return Object, matching the data structure of the registry */
+    var returnObj = {
+        property: {}
+    };
+
+
+    //////////////////////////////////////////
+    // Templates                            //
+    //////////////////////////////////////////
+
+    // If the templates are not loaded already, do so:
+    if (!propertyTemplateFile) {
+        propertyTemplateFile = fs.readFileSync(settings.templateDir + &#039;property.wikitext&#039;).toString();
+        propertyTemplate = handlebars.compile(propertyTemplateFile);
+    }
+
+
+    //////////////////////////////////////////
+    // Execution                            //
+    //////////////////////////////////////////
+
+    // Analyze the data type
+    var type = exports.analyzeType(json);
+
+    // Generate the SMW property wikitext
+    var propertyWikitext = exports.generateProperty(json, type);
+
+
+    if (propertyWikitext) {
+        returnObj.property[name] = propertyWikitext;
+    }
+
+    return returnObj;
+};
+
+
+//////////////////////////////////////////
+// HELPER FUNCTIONS                     //
+//////////////////////////////////////////
+
+/**
+ * Takes the json and the calculated datatype and creates the SMW property through a template
+ *
+ * @todo: Do not use complete json as parameter but only the part that actually builds the property type
+ * @todo: Currently there is no support for anyOf and allOf!
+ *
+ * @param {{}}      json  Field in JSON format
+ * @param {String}  type  SMW datatype
+ *
+ * @returns {String}    Wikitext of the property
+ */
+exports.generateProperty = function(json, type) {
+
+    &quot;use strict&quot;;
+
+    var data = {
+        type: type,
+        id: json.id,
+        json: JSON.stringify(json, false, 4)
+    };
+
+    if (json.description) {
+        data.description = json.description;
+    }
+
+
+
+    if (type === &#039;Page&#039;) {
+
+        var model = json.format || json.items.format;
+
+        if (model &amp;&amp; (model !== &#039;Page&#039;)) {
+            var modelName = model.replace(&#039;/form/&#039;, &#039;&#039;);
+            modelName = modelName.replace(&#039;.json&#039;, &#039;&#039;);
+            model = modelName;
+            data.model = model;
+        } else {
+            // oneOf, anyOf ??
+        }
+    }
+
+    return propertyTemplate(data);
+};
+
+/**
+ * This function analyzes the JSON Schema Datatype and matches it with a SMW Datatype
+ *
+ * For SMW Datatypes see: https://semantic-mediawiki.org/wiki/Help:Properties_and_types#List_of_datatypes
+ *
+ * JSON Schema consists of a &quot;type&quot; attribute which defines the &quot;raw/primitive&quot; datatype used for storage
+ * More detailed (&quot;semantic&quot;) datatypes are defined through an additional &quot;format&quot; attribute.
+ * @see http://spacetelescope.github.io/understanding-json-schema/reference/type.html
+ * @see http://json-schema.org/latest/json-schema-validation.html#anchor104
+ *
+ * @param {{}} json  Field in JSON format
+ *
+ * @returns {string}    SMW DataType
+ */
+exports.analyzeType = function(json) {
+
+    &quot;use strict&quot;;
+
+    // Analyze the attribute type.
+
+    var analyze = json;
+
+    // If it is an array, analyze one step deeper
+    if (json.items) {
+        analyze = json.items;
+
+        // If it includes &quot;oneOf&quot; or &quot;anyOf&quot;
+        if (json.items.oneOf) {
+            analyze = json.items.oneOf[0];
+        } else if (json.items.anyOf) {
+            analyze = json.items.anyOf[0];
+        }
+    } else {
+
+        // If it includes &quot;oneOf&quot; or &quot;anyOf&quot;
+        if (json.oneOf) {
+            analyze = json.oneOf[0];
+        } else if (json.anyOf) {
+            analyze = json.anyOf[0];
+        }
+    }
+
+
+    var type = &#039;string&#039;;
+    var format = false;
+
+    // Lowercase the attribute to analyze to make them case-insensitive
+    if (analyze.type) {
+        type = analyze.type.toLowerCase();
+    } else {
+        log(&#039;&gt; [WARNING] Field &#039; + json.id + &#039; has no &quot;type&quot; attribute&#039;);
+    }
+
+    if (analyze.format) {
+        format = analyze.format.toLowerCase();
+    }
+
+
+    //////////////////////////////////////////
+    // PRIMITIVE DATATYPES                  //
+    //////////////////////////////////////////
+
+    if (!analyze.format) {
+
+        // NUMBER
+        if (type === (&#039;number&#039; || &#039;integer&#039;)) {
+            return &#039;Number&#039;;
+
+        // BOOLEAN
+        } else if (type === &#039;boolean&#039;) {
+            return &#039;Boolean&#039;;
+
+        // TEXT (FALLBACK)
+        } else {
+            return &#039;Text&#039;;
+        }
+
+
+    //////////////////////////////////////////
+    // &quot;SEMANTIC&quot; DATATYPES                 //
+    //////////////////////////////////////////
+
+    } else {
+
+        if (format === (&#039;date&#039; || &#039;date-time&#039;)) {
+            return &#039;Date&#039;;
+
+        // URL
+        } else if (format === &#039;url&#039;) {
+            return &#039;URL&#039;;
+
+        // EMAIL
+        } else if (format === &#039;email&#039;) {
+            return &#039;Email&#039;;
+
+        // TELEPHONE NUMBER
+        } else if (format === &#039;tel&#039;) {
+            return &#039;Telephone number&#039;;
+
+
+        //////////////////////////////////////////
+        // SMW only datatypes                   //
+        /////////////////////////////////////////
+
+        // SMW PAGES
+        } else if(format.charAt(0) === &#039;/&#039; || format === &#039;page&#039;) {
+            return &#039;Page&#039;;
+
+        // SMW CODE
+        } else if (format === &#039;code&#039;) {
+            return &#039;Code&#039;;
+
+        // SMW Geographic coordinate
+        } else if (format === &#039;geographic coordinate&#039;) {
+            return &#039;Geographic coordinate&#039;;
+
+        // SMW Quantity
+        } else if (format === &#039;quantity&#039;) {
+            return &#039;Quantity&#039;;
+
+        // SMW Record
+        } else if (format === &#039;record&#039;) {
+            return &#039;Record&#039;;
+
+        // SMW Temperature
+        } else if (analyze.format === &#039;temperature&#039;) {
+            return &#039;Temperature&#039;;
+        }
+    }
+
+    log(&#039;&gt; [NOTICE] Field &#039; + json.id + &#039; has no recognized datatype.&#039;);
+
+    // FALLBACK: If nothing fits, return the &#039;Text&#039; datatype
+    return &#039;Text&#039;;
+
+};</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>
