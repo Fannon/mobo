@@ -5,7 +5,11 @@
 {{#each attr}}|{{@key}}=
 {{/each~}} \}}</pre>
 </noinclude>
-<includeonly>{| class="wikitable formdata"
+<includeonly>
+
+{{!-- TABLE DISPLAY --}}
+{{~#if display_table~}}
+{| class="wikitable formdata"
 ! colspan="2"|{{name}}
 |-
 {{#each attr}}
@@ -14,6 +18,16 @@
 |-
 {{/each}}
 |}
+{{~/if~}}
+
+{{!-- UL (UNORDERED LIST) DISPLAY --}}
+{{~#if display_ul~}}
+==={{name}}===
+{{#each attr~}}
+* '''{{this.title}}''': \{{{ {{~@key~}} |}}}
+{{/each}}
+{{~/if~}}
+
 {{~#if smw_subobject~}}
 \{{#subobject:
 {{#each attr~}}

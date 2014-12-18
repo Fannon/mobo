@@ -27,6 +27,8 @@
     "formEditHelper": false,
     "hideFormEditHelper": false,
 
+    "defaultTemplateDisplay": "table",
+
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
         "templateNodeSize": 12,
