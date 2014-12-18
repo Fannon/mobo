@@ -7,16 +7,18 @@
 </noinclude>
 <includeonly>
 
+
 {{!-- TABLE DISPLAY --}}
 {{~#if display_table~}}
 {| class="wikitable formdata"
 ! colspan="2"|{{name}}
-|-
+
 {{#each attr}}
+|- \{{#if: \{{{ {{~@key~}} |}}} | | style="display: none;" \}}
 | '''{{this.title}}'''
 | \{{{ {{~@key~}} |}}}
-|-
 {{/each}}
+|-
 |}
 {{~/if~}}
 
@@ -28,12 +30,9 @@
 {{/each}}
 {{~/if~}}
 
+
 {{~#if smw_subobject~}}
-\{{#subobject:
-{{#each attr~}}
-    | {{@key}}=\{{{ {{~@key}} |}}}
-{{/each~}}
-}}
+{{smw_subobject attr}}
 {{~else~}}
 {{smw_set attr}}
 {{~/if~}}
