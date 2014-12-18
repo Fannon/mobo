@@ -10,16 +10,18 @@
 |-
 {{#each attr}}
 | '''{{this.title}}'''
-| {{#if this.smw_arraymap}}{{smw_templ_array @key}}{{else}}{{smw_templ_attr @key}}{{/if}}
+| \{{{ {{~@key~}} |}}}
 |-
 {{/each}}
 |}
 {{~#if smw_subobject~}}
 \{{#subobject:
 {{#each attr~}}
-    | {{@key}}=\{{{ {{~@key}}|}}}
+    | {{@key}}=\{{{ {{~@key}} |}}}
 {{/each~}}
 }}
+{{~else~}}
+{{smw_set attr}}
 {{~/if~}}
 
 {{~#if category~}}[[category:{{category}}]]{{~/if~}}

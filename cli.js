@@ -98,6 +98,12 @@ if (settings) {
         settings.watchFilesystem = false;
     }
 
+    // Skip Upload mode
+    if (argv['skip-upload']) {
+        settings.uploadWikiPages = false;
+        settings.deleteWikiPages = false;
+    }
+
     // Force upload: Will upload everything and ignore the DIFF
     if (argv.f || argv.force) {
         log('> [INFO] Forcing upload of all sites!');
