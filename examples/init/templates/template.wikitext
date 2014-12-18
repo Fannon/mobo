@@ -16,9 +16,9 @@
 |- \{{#if: \{{{ {{~@key~}} |}}} | | style="display: none;" \}}
 | '''{{this.title}}'''
 {{#if this.smw_arraymap~}}
-| \{{#arraymap:\{{{ {{~@key~}} |}}}|;|x|[[x]]}}
+| {{smw_templ_array @key}}
 {{else~}}
-| [[\{{{ {{~@key~}} |}}}]]
+| {{smw_templ_attr @key}}
 {{/if~}}
 {{/each}}
 |-
@@ -30,9 +30,9 @@
 ==={{name}}===
 {{#each attr~}}
 {{~#if this.smw_arraymap~}}
-\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': \{{#arraymap:\{{{ {{~@key~}} |}}}|;|x|[[x]]}} |}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_array @key}} |}}
 {{else~}}
-\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': \{{{ {{~@key~}} |}}} |}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_attr @key}} |}}
 {{/if~}}
 {{~/each}}
 {{~/if~}}
