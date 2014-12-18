@@ -12,11 +12,14 @@
 {{~#if display_table~}}
 {| class="wikitable formdata"
 ! colspan="2"|{{name}}
-
 {{#each attr}}
 |- \{{#if: \{{{ {{~@key~}} |}}} | | style="display: none;" \}}
 | '''{{this.title}}'''
-| \{{{ {{~@key~}} |}}}
+{{#if this.smw_arraymap~}}
+| \{{#arraymap:\{{{ {{~@key~}} |}}}|;|x|[[x]]}}
+{{else~}}
+| [[\{{{ {{~@key~}} |}}}]]
+{{/if~}}
 {{/each}}
 |-
 |}
@@ -26,8 +29,12 @@
 {{~#if display_ul~}}
 ==={{name}}===
 {{#each attr~}}
-* '''{{this.title}}''': \{{{ {{~@key~}} |}}}
-{{/each}}
+{{~#if this.smw_arraymap~}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': \{{#arraymap:\{{{ {{~@key~}} |}}}|;|x|[[x]]}} |}}
+{{else~}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': \{{{ {{~@key~}} |}}} |}}
+{{/if~}}
+{{~/each}}
 {{~/if~}}
 
 
