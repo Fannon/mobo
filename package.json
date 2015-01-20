@@ -1,6 +1,6 @@
 {
   "name": "mobo",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "main": "lib/mobo.js",
   "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
   "homepage": "https://github.com/Fannon/mobo",
@@ -43,7 +43,7 @@
     "moment": "^2.8.3",
     "ncp": "^1.0.1",
     "node-static": "^0.7.6",
-    "nodemw": "^0.3.16",
+    "nodemw": "^0.4.*",
     "rsvp": "^3.0.14",
     "ws": "^0.4.32"
   },
