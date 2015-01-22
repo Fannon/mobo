@@ -1,0 +1,4 @@
+This is an automatically generated property by [https://github.com/Fannon/mobo mobo].
+
+It lists all available subobjects and what "type" they are to make querying them easier.
+See [https://semantic-mediawiki.org/wiki/Help:Adding_subobjects#Querying_for_subobjects Querying for subobjects].

@@ -1,0 +1,3 @@
+This is an automatically generated property by [https://github.com/Fannon/mobo mobo].
+
+It lists all available subobjects and links directly to the superobject (parent) they are hosted in. This is to make querying subproperties more comfortable.
