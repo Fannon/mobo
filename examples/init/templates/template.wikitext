@@ -8,32 +8,23 @@
 <includeonly>
 
 
-{{!-- TABLE DISPLAY --}}
-{{~#if display_table~}}
+{{~#if display_table~}}{{!-- TABLE DISPLAY --}}
 {| class="wikitable formdata"
 ! colspan="2"|{{name}}
 {{#each attr}}
 |- \{{#if: \{{{ {{~@key~}} |}}} | | style="display: none;" \}}
 | '''{{this.title}}'''
-{{#if this.smw_arraymap~}}
-| {{smw_templ_array @key}}
-{{else~}}
-| {{smw_templ_attr @key}}
-{{/if~}}
+| {{smw_templ_attr this }}
 {{/each}}
 |-
 |}
 {{~/if~}}
 
-{{!-- UL (UNORDERED LIST) DISPLAY --}}
-{{~#if display_ul~}}
+
+{{~#if display_ul~}}{{!-- UL (UNORDERED LIST) DISPLAY --}}
 ==={{name}}===
 {{#each attr~}}
-{{~#if this.smw_arraymap~}}
-\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_array @key}} |}}
-{{else~}}
-\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_attr @key}} |}}
-{{/if~}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_attr this}} |}}
 {{~/each}}
 {{~/if~}}
 

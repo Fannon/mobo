@@ -307,6 +307,7 @@ mobo.printMediaWikiMarkup = function(type, name) {
 mobo.showDetail = function(type, name) {
 
     var schema;
+    var siteName = type + ':' + name;
 
     if (type === 'model') {
         schema = mobo.registry.expandedModel[name];
@@ -317,6 +318,9 @@ mobo.showDetail = function(type, name) {
     }
 
     $('#default-view').hide();
+    $('#detail-title').text(siteName);
+    $('#detail-links').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">[remote-view]</a>');
+    $('#detail-links').append(' <a href="' + mobo.remoteWiki + '?title=' +  siteName + '&action=edit" target="_blank">[remote-edit]</a>');
     $('#detail-markup').text(mobo.wikitext[type + ':' + name]);
     $('#detail-view').show();
 };
