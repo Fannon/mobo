@@ -90,6 +90,13 @@ Available settings
     // @see https://www.mediawiki.org/wiki/Extension:SimpleTooltip
     "useSimpleTooltipDescriptions": false,
 
+    // If enabled, mobo renders the SemanticForms as a div layout instead of the standard table layout
+    // This enables more control over the layout, including some responsiveness
+    // WARNING: You need to style/layout the divs by yourself, or use the VectorUp skin.
+    // SemanticForms itself does not support / supply this for a div based layout.
+    // @see https://www.mediawiki.org/wiki/Extension:VectorUp
+    "sfDivLayout": false,
+
     // These settings define how the .gefx graph is generated.
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,

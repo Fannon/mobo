@@ -29,7 +29,7 @@
 
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,
-    "responsiveForms": false,
+    "sfDivLayout": false,
 
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
