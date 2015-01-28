@@ -85,6 +85,11 @@ Available settings
     // See templates/template.wikitext to see or change how they are rendered.
     "defaultTemplateDisplay": "table",
 
+    // If enabled, descriptions will be included as SimpleTooltip tooltips.
+    // WARNING: You need to install the SimpleTooltip extension to make this work
+    // @see https://www.mediawiki.org/wiki/Extension:SimpleTooltip
+    "useSimpleTooltipDescriptions": false,
+
     // These settings define how the .gefx graph is generated.
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,

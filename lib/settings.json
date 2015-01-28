@@ -28,6 +28,8 @@
     "hideFormEditHelper": false,
 
     "defaultTemplateDisplay": "table",
+    "useSimpleTooltipDescriptions": false,
+    "responsiveForms": false,
 
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
