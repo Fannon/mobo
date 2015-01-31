@@ -28,3 +28,8 @@ CONSOLE COMMANDS
                         useful if mobo is triggered through other skripts.
 
     --skip-upload       Skips the upload (and deletion) to the wiki
+
+
+DEVELOPER CONSOLE COMMANDS
+--------------------------
+    --update-schemas    Generates / Updates the JSON Schema documentation (SCHEMA.md files)

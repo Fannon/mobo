@@ -67,6 +67,15 @@ if (argv.example) {
     return;
 }
 
+// Force upload: Will upload everything and ignore the DIFF
+if (argv['update-schemas']) {
+    log('> [INFO] DEVELOPER COMMAND: Updating SCHEMA.md files');
+    var validateSchema       = require('./lib/model/validateSchema.js');
+    validateSchema.writeSchemas();
+
+    return;
+}
+
 var settings    = mobo.getSettings();
 
 // If settings are provided
@@ -111,6 +120,10 @@ if (settings) {
         settings.serveWebApp = false;
         settings.watchFilesystem = false;
     }
+
+
+
+
 
     //////////////////////////////////////////
     // RUN MOBO                             //
