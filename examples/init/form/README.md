@@ -1,21 +1,23 @@
 Forms
 =====
-Forms define which models and templates to aggregate into a Semantic Form. 
+Forms define which models and templates to aggregate into a Semantic Form.
 Models can be either implemented as a single instance or multiple instance. If a multiple instance template is needed, it has to be wrapped in an array. (See example)
 
 Additional properties
 ---------------------
 * `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
 * `"todo"`: [String] Adds a todo note
-* `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too. 
+* `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too.
 * `"smw_forminput"`: [Object] Object (Set) of all {{{forminput}}} parameters. (http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Linking_to_forms#Using_.23forminput)
-* `"smw_forminfo"`: [Object] Object (Set) of all {{{info}}} parameters. 
-* `"smw_summary"`: [Boolean] If true, a summary field will be displayed at the bottom of the form. 
+* `"smw_forminfo"`: [Object] Object (Set) of all {{{info}}} parameters.
+* `"smw_summary"`: [Boolean] If true, a summary field will be displayed at the bottom of the form.
+* `"smw_free"`: [Boolean] If true, a the freetext textarea will be displayed below the form.
+
 
 Including Templates
 -------------------
 If you want to include (existing!) templates into the form, you can do so by $extending an smw_template.
-There are two options, both true by default: 
+There are two options, both true by default:
  * "showForm" decides if the template is rendered while displaying the form in edit mode
  * "showSite" decides if the template should be rendered when displaying the site. (Notice: The Site has to be (re)saved through the form to make this work.
 
