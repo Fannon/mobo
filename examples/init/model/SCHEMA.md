@@ -1,7 +1,102 @@
 # MODEL JSON SCHEMA
 
-This is the complete JSON Schema file that will validate all your models.
-Please look especially for the "description" properties. 
+This file documents all properties mobo will use and validate for your models.
+
+They are described in the JSON Schema format. 
+For descriptions and default, look for the corresponding properties. 
+
+ ## model specific properties
+```json
+{
+    "recommended": {
+        "$ref": "#/definitions/schemaArray",
+        "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
+    },
+    "smw_subobject": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
+    },
+    "smw_category": {
+        "type": "boolean",
+        "default": true,
+        "description": "This property decides whether the template should tag the page as a category of the model-name."
+    },
+    "smw_categories": {
+        "$ref": "#/definitions/schemaArray",
+        "description": "Array of additional categories the template should set."
+    }
+}
+```
+
+ ## mobo specific properties
+```json
+{
+    "$schema": {
+        "description": "Optional JSON Schema $schema URL. Does not need not be included."
+    },
+    "id": {
+        "description": "Usually auto generated id, consisting of the filename"
+    },
+    "title": {
+        "description": "Human readable title of the field"
+    },
+    "description": {
+        "description": "Description of the field. Can be displayed as tooltip info"
+    },
+    "ignore": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true this file will be ignored."
+    },
+    "abstract": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true this object is only used for inheritance and will not be created itself."
+    },
+    "format": {
+        "type": "string",
+        "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
+    },
+    "$extend": {
+        "type": "string",
+        "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.",
+        "properties": {
+            "showForm": {
+                "type": "boolean",
+                "default": true,
+                "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
+            },
+            "showSite": {
+                "type": "boolean",
+                "default": true,
+                "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
+            }
+        }
+    },
+    "propertyOrder": {
+        "$ref": "#/definitions/schemaArray",
+        "description": "Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order."
+    },
+    "todo": {
+        "type": "string",
+        "description": "If todo notes are placed here, mobo can output them (this is a setting)"
+    },
+    "note": {
+        "description": "Notes can be strings or objects and their content will be ignored",
+        "anyOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "object"
+            }
+        ]
+    }
+}
+```
+
+ ## Complete JSON Schema
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",
@@ -150,10 +245,12 @@ Please look especially for the "description" properties.
         },
         "ignore": {
             "type": "boolean",
+            "default": false,
             "description": "If true this file will be ignored."
         },
         "abstract": {
             "type": "boolean",
+            "default": false,
             "description": "If true this object is only used for inheritance and will not be created itself."
         },
         "format": {
@@ -162,7 +259,19 @@ Please look especially for the "description" properties.
         },
         "$extend": {
             "type": "string",
-            "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
+            "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.",
+            "properties": {
+                "showForm": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
+                },
+                "showSite": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
+                }
+            }
         },
         "propertyOrder": {
             "$ref": "#/definitions/schemaArray",
@@ -185,6 +294,7 @@ Please look especially for the "description" properties.
         },
         "smw_property": {
             "type": "boolean",
+            "default": true,
             "description": "Declares if this field should be saved as a SMW property, through #set or #subobject"
         },
         "smw_form": {
@@ -198,11 +308,13 @@ Please look especially for the "description" properties.
         },
         "smw_subobject": {
             "type": "boolean",
+            "default": false,
             "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
         },
         "smw_category": {
             "type": "boolean",
-            "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
+            "default": true,
+            "description": "This property decides whether the template should tag the page as a category of the model-name."
         },
         "smw_categories": {
             "$ref": "#/definitions/schemaArray",
@@ -214,16 +326,18 @@ Please look especially for the "description" properties.
             "additionalProperties": true
         },
         "smw_forminfo": {
-            "type": "boolean",
+            "type": "object",
             "description": "Object (Set), containing all SemanticForms {{{info}}} parameters."
         },
         "smw_freetext": {
             "type": "boolean",
-            "description": "If true, a the freetext textarea will be displayed below the form."
+            "default": true,
+            "description": "Decides whether the freetext textarea will be displayed below the form."
         },
         "smw_summary": {
             "type": "boolean",
-            "description": "If true, a summary field will be displayed at the bottom of the form."
+            "default": false,
+            "description": "Decides whether a summary field will be displayed at the bottom of the form."
         }
     },
     "default": {},

@@ -6,11 +6,7 @@ If a field refers to multiple items, it has to use an array structure first (see
 
 Additional properties
 ---------------------
-* `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
-* `"abstract"`: [Boolean]  If true this file will be used for inheritance but not uploaded to the actual model.
-* `"todo"`: [String] Adds a todo note
-* `"smw_property"`: [Boolean] If this is set to false, no semantic property will be set, the field will only be displayed.
-* `"smw_form"`: [Object] Contains [Semantic Forms field options](http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag).
+See the corresponding [field/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md) file for a description of all possible properties.
 
 Supported Datatypes
 -------------------
@@ -23,8 +19,6 @@ To define a primitive datatype, just declare the "type" attribute:
  ```json
  "type": "number",
  ```
-
-
 
 ### "Semantic" Datatypes
 Semantic Datatypes are defined through the "format" attribute. Usually the primitive "type" datatype is "string"

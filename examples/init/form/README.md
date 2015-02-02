@@ -5,13 +5,7 @@ Models can be either implemented as a single instance or multiple instance. If a
 
 Additional properties
 ---------------------
-* `"ignore"`: [Boolean]  If true this file will be ignored by mobo.
-* `"todo"`: [String] Adds a todo note
-* `"$extend"`: [String] Models can extend from another model (inherit from it). Model properties (fields) have to be inherited through $extend too.
-* `"smw_forminput"`: [Object] Object (Set) of all {{{forminput}}} parameters. (http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Linking_to_forms#Using_.23forminput)
-* `"smw_forminfo"`: [Object] Object (Set) of all {{{info}}} parameters.
-* `"smw_summary"`: [Boolean] If true, a summary field will be displayed at the bottom of the form.
-* `"smw_free"`: [Boolean] If true, a the freetext textarea will be displayed below the form.
+See the corresponding [form/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md) file for a description of all possible properties.
 
 
 Including Templates
