@@ -5,7 +5,7 @@ This file documents all properties mobo will use and validate for your forms.
 They are described in the JSON Schema format. 
 For descriptions and default, look for the corresponding properties. 
 
- ## form specific properties
+## form specific properties
 ```json
 {
     "smw_forminput": {
@@ -30,7 +30,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## mobo specific properties
+## mobo specific properties
 ```json
 {
     "$schema": {
@@ -97,7 +97,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## Complete JSON Schema
+## Complete JSON Schema
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",

@@ -5,7 +5,7 @@ This file documents all properties mobo will use and validate for your fields.
 They are described in the JSON Schema format. 
 For descriptions and default, look for the corresponding properties. 
 
- ## field specific properties
+## field specific properties
 ```json
 {
     "smw_property": {
@@ -21,7 +21,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## mobo specific properties
+## mobo specific properties
 ```json
 {
     "$schema": {
@@ -88,7 +88,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## Complete JSON Schema
+## Complete JSON Schema
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",

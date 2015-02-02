@@ -6,9 +6,9 @@
 
 ## About mobo
 mobo is a command line tool that generates Semantic MediaWiki structure from object oriented [JSON Schema](http://json-schema.org/) files.
-It is built to provide a fast, automated and DRY (don't repeat yourself) model development workflow. 
+It is built to provide a fast, automated and DRY (don't repeat yourself) model development workflow.
 
-mobo converts, validates, visualizes and uploads your development model in realtime to your wiki. 
+mobo converts, validates, visualizes and uploads your development model in realtime to your wiki.
 
 ## Getting Started
 ### Requirements
@@ -18,7 +18,7 @@ mobo converts, validates, visualizes and uploads your development model in realt
 * Your wiki needs to have the API enabled with write access. This is enabled by default since MW 1.14, but if not adjust your LocalSettings.php:
 
 ```php
-// WARNING: This opens public write access. 
+// WARNING: This opens public write access.
 // If you don't want this, you'll need to setup additional restrictions.
 $wgEnableAPI = true;
 $wgEnableWriteAPI = true;
@@ -35,15 +35,15 @@ $ mkdir new_model && cd new_model   # Creates and enters new directory
 $ mobo --init                       # Initializes the empty directory with the default structure
 ```
 
-Sometimes it makes sense to install mobo locally into your project directory. 
+Sometimes it makes sense to install mobo locally into your project directory.
 That way you can make sure the project uses a specific version of mobo (this is stored in the `package.json` file. Other projects could use different versions.
 ```sh
 $ npm install mobo --save           # Installs mobo locally into the project directory
 ```
 
 ### Configuration
-First you have to configure the upload settings, otherwise mobo will not work. 
-To do so adjust the `settings.json` in your project directory. 
+First you have to configure the upload settings, otherwise mobo will not work.
+To do so adjust the `settings.json` in your project directory.
 
 Example:
 ```json
@@ -72,7 +72,7 @@ $ mobo -f         # Forces the upload of all files (will exit after run)
 
 If mobo can't be added to your global path, it can be run manually:
 ```sh
-$ node /path/to/mobo/cli.js 
+$ node /path/to/mobo/cli.js
 ```
 
 ### Update
@@ -81,8 +81,8 @@ Update mobo to the latest version through npm:
 $ npm update -g mobo
 ```
 
-Note that new versions of mobo can introduce changed default templates. 
-You might have to update your project templates with the current version. 
+Note that new versions of mobo can introduce changed default templates.
+You might have to update your project templates with the current version.
 To do so use the `mobo --update` command. It will make a backup of your current templates.
 ```sh
 $ mobo --update
@@ -96,18 +96,18 @@ $ mobo --update
 * For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
 ### Specific Documentation
-There are a few context specific README.md files within the project.
+There are a few context specific README.md and SCHEMA.md files within the project, that contain documentation.
 If you create a new project via `mobo --init` they will be placed in your project directory.
 
 * [Command Line Options](cli.md) (`mobo -h`)
 * [Available Project Settings](examples/init/settings.md)
-* [Field](examples/init/field/README.md)
-* [Model](examples/init/model/README.md)
-* [Form](examples/init/form/README.md)
-* [SMW Query](examples/init/smw_query/README.md)
-* [SMW Site](examples/init/smw_site/README.md)
-* [SMW Template](examples/init/smw_template/README.md)
-* [Templates](examples/init/templates/README.md)
+** [/field](examples/init/field/README.md)
+** [/model](examples/init/model/README.md)
+** [/form](examples/init/form/README.md)
+** [/smw_query (Queries)](examples/init/smw_query/README.md)
+** [/smw_page (Wikipages)](examples/init/smw_page/README.md)
+** [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
+** [/templates (mobo templates)](examples/init/templates/README.md)
 
 ## Screenshots
 > Your model is developed with your favorite text editor:

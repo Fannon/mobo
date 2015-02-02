@@ -5,7 +5,7 @@ This file documents all properties mobo will use and validate for your models.
 They are described in the JSON Schema format. 
 For descriptions and default, look for the corresponding properties. 
 
- ## model specific properties
+## model specific properties
 ```json
 {
     "recommended": {
@@ -29,7 +29,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## mobo specific properties
+## mobo specific properties
 ```json
 {
     "$schema": {
@@ -96,7 +96,7 @@ For descriptions and default, look for the corresponding properties.
 }
 ```
 
- ## Complete JSON Schema
+## Complete JSON Schema
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",
