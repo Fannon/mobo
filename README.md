@@ -101,13 +101,13 @@ If you create a new project via `mobo --init` they will be placed in your projec
 
 * [Command Line Options](cli.md) (`mobo -h`)
 * [Available Project Settings](examples/init/settings.md)
-** [/field](examples/init/field/README.md)
-** [/model](examples/init/model/README.md)
-** [/form](examples/init/form/README.md)
-** [/smw_query (Queries)](examples/init/smw_query/README.md)
-** [/smw_page (Wikipages)](examples/init/smw_page/README.md)
-** [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
-** [/templates (mobo templates)](examples/init/templates/README.md)
+    * [/field](examples/init/field/README.md)
+    * [/model](examples/init/model/README.md)
+    * [/form](examples/init/form/README.md)
+    * [/smw_query (Queries)](examples/init/smw_query/README.md)
+    * [/smw_page (Wikipages)](examples/init/smw_page/README.md)
+    * [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
+    * [/templates (mobo templates)](examples/init/templates/README.md)
 
 ## Screenshots
 > Your model is developed with your favorite text editor:
