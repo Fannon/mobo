@@ -100,10 +100,10 @@ There are a few context specific README.md and SCHEMA.md files within the projec
 If you create a new project via `mobo --init` they will be placed in your project directory.
 
 * [Command Line Options](cli.md) (`mobo -h`)
-* [Available Project Settings](examples/init/settings.md)
-    * [/field](examples/init/field/README.md)
-    * [/model](examples/init/model/README.md)
-    * [/form](examples/init/form/README.md)
+* [/settings.md (global project settings)](examples/init/settings.md)
+    * [/field (Your Fields)](examples/init/field/README.md)
+    * [/model (Your Models)](examples/init/model/README.md)
+    * [/form (Your Forms)](examples/init/form/README.md)
     * [/smw_query (Queries)](examples/init/smw_query/README.md)
     * [/smw_page (Wikipages)](examples/init/smw_page/README.md)
     * [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)

@@ -6,7 +6,7 @@ If a field refers to multiple items, it has to use an array structure first (see
 
 Additional properties
 ---------------------
-See the corresponding [field/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md) file for a description of all possible properties.
+See the corresponding [field/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md) for a description of all possible properties.
 
 Supported Datatypes
 -------------------

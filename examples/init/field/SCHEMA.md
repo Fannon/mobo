@@ -6,6 +6,7 @@ They are described in the JSON Schema format.
 For descriptions and default, look for the corresponding properties. 
 
 ## field specific properties
+These properties will only work in context of fields.
 ```json
 {
     "smw_property": {
@@ -22,6 +23,7 @@ For descriptions and default, look for the corresponding properties.
 ```
 
 ## mobo specific properties
+These mobo custom properties are global and can be used for fields, models and forms. 
 ```json
 {
     "$schema": {
@@ -89,6 +91,7 @@ For descriptions and default, look for the corresponding properties.
 ```
 
 ## Complete JSON Schema
+This is the final JSON Schema, including a simplified JSON Schema core and all mobo and field specific addons / changes. 
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",

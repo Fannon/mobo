@@ -5,7 +5,7 @@ Models can be either implemented as a single instance or multiple instance. If a
 
 Additional properties
 ---------------------
-See the corresponding [form/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md) file for a description of all possible properties.
+See the corresponding [form/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md) for a description of all possible properties.
 
 
 Including Templates

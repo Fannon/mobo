@@ -6,7 +6,7 @@ Models can extend from other models and inherit their properties.
 
 Additional properties
 ---------------------
-See the corresponding [model/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) file for a description of all possible properties.
+See the corresponding [model/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) for a description of all possible properties.
 
 $extend
 -------
