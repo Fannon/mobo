@@ -90,6 +90,24 @@ These mobo custom properties are global and can be used for fields, models and f
 }
 ```
 
+## Unsupported JSON Schema Core features
+These features / properties of JSON Schema Core are not supported by mobo: 
+```json
+[
+    "properties.multipleOf",
+    "properties.exclusiveMaximum",
+    "properties.exclusiveMinimum",
+    "properties.additionalItems",
+    "properties.uniqueItems",
+    "properties.additionalProperties",
+    "properties.definitions",
+    "properties.patternProperties",
+    "properties.dependencies",
+    "properties.not",
+    "dependencies"
+]
+```
+
 ## Complete JSON Schema
 This is the final JSON Schema, including a simplified JSON Schema core and all mobo and field specific addons / changes. 
 ```json
