@@ -105,12 +105,9 @@ describe('Registry Builder ', function() {
     });
 
     it('applies one-step inhertitance to models', function() {
-
         var extendedCircle = buildRegistry.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
         expect(extendedCircle.properties.radius.$reference).to.equal('/field/radius.json');
-        console.log(extendedCircle);
-        console.log(mockModel);
     });
 
 

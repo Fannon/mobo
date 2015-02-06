@@ -43,44 +43,32 @@ module.exports = function(grunt) {
                 src: 'test', // a folder works nicely
                 options: {
                     mask: '*.spec.js',
-                    coverage:true,
+                    coverage: true,
                     check: {
-                        lines: 75,
-                        statements: 75
+                        lines: 0,
+                        statements: 0,
+                        branches: 0,
+                        functions: 0
                     },
                     root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
-                    reportFormats: ['lcov ','text-summary']
-                }
-            },
-            coveralls: {
-                src: ['test', 'testSpecial', 'testUnique'], // multiple folders also works
-                options: {
-                    coverage:true,
-                    check: {
-                        lines: 75,
-                        statements: 75
-                    },
-                    root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
-                    reportFormats: ['cobertura','lcovonly']
+                    reportFormats: ['lcov','text']
                 }
             }
         },
-        istanbul_check_coverage: {
+        istanbul_check_coverage: { // NOT USED RIGHT NOW
             default: {
                 options: {
                     coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
                     check: {
-                        lines: 80,
-                        statements: 80
+                        lines: 0,
+                        statements: 0,
+                        branches: 0,
+                        functions: 0
                     }
                 }
             }
         },
         watch: {
-            gruntfile: {
-                files: '<%= jshint.gruntfile.src %>',
-                tasks: ['jshint:gruntfile']
-            },
             lib: {
                 files: '<%= jshint.lib.src %>',
                 tasks: ['jshint:lib', 'mochacli']
@@ -96,6 +84,9 @@ module.exports = function(grunt) {
 
     // Default task.
     grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
-    grunt.registerTask('default', ['jshint', 'mochacli', 'coverage']);
-    grunt.registerTask('watch', ['default', 'watch']);
+    grunt.registerTask('default', ['jshint', 'coverage']);
+
+    grunt.event.on('coverage', function(content, done) {
+        done();
+    });
 };
