@@ -15,7 +15,6 @@ var buildRegistry = require('../lib/model/buildRegistry.js');
 // MOCK OBJECTS / DATA                  //
 //////////////////////////////////////////
 
-
 describe('Registry Builder ', function() {
 
     /**
@@ -51,7 +50,6 @@ describe('Registry Builder ', function() {
         }
         expect(orderedModelArray).to.deep.equal(["1", "2", "3", "4", "5"]);
     });
-
 
     it('applies one-step inhertitance to models', function() {
         var extendedCircle = buildRegistry.inherit(mockModel.model.Circle, mockModel);

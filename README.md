@@ -1,4 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
+[![Coverage Status](https://coveralls.io/repos/Fannon/mobo/badge.svg)](https://coveralls.io/r/Fannon/mobo)
 
 <p align="center">
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
