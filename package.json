@@ -26,26 +26,25 @@
   ],
   "devDependencies": {
     "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-mocha-cli": "^1.12.0",
     "jshint-stylish": "^1.0.0",
-    "load-grunt-tasks": "^3.0.0",
+    "load-grunt-tasks": "^3.1.0",
     "time-grunt": "^1.0.0"
   },
   "dependencies": {
-    "chokidar": "^0.12.6",
+    "chokidar": "^1.0.0-rc3",
     "colors": "^1.0.3",
-    "fs-extra": "^0.15.0",
+    "fs-extra": "^0.16.3",
     "handlebars": "^2.0.0",
-    "lodash": "^3.0.0",
+    "lodash": "^3.1.0",
     "minimist": "^1.1.0",
     "moment": "^2.9.0",
     "ncp": "^1.0.1",
     "node-static": "^0.7.6",
     "nodemw": "^0.4.*",
     "rsvp": "^3.0.16",
-    "ws": "^0.7.0",
+    "ws": "^0.7.1",
     "tv4": "^1.1.9"
   },
   "scripts": {
