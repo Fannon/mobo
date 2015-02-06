@@ -1,0 +1,57 @@
+{
+  "field": {
+    "x": {
+      "title": "x",
+      "type": "number"
+    },
+    "y": {
+      "title": "y",
+      "type": "number"
+    },
+    "color": {
+      "title": "color",
+      "type": "string",
+      "enum": [
+        "red",
+        "green",
+        "blue"
+      ]
+    },
+    "radius": {
+      "title": "radius",
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "model": {
+    "_Shape": {
+      "title": "Shape",
+      "description": "Generic Shape",
+      "type": "object",
+      "properties": {
+        "x": { "$extend": "/field/x.json" },
+        "y": { "$extend": "/field/y.json" },
+        "color": { "$extend": "/field/color.json" }
+      },
+      "required": ["x", "y"],
+      "abstract": true
+    },
+    "Circle": {
+      "$extend": "/model/_Shape.json",
+      "title": "Circle",
+      "type": "object",
+      "properties": {
+        "radius": {
+          "$extend": "/field/radius.json"
+        }
+      },
+      "required": ["x", "y", "radius"],
+      "smw_subobject": true,
+      "smw_category": true,
+      "abstract": false
+    }
+  },
+  "form": {
+
+  }
+}
