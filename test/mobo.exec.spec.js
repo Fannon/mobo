@@ -89,6 +89,6 @@ describe('mobo cli ', function() {
     });
 
     // TODO: Check "writeExportFiles": true
-    
+
 
 });
