@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
 
+    "title": "Quality",
     "description": "Quality of a wiki entry",
     "type": "object",
 

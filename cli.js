@@ -49,7 +49,7 @@ if (argv.v || argv.version) {
 
 // Initializes a new project
 if (argv.i || argv.init) {
-    mobo.install('init');
+    mobo.install('init', false);
     return;
 }
 
@@ -59,7 +59,7 @@ if (argv.example) {
         log('> [WARNING] You must provide the name of an existing example:');
         log('> E.g. mobo --example shapes');
     } else {
-        mobo.install(argv.example);
+        mobo.install(argv.example, false);
     }
 
     return;
@@ -86,7 +86,7 @@ if (settings) {
 
     // Returns the currently used settings including all calculated and inherited attributes
     if (argv.u || argv.update) {
-        mobo.update();
+        mobo.update(settings);
         return;
     }
 

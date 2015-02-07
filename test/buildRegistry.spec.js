@@ -7,7 +7,7 @@
 
 var expect = require('chai').expect;
 
-var mockModel = require('./mockups/mockModel.json');
+var mockModel = require('./mockObjects/mockModel.json');
 var buildRegistry = require('../lib/model/buildRegistry.js');
 
 

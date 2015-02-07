@@ -34,13 +34,14 @@ module.exports = function(grunt) {
             options: {
                 reporter: 'spec',
                 bail: true,
-                force: true
+                force: true,
+                timeout: 16000
             },
-            all: ['test/*.js']
+            all: ['test/*/*.spec.js', 'test/*/.exec.js']
         },
         mocha_istanbul: {
             coverage: {
-                src: 'test', // a folder works nicely
+                src: ['test/*/*.spec.js', 'test/*/.exec.js'],
                 options: {
                     mask: '*.spec.js',
                     coverage: true,

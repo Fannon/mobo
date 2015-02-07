@@ -1,8 +1,17 @@
 /*global describe,it*/
 'use strict';
-var expect = require('chai').expect;
 
+//////////////////////////////////////////
+// REQUIREMENTS                         //
+//////////////////////////////////////////
+
+var expect = require('chai').expect;
 var mobo = require('../lib/mobo.js');
+
+
+//////////////////////////////////////////
+// TESTS                                //
+//////////////////////////////////////////
 
 describe('mobo ', function() {
 
@@ -27,6 +36,5 @@ describe('mobo ', function() {
         // Test with customSettings
         expect(mobo.getSettings(customSettings).debug).to.equal(true);
     });
-
 
 });

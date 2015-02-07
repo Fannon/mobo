@@ -1,5 +1,6 @@
 /.idea/
 /node_modules/
 /coverage/
+/test/mockProject/*
 npm-debug.log
 /report/
