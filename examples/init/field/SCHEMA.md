@@ -38,20 +38,6 @@ These mobo custom properties are global and can be used for fields, models and f
     "description": {
         "description": "Description of the field. Can be displayed as tooltip info"
     },
-    "ignore": {
-        "type": "boolean",
-        "default": false,
-        "description": "If true this file will be ignored."
-    },
-    "abstract": {
-        "type": "boolean",
-        "default": false,
-        "description": "If true this object is only used for inheritance and will not be created itself."
-    },
-    "format": {
-        "type": "string",
-        "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
-    },
     "$extend": {
         "type": "string",
         "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.",
@@ -67,6 +53,28 @@ These mobo custom properties are global and can be used for fields, models and f
                 "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
             }
         }
+    },
+    "$reference": {
+        "type": "string",
+        "description": "For internal use only! After inheritance is applied, $extend will be replaced through $extend. (For keeping info on the heritage)"
+    },
+    "$filepath": {
+        "type": "string",
+        "description": "For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages"
+    },
+    "ignore": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true this file will be ignored."
+    },
+    "abstract": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true this object is only used for inheritance and will not be created itself."
+    },
+    "format": {
+        "type": "string",
+        "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
     },
     "propertyOrder": {
         "$ref": "#/definitions/schemaArray",
@@ -120,7 +128,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "array",
             "minItems": 1,
             "items": {
-                "$ref": "#"
+                "$ref": "http://json-schema.org/draft-04/schema#"
             }
         },
         "positiveInteger": {
@@ -130,7 +138,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "positiveIntegerDefault0": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/positiveInteger"
+                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
                 },
                 {
                     "default": 0
@@ -185,10 +193,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "number"
         },
         "maxLength": {
-            "$ref": "#/definitions/positiveInteger"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minLength": {
-            "$ref": "#/definitions/positiveIntegerDefault0"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "pattern": {
             "type": "string",
@@ -197,33 +205,33 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "items": {
             "anyOf": [
                 {
-                    "$ref": "#"
+                    "$ref": "http://json-schema.org/draft-04/schema#"
                 },
                 {
-                    "$ref": "#/definitions/schemaArray"
+                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
                 }
             ],
             "default": {}
         },
         "maxItems": {
-            "$ref": "#/definitions/positiveInteger"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minItems": {
-            "$ref": "#/definitions/positiveIntegerDefault0"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "maxProperties": {
-            "$ref": "#/definitions/positiveInteger"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
         },
         "minProperties": {
-            "$ref": "#/definitions/positiveIntegerDefault0"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
         },
         "required": {
-            "$ref": "#/definitions/stringArray"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/stringArray"
         },
         "properties": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "#"
+                "$ref": "http://json-schema.org/draft-04/schema#"
             },
             "default": {}
         },
@@ -235,12 +243,12 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "type": {
             "anyOf": [
                 {
-                    "$ref": "#/definitions/simpleTypes"
+                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
                 },
                 {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/simpleTypes"
+                        "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
                     },
                     "minItems": 1,
                     "uniqueItems": true
@@ -248,27 +256,13 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             ]
         },
         "allOf": {
-            "$ref": "#/definitions/schemaArray"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
         },
         "anyOf": {
-            "$ref": "#/definitions/schemaArray"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
         },
         "oneOf": {
-            "$ref": "#/definitions/schemaArray"
-        },
-        "ignore": {
-            "type": "boolean",
-            "default": false,
-            "description": "If true this file will be ignored."
-        },
-        "abstract": {
-            "type": "boolean",
-            "default": false,
-            "description": "If true this object is only used for inheritance and will not be created itself."
-        },
-        "format": {
-            "type": "string",
-            "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
         },
         "$extend": {
             "type": "string",
@@ -286,8 +280,30 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
                 }
             }
         },
+        "$reference": {
+            "type": "string",
+            "description": "For internal use only! After inheritance is applied, $extend will be replaced through $extend. (For keeping info on the heritage)"
+        },
+        "$filepath": {
+            "type": "string",
+            "description": "For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages"
+        },
+        "ignore": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true this file will be ignored."
+        },
+        "abstract": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true this object is only used for inheritance and will not be created itself."
+        },
+        "format": {
+            "type": "string",
+            "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
+        },
         "propertyOrder": {
-            "$ref": "#/definitions/schemaArray",
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
             "description": "Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order."
         },
         "todo": {
@@ -316,7 +332,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "additionalProperties": true
         },
         "recommended": {
-            "$ref": "#/definitions/schemaArray",
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
             "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
         },
         "smw_subobject": {
@@ -330,7 +346,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "This property decides whether the template should tag the page as a category of the model-name."
         },
         "smw_categories": {
-            "$ref": "#/definitions/schemaArray",
+            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
             "description": "Array of additional categories the template should set."
         },
         "smw_forminput": {

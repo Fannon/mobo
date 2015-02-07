@@ -38,19 +38,19 @@ var refreshWebGui   = false;
 // Returns the contents of the /cli.md help file
 if (argv.h ||argv.help) {
     log(mobo.getHelp());
-    return;
+    process.exit();
 }
 
 // Returns the version number of mobo
 if (argv.v || argv.version) {
     log(mobo.getVersion());
-    return;
+    process.exit();
 }
 
 // Initializes a new project
 if (argv.i || argv.init) {
     mobo.install('init', false);
-    return;
+    process.exit();
 }
 
 // Installs an example project.
@@ -61,8 +61,7 @@ if (argv.example) {
     } else {
         mobo.install(argv.example, false);
     }
-
-    return;
+    process.exit();
 }
 
 // Force upload: Will upload everything and ignore the DIFF
@@ -70,8 +69,7 @@ if (argv['update-schemas']) {
     log('> [INFO] DEVELOPER COMMAND: Updating SCHEMA.md files');
     var validateSchema       = require('./lib/model/validateSchema.js');
     validateSchema.writeSchemas();
-
-    return;
+    process.exit();
 }
 
 var settings    = mobo.getSettings();
@@ -125,7 +123,9 @@ if (settings) {
     // RUN MOBO                             //
     //////////////////////////////////////////
 
-    mobo.run(settings);
+    mobo.run(settings, function() {
+
+    });
 
 
     //////////////////////////////////////////
@@ -242,7 +242,9 @@ if (settings) {
                 log(' C File changed: ' + path.basename(file) + '');
 
                 // Re-run mobo
-                mobo.run(settings, refreshWebGui);
+                mobo.run(settings, refreshWebGui, function() {
+
+                });
 
             })
             .on('error', function(error) {
