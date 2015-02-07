@@ -68,7 +68,7 @@ describe('mobo cli ', function() {
     it('can generate wiki structure from the sample project (async)', function(done){
         var settings = mobo.getSettings({
             "cwd": mockProjectPath,
-            "uploadWikiPages": true,
+            "uploadWikiPages": false,
             "writeExportFiles": true,
             "formEditHelper": true,
             "hideFormEditHelper": true
