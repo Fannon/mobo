@@ -6,6 +6,7 @@
 //////////////////////////////////////////
 
 var expect = require('chai').expect;
+var _ = require('lodash');
 
 var mockModel = require('./mockObjects/mockModel.json');
 var buildRegistry = require('../lib/model/buildRegistry.js');
@@ -51,6 +52,20 @@ describe('Registry Builder ', function() {
         expect(orderedModelArray).to.deep.equal(["1", "2", "3", "4", "5"]);
     });
 
+    it('inherits $extend properties', function() {
+
+        var Circle = _.clone(mockModel.model.Circle, true);
+        var extendedCircle = buildRegistry.extend(Circle, Circle.$extend, mockModel);
+
+        // $extend is replaced through $reference
+        expect(extendedCircle).to.not.include.keys(['$extend']);
+        expect(extendedCircle).to.include.keys(['$reference']);
+
+        // Circle should now have inherited properties from _Shape
+        expect(extendedCircle.properties).to.include.keys(['x', 'y']);
+
+    });
+
     it('applies one-step inhertitance to models', function() {
         var extendedCircle = buildRegistry.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
@@ -58,14 +73,24 @@ describe('Registry Builder ', function() {
     });
 
     it('expands the models', function() {
-        var expandedRegistry = buildRegistry.expandModels(mockModel);
+        mockModel.expandedModel = buildRegistry.expandModels(mockModel);
 
-        expect(expandedRegistry).to.include.keys(['_Shape', 'Circle']);
-        expect(expandedRegistry.Circle).to.include.keys('$schema');
+        expect(mockModel.expandedModel).to.include.keys(['_Shape', 'Circle']);
+        expect(mockModel.expandedModel.Circle).to.include.keys('$schema');
 
         // Check that the model properties are correctly inherited
-        expect(expandedRegistry.Circle.properties.radius.title).to.equal('radius');
-        expect(expandedRegistry.Circle.properties.radius.$reference).to.equal('/field/radius.json');
+        expect(mockModel.expandedModel.Circle.properties.radius.title).to.equal('radius');
+        expect(mockModel.expandedModel.Circle.properties.radius.$reference).to.equal('/field/radius.json');
+
+    });
+
+    it('expands the forms', function() {
+        mockModel.expandedForms = buildRegistry.expandForms(mockModel);
+
+        expect(mockModel.expandedForms).to.include.keys(['Rectangle', 'Circle']);
+
+        // Check that the form properties are correctly inherited
+        expect(mockModel.expandedForms.Circle.properties.circle.items.title).to.equal('Circle');
     });
 
 });

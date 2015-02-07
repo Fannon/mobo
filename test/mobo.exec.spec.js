@@ -68,8 +68,10 @@ describe('mobo cli ', function() {
     it('can generate wiki structure from the sample project (async)', function(done){
         var settings = mobo.getSettings({
             "cwd": mockProjectPath,
-            "uploadWikiPages": false,
-            "writeExportFiles": true
+            "uploadWikiPages": true,
+            "writeExportFiles": true,
+            "formEditHelper": true,
+            "hideFormEditHelper": true
         });
         expect(settings).to.include.keys('debug');
 
@@ -85,6 +87,10 @@ describe('mobo cli ', function() {
             // Check that the _processed directory was correctly populated
             var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
             expect(processedModelContent).to.include('_generated.json');
+
+            // "writeExportFiles": true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
+            expect(processedModelContent).to.include('_generated.json');
+
             done();
         });
     });

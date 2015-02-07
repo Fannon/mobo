@@ -1,12 +1,17 @@
 {
   "field": {
-    "x": {
-      "title": "x",
-      "type": "number"
-    },
-    "y": {
-      "title": "y",
-      "type": "number"
+    "completeness": {
+      "title": "Completeness",
+      "description": "Rate this site for completeness. Ranges from 0 to 5",
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5,
+      "smw_form": {
+        "size": 5,
+        "restricted": true
+      },
+      "id": "completeness",
+      "$filepath": "/field/completeness.json"
     },
     "color": {
       "title": "color",
@@ -15,27 +20,71 @@
         "red",
         "green",
         "blue"
-      ]
+      ],
+      "id": "color",
+      "$filepath": "/field/color.json"
+    },
+    "deprecated": {
+      "title": "Deprecated",
+      "description": "Mark this site as deprecated",
+      "type": "boolean",
+      "id": "deprecated",
+      "$filepath": "/field/deprecated.json"
+    },
+    "height": {
+      "title": "height",
+      "description": "",
+      "type": "number",
+      "id": "height",
+      "$filepath": "/field/height.json"
+    },
+    "inProcess": {
+      "title": "In Process",
+      "description": "Marks a site as currently in process",
+      "type": "boolean",
+      "id": "inProcess",
+      "$filepath": "/field/inProcess.json"
     },
     "radius": {
       "title": "radius",
+      "description": "The radius of a shape",
       "type": "number",
-      "minimum": 0
+      "minimum": 0,
+      "smw_form": {
+        "input type": "text with autocomplete"
+      },
+      "id": "radius",
+      "$filepath": "/field/radius.json"
+    },
+    "x": {
+      "title": "x",
+      "description": "X Coordinate",
+      "type": "number",
+      "smw_form": {
+        "input type": "text"
+      },
+      "id": "x",
+      "$filepath": "/field/x.json"
+    },
+    "y": {
+      "title": "y",
+      "description": "Y Coordinate",
+      "type": "number",
+      "smw_form": {
+        "input type": "text"
+      },
+      "id": "y",
+      "$filepath": "/field/y.json"
+    },
+    "width": {
+      "title": "width",
+      "description": "",
+      "type": "number",
+      "id": "width",
+      "$filepath": "/field/width.json"
     }
   },
   "model": {
-    "_Shape": {
-      "title": "Shape",
-      "description": "Generic Shape",
-      "type": "object",
-      "properties": {
-        "x": { "$extend": "/field/x.json" },
-        "y": { "$extend": "/field/y.json" },
-        "color": { "$extend": "/field/color.json" }
-      },
-      "required": ["x", "y"],
-      "abstract": true
-    },
     "Circle": {
       "$extend": "/model/_Shape.json",
       "title": "Circle",
@@ -45,13 +94,171 @@
           "$extend": "/field/radius.json"
         }
       },
-      "required": ["x", "y", "radius"],
+      "required": [
+        "x",
+        "y",
+        "radius"
+      ],
       "smw_subobject": true,
       "smw_category": true,
-      "abstract": false
+      "abstract": false,
+      "id": "Circle",
+      "$filepath": "/model/Circle.json"
+    },
+    "Quality": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Quality",
+      "description": "Quality of a wiki entry",
+      "type": "object",
+      "properties": {
+        "inProcess": {
+          "$extend": "/field/inProcess.json"
+        },
+        "deprecated": {
+          "$extend": "/field/deprecated.json"
+        },
+        "completeness": {
+          "$extend": "/field/completeness.json"
+        }
+      },
+      "required": [],
+      "smw_category": false,
+      "id": "Quality",
+      "$filepath": "/model/Quality.json"
+    },
+    "Rectangle": {
+      "$extend": "/model/_Shape.json",
+      "title": "Rectangle",
+      "type": "object",
+      "properties": {
+        "width": {
+          "$extend": "/field/width.json"
+        },
+        "height": {
+          "$extend": "/field/height.json"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "propertyOrder": [
+        "x",
+        "y",
+        "width",
+        "height",
+        "color"
+      ],
+      "smw_subobject": true,
+      "smw_category": true,
+      "abstract": false,
+      "id": "Rectangle",
+      "$filepath": "/model/Rectangle.json"
+    },
+    "_Shape": {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "title": "Shape",
+      "description": "Generic Shape",
+      "type": "object",
+      "properties": {
+        "x": {
+          "$extend": "/field/x.json"
+        },
+        "y": {
+          "$extend": "/field/y.json"
+        },
+        "color": {
+          "$extend": "/field/color.json"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "abstract": true,
+      "id": "_Shape",
+      "$filepath": "/model/_Shape.json"
     }
   },
   "form": {
-
+    "Circle": {
+      "title": "Circle",
+      "description": "Create a new Circle through a form",
+      "type": "object",
+      "properties": {
+        "circleHeader": {
+          "$extend": "/smw_template/HeaderCircle.wikitext",
+          "showForm": true,
+          "showSite": true
+        },
+        "circle": {
+          "type": "array",
+          "items": {
+            "$extend": "/model/Circle.json"
+          }
+        },
+        "qualityHeader": {
+          "$extend": "/smw_template/HeaderQuality.wikitext",
+          "showForm": true,
+          "showSite": true
+        },
+        "quality": {
+          "$extend": "/model/Quality.json"
+        }
+      },
+      "smw_forminput": {
+        "button text": "Create a new Circle",
+        "autocomplete on category": "Circle"
+      },
+      "smw_forminfo": {
+        "add title": "Create a new Circle",
+        "edit title": "Edit Circle"
+      },
+      "id": "Circle",
+      "$filepath": "/form/Circle.json"
+    },
+    "Rectangle": {
+      "title": "Rectangle",
+      "description": "Rectangle Form",
+      "type": "object",
+      "properties": {
+        "circleHeader": {
+          "$extend": "/smw_template/HeaderRectangle.wikitext",
+          "showForm": true,
+          "showSite": true
+        },
+        "Rectangle": {
+          "type": "array",
+          "items": {
+            "$extend": "/model/Rectangle.json"
+          }
+        },
+        "qualityHeader": {
+          "$extend": "/smw_template/HeaderQuality.wikitext",
+          "showForm": true,
+          "showSite": true
+        },
+        "quality": {
+          "$extend": "/model/Quality.json"
+        }
+      },
+      "id": "Rectangle",
+      "$filepath": "/form/Rectangle.json"
+    }
+  },
+  "smw_template": {
+    "HeaderQuality.wikitext": "=Quality=\n",
+    "HeaderRectangle.wikitext": "=Rectangle=\n\nShort description about rectangles...\n",
+    "HeaderCircle.wikitext": "=Circle=\n\nShort description about circles...\n"
+  },
+  "smw_query": {
+    "Circles.ask": "{{#ask: [[radius::+]]\n|?x\n|?y\n|?radius\n}}\n"
+  },
+  "smw_page": {
+    "ShapeExample.wikitext": "==Shapes Example==\nThis site is part of the mobo shapes example\n\n===List of all Circles===\nUses the [[Template:Circles-ask]] template\n{{Circles-ask}}\n",
+    "Property___subobject.wikitext": "This is an automatically generated property by [https://github.com/Fannon/mobo mobo].\n\nIt lists all available subobjects and what \"type\" they are to make querying them easier.\nSee [https://semantic-mediawiki.org/wiki/Help:Adding_subobjects#Querying_for_subobjects Querying for subobjects].",
+    "Property___superobject.wikitext": "This is an automatically generated property by [https://github.com/Fannon/mobo mobo].\n\nIt lists all available subobjects and links directly to the superobject (parent) they are hosted in. This is to make querying subproperties more comfortable."
   }
 }
