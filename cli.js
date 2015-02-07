@@ -27,8 +27,6 @@ var log        = logger.log;
 // VARIABLES                            //
 //////////////////////////////////////////
 
-var cwd             = process.cwd();
-
 /** If refreshWebGui setting is true, this will become a function that triggers the refresh */
 var refreshWebGui   = false;
 
@@ -123,8 +121,6 @@ if (settings) {
 
 
 
-
-
     //////////////////////////////////////////
     // RUN MOBO                             //
     //////////////////////////////////////////
@@ -153,7 +149,7 @@ if (settings) {
                 // Serve it from the current project dir, not the mobo /webapp/ dir
                 if (request.url.indexOf("_processed/") > -1 || request.url === '/settings.json') {
 
-                    var filename = path.join(process.cwd(), request.url);
+                    var filename = path.join(settings.cwd, request.url);
                     fs.exists(filename, function(exists) {
                         if(!exists) {
                             console.log("> 404 Not Found: " + filename);
@@ -224,13 +220,13 @@ if (settings) {
         // Create filesystem watcher
         var watcher = chokidar.watch(
             [
-                    cwd + '/field',
-                    cwd + '/form',
-                    cwd + '/model',
-                    cwd + '/smw_query',
-                    cwd + '/smw_page',
-                    cwd + '/smw_template',
-                    cwd + '/templates'
+                settings.cwd + '/field',
+                settings.cwd + '/form',
+                settings.cwd + '/model',
+                settings.cwd + '/smw_query',
+                settings.cwd + '/smw_page',
+                settings.cwd + '/smw_template',
+                settings.cwd + '/templates'
             ],
             {
                 ignored: /[\/\\]\./,
