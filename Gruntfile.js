@@ -8,7 +8,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
-    grunt.loadNpmTasks('grunt-coveralls');
 
     // Load all grunt tasks
     //require('load-grunt-tasks')(grunt);
@@ -56,30 +55,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        istanbul_check_coverage: { // NOT USED RIGHT NOW
-            default: {
-                options: {
-                    coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
-                    check: {
-                        lines: 0,
-                        statements: 0,
-                        branches: 0,
-                        functions: 0
-                    }
-                }
-            }
-        },
-        coveralls: {
-            options: {
-              // LCOV coverage file relevant to every target
-              src: 'coverage/lcov.info',
-
-              // When true, grunt-coveralls will only print a warning rather than
-              // an error, to prevent CI builds from failing unnecessarily (e.g. if
-              // coveralls.io is down). Optional, defaults to false.
-              force: true
-            }
-          },
         watch: {
             lib: {
                 files: '<%= jshint.lib.src %>',
@@ -92,11 +67,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.option('force', true);
-
     // Default task.
     grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
-    grunt.registerTask('default', ['jshint', 'coverage', 'coveralls']);
+    grunt.registerTask('default', ['jshint', 'coverage']);
 
     grunt.event.on('coverage', function(content, done) {
         done();

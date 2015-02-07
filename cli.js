@@ -298,6 +298,7 @@ if (settings) {
     if (!settings.debug) {
         process.on('uncaughtException', function (e) {
             log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
+            log(e.message);
             log(e);
             logger.report(settings.processedModelDir + '/logfiles/');
             process.exit(1);
