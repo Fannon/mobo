@@ -1,11 +1,10 @@
 {
-    "$extend": "/model/_Shape.json",
+    "$extend": "/model/Square.json",
 
     "title": "Rectangle",
     "type": "object",
 
     "properties": {
-        "width": { "$extend": "/field/width.json" },
         "height": { "$extend": "/field/height.json" }
     },
 

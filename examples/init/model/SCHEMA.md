@@ -18,6 +18,15 @@ These properties will only work in context of models.
         "default": false,
         "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
     },
+    "smw_display": {
+        "type": "string",
+        "enum": [
+            "table",
+            "ul"
+        ],
+        "default": "table",
+        "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
+    },
     "smw_category": {
         "type": "boolean",
         "default": true,
@@ -348,6 +357,15 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "default": false,
             "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
         },
+        "smw_display": {
+            "type": "string",
+            "enum": [
+                "table",
+                "ul"
+            ],
+            "default": "table",
+            "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
+        },
         "smw_category": {
             "type": "boolean",
             "default": true,
@@ -365,6 +383,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "smw_forminfo": {
             "type": "object",
             "description": "Object (Set), containing all SemanticForms {{{info}}} parameters."
+        },
+        "smw_naming": {
+            "type": "string",
+            "description": "Provides naming conventions / guideline. Will appear on the form page itself."
         },
         "smw_freetext": {
             "type": "boolean",

@@ -1,0 +1,17 @@
+{
+  "$extend": "/model/_Shape.json",
+
+  "title": "Square",
+  "type": "object",
+
+  "properties": {
+    "width": { "$extend": "/field/width.json" }
+  },
+
+  "required": ["x", "y", "width"],
+  "propertyOrder": ["x", "y", "width", "color"],
+
+  "smw_subobject": true,
+  "smw_category": true,
+  "abstract": false
+}

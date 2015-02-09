@@ -56,8 +56,8 @@ if (argv.i || argv.init) {
 // Installs an example project.
 if (argv.example) {
     if (argv.example === true) {
-        log('> [WARNING] You must provide the name of an existing example:');
-        log('> E.g. mobo --example shapes');
+        log(' [W] You must provide the name of an existing example:');
+        log(' [i] E.g. mobo --example shapes');
     } else {
         mobo.install(argv.example, false);
     }
@@ -66,7 +66,7 @@ if (argv.example) {
 
 // Force upload: Will upload everything and ignore the DIFF
 if (argv['update-schemas']) {
-    log('> [INFO] DEVELOPER COMMAND: Updating SCHEMA.md files');
+    log(' [i] DEVELOPER COMMAND: Updating SCHEMA.md files');
     var validateSchema       = require('./lib/model/validateSchema.js');
     validateSchema.writeSchemas();
     process.exit();
@@ -91,7 +91,7 @@ if (settings) {
     // Returns the currently used settings including all calculated and inherited attributes
     if (argv.s || argv.c || argv.settings) {
         if (settings) {
-            log('> Currently used settings:');
+            log(' [i] Currently used settings:');
             log(settings);
         }
         return;
@@ -111,7 +111,7 @@ if (settings) {
 
     // Force upload: Will upload everything and ignore the DIFF
     if (argv.f || argv.force) {
-        log('> [INFO] Forcing upload of all sites!');
+        log(' [i] Forcing upload of all sites!');
         settings.forceUpload = true;
         settings.serveWebApp = false;
         settings.watchFilesystem = false;
@@ -139,7 +139,7 @@ if (settings) {
         var file = new fileServer.Server(__dirname + '/webapp');
 
         log('');
-        log('> [INFO] INTERACTIVE MODE: Serving the webapp at http://localhost:' + settings.webAppPort + '/');
+        log(' [i] INTERACTIVE MODE: Serving the webapp at http://localhost:' + settings.webAppPort + '/');
 
         var webserver = require('http').createServer(function (request, response) {
 
@@ -176,9 +176,9 @@ if (settings) {
 
         webserver.on('error', function(err) {
             if (err.errno === 'EADDRINUSE') {
-                log('> [ERROR] Webserver failed, port ' + settings.webAppPort + ' is already in use!');
+                log(' [E] Webserver failed, port ' + settings.webAppPort + ' is already in use!');
             } else {
-                log('> [ERROR] Webserver failed to run!');
+                log(' [E] Webserver failed to run!');
                 console.log(err);
             }
         });
@@ -215,7 +215,7 @@ if (settings) {
 
         var chokidar = require('chokidar');
 
-        log('> [INFO] INTERACTIVE MODE: Watching for changes in the filesystem');
+        log(' [i] INTERACTIVE MODE: Watching for changes in the filesystem');
 
         // Create filesystem watcher
         var watcher = chokidar.watch(
@@ -248,7 +248,7 @@ if (settings) {
 
             })
             .on('error', function(error) {
-                log('> [ERROR] Watching failed with error', error);
+                log(' [E] Watching failed with error', error);
             })
         ;
     }
@@ -261,7 +261,7 @@ if (settings) {
 
     if (settings.watchFilesystem || settings.serveWebapp) {
 
-        log('> [INFO] Enter: q to quit; f to force upload');
+        log(' [i] Enter: q to quit; f to force upload');
         log('');
 
         process.stdin.setEncoding('utf8');
@@ -295,7 +295,7 @@ if (settings) {
 
     if (!settings.debug) {
         process.on('uncaughtException', function (e) {
-            log('> [ERROR] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
+            log(' [E] Uncaught Exception! The program will exit. \n  This -can- be caused by invalid login/upload attempts to the wiki');
             log(e.message);
             log(e);
             logger.report(settings.processedModelDir + '/logfiles/');

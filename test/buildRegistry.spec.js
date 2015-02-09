@@ -54,7 +54,13 @@ describe('Registry Builder ', function() {
 
     it('inherits $extend properties', function() {
 
+        // Mock Circle model
         var Circle = _.clone(mockModel.model.Circle, true);
+
+        // Mock expanded model registry
+        mockModel.expandedModel = _.clone(mockModel.model, true);
+
+
         var extendedCircle = buildRegistry.extend(Circle, Circle.$extend, mockModel);
 
         // $extend is replaced through $reference
