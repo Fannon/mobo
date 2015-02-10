@@ -261,7 +261,7 @@ if (settings) {
 
     if (settings.watchFilesystem || settings.serveWebapp) {
 
-        log(' [i] Enter: q to quit; f to force upload');
+        log(' [i] Enter "q" to quit, "enter" to run again.');
         log('');
 
         process.stdin.setEncoding('utf8');
@@ -275,10 +275,6 @@ if (settings) {
 
                 if (input === 'q' || input === 'exit' || input === 'quit') {
                     process.exit();
-                } else if (input === 'f' || input === 'force') {
-                    settings.forceUpload = true;
-                    mobo.run(settings, refreshWebGui);
-                    settings.forceUpload = false;
                 } else {
                     mobo.run(settings, refreshWebGui);
                 }
