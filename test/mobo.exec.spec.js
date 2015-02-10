@@ -10,6 +10,7 @@ var path = require('path');
 var fs = require('fs-extra');
 
 var mobo = require('../lib/mobo.js');
+var readSettings = require('../lib/input/readSettings.js');
 
 
 //////////////////////////////////////////
@@ -66,7 +67,7 @@ describe('mobo cli ', function() {
      * TODO: Can't test the upload without an demo / testing wiki
      */
     it('can generate wiki structure from the sample project (async)', function(done){
-        var settings = mobo.getSettings({
+        var settings = readSettings.getSettings({
             "cwd": mockProjectPath,
             "uploadWikiPages": false,
             "writeExportFiles": true,

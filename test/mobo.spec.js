@@ -7,6 +7,7 @@
 
 var expect = require('chai').expect;
 var mobo = require('../lib/mobo.js');
+var readSettings = require('../lib/input/readSettings.js');
 
 
 //////////////////////////////////////////
@@ -30,11 +31,11 @@ describe('mobo ', function() {
         };
 
         // Test with empty option object (no overwrites)
-        expect(mobo.getSettings({})).to.include.keys('debug');
-        expect(mobo.getSettings({})).to.deep.equal(settings);
+        expect(readSettings.getSettings({})).to.include.keys('debug');
+        expect(readSettings.getSettings({})).to.deep.equal(settings);
 
         // Test with customSettings
-        expect(mobo.getSettings(customSettings).debug).to.equal(true);
+        expect(readSettings.getSettings(customSettings).debug).to.equal(true);
     });
 
 });
