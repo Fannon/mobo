@@ -1,6 +1,6 @@
 ABOUT MOBO
 ----------
-mobo is a Semantic MediaWiki Modeling Bot.
+mobo is a toolset that generates Semantic MediaWiki Structure from a JSON Schema model.
 
 You will find more detailed documentation in the various README.md files
 that will be created as part of the init project.

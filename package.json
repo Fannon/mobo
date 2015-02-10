@@ -55,7 +55,7 @@
     "test": "grunt"
   },
   "bin": {
-    "mobo": "cli.js"
+    "mobo": "lib/cli.js"
   },
   "preferGlobal": "true"
 }
