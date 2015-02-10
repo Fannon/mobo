@@ -1,112 +1,252 @@
-Available settings
-==================
+## settings.json documentation 
+This file documents all available options for the settings.json and their defaults. 
 
-```javascript
+```json
 {
-    // URL to your MediaWiki server without trailing slash. Do not include the port here!
-    "mw_server_url": "http://localhost",
+    "mw_server_url": {
+        "type": [
+            "string",
+            "boolean"
+        ],
+        "description": "URL to your MediaWiki server without trailing slash. Do not include the port or relative path to MediaWiki here!"
+    },
+    "mw_server_path": {
+        "type": [
+            "string",
+            "boolean"
+        ],
+        "description": "Relative path to the MediaWiki installation without trailing slash"
+    },
+    "mw_server_port": {
+        "type": [
+            "string",
+            "boolean"
+        ],
+        "description": "The port your MW installation is using.",
+        "default": 80
+    },
+    "mw_username": {
+        "type": "string",
+        "description": "The username of your mobo bot account"
+    },
+    "mw_password": {
+        "type": "string",
+        "description": "The password of your mobo bot account"
+    },
+    "debug": {
+        "type": "boolean",
+        "default": false,
+        "description": "Turns the debug mode on. This deactivated graceful error handling."
+    },
+    "verbose": {
+        "type": "boolean",
+        "default": false,
+        "description": "More verbose console output. This will also tighten the model validation and display minor notices"
+    },
+    "displayTodos": {
+        "type": "boolean",
+        "default": true,
+        "description": "Displays the content of todo properties from your JSON files"
+    },
+    "writeLogFile": {
+        "type": "boolean",
+        "default": false,
+        "description": "If this is enabled, mobo will create logfiles in /_processed/logfiles/*"
+    },
+    "watchFilesystem": {
+        "type": "boolean",
+        "default": true,
+        "description": "Watches the (development) project files for changed and automatically triggers re-generation."
+    },
+    "serveWebApp": {
+        "type": "boolean",
+        "default": true,
+        "description": "Serves the webGUI / app at localhost."
+    },
+    "webAppPort": {
+        "type": "number",
+        "default": 8080,
+        "description": "Port the WebApp is served on the localhost"
+    },
+    "autoRefreshWebGui": {
+        "type": "boolean",
+        "default": true,
+        "description": "WebGui is automatically refreshed if the server makes changes to the model"
+    },
+    "autoRefreshPort": {
+        "type": "number",
+        "default": 8081,
+        "description": "WebSocket port the server and the WebGui are using to notify the change"
+    },
+    "generateWikiPages": {
+        "type": "boolean",
+        "default": true,
+        "description": "Generates WikiPages (structure) from the development model"
+    },
+    "buildGraph": {
+        "type": "boolean",
+        "default": true,
+        "description": "Builds graph files from the model. This also includes a lot of structural validation. \nSo it might make sense to keep this activated, even if the graph is not used afterwards."
+    },
+    "writeExportFiles": {
+        "type": "boolean",
+        "default": true,
+        "description": "If true mobo will write every generated file as a single file into the filesystem. This can be slow due to a lot of HDD I/O"
+    },
+    "uploadWikiPages": {
+        "type": "boolean",
+        "default": true,
+        "description": "Uploads the generated WikiPages to an external Wiki"
+    },
+    "deleteWikiPages": {
+        "type": "boolean",
+        "default": false,
+        "description": "Deletes removed WikiPages from the external Wiki (use with care!)"
+    },
+    "forceUpload": {
+        "type": "boolean",
+        "default": false,
+        "description": "Forces the upload of all generated WikiPages, even if no changes were detected. \nThis can sometimes be useful, if some changes were lost or you want to go for sure."
+    },
+    "uploadConcurrency": {
+        "type": "number",
+        "default": 4,
+        "minimum": 1,
+        "description": "Concurrent upload processes"
+    },
+    "headerTabs": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true, the HeaderTabs Extension will be used with the generated forms. Keep in mind that you still have to create the headings to make this work!"
+    },
+    "formEditHelper": {
+        "type": "boolean",
+        "default": false,
+        "description": "If enabled this creates **FormEdit Helper Categories** that tag the WikiPages that were generated through a form as editable by that form."
+    },
+    "hideFormEditHelper": {
+        "type": "boolean",
+        "default": false,
+        "description": "If true this will hide the introduced Helper Categories from the display"
+    },
+    "useSimpleTooltipDescriptions": {
+        "type": "boolean",
+        "default": false,
+        "description": "If enabled, descriptions will be included as SimpleTooltip tooltips. WARNING: You need to install the SimpleTooltip extension to make this work."
+    },
+    "defaultTemplateDisplay": {
+        "type": "string",
+        "default": "table",
+        "description": "Default Template Display renderer. See templates/template.wikitext to see or change how they are rendered."
+    },
+    "sfDivLayout": {
+        "type": "boolean",
+        "default": false,
+        "description": "If enabled, mobo renders the SemanticForms as a div layout instead of the standard table layout. \nThis enables more control over the layout, including some responsiveness. \nWARNING: You need to style/layout the divs by yourself, or use the VectorUp skin. \nSemanticForms itself does not support / supply this for a div based layout."
+    },
+    "cwd": {
+        "type": "string",
+        "description": "AUTO GENERATED, can be overwritten: Working (root) directory of the project where the settings.json is located"
+    },
+    "importModelDir": {
+        "type": "string",
+        "description": "AUTO GENERATED, can be overwritten."
+    },
+    "templateDir": {
+        "type": "string",
+        "description": "AUTO GENERATED, can be overwritten."
+    },
+    "logDir": {
+        "type": "string",
+        "description": "AUTO GENERATED, can be overwritten."
+    },
+    "processedModelDir": {
+        "type": "string",
+        "description": "AUTO GENERATED, can be overwritten."
+    },
+    "buildGraphSettings": {
+        "type": "object",
+        "properties": {
+            "dataTypeNodeSize": {
+                "type": "number",
+                "default": 8,
+                "minimum": 0,
+                "description": ""
+            },
+            "templateNodeSize": {
+                "type": "number",
+                "default": 12,
+                "minimum": 0,
+                "description": ""
+            },
+            "modelNodeSize": {
+                "type": "number",
+                "default": 12,
+                "minimum": 0,
+                "description": ""
+            },
+            "formNodeSize": {
+                "type": "number",
+                "default": 32,
+                "minimum": 0,
+                "description": ""
+            },
+            "edgeWeight": {
+                "type": "number",
+                "default": 2,
+                "minimum": 0,
+                "description": ""
+            },
+            "multipleEdgeWeight": {
+                "type": "number",
+                "default": 2,
+                "minimum": 0,
+                "description": ""
+            }
+        }
+    }
+}
+```
 
-    // path where the MediaWiki is installed without trailing slash
-    "mw_server_path": "/wiki",
+## Default settings
+These are the default settings that mobo comes with:
 
-    // The port your MW installation is using. Use false to use the default (80 / 443)
+```json
+{
+    "mw_server_url": false,
+    "mw_server_path": false,
     "mw_server_port": false,
-
-    // The username of your mobo bot account
     "mw_username": "username",
-
-    // Password of your mobo bot account
     "mw_password": "password",
-
-    // Turns the debug mode on. This deactivated graceful error handling.
     "debug": false,
-
-    // If true the console output will be more verbose
-    // This will also tighten the model validation and display notices too
     "verbose": false,
-
-    // Displays "todo" properties from your JSON files
     "displayTodos": true,
-
-    // Watches the (development) project files for changed and automatically triggers re-generation.
     "watchFilesystem": true,
-
-    // Serves the WebGUI / App at the localhost.
     "serveWebApp": true,
-
-    // Generates WikiPages from the development model
     "generateWikiPages": true,
-
-    // Uploads the generated WikiPages to an external Wiki (
     "uploadWikiPages": true,
-
-    // Deletes removed WikiPages from the external Wiki (use with care!)
     "deleteWikiPages": false,
-
-    // Forces the upload of all generated WikiPages, even if no changes were detected
-    // This can sometimes be useful, if some changes were lost or you want to go for sure.
     "forceUpload": false,
-
-    // Builds graph files from the model. This also includes a lot of structural validation.
-    // So it might make sense to keep this activated, even if the graph is not used afterwards.
     "buildGraph": true,
-
-    // If true mobo will write every generated file as a single file into the filesystem.
-    // This can be slow due to a lot of HDD I/O
     "writeExportFiles": false,
-
-    // If this is enabled, mobo will create logfiles in /_processed/logfiles/*
     "writeLogFile": false,
-
-    // Concurrent upload processes
     "uploadConcurrency": 4,
-
-    // Port the WebApp is served on the localhost
     "webAppPort": 8080,
-
-    // WebGui is automatically refreshed if the server makes changes to the model
     "autoRefreshWebGui": true,
-
-    // WebSocket port the server and the WebGui are using to notify the change
     "autoRefreshPort": 8081,
-
-    // If true, the HeaderTabs Extension will be used with the generated forms
-    // Keep in mind that you still have to create the headings to make this work!
     "headerTabs": false,
-
-    // If enabled this creates "* FormEdit" Helper Categories that tag the WikiPages that were generated
-    // through a form as editable by that form.
     "formEditHelper": false,
-
-    // If true this will hide the introduced Helper Categories from the display
     "hideFormEditHelper": false,
-
-    // Default Template Display "renderer".
-    // See templates/template.wikitext to see or change how they are rendered.
     "defaultTemplateDisplay": "table",
-
-    // If enabled, descriptions will be included as SimpleTooltip tooltips.
-    // WARNING: You need to install the SimpleTooltip extension to make this work
-    // @see https://www.mediawiki.org/wiki/Extension:SimpleTooltip
     "useSimpleTooltipDescriptions": false,
-
-    // If enabled, mobo renders the SemanticForms as a div layout instead of the standard table layout
-    // This enables more control over the layout, including some responsiveness
-    // WARNING: You need to style/layout the divs by yourself, or use the VectorUp skin.
-    // SemanticForms itself does not support / supply this for a div based layout.
-    // @see https://www.mediawiki.org/wiki/Extension:VectorUp
     "sfDivLayout": false,
-
-    // These settings define how the .gefx graph is generated.
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
         "templateNodeSize": 12,
         "modelNodeSize": 20,
         "formNodeSize": 32,
-
-        "edgeWeight": 2.0,
-        "multipleEdgeWeight": 2.0
+        "edgeWeight": 2,
+        "multipleEdgeWeight": 2
     }
-
 }
 ```
