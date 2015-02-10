@@ -9,7 +9,7 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 
 var mockModel = require('./mockObjects/mockModel.json');
-var buildRegistry = require('../lib/model/buildRegistry.js');
+var buildRegistry = require('../lib/processing/buildRegistry.js');
 
 
 //////////////////////////////////////////

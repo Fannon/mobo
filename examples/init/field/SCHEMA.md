@@ -128,7 +128,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "array",
             "minItems": 1,
             "items": {
-                "$ref": "http://json-schema.org/draft-04/schema#"
+                "$ref": "#"
             }
         },
         "positiveInteger": {
@@ -138,7 +138,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "positiveIntegerDefault0": {
             "allOf": [
                 {
-                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+                    "$ref": "#/definitions/positiveInteger"
                 },
                 {
                     "default": 0
@@ -193,10 +193,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "number"
         },
         "maxLength": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+            "$ref": "#/definitions/positiveInteger"
         },
         "minLength": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+            "$ref": "#/definitions/positiveIntegerDefault0"
         },
         "pattern": {
             "type": "string",
@@ -205,33 +205,33 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "items": {
             "anyOf": [
                 {
-                    "$ref": "http://json-schema.org/draft-04/schema#"
+                    "$ref": "#"
                 },
                 {
-                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
+                    "$ref": "#/definitions/schemaArray"
                 }
             ],
             "default": {}
         },
         "maxItems": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+            "$ref": "#/definitions/positiveInteger"
         },
         "minItems": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+            "$ref": "#/definitions/positiveIntegerDefault0"
         },
         "maxProperties": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveInteger"
+            "$ref": "#/definitions/positiveInteger"
         },
         "minProperties": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/positiveIntegerDefault0"
+            "$ref": "#/definitions/positiveIntegerDefault0"
         },
         "required": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/stringArray"
+            "$ref": "#/definitions/stringArray"
         },
         "properties": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "http://json-schema.org/draft-04/schema#"
+                "$ref": "#"
             },
             "default": {}
         },
@@ -243,12 +243,12 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "type": {
             "anyOf": [
                 {
-                    "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
+                    "$ref": "#/definitions/simpleTypes"
                 },
                 {
                     "type": "array",
                     "items": {
-                        "$ref": "http://json-schema.org/draft-04/schema#/definitions/simpleTypes"
+                        "$ref": "#/definitions/simpleTypes"
                     },
                     "minItems": 1,
                     "uniqueItems": true
@@ -256,13 +256,13 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             ]
         },
         "allOf": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
+            "$ref": "#/definitions/schemaArray"
         },
         "anyOf": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
+            "$ref": "#/definitions/schemaArray"
         },
         "oneOf": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray"
+            "$ref": "#/definitions/schemaArray"
         },
         "$extend": {
             "type": "string",
@@ -303,7 +303,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
         },
         "propertyOrder": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
+            "$ref": "#/definitions/schemaArray",
             "description": "Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order."
         },
         "todo": {
@@ -332,7 +332,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "additionalProperties": true
         },
         "recommended": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
+            "$ref": "#/definitions/schemaArray",
             "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
         },
         "smw_subobject": {
@@ -355,7 +355,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "This property decides whether the template should tag the page as a category of the model-name."
         },
         "smw_categories": {
-            "$ref": "http://json-schema.org/draft-04/schema#/definitions/schemaArray",
+            "$ref": "#/definitions/schemaArray",
             "description": "Array of additional categories the template should set."
         },
         "smw_forminput": {

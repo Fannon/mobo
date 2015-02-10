@@ -6,7 +6,7 @@
 //////////////////////////////////////////
 
 var expect = require('chai').expect;
-var validateSchema = require('../lib/model/validateSchema.js');
+var validateSchema = require('../lib/util/validateSchema.js');
 
 
 //////////////////////////////////////////

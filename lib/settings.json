@@ -1,6 +1,6 @@
 {
-    "mw_server_url": "http://localhost",
-    "mw_server_path": "/wiki",
+    "mw_server_url": false,
+    "mw_server_path": false,
     "mw_server_port": false,
     "mw_username": "username",
     "mw_password": "password",
