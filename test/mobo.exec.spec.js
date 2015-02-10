@@ -76,7 +76,7 @@ describe('mobo cli ', function() {
         });
         expect(settings).to.include.keys('debug');
 
-        mobo.run(settings, false, function(err, generated) {
+        mobo.exec(settings, false, function(err, generated) {
 
             // Check that no error was returned
             expect(err).to.equal(false);

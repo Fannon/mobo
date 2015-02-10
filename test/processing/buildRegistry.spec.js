@@ -9,7 +9,7 @@ var expect = require('chai').expect;
 var _ = require('lodash');
 
 var mockModel = require('./../_mockObjects/mockModel.json');
-var buildRegistry = require('../../lib/processing/buildRegistry.js');
+var extendProject = require('../../lib/processing/extendProject.js');
 
 
 //////////////////////////////////////////
@@ -44,7 +44,7 @@ describe('Registry Builder ', function() {
             ]
         };
 
-        var orderedModel = buildRegistry.orderObjectProperties(unorderedModel);
+        var orderedModel = extendProject.orderObjectProperties(unorderedModel);
 
         for (property in orderedModel.properties) {
             orderedModelArray.push(property);
@@ -61,7 +61,7 @@ describe('Registry Builder ', function() {
         mockModel.expandedModel = _.clone(mockModel.model, true);
 
 
-        var extendedCircle = buildRegistry.extend(Circle, Circle.$extend, mockModel);
+        var extendedCircle = extendProject.extend(Circle, Circle.$extend, mockModel);
 
         // $extend is replaced through $reference
         expect(extendedCircle).to.not.include.keys(['$extend']);
@@ -73,13 +73,13 @@ describe('Registry Builder ', function() {
     });
 
     it('applies one-step inhertitance to models', function() {
-        var extendedCircle = buildRegistry.inherit(mockModel.model.Circle, mockModel);
+        var extendedCircle = extendProject.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
         expect(extendedCircle.properties.radius.$reference).to.equal('/field/radius.json');
     });
 
     it('expands the models', function() {
-        mockModel.expandedModel = buildRegistry.expandModels(mockModel);
+        mockModel.expandedModel = extendProject.expandModels(mockModel);
 
         expect(mockModel.expandedModel).to.include.keys(['_Shape', 'Circle']);
         expect(mockModel.expandedModel.Circle).to.include.keys('$schema');
@@ -91,7 +91,7 @@ describe('Registry Builder ', function() {
     });
 
     it('expands the forms', function() {
-        mockModel.expandedForms = buildRegistry.expandForms(mockModel);
+        mockModel.expandedForms = extendProject.expandForms(mockModel);
 
         expect(mockModel.expandedForms).to.include.keys(['Rectangle', 'Circle']);
 
