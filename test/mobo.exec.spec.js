@@ -30,7 +30,7 @@ var emptyMockProject = function(mockProjectPath) {
 
 describe('mobo cli ', function() {
 
-    var mockProjectPath = path.resolve(__dirname, './mockProject');
+    var mockProjectPath = path.resolve(__dirname, './_mockProject');
 
     it('empties mockProject test directory', function() {
         expect(emptyMockProject(mockProjectPath)).to.equal(true);
@@ -67,7 +67,7 @@ describe('mobo cli ', function() {
      * TODO: Can't test the upload without an demo / testing wiki
      */
     it('can generate wiki structure from the sample project (async)', function(done){
-        var settings = readSettings.getSettings({
+        var settings = readSettings.exec({
             "cwd": mockProjectPath,
             "uploadWikiPages": false,
             "writeExportFiles": true,

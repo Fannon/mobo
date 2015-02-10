@@ -3,7 +3,7 @@
 
 var expect = require('chai').expect;
 
-var moboUtil = require('../lib/util/moboUtil.js');
+var moboUtil = require('../../lib/util/moboUtil.js');
 
 describe('mobo utilities ', function() {
 

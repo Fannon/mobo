@@ -31,11 +31,11 @@ describe('mobo ', function() {
         };
 
         // Test with empty option object (no overwrites)
-        expect(readSettings.getSettings({})).to.include.keys('debug');
-        expect(readSettings.getSettings({})).to.deep.equal(settings);
+        expect(readSettings.exec({})).to.include.keys('debug');
+        expect(readSettings.exec({})).to.deep.equal(settings);
 
         // Test with customSettings
-        expect(readSettings.getSettings(customSettings).debug).to.equal(true);
+        expect(readSettings.exec(customSettings).debug).to.equal(true);
     });
 
 });
