@@ -35,17 +35,17 @@ describe('mobo utilities ', function() {
     });
 
     it('logs a string message to the console', function() {
-        moboUtil.log(new Error('error log entry'));
-        moboUtil.log({"title": "Object log entry"});
-        moboUtil.log(' [i] info log entry ');
-        moboUtil.log(' [W] warning log entry');
-        moboUtil.log(' [E] error log entry');
-        moboUtil.log(' [S] success log entry');
-        moboUtil.log(' [D] debug log entry');
-        moboUtil.log(' [+] added log entry');
-        moboUtil.log(' [-] removed log entry');
-        moboUtil.log(' [C] changed log entry');
-        moboUtil.log(' [TODO] todo log entry');
+        moboUtil.log(new Error('error log entry'), true);
+        moboUtil.log({"title": "Object log entry"}, true);
+        moboUtil.log(' [i] info log entry ', true);
+        moboUtil.log(' [W] warning log entry', true);
+        moboUtil.log(' [E] error log entry', true);
+        moboUtil.log(' [S] success log entry', true);
+        moboUtil.log(' [D] debug log entry', true);
+        moboUtil.log(' [+] added log entry', true);
+        moboUtil.log(' [-] removed log entry', true);
+        moboUtil.log(' [C] changed log entry', true);
+        moboUtil.log(' [TODO] todo log entry', true);
     });
 
     it('returns the log history as an array', function() {
