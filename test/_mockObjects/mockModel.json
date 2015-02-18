@@ -191,7 +191,7 @@
         "circleHeader": {
           "$extend": "/smw_template/HeaderCircle.wikitext",
           "showForm": true,
-          "showSite": true
+          "showPage": true
         },
         "circle": {
           "type": "array",
@@ -202,7 +202,7 @@
         "qualityHeader": {
           "$extend": "/smw_template/HeaderQuality.wikitext",
           "showForm": true,
-          "showSite": true
+          "showPage": true
         },
         "quality": {
           "$extend": "/model/Quality.json"
@@ -227,7 +227,7 @@
         "circleHeader": {
           "$extend": "/smw_template/HeaderRectangle.wikitext",
           "showForm": true,
-          "showSite": true
+          "showPage": true
         },
         "Rectangle": {
           "type": "array",
@@ -238,7 +238,7 @@
         "qualityHeader": {
           "$extend": "/smw_template/HeaderQuality.wikitext",
           "showForm": true,
-          "showSite": true
+          "showPage": true
         },
         "quality": {
           "$extend": "/model/Quality.json"
