@@ -54,9 +54,9 @@ describe('mobo utilities ', function() {
         expect(logArchive.length).to.be.least(1);
     });
 
-    it('writes the log history to a file', function() {
-        // TODO: Test history log file
-        //moboUtil.writeLogHistory('');
-    });
+    //it('writes the log history to a file', function() {
+    //    // TODO: Test history log file
+    //    //moboUtil.writeLogHistory('');
+    //});
 
 });
