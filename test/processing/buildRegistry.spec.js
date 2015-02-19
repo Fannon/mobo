@@ -72,6 +72,11 @@ describe('Registry Builder ', function() {
 
     });
 
+    it('expands the fields', function() {
+        mockModel.expandedFields = extendProject.expandRegistry(mockModel, 'field');
+        expect(mockModel.expandedFields).to.include.keys(['radius']);
+    });
+
     it('applies one-step inhertitance to models', function() {
         var extendedCircle = extendProject.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
@@ -79,10 +84,9 @@ describe('Registry Builder ', function() {
     });
 
     it('expands the models', function() {
-        mockModel.expandedModel = extendProject.expandModels(mockModel);
+        mockModel.expandedModel = extendProject.expandRegistry(mockModel, 'model');
 
         expect(mockModel.expandedModel).to.include.keys(['_Shape', 'Circle']);
-        expect(mockModel.expandedModel.Circle).to.include.keys('$schema');
 
         // Check that the model properties are correctly inherited
         expect(mockModel.expandedModel.Circle.properties.radius.title).to.equal('radius');
@@ -91,6 +95,8 @@ describe('Registry Builder ', function() {
     });
 
     it('expands the forms', function() {
+
+        mockModel.expandedForms = extendProject.expandRegistry(mockModel, 'form');
         mockModel.expandedForms = extendProject.expandForms(mockModel);
 
         expect(mockModel.expandedForms).to.include.keys(['Rectangle', 'Circle']);
