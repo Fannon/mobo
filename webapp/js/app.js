@@ -1,4 +1,4 @@
-/* global $, document, window, JSONEditor */
+/* global $, document, window, JSONEditor, WebSocket */
 
 /** global namespace */
 var mobo = {};
@@ -44,10 +44,10 @@ $(document).ready(function() {
             var port = settings.autoRefreshPort || 8081;
 
             var ws = new WebSocket('ws://' + host + ':' + port);
-            ws.onmessage = function (event) {
+            ws.onmessage = function() {
                 mobo.loadData();
                 console.log('Refreshing data...');
-                $('#refresh').show().delay(500).fadeOut(300);
+                $('#refresh').show().delay(800).fadeOut(400);
             };
         }
 
@@ -282,7 +282,6 @@ mobo.printMediaWikiMarkup = function(type, name) {
 
     for (var siteName in mobo.wikitext) {
 
-        var fileName = siteName.replace(':', '-');
         var wikitext = mobo.wikitext[siteName];
 
         if (wikitext && siteName.indexOf(name) !== -1) {
