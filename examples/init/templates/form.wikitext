@@ -17,19 +17,24 @@
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 
 {{#each template~}}
+
+{{~#if this.prefix}}{{this.prefix}}{{/if~}}
+
 {{#if this.template~}}
 {{#if this.showForm}}
 {{{this.template}}} {{~/if~}}
-{{#if this.showSite}}
-\{{{for template|{{this.name~}} }}} \{{{end template}}}{{~/if~}}
+{{#if this.showPage}}
+\{{{for template|{{this.id~}} }}} \{{{end template}}}{{~/if~}}
 {{~else~}}
 {{~#if this.wikitext}}
 {{{this.wikitext}}}
 {{~else~}}
-\{{{for template|{{this.name}}|{{this.title~}}{{#if this.label}}|label={{{this.title}}}{{/if}}{{smw_formparams this.multiple~}} }}}
+\{{{for template|{{this.id}}|{{this.title~}}{{#if this.label}}|label={{{this.title}}}{{/if}}{{smw_formparams this.multiple~}} }}}
 {{smw_formtable this.model~}}
 \{{{end template}}}
 {{~/if}} {{~/if}}
+
+{{~#if this.postfix}}{{this.postfix}}{{/if}}
 {{/each}}
 
 {{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}}

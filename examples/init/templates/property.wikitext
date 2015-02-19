@@ -3,8 +3,6 @@
 
 {{/if~}}
 * This is an attribute of the datatype [[Has type::{{type}}]].
-
-{{~#if model}}
-
-* It uses the form  „[[Has default form::{{model}}]]“.
-{{~/if~}}
+{{#each usesForms}}
+* It uses the form  „[[Has default form::{{this}}]]“.
+{{/each~}}

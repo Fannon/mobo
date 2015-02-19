@@ -7,6 +7,7 @@
 </noinclude>
 <includeonly>
 
+{{~#if this.prefix}}{{this.prefix}}{{/if~}}
 
 {{~#if display_table~}}
 {| class="wikitable formdata"{{!-- TABLE DISPLAY --}}
@@ -21,16 +22,16 @@
 {{~/if~}}
 
 
-{{~#if display_ul~}}
-==={{name}}==={{!-- UL (UNORDERED LIST) DISPLAY --}}
-{{#each attr~}}
+{{~#if display_ul~}}{{!-- UL (UNORDERED LIST) DISPLAY --}}
+{{~#each attr~}}
 \{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_attr this}} |}}
 {{~/each}}
 {{~/if~}}
 
+{{~#if this.postfix}}{{this.postfix}}{{/if~}}
 
 {{~#if smw_subobject~}}
-{{smw_subobject attr name}}
+{{~smw_subobject attr name~}}
 {{~else~}}
 {{smw_set attr}}
 {{~/if~}}

@@ -8,7 +8,6 @@ var mobo = {};
 // Options / Config                     //
 //////////////////////////////////////////
 
-mobo.remoteWiki = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php';
 mobo.displayForm = true;
 
 require.config({
@@ -28,7 +27,7 @@ $(document).ready(function() {
     $.getJSON("settings.json", function(settings) {
 
         mobo.settings = settings;
-        mobo.remoteWiki = settings.mw_server_url + settings.mw_server_path + '/index.php';
+        mobo.remoteWiki = settings.mw_server_url + '/' + settings.mw_server_path + '/index.php';
 
         $(window).on('hashchange', function() {
             mobo.route();

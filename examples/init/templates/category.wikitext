@@ -10,14 +10,7 @@ Sites tagged with this category can be edited through [[Has default form::{{name
 
 {{~#if formCategory}}
 ==Form==
-Create a new [[Form:{{name}}|{{title}}]]
-
-{{/if~}}
-
-{{~#if template}}
-==Template==
-[[Template:{{name}}]]
-
+\{{#default_form:{{name}} }}
 {{/if~}}
 
 {{~#if overview}}

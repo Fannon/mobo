@@ -27,6 +27,62 @@ These properties will only work in context of models.
         "default": "table",
         "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
     },
+    "smw_prefix": {
+        "type": "object",
+        "description": "Adds a prefix wikitext to forms and models. Can auto-generate headers.",
+        "properties": {
+            "wikitext": {
+                "type": "string",
+                "description": "wikitext to prefix"
+            },
+            "header": {
+                "type": "number",
+                "description": "Inserts auto generated header of given hierachy (1-6)",
+                "minimum": 1,
+                "maximum": 6
+            },
+            "template": {
+                "type": "string",
+                "description": "name of a template to inject. Must exist"
+            },
+            "showForm": {
+                "type": "boolean",
+                "description": "Display prefix in form-view",
+                "default": true
+            },
+            "showPage": {
+                "type": "boolean",
+                "description": "Display prefix in page-view",
+                "default": true
+            }
+        },
+        "additionalProperties": false
+    },
+    "smw_postfix": {
+        "type": "object",
+        "description": "Adds a postfix wikitext to forms and models",
+        "properties": {
+            "wikitext": {
+                "type": "string",
+                "description": "wikitext to postfix"
+            },
+            "template": {
+                "type": "string",
+                "description": "name of a template to inject. Must exist"
+            },
+            "showForm": {
+                "type": "boolean",
+                "description": "Display postfix in form-view",
+                "default": true
+            },
+            "showPage": {
+                "type": "boolean",
+                "description": "Display postfix in page-view",
+                "default": true
+            }
+        },
+        "additionalProperties": false
+    },
     "smw_category": {
         "type": "boolean",
         "default": true,
@@ -35,7 +91,18 @@ These properties will only work in context of models.
     "smw_categories": {
         "$ref": "#/definitions/schemaArray",
         "description": "Array of additional categories the template should set."
-    }
+    },
+    "showForm": {
+        "type": "boolean",
+        "default": true,
+        "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
+    },
+    "showPage": {
+        "type": "boolean",
+        "default": true,
+        "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
+    },
+    "additionalProperties": false
 }
 ```
 
@@ -57,19 +124,7 @@ These mobo custom properties are global and can be used for fields, models and f
     },
     "$extend": {
         "type": "string",
-        "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.",
-        "properties": {
-            "showForm": {
-                "type": "boolean",
-                "default": true,
-                "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
-            },
-            "showSite": {
-                "type": "boolean",
-                "default": true,
-                "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
-            }
-        }
+        "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
     },
     "$reference": {
         "type": "string",
@@ -272,30 +327,12 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
                 }
             ]
         },
-        "allOf": {
-            "$ref": "#/definitions/schemaArray"
-        },
-        "anyOf": {
-            "$ref": "#/definitions/schemaArray"
-        },
         "oneOf": {
             "$ref": "#/definitions/schemaArray"
         },
         "$extend": {
             "type": "string",
-            "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.",
-            "properties": {
-                "showForm": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
-                },
-                "showSite": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
-                }
-            }
+            "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
         },
         "$reference": {
             "type": "string",
@@ -366,6 +403,62 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "default": "table",
             "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
         },
+        "smw_prefix": {
+            "type": "object",
+            "description": "Adds a prefix wikitext to forms and models. Can auto-generate headers.",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "header": {
+                    "type": "number",
+                    "description": "Inserts auto generated header of given hierachy (1-6)",
+                    "minimum": 1,
+                    "maximum": 6
+                },
+                "template": {
+                    "type": "string",
+                    "description": "name of a template to inject. Must exist"
+                },
+                "showForm": {
+                    "type": "boolean",
+                    "description": "Display prefix in form-view",
+                    "default": true
+                },
+                "showPage": {
+                    "type": "boolean",
+                    "description": "Display prefix in page-view",
+                    "default": true
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_postfix": {
+            "type": "object",
+            "description": "Adds a postfix wikitext to forms and models",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to postfix"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "name of a template to inject. Must exist"
+                },
+                "showForm": {
+                    "type": "boolean",
+                    "description": "Display postfix in form-view",
+                    "default": true
+                },
+                "showPage": {
+                    "type": "boolean",
+                    "description": "Display postfix in page-view",
+                    "default": true
+                }
+            },
+            "additionalProperties": false
+        },
         "smw_category": {
             "type": "boolean",
             "default": true,
@@ -375,6 +468,17 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "$ref": "#/definitions/schemaArray",
             "description": "Array of additional categories the template should set."
         },
+        "showForm": {
+            "type": "boolean",
+            "default": true,
+            "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view."
+        },
+        "showPage": {
+            "type": "boolean",
+            "default": true,
+            "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
+        },
+        "additionalProperties": false,
         "smw_forminput": {
             "type": "object",
             "description": "Object, containing SemanticForms #forminput options",
