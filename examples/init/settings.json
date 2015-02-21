@@ -6,6 +6,6 @@
     "mw_password": "password",
 
     "watchFilesystem": true,
-    "serveWebapp": true,
-    "uploadToWiki": true
+    "serveWebApp": true,
+    "uploadWikiPages": true
 }

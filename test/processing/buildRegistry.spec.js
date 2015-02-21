@@ -97,7 +97,6 @@ describe('Registry Builder ', function() {
     it('expands the forms', function() {
 
         mockModel.expandedForms = extendProject.expandRegistry(mockModel, 'form');
-        mockModel.expandedForms = extendProject.expandForms(mockModel);
 
         expect(mockModel.expandedForms).to.include.keys(['Rectangle', 'Circle']);
 
