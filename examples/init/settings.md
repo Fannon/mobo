@@ -129,6 +129,11 @@ This file documents all available options for the settings.json and their defaul
         "default": false,
         "description": "If true this will hide the introduced Helper Categories from the display"
     },
+    "arraymapSeparator": {
+        "type": "string",
+        "default": ";",
+        "description": "Separator to seperate between multiple items"
+    },
     "useSimpleTooltipDescriptions": {
         "type": "boolean",
         "default": false,
@@ -237,6 +242,7 @@ These are the default settings that mobo comes with:
     "headerTabs": false,
     "formEditHelper": false,
     "hideFormEditHelper": false,
+    "arraymapSeparator": ";",
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,
     "sfDivLayout": false,

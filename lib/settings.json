@@ -27,6 +27,7 @@
     "formEditHelper": false,
     "hideFormEditHelper": false,
 
+    "arraymapSeparator": ";",
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,
     "sfDivLayout": false,
