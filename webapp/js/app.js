@@ -64,36 +64,31 @@ mobo.loadData = function() {
 
         mobo.registry = registry;
 
-        // Then get the generated wikitext
-        $.getJSON( "_processed/_generated.json", function(wikitext) {
-
-            mobo.wikitext = wikitext;
+        mobo.wikitext = registry.generated || {};
 
 
-            //////////////////////////////////////////
-            // BOOTSTRAP WEBAPP                     //
-            //////////////////////////////////////////
+        //////////////////////////////////////////
+        // BOOTSTRAP WEBAPP                     //
+        //////////////////////////////////////////
 
-            if (Object.keys(mobo.wikitext).length > 0) {
+        if (Object.keys(mobo.wikitext).length > 0) {
 
-                mobo.route();
+            mobo.route();
 
-                $('#select-schema').select2().on("change", function(e) {
-                    var selection = e.val.split('/');
-                    window.location.hash = '#' + selection[0] + '/' + selection[1];
-                });
+            $('#select-schema').select2().on("change", function(e) {
+                var selection = e.val.split('/');
+                window.location.hash = '#' + selection[0] + '/' + selection[1];
+            });
 
-                $('#select-wikitext').select2().on("change", function(e) {
-                    window.location.hash = '#' + e.val;
-                });
+            $('#select-wikitext').select2().on("change", function(e) {
+                window.location.hash = '#' + e.val;
+            });
 
-                mobo.populateSelect('selection');
+            mobo.populateSelect('selection');
 
-            } else {
-                $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
-            }
-
-        });
+        } else {
+            $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
+        }
 
     });
 };

@@ -10,7 +10,6 @@
     "displayTodos": true,
     "watchFilesystem": true,
     "serveWebApp": true,
-    "generateWikiPages": true,
     "uploadWikiPages": true,
     "deleteWikiPages": false,
     "forceUpload": false,
