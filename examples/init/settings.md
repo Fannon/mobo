@@ -78,11 +78,6 @@ This file documents all available options for the settings.json and their defaul
         "default": 8081,
         "description": "WebSocket port the server and the WebGui are using to notify the change"
     },
-    "generateWikiPages": {
-        "type": "boolean",
-        "default": true,
-        "description": "Generates WikiPages (structure) from the development model"
-    },
     "buildGraph": {
         "type": "boolean",
         "default": true,
@@ -228,7 +223,6 @@ These are the default settings that mobo comes with:
     "displayTodos": true,
     "watchFilesystem": true,
     "serveWebApp": true,
-    "generateWikiPages": true,
     "uploadWikiPages": true,
     "deleteWikiPages": false,
     "forceUpload": false,

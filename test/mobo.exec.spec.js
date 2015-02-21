@@ -87,10 +87,9 @@ describe('mobo cli ', function() {
 
             // Check that the _processed directory was correctly populated
             var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
-            expect(processedModelContent).to.include('_generated.json');
 
             // "writeExportFiles": true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
-            expect(processedModelContent).to.include('_generated.json');
+            expect(processedModelContent).to.include('_registry.json');
 
             done();
         });
