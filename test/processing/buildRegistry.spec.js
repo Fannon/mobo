@@ -80,7 +80,7 @@ describe('Registry Builder ', function() {
     it('applies one-step inhertitance to models', function() {
         var extendedCircle = extendProject.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
-        expect(extendedCircle.properties.radius.$reference).to.equal('/field/radius.json');
+        expect(extendedCircle.properties.radius.$reference.path).to.equal('/field/radius.json');
     });
 
     it('expands the models', function() {
@@ -90,7 +90,7 @@ describe('Registry Builder ', function() {
 
         // Check that the model properties are correctly inherited
         expect(mockModel.expandedModel.Circle.properties.radius.title).to.equal('radius');
-        expect(mockModel.expandedModel.Circle.properties.radius.$reference).to.equal('/field/radius.json');
+        expect(mockModel.expandedModel.Circle.properties.radius.$reference.path).to.equal('/field/radius.json');
 
     });
 
