@@ -6,7 +6,7 @@
 //////////////////////////////////////////
 
 var expect = require('chai').expect;
-var validateSchema = require('../../lib/util/validateSchema.js');
+var validate = require('../../lib/util/validate.js');
 
 
 //////////////////////////////////////////
@@ -33,18 +33,18 @@ describe('Schema Validator ', function() {
     };
 
     it('validates valid objects against JSON Schema', function() {
-        var result = validateSchema.validate(testObject, testSchema);
+        var result = validate.validate(testObject, testSchema);
         expect(result.valid).to.be.true();
     });
 
     it('validates invalid objects against JSON Schema', function() {
         testObject.number = "wrong input type";
-        var result = validateSchema.validate(testObject, testSchema);
+        var result = validate.validate(testObject, testSchema);
         expect(result.valid).to.be.false();
     });
 
     it('writes/updates automatic schema documentation', function() {
-        var schemaDescriptions = validateSchema.writeSchemas();
+        var schemaDescriptions = validate.writeSchemas();
         expect(Object.keys(schemaDescriptions).length).to.be.least(3);
     });
 
