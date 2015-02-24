@@ -9,6 +9,14 @@
     },
     "required": ["x", "y", "radius"],
 
+    "prefix": {
+        "header": 1
+    },
+
+    "postfix": {
+        "wikitext": "This will be displayed after the model"
+    },
+
     "smw_subobject": true,
     "smw_category": true,
     "abstract": false
