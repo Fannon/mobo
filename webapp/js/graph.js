@@ -194,7 +194,7 @@ cbm.drawGraph = function() {
             });
 
             // If stage is clicked: Undo selection and coloring
-            s.bind('clickStage', function(e) {
+            s.bind('clickStage', function() {
                 s.graph.nodes().forEach(function(n) {
                     n.color = n.originalColor;
                 });
