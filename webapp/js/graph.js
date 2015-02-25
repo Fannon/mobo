@@ -1,3 +1,5 @@
+/* global $, sigma, window, document */
+
 var cbm = {};
 
 cbm.wikiUrl = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php/';
@@ -7,16 +9,17 @@ cbm.wikiUrl = 'http://semwiki-exp01.multimedia.hs-augsburg.de/exp-wiki/index.php
 //////////////////////////////////////////
 
 cbm.prepareGraph = function() {
+
     // Add a method to the graph model that returns an
     // object with every neighbors of a node inside:
     sigma.classes.graph.addMethod('neighbors', function(nodeId) {
-        var k,
-            neighbors = {},
-            index = this.allNeighborsIndex[nodeId] || {};
+        var k;
+        var neighbors = {};
+        var index = this.allNeighborsIndex[nodeId] || {};
 
-        for (k in index)
+        for (k in index) {
             neighbors[k] = this.nodesIndex[k];
-
+        }
         return neighbors;
     });
 };
@@ -119,8 +122,12 @@ cbm.drawGraph = function() {
                     html += '<strong>Type</strong>: ' + e.data.node.attributes.type + '<br>';
                 }
 
-                if (e.data.node.attributes.description) {
+                if (e.data.node.attributes.description && e.data.node.attributes.description !== 'undefined') {
                     html += '<strong>Description</strong>: ' + e.data.node.attributes.description + '<br>';
+                }
+
+                if (e.data.node.attributes['file path']) {
+                    html += '<strong>File path</strong>: ' + e.data.node.attributes['file path'] + '<br>';
                 }
 
                 html += '<hr>';
