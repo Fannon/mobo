@@ -169,7 +169,7 @@ mobo.loadSchema = function(type, name) {
     } else if (type === 'form') {
         schema = mobo.registry.expandedForm[name];
     } else if (type === 'field') {
-        schema = mobo.registry.field[name];
+        schema = mobo.registry.expandedField[name];
     }
 
     mobo.schemaOrig = schema;
