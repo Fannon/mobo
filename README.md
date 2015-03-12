@@ -1,12 +1,12 @@
-[![npm version](https://badge.fury.io/js/mobo.svg)](http://badge.fury.io/js/mobo)
-[![npm](https://img.shields.io/npm/l/express.svg)]()
-[![Dependency Status](https://david-dm.org/Fannon/mobo.svg)]()
-[![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
-[![codecov.io](https://codecov.io/github/Fannon/mobo/coverage.svg?branch=master)](https://codecov.io/github/Fannon/mobo?branch=master)
-
+[![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](http://badge.fury.io/js/mobo)
+[![npm licence](https://img.shields.io/npm/l/mobo.svg?style=flat)]()
+[![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)]()
+[![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
+[![codecov.io](https://img.shields.io/codacy/a7daff185e694c3d853bb35cbc6405c8.svg?style=flat)](https://www.codacy.com/public/heimlersimon/mobo/dashboard)
+[![codecov.io](https://img.shields.io/codecov/c/github/Fannon/mobo.svg?style=flat)](https://codecov.io/github/Fannon/mobo?branch=master)
 
 <p align="center">
-    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
+    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" style="border-radius: 3px;"/>
 </p>
 
 ## About mobo
