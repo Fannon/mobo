@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - '0.10'
   - '0.12'
+before_install:
+  sudo pip install codecov
 before_script:
   - npm install -g grunt-cli
 notifications:
@@ -10,5 +12,6 @@ notifications:
     on_failure: [always] # default: always
     recipients:
       - info@fannon.de
+
 after_success:
-  - coveralls
+  codecov

@@ -250,7 +250,7 @@ SemanticForms itself does not support / supply this for a div based layout.</sub
        <tr>
            <td><sub>modelNodeSize</sub></td>
            <td><sub>number</sub></td>
-           <td><sub>12</sub></td>
+           <td><sub>20</sub></td>
            <td><sub></sub></td>
        </tr>
        <tr>
