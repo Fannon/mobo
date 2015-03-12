@@ -8,7 +8,7 @@ before_script:
   - npm install -g grunt-cli
 addons:
   code_climate:
-    repo_token: aff33f...
+    repo_token: 8b18cab11dc6aec1a9e220cd2981ea1a7947d116a868d4370c1bd5f2b264c07e
 notifications:
   email:
     on_success: [never] # default: change
