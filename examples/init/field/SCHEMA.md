@@ -7,102 +7,135 @@ For descriptions and default, look for the corresponding properties.
 
 ## field specific properties
 These properties will only work in context of fields.
-```json
-{
-    "smw_property": {
-        "type": "boolean",
-        "default": true,
-        "description": "Declares if this field should be saved as a SMW property, through #set or #subobject"
-    },
-    "smw_form": {
-        "type": "object",
-        "description": "Object, containing SemanticForms option, that will be redirected to the form",
-        "additionalProperties": true
-    }
-}
-```
+<h3>mobo fields</h3>
+<div class="description">mobo field JSON Schema</div>
+<table class="schema-description">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>Type</th>
+           <th>Default</th>
+           <th>Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>smw_property</td>
+           <td>boolean</td>
+           <td>true</td>
+           <td>Declares if this field should be saved as a SMW property, through #set or #subobject</td>
+       </tr>
+       <tr>
+           <td>smw_form</td>
+           <td>object</td>
+           <td></td>
+           <td>Object, containing SemanticForms option, that will be redirected to the form</td>
+       </tr>
+   </tbody>
+   </table>
 
 ## mobo specific properties
 These mobo custom properties are global and can be used for fields, models and forms. 
-```json
-{
-    "$schema": {
-        "description": "Optional JSON Schema $schema URL. Does not need not be included."
-    },
-    "id": {
-        "description": "Usually auto generated id, consisting of the filename"
-    },
-    "title": {
-        "description": "Human readable title of the field"
-    },
-    "description": {
-        "description": "Description of the field. Can be displayed as tooltip info"
-    },
-    "$extend": {
-        "type": "string",
-        "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
-    },
-    "$reference": {
-        "type": "string",
-        "description": "For internal use only! After inheritance is applied, $extend will be replaced through $extend. (For keeping info on the heritage)"
-    },
-    "$filepath": {
-        "type": "string",
-        "description": "For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages"
-    },
-    "ignore": {
-        "type": "boolean",
-        "default": false,
-        "description": "If true this file will be ignored."
-    },
-    "abstract": {
-        "type": "boolean",
-        "default": false,
-        "description": "If true this object is only used for inheritance and will not be created itself."
-    },
-    "format": {
-        "type": "string",
-        "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
-    },
-    "propertyOrder": {
-        "$ref": "#/definitions/schemaArray",
-        "description": "Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order."
-    },
-    "todo": {
-        "type": "string",
-        "description": "If todo notes are placed here, mobo can output them (this is a setting)"
-    },
-    "note": {
-        "description": "Notes can be strings or objects and their content will be ignored",
-        "anyOf": [
-            {
-                "type": "string"
-            },
-            {
-                "type": "object"
-            }
-        ]
-    }
-}
-```
+<h3></h3>
+<table class="schema-description">
+   <thead>
+       <tr>
+           <th>ID</th>
+           <th>Type</th>
+           <th>Default</th>
+           <th>Description</th>
+       </tr>
+   </thead>
+   <tbody>
+       <tr>
+           <td>properties</td>
+           <td>object,array</td>
+           <td></td>
+           <td></td>
+       </tr>
+       <tr>
+           <td>$schema</td>
+           <td></td>
+           <td></td>
+           <td>Optional JSON Schema $schema URL. Does not need not be included.</td>
+       </tr>
+       <tr>
+           <td>id</td>
+           <td>string</td>
+           <td></td>
+           <td>Usually auto generated id, consisting of the filename</td>
+       </tr>
+       <tr>
+           <td>title</td>
+           <td>string</td>
+           <td></td>
+           <td>Human readable title of the field</td>
+       </tr>
+       <tr>
+           <td>description</td>
+           <td>string</td>
+           <td></td>
+           <td>Description of the field. Can be displayed as tooltip info</td>
+       </tr>
+       <tr>
+           <td>$extend</td>
+           <td>string</td>
+           <td></td>
+           <td>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</td>
+       </tr>
+       <tr>
+           <td>$reference</td>
+           <td>object</td>
+           <td></td>
+           <td>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</td>
+       </tr>
+       <tr>
+           <td>$filepath</td>
+           <td>string</td>
+           <td></td>
+           <td>For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages</td>
+       </tr>
+       <tr>
+           <td>ignore</td>
+           <td>boolean</td>
+           <td>false</td>
+           <td>If true this file will be ignored.</td>
+       </tr>
+       <tr>
+           <td>abstract</td>
+           <td>boolean</td>
+           <td>false</td>
+           <td>If true this object is only used for inheritance and will not be created itself.</td>
+       </tr>
+       <tr>
+           <td>format</td>
+           <td>string</td>
+           <td></td>
+           <td>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</td>
+       </tr>
+       <tr>
+           <td>propertyOrder</td>
+           <td>array</td>
+           <td></td>
+           <td>Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order.</td>
+       </tr>
+       <tr>
+           <td>todo</td>
+           <td>string</td>
+           <td></td>
+           <td>If todo notes are placed here, mobo can output them (this is a setting)</td>
+       </tr>
+       <tr>
+           <td>note</td>
+           <td>string,object</td>
+           <td></td>
+           <td>Notes can be strings or objects and their content will be ignored</td>
+       </tr>
+   </tbody>
+   </table>
 
 ## Unsupported JSON Schema Core features
 These features / properties of JSON Schema Core are not supported by mobo: 
-```json
-[
-    "properties.multipleOf",
-    "properties.exclusiveMaximum",
-    "properties.exclusiveMinimum",
-    "properties.additionalItems",
-    "properties.uniqueItems",
-    "properties.additionalProperties",
-    "properties.definitions",
-    "properties.patternProperties",
-    "properties.dependencies",
-    "properties.not",
-    "dependencies"
-]
-```
 
 ## Complete JSON Schema
 This is the final JSON Schema, including a simplified JSON Schema core and all mobo and field specific addons / changes. 
@@ -174,11 +207,24 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "Description of the field. Can be displayed as tooltip info"
         },
         "default": {},
+        "multipleOf": {
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true
+        },
         "maximum": {
             "type": "number"
         },
+        "exclusiveMaximum": {
+            "type": "boolean",
+            "default": false
+        },
         "minimum": {
             "type": "number"
+        },
+        "exclusiveMinimum": {
+            "type": "boolean",
+            "default": false
         },
         "maxLength": {
             "$ref": "#/definitions/positiveInteger"
@@ -189,6 +235,17 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "pattern": {
             "type": "string",
             "format": "regex"
+        },
+        "additionalItems": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "$ref": "#"
+                }
+            ],
+            "default": {}
         },
         "items": {
             "anyOf": [
@@ -207,6 +264,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "minItems": {
             "$ref": "#/definitions/positiveIntegerDefault0"
         },
+        "uniqueItems": {
+            "type": "boolean",
+            "default": false
+        },
         "maxProperties": {
             "$ref": "#/definitions/positiveInteger"
         },
@@ -216,12 +277,47 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "required": {
             "$ref": "#/definitions/stringArray"
         },
-        "properties": {
+        "additionalProperties": false,
+        "definitions": {
             "type": "object",
             "additionalProperties": {
                 "$ref": "#"
             },
             "default": {}
+        },
+        "properties": {
+            "type": [
+                "object",
+                "array",
+                "j",
+                "e",
+                "c",
+                "t"
+            ],
+            "additionalProperties": {
+                "$ref": "#"
+            },
+            "default": {}
+        },
+        "patternProperties": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "#"
+            },
+            "default": {}
+        },
+        "dependencies": {
+            "type": "object",
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "$ref": "#"
+                    },
+                    {
+                        "$ref": "#/definitions/stringArray"
+                    }
+                ]
+            }
         },
         "enum": {
             "type": "array",
@@ -243,16 +339,25 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
                 }
             ]
         },
+        "allOf": {
+            "$ref": "#/definitions/schemaArray"
+        },
+        "anyOf": {
+            "$ref": "#/definitions/schemaArray"
+        },
         "oneOf": {
             "$ref": "#/definitions/schemaArray"
+        },
+        "not": {
+            "$ref": "#"
         },
         "$extend": {
             "type": "string",
             "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
         },
         "$reference": {
-            "type": "string",
-            "description": "For internal use only! After inheritance is applied, $extend will be replaced through $extend. (For keeping info on the heritage)"
+            "type": "object",
+            "description": "For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)"
         },
         "$filepath": {
             "type": "string",
@@ -274,6 +379,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         },
         "propertyOrder": {
             "$ref": "#/definitions/schemaArray",
+            "type": "array",
             "description": "Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order."
         },
         "todo": {
@@ -282,13 +388,9 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         },
         "note": {
             "description": "Notes can be strings or objects and their content will be ignored",
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "object"
-                }
+            "type": [
+                "string",
+                "object"
             ]
         },
         "smw_property": {
@@ -394,7 +496,6 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "default": true,
             "description": "This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view."
         },
-        "additionalProperties": false,
         "smw_forminput": {
             "type": "object",
             "description": "Object, containing SemanticForms #forminput options",
@@ -421,9 +522,9 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
     },
     "default": {},
     "required": [
-        "id",
         "type"
     ],
-    "additionalProperties": false
+    "additionalProperties": false,
+    "title": "mobo fields"
 }
 ```
