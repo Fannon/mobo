@@ -1,16 +1,18 @@
 [![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](https://www.npmjs.com/package/mobo)
 [![npm licence](https://img.shields.io/npm/l/mobo.svg?style=flat)](https://github.com/Fannon/mobo/blob/master/LICENSE.txt)
-[![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)]()
+[![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)](https://david-dm.org/Fannon/mobo)
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
 [![codacy](https://img.shields.io/codacy/a7daff185e694c3d853bb35cbc6405c8.svg?style=flat)](https://www.codacy.com/public/heimlersimon/mobo/dashboard)
 [![codecov.io](https://img.shields.io/codecov/c/github/Fannon/mobo.svg?style=flat)](https://codecov.io/github/Fannon/mobo?branch=master)
 
 <p align="center">
-    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" sytnle="border-radius: 3px;"/>
+    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" style="border-radius: 3px;"/>
 </p>
 
 ## About mobo
-Mobo is a command line toolset that helps building Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. Using mobo, the model is developed on the local file system, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor and Version Control Systems can be used.
+Mobo is a command line toolset that helps building Semantic MediaWiki structure in an agile, model driven engineering (MDE) way.
+The model is developed on the local file system, using an object oriented, customized JSON Schema notation.
+Since the model is written in plain JSON files, any editor and Version Control Systems can be used.
 
 The main feature of mobo is the JSON Schema based model development workflow. It consists of several steps:
 * Watch the local filesystem and automatically run when changes are detected.

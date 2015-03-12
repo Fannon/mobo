@@ -6,12 +6,16 @@ before_install:
   sudo pip install codecov
 before_script:
   - npm install -g grunt-cli
+addons:
+  code_climate:
+    repo_token: aff33f...
 notifications:
   email:
     on_success: [never] # default: change
     on_failure: [always] # default: always
     recipients:
       - info@fannon.de
-
+after_script:
+  - cat coverage/lcov.info | codeclimate
 after_success:
   codecov
