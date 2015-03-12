@@ -3,7 +3,7 @@ node_js:
   - '0.10'
   - '0.12'
 before_install:
-  sudo pip install codecov
+
 before_script:
   - npm install -g grunt-cli
 addons:
@@ -18,4 +18,3 @@ notifications:
 after_script:
   - cat coverage/lcov.info | codeclimate
 after_success:
-  codecov

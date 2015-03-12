@@ -2,8 +2,8 @@
 [![npm licence](https://img.shields.io/npm/l/mobo.svg?style=flat)](https://github.com/Fannon/mobo/blob/master/LICENSE.txt)
 [![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)](https://david-dm.org/Fannon/mobo)
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
-[![codacy](https://img.shields.io/codacy/a7daff185e694c3d853bb35cbc6405c8.svg?style=flat)](https://www.codacy.com/public/heimlersimon/mobo/dashboard)
-[![codecov.io](https://img.shields.io/codecov/c/github/Fannon/mobo.svg?style=flat)](https://codecov.io/github/Fannon/mobo?branch=master)
+[![codacy](https://img.shields.io/codeclimate/github/Fannon/mobo.svg?style=flat)](https://codeclimate.com/github/Fannon/mobo)
+[![codacy coverage](https://img.shields.io/codeclimate/coverage/github/Fannon/mobo.svg?style=flat)](https://codeclimate.com/github/Fannon/mobo)
 
 <p align="center">
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" style="border-radius: 3px;"/>
