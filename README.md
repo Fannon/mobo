@@ -1,4 +1,9 @@
+[![npm version](https://badge.fury.io/js/mobo.svg)](http://badge.fury.io/js/mobo)
+[![npm](https://img.shields.io/npm/l/express.svg)]()
+[![Dependency Status](https://david-dm.org/Fannon/mobo.svg)]()
 [![Build Status](https://secure.travis-ci.org/Fannon/mobo.png?branch=master)](http://travis-ci.org/Fannon/mobo)
+[![codecov.io](https://codecov.io/github/Fannon/mobo/coverage.svg?branch=master)](https://codecov.io/github/Fannon/mobo?branch=master)
+
 
 <p align="center">
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" />
