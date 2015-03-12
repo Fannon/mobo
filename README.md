@@ -1,4 +1,4 @@
-[![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](http://badge.fury.io/js/mobo)
+[![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](https://www.npmjs.com/package/mobo)
 [![npm licence](https://img.shields.io/npm/l/mobo.svg?style=flat)]()
 [![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)]()
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
@@ -6,14 +6,27 @@
 [![codecov.io](https://img.shields.io/codecov/c/github/Fannon/mobo.svg?style=flat)](https://codecov.io/github/Fannon/mobo?branch=master)
 
 <p align="center">
-    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" style="border-radius: 3px;"/>
+    <img src ="http://fannon.de/p/mobo-intro/img/logo.png" sytnle="border-radius: 3px;"/>
 </p>
 
 ## About mobo
-mobo is a command line tool that generates Semantic MediaWiki structure from object oriented [JSON Schema](http://json-schema.org/) files.
-It is built to provide a fast, automated and DRY (don't repeat yourself) model development workflow.
+mobo is a command line toolset that helps to build Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. The model is developed on the local filesystem, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor of choice and Version Control Systems like Git can be used.
 
-mobo converts, validates, visualizes and uploads your development model in realtime to your wiki.
+With mobo come many features, such as:
+* **MAIN FEATURE:** JSON Schema based model development workflow (explained in more detail below)
+* A WebApplication that helps analyzing the development model in its various stages
+* A WebApplication that interactively visualizes the development model in a graph representation
+* Mobo can be used to (batch-) upload local wikitext files to a remote wiki
+
+The model development workflow consists of several steps:
+* Watches the local filesystem and automatically (re)runs if changes were made.
+* Read the development model and project settings from the local filesystem
+* Validates the model and gives feedback on syntax and structural errors
+* Applies inheritance and checks for semantic errors
+* Generates SMW wikitext structure
+* Calculates the differences between the last upload state and the current state and uploads / updates those pages on an external wiki
+
+Those steps can run in matters of millisecons to seconds. This makes mobo a great tool for real-time, iterative model development.
 
 ## Getting Started
 ### Requirements
@@ -114,6 +127,13 @@ If you create a new project via `mobo --init` they will be placed in your projec
     * [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
     * [/templates (mobo templates)](examples/init/templates/README.md)
 
+## Typical Workflow / Example
+
+TODO:
+* Move this to a new page
+* Link to example in github
+
+
 ## Screenshots
 > Your model is developed with your favorite text editor:
 
@@ -138,10 +158,6 @@ If you create a new project via `mobo --init` they will be placed in your projec
 > Templates are auto-documented:
 
 ![docs](http://fannon.de/p/mobo-intro/img/docs.png)
-
-## Demo
-
-_(Coming soon)_
 
 
 ## License
