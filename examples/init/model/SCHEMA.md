@@ -7,259 +7,252 @@ For descriptions and default, look for the corresponding properties.
 
 ## model specific properties
 These properties will only work in context of models.
-<h3></h3>
-<div class="description">mobo model JSON Schema</div>
 <table class="schema-description">
    <thead>
        <tr>
-           <th><sub>ID</sub></th>
-           <th><sub>Type</sub></th>
-           <th><sub>Default</sub></th>
-           <th><sub>Description</sub></th>
+           <th><small>ID</small></th>
+           <th><small>Type</small></th>
+           <th><small>Default</small></th>
+           <th><small>Description</small></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td><sub>recommended</sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
-           <td><sub>Array of fields that should be highlighted as recommended (complementary to mandatory)</sub></td>
+           <td><small>recommended</small></td>
+           <td><small></small></td>
+           <td><small></small></td>
+           <td><small>Array of fields that should be highlighted as recommended (complementary to mandatory)</small></td>
        </tr>
        <tr>
-           <td><sub>smw_subobject</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>false</sub></td>
-           <td><sub>If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances.</sub></td>
+           <td><small>smw_subobject</small></td>
+           <td><small>boolean</small></td>
+           <td><small>false</small></td>
+           <td><small>If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances.</small></td>
        </tr>
        <tr>
-           <td><sub>smw_display</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub>table</sub></td>
-           <td><sub>Defines the template output rendering mode, whether the template should use tables, ul, etc.</sub></td>
+           <td><small>smw_display</small></td>
+           <td><small>string</small></td>
+           <td><small>table</small></td>
+           <td><small>Defines the template output rendering mode, whether the template should use tables, ul, etc.</small></td>
        </tr>
        <tr>
-           <td><sub>smw_prefix</sub></td>
-           <td><sub>object</sub></td>
-           <td><sub></sub></td>
-           <td><sub><h3></h3>
-<div class="description">Adds a prefix wikitext to forms and models. Can auto-generate headers.</div>
-<table class="schema-description">
+           <td><small>smw_prefix</small></td>
+           <td><small>object</small></td>
+           <td><small></small></td>
+           <td><small><table class="schema-description">
    <thead>
        <tr>
-           <th><sub>ID</sub></th>
-           <th><sub>Type</sub></th>
-           <th><sub>Default</sub></th>
-           <th><sub>Description</sub></th>
+           <th><small>ID</small></th>
+           <th><small>Type</small></th>
+           <th><small>Default</small></th>
+           <th><small>Description</small></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td><sub>wikitext</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>wikitext to prefix</sub></td>
+           <td><small>wikitext</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>wikitext to prefix</small></td>
        </tr>
        <tr>
-           <td><sub>header</sub></td>
-           <td><sub>number</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Inserts auto generated header of given hierachy (1-6)</sub></td>
+           <td><small>header</small></td>
+           <td><small>number</small></td>
+           <td><small></small></td>
+           <td><small>Inserts auto generated header of given hierachy (1-6)</small></td>
        </tr>
        <tr>
-           <td><sub>template</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>name of a template to inject. Must exist</sub></td>
+           <td><small>template</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>name of a template to inject. Must exist</small></td>
        </tr>
        <tr>
-           <td><sub>showForm</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>Display prefix in form-view</sub></td>
+           <td><small>showForm</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>Display prefix in form-view</small></td>
        </tr>
        <tr>
-           <td><sub>showPage</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>Display prefix in page-view</sub></td>
+           <td><small>showPage</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>Display prefix in page-view</small></td>
        </tr>
    </tbody>
    </table>
-</sub></td>
+</small></td>
        </tr>
        <tr>
-           <td><sub>smw_postfix</sub></td>
-           <td><sub>object</sub></td>
-           <td><sub></sub></td>
-           <td><sub><h3></h3>
-<div class="description">Adds a postfix wikitext to forms and models</div>
-<table class="schema-description">
+           <td><small>smw_postfix</small></td>
+           <td><small>object</small></td>
+           <td><small></small></td>
+           <td><small><table class="schema-description">
    <thead>
        <tr>
-           <th><sub>ID</sub></th>
-           <th><sub>Type</sub></th>
-           <th><sub>Default</sub></th>
-           <th><sub>Description</sub></th>
+           <th><small>ID</small></th>
+           <th><small>Type</small></th>
+           <th><small>Default</small></th>
+           <th><small>Description</small></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td><sub>wikitext</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>wikitext to postfix</sub></td>
+           <td><small>wikitext</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>wikitext to postfix</small></td>
        </tr>
        <tr>
-           <td><sub>template</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>name of a template to inject. Must exist</sub></td>
+           <td><small>template</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>name of a template to inject. Must exist</small></td>
        </tr>
        <tr>
-           <td><sub>showForm</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>Display postfix in form-view</sub></td>
+           <td><small>showForm</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>Display postfix in form-view</small></td>
        </tr>
        <tr>
-           <td><sub>showPage</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>Display postfix in page-view</sub></td>
+           <td><small>showPage</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>Display postfix in page-view</small></td>
        </tr>
    </tbody>
    </table>
-</sub></td>
+</small></td>
        </tr>
        <tr>
-           <td><sub>smw_category</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>This property decides whether the template should tag the page as a category of the model-name.</sub></td>
+           <td><small>smw_category</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>This property decides whether the template should tag the page as a category of the model-name.</small></td>
        </tr>
        <tr>
-           <td><sub>smw_categories</sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
-           <td><sub>Array of additional categories the template should set.</sub></td>
+           <td><small>smw_categories</small></td>
+           <td><small></small></td>
+           <td><small></small></td>
+           <td><small>Array of additional categories the template should set.</small></td>
        </tr>
        <tr>
-           <td><sub>showForm</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view.</sub></td>
+           <td><small>showForm</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the edit form view.</small></td>
        </tr>
        <tr>
-           <td><sub>showPage</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>true</sub></td>
-           <td><sub>This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view.</sub></td>
+           <td><small>showPage</small></td>
+           <td><small>boolean</small></td>
+           <td><small>true</small></td>
+           <td><small>This applies to forms referencing templates only: If an template (.wikitext) is extended into the form, this property will decide if it is shown in the vie page view.</small></td>
        </tr>
        <tr>
-           <td><sub>additionalProperties</sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
+           <td><small>additionalProperties</small></td>
+           <td><small></small></td>
+           <td><small></small></td>
+           <td><small></small></td>
        </tr>
    </tbody>
    </table>
 
 ## mobo specific properties
 These mobo custom properties are global and can be used for fields, models and forms. 
-<h3></h3>
 <table class="schema-description">
    <thead>
        <tr>
-           <th><sub>ID</sub></th>
-           <th><sub>Type</sub></th>
-           <th><sub>Default</sub></th>
-           <th><sub>Description</sub></th>
+           <th><small>ID</small></th>
+           <th><small>Type</small></th>
+           <th><small>Default</small></th>
+           <th><small>Description</small></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td><sub>properties</sub></td>
-           <td><sub>object,array</sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
+           <td><small>properties</small></td>
+           <td><small>object,array</small></td>
+           <td><small></small></td>
+           <td><small></small></td>
        </tr>
        <tr>
-           <td><sub>$schema</sub></td>
-           <td><sub></sub></td>
-           <td><sub></sub></td>
-           <td><sub>Optional JSON Schema $schema URL. Does not need not be included.</sub></td>
+           <td><small>$schema</small></td>
+           <td><small></small></td>
+           <td><small></small></td>
+           <td><small>Optional JSON Schema $schema URL. Does not need not be included.</small></td>
        </tr>
        <tr>
-           <td><sub>id</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Usually auto generated id, consisting of the filename</sub></td>
+           <td><small>id</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>Usually auto generated id, consisting of the filename</small></td>
        </tr>
        <tr>
-           <td><sub>title</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Human readable title of the field</sub></td>
+           <td><small>title</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>Human readable title of the field</small></td>
        </tr>
        <tr>
-           <td><sub>description</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Description of the field. Can be displayed as tooltip info</sub></td>
+           <td><small>description</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>Description of the field. Can be displayed as tooltip info</small></td>
        </tr>
        <tr>
-           <td><sub>$extend</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</sub></td>
+           <td><small>$extend</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</small></td>
        </tr>
        <tr>
-           <td><sub>$reference</sub></td>
-           <td><sub>object</sub></td>
-           <td><sub></sub></td>
-           <td><sub>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</sub></td>
+           <td><small>$reference</small></td>
+           <td><small>object</small></td>
+           <td><small></small></td>
+           <td><small>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</small></td>
        </tr>
        <tr>
-           <td><sub>$filepath</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages</sub></td>
+           <td><small>$filepath</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages</small></td>
        </tr>
        <tr>
-           <td><sub>ignore</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>false</sub></td>
-           <td><sub>If true this file will be ignored.</sub></td>
+           <td><small>ignore</small></td>
+           <td><small>boolean</small></td>
+           <td><small>false</small></td>
+           <td><small>If true this file will be ignored.</small></td>
        </tr>
        <tr>
-           <td><sub>abstract</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>false</sub></td>
-           <td><sub>If true this object is only used for inheritance and will not be created itself.</sub></td>
+           <td><small>abstract</small></td>
+           <td><small>boolean</small></td>
+           <td><small>false</small></td>
+           <td><small>If true this object is only used for inheritance and will not be created itself.</small></td>
        </tr>
        <tr>
-           <td><sub>format</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</sub></td>
+           <td><small>format</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</small></td>
        </tr>
        <tr>
-           <td><sub>propertyOrder</sub></td>
-           <td><sub>array</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order.</sub></td>
+           <td><small>propertyOrder</small></td>
+           <td><small>array</small></td>
+           <td><small></small></td>
+           <td><small>Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order.</small></td>
        </tr>
        <tr>
-           <td><sub>todo</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>If todo notes are placed here, mobo can output them (this is a setting)</sub></td>
+           <td><small>todo</small></td>
+           <td><small>string</small></td>
+           <td><small></small></td>
+           <td><small>If todo notes are placed here, mobo can output them (this is a setting)</small></td>
        </tr>
        <tr>
-           <td><sub>note</sub></td>
-           <td><sub>string,object</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Notes can be strings or objects and their content will be ignored</sub></td>
+           <td><small>note</small></td>
+           <td><small>string,object</small></td>
+           <td><small></small></td>
+           <td><small>Notes can be strings or objects and their content will be ignored</small></td>
        </tr>
    </tbody>
    </table>
