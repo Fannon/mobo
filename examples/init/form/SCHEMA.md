@@ -12,42 +12,42 @@ These properties will only work in context of forms.
 <table class="schema-description">
    <thead>
        <tr>
-           <th>ID</th>
-           <th>Type</th>
-           <th>Default</th>
-           <th>Description</th>
+           <th><sub>ID</sub></th>
+           <th><sub>Type</sub></th>
+           <th><sub>Default</sub></th>
+           <th><sub>Description</sub></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td>smw_forminput</td>
-           <td>object</td>
-           <td></td>
-           <td>Object, containing SemanticForms #forminput options</td>
+           <td><sub>smw_forminput</sub></td>
+           <td><sub>object</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Object, containing SemanticForms #forminput options</sub></td>
        </tr>
        <tr>
-           <td>smw_forminfo</td>
-           <td>object</td>
-           <td></td>
-           <td>Object (Set), containing all SemanticForms {{{info}}} parameters.</td>
+           <td><sub>smw_forminfo</sub></td>
+           <td><sub>object</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Object (Set), containing all SemanticForms {{{info}}} parameters.</sub></td>
        </tr>
        <tr>
-           <td>smw_naming</td>
-           <td>string</td>
-           <td></td>
-           <td>Provides naming conventions / guideline. Will appear on the form page itself.</td>
+           <td><sub>smw_naming</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Provides naming conventions / guideline. Will appear on the form page itself.</sub></td>
        </tr>
        <tr>
-           <td>smw_freetext</td>
-           <td>boolean</td>
-           <td>true</td>
-           <td>Decides whether the freetext textarea will be displayed below the form.</td>
+           <td><sub>smw_freetext</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>true</sub></td>
+           <td><sub>Decides whether the freetext textarea will be displayed below the form.</sub></td>
        </tr>
        <tr>
-           <td>smw_summary</td>
-           <td>boolean</td>
-           <td>false</td>
-           <td>Decides whether a summary field will be displayed at the bottom of the form.</td>
+           <td><sub>smw_summary</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>Decides whether a summary field will be displayed at the bottom of the form.</sub></td>
        </tr>
    </tbody>
    </table>
@@ -58,96 +58,96 @@ These mobo custom properties are global and can be used for fields, models and f
 <table class="schema-description">
    <thead>
        <tr>
-           <th>ID</th>
-           <th>Type</th>
-           <th>Default</th>
-           <th>Description</th>
+           <th><sub>ID</sub></th>
+           <th><sub>Type</sub></th>
+           <th><sub>Default</sub></th>
+           <th><sub>Description</sub></th>
        </tr>
    </thead>
    <tbody>
        <tr>
-           <td>properties</td>
-           <td>object,array</td>
-           <td></td>
-           <td></td>
+           <td><sub>properties</sub></td>
+           <td><sub>object,array</sub></td>
+           <td><sub></sub></td>
+           <td><sub></sub></td>
        </tr>
        <tr>
-           <td>$schema</td>
-           <td></td>
-           <td></td>
-           <td>Optional JSON Schema $schema URL. Does not need not be included.</td>
+           <td><sub>$schema</sub></td>
+           <td><sub></sub></td>
+           <td><sub></sub></td>
+           <td><sub>Optional JSON Schema $schema URL. Does not need not be included.</sub></td>
        </tr>
        <tr>
-           <td>id</td>
-           <td>string</td>
-           <td></td>
-           <td>Usually auto generated id, consisting of the filename</td>
+           <td><sub>id</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Usually auto generated id, consisting of the filename</sub></td>
        </tr>
        <tr>
-           <td>title</td>
-           <td>string</td>
-           <td></td>
-           <td>Human readable title of the field</td>
+           <td><sub>title</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Human readable title of the field</sub></td>
        </tr>
        <tr>
-           <td>description</td>
-           <td>string</td>
-           <td></td>
-           <td>Description of the field. Can be displayed as tooltip info</td>
+           <td><sub>description</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Description of the field. Can be displayed as tooltip info</sub></td>
        </tr>
        <tr>
-           <td>$extend</td>
-           <td>string</td>
-           <td></td>
-           <td>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</td>
+           <td><sub>$extend</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</sub></td>
        </tr>
        <tr>
-           <td>$reference</td>
-           <td>object</td>
-           <td></td>
-           <td>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</td>
+           <td><sub>$reference</sub></td>
+           <td><sub>object</sub></td>
+           <td><sub></sub></td>
+           <td><sub>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</sub></td>
        </tr>
        <tr>
-           <td>$filepath</td>
-           <td>string</td>
-           <td></td>
-           <td>For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages</td>
+           <td><sub>$filepath</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>For Internal use only! This stores the relative path of the .json file. Used for improved debugging messages</sub></td>
        </tr>
        <tr>
-           <td>ignore</td>
-           <td>boolean</td>
-           <td>false</td>
-           <td>If true this file will be ignored.</td>
+           <td><sub>ignore</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If true this file will be ignored.</sub></td>
        </tr>
        <tr>
-           <td>abstract</td>
-           <td>boolean</td>
-           <td>false</td>
-           <td>If true this object is only used for inheritance and will not be created itself.</td>
+           <td><sub>abstract</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If true this object is only used for inheritance and will not be created itself.</sub></td>
        </tr>
        <tr>
-           <td>format</td>
-           <td>string</td>
-           <td></td>
-           <td>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</td>
+           <td><sub>format</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</sub></td>
        </tr>
        <tr>
-           <td>propertyOrder</td>
-           <td>array</td>
-           <td></td>
-           <td>Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order.</td>
+           <td><sub>propertyOrder</sub></td>
+           <td><sub>array</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Array that sets the display order of all (including inherited) properties. Unmentioned fields will be appended at the bottom in their original order.</sub></td>
        </tr>
        <tr>
-           <td>todo</td>
-           <td>string</td>
-           <td></td>
-           <td>If todo notes are placed here, mobo can output them (this is a setting)</td>
+           <td><sub>todo</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>If todo notes are placed here, mobo can output them (this is a setting)</sub></td>
        </tr>
        <tr>
-           <td>note</td>
-           <td>string,object</td>
-           <td></td>
-           <td>Notes can be strings or objects and their content will be ignored</td>
+           <td><sub>note</sub></td>
+           <td><sub>string,object</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Notes can be strings or objects and their content will be ignored</sub></td>
        </tr>
    </tbody>
    </table>
