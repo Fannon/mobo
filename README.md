@@ -10,21 +10,25 @@
 </p>
 
 ## About mobo
-Mobo is a command line toolset that helps building Semantic MediaWiki structure in an agile, model driven engineering (MDE) way.
-The model is developed on the local file system, using an object oriented, customized JSON Schema notation.
-Since the model is written in plain JSON files, any editor and Version Control Systems can be used.
+Mobo is a command line toolset that helps to build Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. The model is developed on the local file system, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor of choice and Version Control Systems like Git can be used.
 
-The main feature of mobo is the JSON Schema based model development workflow. It consists of several steps:
-* Watch the local filesystem and automatically run when changes are detected.
+The main function of the mobo toolset is the JSON Schema based model de-velopment workflow. To support this, it also features a web application that documents the development model in its various stages. There is also an interactive graph explorer that gives a more visual representation.
+
+Mobo can also be used to batch-upload wiki pages in general and it is planned to support some basic external data transformation and importing capabilities.
+
+Mobo is open source (https://github.com/Fannon/mobo) and cross platform. 
+
+## Model Development Workflow
+Mobo can be run in either an interactive or run-through mode. By default the interactive mode is used, which serves the web application, watches the file system and (re)triggers the model generation process if changes are detected.
+Following tasks are executed by mobo:
+
 * Read the development model and project settings from the local file system
-* Validate the model with feedback on the errors
+* Validates the development model and gives feedback on syntax, structural and semantic errors
 * Applies inheritance
 * Generates SMW wikitext structure
-* Calculates the differences between the last upload state and the current state and uploads / updates those pages on an external wiki
+* Calculates the differences between the last upload state and the cur-rent state and uploads / updates those pages on an external wiki
 
-Mobo also features a WebApplication that runs on the localhost. It documents the development model in its various stages. There is an optional interactive graph visualization of the model, this does require a manual step of graph layouting with [Gephi](http://gephi.github.io/) however.
-
-Generating and uploading changes in the model is only a matter of millisecons to seconds. This makes mobo a great tool for real-time, iterative model development.
+Those steps can run in a few seconds total. This makes mobo a great tool for real-time, iterative model development.
 
 ## Getting Started
 ### Requirements
@@ -46,7 +50,7 @@ $wgCrossSiteAJAXdomains = array( '*' );
 ```
 
 ### Installation
-mobo should be installed on the machine you're developing your model on. It doesn't have to be installed on the server itself.
+In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
 
 First install mobo and create a default project structure:
 ```sh

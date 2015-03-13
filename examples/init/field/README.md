@@ -1,6 +1,5 @@
 Fields
 ======
-A field is the lowest, most fundamental part of your model.
 Fields are the mobo equivalent to SMW attributes, but contain additional information like how they are rendered in Forms.
 If a field refers to multiple items, it has to use an array structure first (see Examples).
 
