@@ -16,7 +16,7 @@ The main function of the mobo toolset is the JSON Schema based model de-velopmen
 
 Mobo can also be used to batch-upload wiki pages in general and it is planned to support some basic external data transformation and importing capabilities.
 
-Mobo is open source (https://github.com/Fannon/mobo) and cross platform. 
+Mobo is open source (https://github.com/Fannon/mobo) and cross platform.
 
 ## Model Development Workflow
 Mobo can be run in either an interactive or run-through mode. By default the interactive mode is used, which serves the web application, watches the file system and (re)triggers the model generation process if changes are detected.
@@ -32,22 +32,12 @@ Those steps can run in a few seconds total. This makes mobo a great tool for rea
 
 ## Getting Started
 ### Requirements
-* [Node.js](http://nodejs.org/) is required for mobo to install/run.
+* The [Node.js](http://nodejs.org/) runtime 0.10.x or newer is required.
 * A MediaWiki installation with following extensions:
-* * ''REQUIRED'': Semantic MediaWiki
-* * ''REQUIRED'': Semantic Forms
-* * ''SUPPORTED'': HeaderTabs
-* * ''SUPPORTED'': TemplateData (VisualEditor)
-* Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
-* Your wiki needs to have the API enabled with write access. This is enabled by default since MW 1.14, but if not adjust your LocalSettings.php:
-
-```php
-// WARNING: This opens public write access.
-// If you don't want this, you'll need to setup additional restrictions.
-$wgEnableAPI = true;
-$wgEnableWriteAPI = true;
-$wgCrossSiteAJAXdomains = array( '*' );
-```
+  * `REQUIRED` Semantic MediaWiki
+  * `REQUIRED` Semantic Forms
+  * `SUPPORTED` HeaderTabs
+  * `SUPPORTED`  TemplateData (VisualEditor)
 
 ### Installation
 In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
@@ -60,14 +50,24 @@ $ mobo --init                       # Initializes the empty directory with the d
 ```
 
 Sometimes it makes sense to install mobo locally into your project directory.
-That way you can make sure the project uses a specific version of mobo (this is stored in the `package.json` file. Other projects could use different versions.
+That way you can make sure the project uses a specific version of mobo (this information is stored in the `package.json` file. Now different projects can use different mobo versions.
 ```sh
 $ npm install mobo --save           # Installs mobo locally into the project directory
 ```
 
 ### Configuration
-First you have to configure the upload settings, otherwise mobo will not work.
-To do so adjust the `settings.json` in your project directory.
+First your wiki needs a bot account for mobo. The user should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
+
+The MediaWiki API needs to be enabled with write access. This is the default setting since MW 1.14. If the wiki doesn't work right out of the box, adjust your LocalSettings.php accordingly:
+
+```php
+// WARNING: Check your permissions and if needed make further constraints.
+$wgEnableAPI = true;
+$wgEnableWriteAPI = true;
+$wgCrossSiteAJAXdomains = array( '*' );
+```
+
+Now the login credentials of the bot have to be set. Please adjust the `settings.json` in your project directory accordingly.
 
 Example:
 ```json
@@ -107,14 +107,13 @@ $ npm update -g mobo
 
 Note that new versions of mobo can introduce changed default templates.
 You might have to update your project templates with the current version.
-To do so use the `mobo --update` command. It will make a backup of your current templates.
+To do so use the `mobo --update` command. This command will make a backup of your current templates.
 ```sh
 $ mobo --update
 ```
 
 ## Documentation
 ### General Documentation
-* Visit the [project wiki](https://github.com/Fannon/mobo/wiki) for more detailed documentation and tutorials.
 * Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
 * For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
 * For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
