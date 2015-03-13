@@ -2,8 +2,8 @@
 [![npm licence](https://img.shields.io/npm/l/mobo.svg?style=flat)](https://github.com/Fannon/mobo/blob/master/LICENSE.txt)
 [![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)](https://david-dm.org/Fannon/mobo)
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
-[![codacy](https://img.shields.io/codeclimate/github/Fannon/mobo.svg?style=flat)](https://codeclimate.com/github/Fannon/mobo)
-[![codacy coverage](https://img.shields.io/codeclimate/coverage/github/Fannon/mobo.svg?style=flat)](https://codeclimate.com/github/Fannon/mobo)
+[![Code Climate](https://codeclimate.com/github/Fannon/mobo/badges/gpa.svg)](https://codeclimate.com/github/Fannon/mobo)
+[![Test Coverage](https://codeclimate.com/github/Fannon/mobo/badges/coverage.svg)](https://codeclimate.com/github/Fannon/mobo)
 
 <p align="center">
     <img src ="http://fannon.de/p/mobo-intro/img/logo.png" style="border-radius: 3px;"/>
@@ -29,7 +29,11 @@ Generating and uploading changes in the model is only a matter of millisecons to
 ## Getting Started
 ### Requirements
 * [Node.js](http://nodejs.org/) is required for mobo to install/run.
-* A Semantic MediaWiki Installation is required as upload target. Semantic Forms is required, the HeaderTabs and TemplateData extension are supported.
+* A MediaWiki installation with following extensions:
+* * ''REQUIRED'': Semantic MediaWiki
+* * ''REQUIRED'': Semantic Forms
+* * ''SUPPORTED'': HeaderTabs
+* * ''SUPPORTED'': TemplateData (VisualEditor)
 * Your wiki needs a bot account that provides the login data you need to specify in your settings.json. The Bot should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
 * Your wiki needs to have the API enabled with write access. This is enabled by default since MW 1.14, but if not adjust your LocalSettings.php:
 
