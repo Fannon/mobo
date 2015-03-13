@@ -1,12 +1,21 @@
-Models
-======
-Models represent MediaWiki Categories and Templates.
-They define which fields they consist of to form a specific "Thing".
-Models can extend from other models and inherit their properties.
+# Models
+* Read this file online at GitHub: [model/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md)
+* See the corresponding [model/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) for a technical description of all possible properties.
 
-Additional properties
----------------------
-See the corresponding [model/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) for a description of all possible properties.
+## Description
+Models will create Templates and Categories. They define the actual struc-ture of the development model. 
+
+They usually declare:
+* Which models they inherit from
+* Which fields are used
+* The order of the fields
+* Mandatory and recommended fields
+* The template “rendering” mode (table, unordered lists, …)
+* If they are stored as regular semantic properties or a subobject
+* MediaWiki Categories
+* Prefix and Postfix wikitext
+
+## Additional properties
 
 $extend
 -------
@@ -20,8 +29,6 @@ Model inheritance:
 ### /model/_Shape.json
 ```json
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-
     "title": "Shape",
     "description": "Generic Shape",
     "type": "object",
@@ -47,9 +54,7 @@ Model inheritance:
     "properties": {
         "radius": { "$extend": "/field/radius.json" },
     },
-    "required": ["x", "y", "radius"],
-
-    "abstract": false
+    "required": ["x", "y", "radius"]
 }
 ```
 

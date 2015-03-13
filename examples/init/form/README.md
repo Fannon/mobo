@@ -1,7 +1,16 @@
-Forms
-=====
-Forms define which models and templates to aggregate into a Semantic Form.
-Models can be either implemented as a single instance or multiple instance. If a multiple instance template is needed, it has to be wrapped in an array. (See example)
+# Forms
+* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/README.md)
+* See the corresponding [form/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md) for a technical description of all possible properties.
+
+## Description
+Forms will create Semantic Forms. They are much more lightweight than regular SF Forms, since most information have already been declared on the field or model level.
+
+They usually declare:
+* Which models to use
+* If the model should be implemented as a single or multiple instance
+* Which template to use / inject
+* The order of the models and templates
+* Visibility of templates in edit-view and reading-view
 
 Additional properties
 ---------------------
