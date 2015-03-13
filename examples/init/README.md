@@ -1,11 +1,13 @@
-mobo development model
-======================
+## mobo model development HOWTO
+* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/README.md)
+
+## Description
 This project contains a mobo development model.
 
 For more details please visit [github.com/Fannon/mobo](https://github.com/Fannon/mobo)
 
-Project Structure
------------------
+## Project Structure
+
 Each subdirectory contains a README.md which contains further detail on this part of your model.
 
 * /_processed       Auto generated files, processed model

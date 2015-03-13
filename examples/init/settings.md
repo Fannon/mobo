@@ -1,4 +1,6 @@
 ## settings.json documentation 
+* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/settings.md) 
+
 This file documents all available options for the settings.json and their defaults. 
 
 <table class="schema-description">
@@ -167,7 +169,7 @@ This can sometimes be useful, if some changes were lost or you want to go for su
            <td><sub>defaultTemplateDisplay</sub></td>
            <td><sub>string</sub></td>
            <td><sub>table</sub></td>
-           <td><sub>Default Template Display renderer. See templates/template.wikitext to see or change how they are rendered.</sub></td>
+           <td><sub>Default Template Display renderer. See mobo_template/template.wikitext to see or change how they are rendered.</sub></td>
        </tr>
        <tr>
            <td><sub>sfDivLayout</sub></td>
@@ -284,7 +286,7 @@ These are the default settings that mobo comes with:
 ```json
 {
     "mw_server_url": false,
-    "mw_server_path": false,
+    "mw_server_path": "",
     "mw_server_port": false,
     "mw_username": "username",
     "mw_password": "password",

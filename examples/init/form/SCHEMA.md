@@ -1,4 +1,5 @@
-# FORM JSON SCHEMA
+# FORM JSON Schema
+* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md)
 
 This file documents all properties mobo will use and validate for your forms.
 

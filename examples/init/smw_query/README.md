@@ -1,6 +1,7 @@
-ASK and SPARQL Queries
-======================
+# ASK and SPARQL Queries
+* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/smw_query/README.md)
 
+## Description
 Put your queries (ASK and SPARQL) here.
 The file extension needs to be .ask (ASK) or .rq (SPARQL)
 
