@@ -34,10 +34,10 @@ Those steps can run in a few seconds total. This makes mobo a great tool for rea
 ### Requirements
 * The [Node.js](http://nodejs.org/) runtime 0.10.x or newer is required.
 * A MediaWiki installation with following extensions:
-  * `REQUIRED` Semantic MediaWiki
-  * `REQUIRED` Semantic Forms
-  * `SUPPORTED` HeaderTabs
-  * `SUPPORTED`  TemplateData (VisualEditor)
+  * `REQUIRED:` Semantic MediaWiki
+  * `REQUIRED:` Semantic Forms
+  * `SUPPORTED:` HeaderTabs
+  * `SUPPORTED:`  TemplateData (VisualEditor)
 
 ### Installation
 In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
@@ -52,7 +52,7 @@ $ mobo --init                       # Initializes the empty directory with the d
 Sometimes it makes sense to install mobo locally into your project directory.
 That way you can make sure the project uses a specific version of mobo (this information is stored in the `package.json` file. Now different projects can use different mobo versions.
 ```sh
-$ npm install mobo --save           # Installs mobo locally into the project directory
+$ npm install mobo --save-dev       # Installs mobo locally
 ```
 
 ### Configuration
@@ -79,35 +79,53 @@ Example:
 }
 ```
 
-For more customization, enter `mobo -c` to print out the currently used configuration, including all inherited default values.
+For more options, enter `mobo -c` to print out the currently used configuration, including all inherited default values and refer to the [settings](examples/init/settings.md) manual.
 If you want to change a setting, simply copy it into your settings.json and adjust it. Enter `mobo -c` again to check if it was applied.
 
 ```sh
-$ mobo -c               # prints out all settings and their current state
+$ mobo -c # prints out all settings and their current state
 ```
 
 ### Run mobo
-mobo can be run in different modes. Usually the interactive mode is most useful.
+Mobo runs in interactive mode by default. It supports several command line options.
+
 ```sh
 $ mobo            # Runs mobo in interactive mode
 $ mobo -r         # Runs mobo in non-interactive mode (will exit after run)
 $ mobo -f         # Forces the upload of all files (will exit after run)
 ```
 
-If mobo can't be added to your global path, it can be run manually:
+To see all available options, run mobo with the -h flag or refer to the [Command Line Options](cli.md) manual.
+
+```sh
+$ mobo -h         # View command line help
+```
+
+If mobo can't be added to your global path for some reason, it can be run manually:
 ```sh
 $ node /path/to/mobo/cli.js
 ```
 
 ### Update
-Update mobo to the latest version through npm:
+Update mobo to the latest version through npm.
+
+**WARNING:** Bigger updates may change the output mobo creates or even change /break existing features. It won't make changes to your development model however and you can always downgrade to a previous mobo version. 
+
 ```sh
-$ npm update -g mobo
+$ npm update -g mobo        # global mobo update to latest
+$ npm update -g mobo@0.6.2  # global mobo update to 0.6.2
+```
+
+To update a local (project specific) mobo installation, specify / update your version number in your `package.json` first. `"mobo": "0.6.x",` will install / update all minor patches of mobo v0.6, while `"mobo": "*",` will always update to the latest version.
+
+```sh
+$ npm update            # local mobo update (package.json)
 ```
 
 Note that new versions of mobo can introduce changed default templates.
 You might have to update your project templates with the current version.
 To do so use the `mobo --update` command. This command will make a backup of your current templates.
+
 ```sh
 $ mobo --update
 ```
