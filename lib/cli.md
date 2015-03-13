@@ -1,11 +1,8 @@
 ABOUT MOBO
 ----------
-mobo is a toolset that generates Semantic MediaWiki Structure from a JSON Schema model.
+Mobo is a command line toolset that helps building Semantic MediaWiki structure in an agile, model driven engineering (MDE) way.
 
-You will find more detailed documentation in the various README.md files
-that will be created as part of the init project.
-
-Further documentation can be found at: https://github.com/Fannon/mobo
+For documentation please head over to: https://github.com/Fannon/mobo
 
 CONSOLE COMMANDS
 ----------------
