@@ -4,12 +4,12 @@
 This tutorial explains how to build a mobo development model along the hardware management example. Please note that the example and the tutorial are greatly simplified!
 
 ### Set up new project
-Create a new empty project and adjust your settings.json. Please refer to the mobo readme how do this.
+Create a new empty project and adjust your settings.json. Please refer to the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md#create-a-new-project) how do this.
 
 ### Run mobo the first time
-Now run mobo the first time and check that the settings are correct and the upload to the external wiki is working. At http://localhost:8080/ should be a web application ready.
+Now run mobo the first time and check that the settings are correct and the upload to the external wiki is working. At your [localhost:8080](http://localhost:8080) should be a web application ready.
 
-![mobo-first-start](http://up.fannon.de/img/mobo-first-start.png)
+![mobo-first-start](http://up.fannon.de/img/mobo-first-start.png?v=2)
 
 ### Conceptualization of the model and its domain
 Before heading into the actual model development, some thought should be put into how the domain should be modeled.
