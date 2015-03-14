@@ -129,9 +129,10 @@ $ mobo --update
 
 ## Documentation
 ### General Documentation
-* Read the mobo manual: [json-schema.org](examples/init/settings.md).
-* For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
-* For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
+* Read the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
+* Check out mobos example projects and read the [/it/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/it/TUTORIAL.md).
+* Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/).
+* For more documentation on the templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
 ### Specific Documentation
 There are a few context specific README.md and SCHEMA.md files within the project, that contain documentation.
@@ -146,13 +147,6 @@ If you create a new project via `mobo --init` they will be placed in your projec
     * [/smw_page (Wikipages)](examples/init/smw_page/README.md)
     * [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
     * [/templates (mobo templates)](examples/init/templates/README.md)
-
-## Typical Workflow / Example
-
-TODO:
-* Move this to a new page
-* Link to example in github
-
 
 ## Screenshots
 > Your model is developed with your favorite text editor:
@@ -181,6 +175,5 @@ TODO:
 
 
 ## License
-
-Copyright (c) 2014 Simon Heimler
+Copyright (c) 2015 Simon Heimler
 Licensed under the MIT license.
