@@ -43,7 +43,7 @@ Those steps can run in a few seconds total. This makes mobo a great tool for rea
 In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
 
 ```sh
-$ npm install -g mobo               # Installs mobo globally. 
+$ npm install -g mobo               # Installs mobo globally.
 $ sudo npm install -g mobo          # Linux: Admin privileges are required
 ```
 
@@ -129,7 +129,7 @@ $ mobo --update
 
 ## Documentation
 ### General Documentation
-* Watch the [mobo presentation](http://fannon.de/p/mobo-intro/) oder read the [paper](http://fannon.de/p/mobo-paper.pdf).
+* Read the mobo manual: [json-schema.org](examples/init/settings.md).
 * For more documentation on the underlying JSON Schema format, visit [json-schema.org](http://json-schema.org/)
 * For more documentation on the (meta)templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
