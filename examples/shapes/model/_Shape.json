@@ -5,11 +5,11 @@
     "description": "Generic Shape",
     "type": "object",
 
-    "properties": {
-        "x": { "$extend": "/field/x.json" },
-        "y": { "$extend": "/field/y.json" },
-        "color": { "$extend": "/field/color.json" }
-    },
+    "properties": [
+        { "$extend": "/field/x.json" },
+        { "$extend": "/field/y.json" },
+        { "$extend": "/field/color.json" }
+    ],
     "required": ["x", "y"],
 
     "abstract": true
