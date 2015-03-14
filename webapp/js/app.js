@@ -162,7 +162,6 @@ mobo.loadSchema = function(type, name) {
     $('#doc').html('');
     $('#refs').html('');
     $('#refs-ul').html('');
-    $('#smw_markup').html('');
 
     if (type === 'model') {
         schema = mobo.registry.expandedModel[name];
@@ -181,8 +180,6 @@ mobo.loadSchema = function(type, name) {
     mobo.docson.doc("doc", schema);
     mobo.schemaFull = schema;
     $('#schema').text(JSON.stringify(schema, false, 4));
-    mobo.printMediaWikiMarkup(type, name);
-
 
     if (mobo.displayForm) {
 
@@ -265,30 +262,6 @@ mobo.getResult = function() {
         $('#result').parent().removeClass('invalid');
         $('#result').parent().addClass('valid');
     }
-};
-
-/**
- * Handles the markup rendering of wikitext sites
- *
- * @param type
- * @param name
- */
-mobo.printMediaWikiMarkup = function(type, name) {
-
-    for (var siteName in mobo.wikitext) {
-
-        var wikitext = mobo.wikitext[siteName];
-
-        if (wikitext && siteName.indexOf(name) !== -1) {
-
-            var html = '<h4><a href="#' + type + ':' + name + '">' + siteName + '</a>';
-            html    += ' <small><a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">[remote]</a></small></h4>';
-            html    += '<pre>' + mobo.escapeWikitext(wikitext) + '</pre>';
-
-            $('#smw_markup').append(html);
-        }
-    }
-
 };
 
 /**

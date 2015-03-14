@@ -7,5 +7,6 @@
 
     "watchFilesystem": true,
     "serveWebApp": true,
-    "uploadWikiPages": true
+    "uploadWikiPages": true,
+    "deleteWikiPages": false
 }

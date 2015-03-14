@@ -1,0 +1,13 @@
+{
+    "title": "Location",
+    "description": "Location where hardware is deployed",
+
+    "properties": [
+        { "$extend": "/field/streetAdress.json" },
+        { "$extend": "/field/streetNumber.json" },
+        { "$extend": "/field/town.json" },
+        { "$extend": "/field/country.json" }
+    ],
+
+    "required": ["streetAdress", "streetNumber", "town" ]
+}

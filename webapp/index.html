@@ -23,7 +23,6 @@
 <body>
 <div class="container">
 
-
     <h1><img src="img/logo.svg" alt="mobo" id="logo" /> Viewer
         <small><br><a href="graph.html">Graph View of model</a></small>
     </h1>
@@ -43,8 +42,7 @@
 
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a data-target="#jsonschema"  data-toggle="tab">JSON Schema</a></li>
-            <li><a data-target="#markup" data-toggle="tab">Generated Markup</a></li>
-            <li><a data-target="#docs" data-toggle="tab">Documentation</a></li>
+            <li><a data-target="#docs" data-toggle="tab">Schema Documentation</a></li>
             <li><a data-target="#formexample" data-toggle="tab">Example Form</a></li>
         </ul>
 
@@ -53,10 +51,6 @@
             <div class="tab-pane active" id="jsonschema">
                 <p class="helptext">Displays the final JSON Schema with all processing and inheritance applied</p>
                 <pre><code id="schema"></code></pre>
-            </div>
-            <div class="tab-pane" id="markup">
-                <p class="helptext">Displays the generated wikitext. Warning: This might not be complete!</p>
-                <div id="smw_markup"></div>
             </div>
             <div class="tab-pane" id="docs">
                 <br>
@@ -81,10 +75,11 @@
 
     <div id="refresh" style="display: none;">Refreshing...</div>
 
-<script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
 
-<script src="js/app.js"></script>
-<script src="lib/jsoneditor.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="lib/jsoneditor.min.js"></script>
 
+    </div>
 </body>
 </html>

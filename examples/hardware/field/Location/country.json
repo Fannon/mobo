@@ -1,0 +1,12 @@
+{
+    "title": "Country",
+
+    "type": "string",
+    "enum": [
+        "USA",
+        "UK",
+        "Germany"
+    ],
+
+    "default": "USA"
+}
