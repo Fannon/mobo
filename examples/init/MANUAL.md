@@ -13,11 +13,11 @@ To start with the model development, an empty project structure has to be create
 
 ```sh
 $ mkdir newProject  # Create new dir
-$ cd newProject      # Enter new dir
+$ cd newProject     # Enter new dir
 $ mobo --init       # Create bootstrap project
 ```
 
-Mobo comes with two example projects, which may be a good starting point to learn mobo. They can be copied to the current project directory with the --example flag:
+Mobo comes with two example projects, which may be a good starting point to learn mobo. They can be copied to the current project directory with the `--example` flag:
 
 ```sh
 $ mobo --example shapes
@@ -25,7 +25,7 @@ $ mobo --example shapes
 
 ### The Development Model Structure
 #### Overview
-The default bootstrap project structure is now created. Please note that it contains many markdown files (.md) that provide more contextual documen-tation. README.md files will give more general information, while SCHE-MA.md is an auto generated, more technical documentation of all available attributes.
+The default bootstrap project structure is now created. Please note that it contains many markdown files (.md) that provide more contextual documen-tation. README.md files will give more general information, while SCHEMA.md is an auto generated, more technical documentation of all available attributes.
 
 Please note that subdirectories can be created freely, but they will be flat-tened on the reading step. This allows greater freedom in organizing the model. Moving files does not require to adjust paths in the model.
 
@@ -40,6 +40,7 @@ Please note that subdirectories can be created freely, but they will be flat-ten
 │   ├── README.md
 │   └── SCHEMA.md
 ├── README.md
+├── MANUAL.md
 ├── settings.json
 ├── settings.md
 ├── smw_page
@@ -61,6 +62,7 @@ Please note that subdirectories can be created freely, but they will be flat-ten
 
 #### /settings.json
 The settings.json file will hold all project specific options. It has already been explained in the Getting Started Section.
+
 For more documentation of all available options and their defaults, please read the accompanying settings.md file.
 
 ```json
@@ -78,6 +80,7 @@ For more documentation of all available options and their defaults, please read 
 
 #### /field/*
 Fields are the mobo equivalent to SMW attributes.
+
 The biggest difference to SMW attributes is that mobo fields already declare how they will be rendered and validated. Those information will be inherited through the models up to the final form.
 
 Fields usually declare:
@@ -187,6 +190,7 @@ ASK or SPARQL Queries can be stored in this directory. Mobo will automat-ically 
 
 #### /mobo_template/*
 This directory contains Handlebars.js (http://handlebarsjs.com/) templates. They are used by mobo to generate the final wikitext pages. For more doc-umentation how they work, please refer to the Handlebars.js website.
+
 The rendered output can be customized by editing those templates. They contain the rendered markup, some logic and strings that may want to be localized.
 
 ### Mobo Schema
@@ -207,7 +211,7 @@ Mobo will inherit all properties of the referenced (parent) object to the ob-jec
 
 To define abstract objects that will only be used for inheritance, the property abstract can be used. To (temporarily) remove objects from the model the ignore attribute can be set to true. Both attributes won’t be inherited, so children of abstract or ignored objects don’t have to explicitly undo that setting.
 
-JSON Schema has a somewhat similar attribute, called $ref. The official spec does not specify an inheritance behavior though. To avoid confusion, mobo supports only the custom $extend property.
+JSON Schema has a somewhat similar attribute, called `$ref`. The official spec does not specify an inheritance behavior though. To avoid confusion, mobo supports only the custom $extend property.
 
 ##### propertyOrder
 JSON Schema v4 does not natively support a declaration how properties are ordered. For model development this is an important feature, so mobo has added custom support.
@@ -215,13 +219,13 @@ JSON Schema v4 does not natively support a declaration how properties are ordere
 The order is defined by an array of the IDs / keys of the properties:
 
 ```json
-"propertyOrder": ["ip", “macAdress”],
+"propertyOrder": ["ip", "macAdress"],
 ```
 
 #### SMW specific Additions
 There are many SMW specific additions, to support the various settings and possibilities of SMW and Semantic Forms. Listing all those would be out of scope for this manual, so just one example will be given.
 
-To see a complete, auto generated technical description of all available prop-erties, refer to /field/SCHEMA.md, /model/SCHEMA.md and /form/SCHEMA.md documentation on GitHub or the local project directory.
+To see a complete, auto generated technical description of all available prop-erties, refer to `/field/SCHEMA.md`, `/model/SCHEMA.md` and `/form/SCHEMA.md` documentation on GitHub or the local project directory.
 
 The smw_form attribute is an object which redirects all settings directly to Semantic Forms. To see which options are supported, refer to the Semantic Forms manual at http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
 
@@ -265,7 +269,7 @@ Removals
 
 The following JSON Schema properties are not supported:
 
-```json
+```javascript
 [
     'properties.multipleOf',
     'properties.exclusiveMaximum',
