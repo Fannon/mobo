@@ -130,7 +130,7 @@ $ mobo --update
 ## Documentation
 ### General Documentation
 * Read the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
-* Check out mobos example projects and read the [/it/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/it/TUTORIAL.md).
+* Check out mobos example projects and read the [/hardware/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md).
 * Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/).
 * For more documentation on the templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
