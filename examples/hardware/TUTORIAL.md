@@ -87,7 +87,7 @@ Here we introdude some basic validation. The Street number should be a number of
 }
 ```
 
-Since towns may be referenced more than once, it makes sense to provide autocomplete capabilities. This is done, by setting the "smw_form" property, containing [Semantic Forms settings](http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag). 
+Since towns may be referenced more than once, it makes sense to provide autocomplete capabilities. This is done by setting the "smw_form" property, declaring [Semantic Forms settings](http://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag). 
 
 ```json
 {
@@ -124,10 +124,54 @@ This is the simplest possible form, referencing the previous model as its sole c
 
 ![mobo-simple-location](http://up.fannon.de/img/mobo-simple-location.png)
 
-Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model on the left search box. 
+Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and other processing applied) on the left search box. 
 
 ![mobo-viewer-left](http://up.fannon.de/img/mobo-viewer-left.png)
 
 The final resulting wikitext pages can be browsed through the right search box.
 
 ![mobo-viewer-right](http://up.fannon.de/img/mobo-viewer-right.png)
+
+
+### Create a HardwareModel
+In the next step, the `NetworkPrinterModel` will be created. It is of the type `HardwareModel` and will use object-oriented inheritance.
+
+Create /field/HardwareModel/_HardwareModel.json with the following content:
+
+```json
+{
+    "title": "Hardware Model",
+
+    "properties": [
+        { "$extend": "/field/brand.json" },
+        { "$extend": "/field/modelName.json" }
+    ],
+
+    "required": ["brand", "modelName"],
+
+    "abstract": true
+}
+```
+
+The abstract model contains two required fields that will be shared by all other Hardware Models. Since it's defined as abstract, it will not be created in the wiki. 
+
+Create /field/HardwareModel/NetworkPrinterModel.json with the following content:
+
+```json
+{
+    "$extend": "/model/_HardwareModel.json",
+
+    "title": "NetworkPrinterModel",
+    "description": "Network Printer Model",
+
+    "properties": [
+        { "$extend": "/field/color.json" }
+    ]
+}
+```
+
+The `NetworkPrinterModel` used `$extend` to inherit all attributes from the `_HardwareModel`. It overwrites the title attribute and adds a description and the `color` field.
+
+The creation of the three fields will be skipped, since they contain no new concepts. Please refer to the example files instead.
+
+### Create a HardwareInstallation
