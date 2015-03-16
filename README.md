@@ -130,7 +130,7 @@ $ mobo --update
 ## Documentation
 ### General Documentation
 * Read the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
-* Check out mobos example projects and read the [/hardware/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md).
+* Read the [/hardware/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md) and check out mobos example projects.
 * Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/).
 * For more documentation on the templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
 
@@ -139,14 +139,14 @@ There are a few context specific README.md and SCHEMA.md files within the projec
 If you create a new project via `mobo --init` they will be placed in your project directory.
 
 * [Command Line Options](cli.md) (`mobo -h`)
-* [/settings.md (global project settings)](examples/init/settings.md)
-    * [/field (Your Fields)](examples/init/field/README.md)
-    * [/model (Your Models)](examples/init/model/README.md)
-    * [/form (Your Forms)](examples/init/form/README.md)
-    * [/smw_query (Queries)](examples/init/smw_query/README.md)
-    * [/smw_page (Wikipages)](examples/init/smw_page/README.md)
-    * [/smw_template (MediaWiki Templates)](examples/init/smw_template/README.md)
-    * [/templates (mobo templates)](examples/init/templates/README.md)
+* [/settings.md](examples/init/settings.md)
+    * /field/[README.md](examples/init/field/README.md) / [SCHEMA.md](examples/init/field/SCHEMA.md)
+    * /model/[README.md](examples/init/model/README.md) / [SCHEMA.md](examples/init/model/SCHEMA.md)
+    * /form/[README.md](examples/init/form/README.md)   / [SCHEMA.md](examples/init/form/SCHEMA.md)
+    * /smw_query/[README.md](examples/init/smw_query/README.md)
+    * /smw_page/[README.md](examples/init/smw_page/README.md)
+    * /smw_template/[README.md](examples/init/smw_template/README.md)
+    * /mobo_template/[README.md](examples/init/templates/README.md)
 
 ## Screenshots
 > Your model is developed with your favorite text editor:
