@@ -63,12 +63,11 @@ describe('mobo cli ', function() {
 
     /**
      * Generates the wiki structure from the example project.
-     *
-     * TODO: Can't test the upload without an demo / testing wiki
      */
     it('can generate wiki structure from the sample project (async)', function(done){
 
-        this.timeout(120000); // Set timeout to two minutes, since this task involves some uploading
+        // Set timeout to two minutes, since this task involves some uploading
+        this.timeout(120000);
 
         var settings = readSettings.exec({
             "cwd": mockProjectPath,

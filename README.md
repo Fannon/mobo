@@ -154,28 +154,23 @@ If you create a new project via `mobo --init` they will be placed in your projec
 ## Screenshots
 > Your model is developed with your favorite text editor:
 
-![text-editor](http://fannon.de/p/mobo-intro/img/st.png)
+![text-editor](http://up.fannon.de/img/mobo-intro-editor.png)
 
 > mobo is a console application. It validates, generates and uploads your model - in realtime by default:
 
-![cli](http://fannon.de/p/mobo-intro/img/cli4.png)
+![cli](http://up.fannon.de/img/mobo-intro-run.gif)
 
 > There is a webapp that allows you to browse your current model and the resulting wikitext:
 
-![webapp](http://fannon.de/p/mobo-intro/img/webgui.png)
+![webapp](http://up.fannon.de/img/mobo-intro-viewer.gif)
 
 > mobo can generate a graph model (has to be layouted via Gephi) that can be explored interactively:
 
-![graph](http://fannon.de/p/mobo-intro/img/graphselect.png)
+![graph](http://up.fannon.de/img/mobo-intro-graphexplorer.gif)
 
 > The final SMW structure makes use of Semantic Forms:
 
-![forms](http://fannon.de/p/mobo-intro/img/edit.png)
-
-> Templates are auto-documented:
-
-![docs](http://fannon.de/p/mobo-intro/img/docs.png)
-
+![forms](http://up.fannon.de/img/mobo-intro-sf.png)
 
 ## License
 Copyright (c) 2015 Simon Heimler

@@ -58,12 +58,12 @@ cbm.drawGraph = function() {
                 edgeColor: "default",
                 edgeLabels: true,
 
-                minNodeSize: 2,
-                maxNodeSize: 8,
+                minNodeSize: 1,
+                maxNodeSize: 4,
 
                 enableHovering: true,
 
-                labelThreshold: 8,
+                labelThreshold: 6,
 
                 doubleClickZoomingRatio: 4,
                 zoomMin: 0.02,
