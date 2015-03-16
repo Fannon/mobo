@@ -341,6 +341,8 @@ Now the graph explorer at [localhost:8080/graph.html](http://localhost:8080/grap
 
 ![mobo-graph-explorer](http://up.fannon.de/img/mobo-graph-explorer.png?v=1)
 
+The size of the nodes can be adjusted through `settings.json`.
+
 ### Excourse: Using HeaderTabs Extension
 In case the forms are getting more complex, it might be a good idea to seperate them into tabs. The [HeaderTabs Extension](http://www.mediawiki.org/wiki/Extension:Header_Tabs) is supported by mobo. 
 
