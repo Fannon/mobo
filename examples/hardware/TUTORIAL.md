@@ -20,6 +20,7 @@ The different hardwaremodels will likely share some attributes, so an abstract `
 
 
 ### Creating a location
+#### Create model
 Let's start with the simplest part of the model, the location. Personally I do like to start with the model and create the fields and forms afterward. There is no right and wrong with the order, however.
 
 Create /model/Location.json with the following content:
@@ -50,6 +51,7 @@ Once the file is saved, mobo will automatically run and give some feedback:
  [W] /model/Location.json is never used.
  ```
 
+#### Create fields
 To keep the model better organized, the Location related fields will be stored at /field/Location/*. Please note that the `$extend` attribute does not include subfolders.
 
 Create /field/Location/streetAdress.json with the following content:
@@ -106,6 +108,7 @@ Since towns may be referenced more than once, it makes sense to provide autocomp
 
 We want to support only three countries, so an enum is a good solution. In this field three countries are given and one is set as default. It will be displayed as a dropdown menu by default.
 
+#### Create form
 The last warning message is giving the hint that `model/Location.json` is never used. This is because there is no form that is including it. 
 
 Create /form/Location.json with the following content:
@@ -134,9 +137,10 @@ The final resulting wikitext pages can be browsed through the right search box.
 
 
 ### Create a HardwareModel
+#### Create models
 In the next step, the `NetworkPrinterModel` will be created. It is of the type `HardwareModel` and will use object-oriented inheritance.
 
-Create /field/HardwareModel/_HardwareModel.json with the following content:
+Create /model/HardwareModel/_HardwareModel.json with the following content:
 
 ```json
 {
@@ -155,14 +159,13 @@ Create /field/HardwareModel/_HardwareModel.json with the following content:
 
 The abstract model contains two required fields that will be shared by all other Hardware Models. Since it's defined as abstract, it will not be created in the wiki. 
 
-Create /field/HardwareModel/NetworkPrinterModel.json with the following content:
+Create /model/HardwareModel/NetworkPrinterModel.json with the following content:
 
 ```json
 {
     "$extend": "/model/_HardwareModel.json",
 
-    "title": "NetworkPrinterModel",
-    "description": "Network Printer Model",
+    "title": "Network Printer Model",
 
     "properties": [
         { "$extend": "/field/color.json" }
@@ -172,6 +175,99 @@ Create /field/HardwareModel/NetworkPrinterModel.json with the following content:
 
 The `NetworkPrinterModel` used `$extend` to inherit all attributes from the `_HardwareModel`. It overwrites the title attribute and adds a description and the `color` field.
 
-The creation of the three fields will be skipped, since they contain no new concepts. Please refer to the example files instead.
+#### Create fields
+The creation of the fields will be skipped, since they contain no new concepts. Please refer to the example files instead.
 
 ### Create a HardwareInstallation
+#### Create models
+Now the actual `NetworkPrinterInstallation` can be created. 
+
+Create /model/HardwareInstallation/_HardwareInstallation.json with the following content:
+
+```json
+{
+    "title": "Hardware Installation",
+
+    "properties": [
+        { "$extend": "/field/serialNumber.json" }
+    ],
+
+    "abstract": true
+}
+```
+
+Since there are Hardwaredevices that are network capable and share therefore some more common properties, another abstract model will be created that inherits from the `HardwareInstallation`.
+
+Create /model/HardwareInstallation/_NetworkDeviceInstallation.json with the following content:
+
+```json
+{
+    "$extend": "/model/_HardwareInstallation.json",
+
+    "title": "NetworkDevice Installation",
+
+    "properties": [
+        { "$extend": "/field/ip.json" }
+    ],
+
+    "abstract": true
+}
+```
+
+The final `NetworkPrinterInstallation` will extend from the `_NetworkDeviceInstallation`: 
+
+Create /model/HardwareInstallation/_NetworkDeviceInstallation.json with the following content:
+
+```json
+{
+    "$extend": "/model/_NetworkDeviceInstallation.json",
+
+    "title": "Network Printer Installation",
+
+    "properties": [
+        { "$extend": "/field/networkPrinterModel.json" }
+    ]
+}
+```
+
+#### Create fields
+The field `networkPrinterModel` will reference to a `NetworkPrinterModel`.
+
+Create /field/HardwareInstallation/_hardwareModelReference.json with the following content:
+
+```json
+{
+    "title": "Hardware model reference",
+    "description": "You may only select already existing mardware models!",
+
+    "type": "string",
+
+    "smw_form": {
+        "max values": 1,
+        "input type": "combobox",
+        "existing values only": true
+    },
+
+    "abstract": true
+}
+
+```
+
+
+
+Create /field/HardwareInstallation/networkPrinterModel.json with the following content:
+
+```json
+{
+    "$extend": "/model/_NetworkDeviceInstallation.json",
+
+    "title": "Network Printer Installation",
+
+    "properties": [
+        { "$extend": "/field/networkPrinterModel.json" }
+    ]
+}
+```
+
+
+
