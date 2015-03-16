@@ -26,9 +26,9 @@ cbm.prepareGraph = function() {
 
 cbm.drawGraph = function() {
 
-    var edgeColor = 'rgba(255, 255, 255, 0.16)';
-    var edgeMutedColor = 'rgba(255, 255, 255, 0.05)';
-    var nodeMutedColor = '#333';
+    var edgeColor = 'rgba(255, 255, 255, 0.24)';
+    var edgeMutedColor = 'rgba(255, 255, 255, 0.16)';
+    var nodeMutedColor = '#444';
 
     $('#graph').html('');
 
