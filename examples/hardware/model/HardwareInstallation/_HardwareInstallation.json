@@ -1,0 +1,12 @@
+{
+    "title": "Hardware Installation",
+
+    "properties": [
+        { "$extend": "/field/serialNumber.json" }
+    ],
+
+    "smw_subobject": true,
+    "smw_category": false,
+
+    "abstract": true
+}

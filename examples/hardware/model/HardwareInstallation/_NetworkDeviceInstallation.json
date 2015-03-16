@@ -1,0 +1,11 @@
+{
+    "$extend": "/model/_HardwareInstallation.json",
+
+    "title": "NetworkDevice Installation",
+
+    "properties": [
+        { "$extend": "/field/ip.json" }
+    ],
+
+    "abstract": true
+}

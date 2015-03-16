@@ -17,7 +17,8 @@ CONSOLE COMMANDS
                         Creates a Backup from your current templates first.
 
 -i  --init              Creates a new raw project in the current directory
-    --example shapes    Creates a new "shapes" sample project
+    --example hardware  Installs the "hardware" sample project
+    --example shapes    Installs the "shapes" sample project
 
 -f  --force             Forces the upload of the complete model
 -r  --run-through       Skips watching the filesystem and serving the webapp

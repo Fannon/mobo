@@ -1,0 +1,9 @@
+{
+    "title": "Brand",
+
+    "type": "string",
+
+    "smw_form": {
+        "input type": "text with autocomplete"
+    }
+}

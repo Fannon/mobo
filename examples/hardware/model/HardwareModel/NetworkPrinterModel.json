@@ -1,0 +1,11 @@
+{
+    "$extend": "/model/_HardwareModel.json",
+
+    "title": "Network Printer Model",
+
+    "properties": [
+        { "$extend": "/field/colorPrinting.json" }
+    ],
+
+    "propertyOrder": ["brand", "modelName"]
+}

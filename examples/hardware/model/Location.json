@@ -9,5 +9,10 @@
         { "$extend": "/field/country.json" }
     ],
 
-    "required": ["streetAdress", "streetNumber", "town" ]
+    "required": ["streetAdress", "streetNumber", "town" ],
+
+    "smw_prefix": {
+        "header": 1,
+        "wikitext": "Some description for the location"
+    }
 }

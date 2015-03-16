@@ -1,0 +1,9 @@
+{
+    "$extend": "/model/_NetworkDeviceInstallation.json",
+
+    "title": "Network Printer Installation",
+
+    "properties": [
+        { "$extend": "/field/networkPrinterModel.json" }
+    ]
+}

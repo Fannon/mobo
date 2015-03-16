@@ -1,8 +1,20 @@
 {
     "title": "Location",
+    "description": "This creates a new location where hardware is deployed.",
 
     "properties": [
-        { "$extend": "/model/Location.json" }
+        { "$extend": "/model/Location.json" },
+
+        {
+            "$extend": "/smw_template/NetworkPrinterHeader.wikitext",
+            "showForm": true,
+            "showPage": true
+        },
+        {
+            "type": "array",
+            "items": {
+                "$extend": "/model/NetworkPrinterInstallation.json"
+            }
+        }
     ]
 }
-
