@@ -130,19 +130,22 @@ $ mobo --update
 ## Documentation
 ### General Documentation
 * Read the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
-* Read the [/hardware/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md) and check out mobos example projects.
-* Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/).
-* For more documentation on the templating language, used in the /templates/ folder, visit [handlebars.js](http://handlebarsjs.com/)
+* Read the /hardware/[TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md) and check out mobos example projects.
+* Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's also a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/) from the Space Telescope Science Institute.
+* For more documentation on the templating language, used in the /templates/ folder, visit [Handlebars.js](http://handlebarsjs.com/)
 
 ### Specific Documentation
-There are a few context specific README.md and SCHEMA.md files within the project, that contain documentation.
+There are a few context specific README.md and SCHEMA.md files within the project.
+The README.md files contain basic documentation about the section of the development model,
+while the SCHEMA.md files contain an auto-generated technical documentation of all possible JSON Schema attributes.
+
 If you create a new project via `mobo --init` they will be placed in your project directory.
 
-* [Command Line Options](cli.md) (`mobo -h`)
+* [Command Line Options](lib/cli.md) (`mobo -h`)
 * [/settings.md](examples/init/settings.md)
-    * /field/[README.md](examples/init/field/README.md) / [SCHEMA.md](examples/init/field/SCHEMA.md)
-    * /model/[README.md](examples/init/model/README.md) / [SCHEMA.md](examples/init/model/SCHEMA.md)
-    * /form/[README.md](examples/init/form/README.md)   / [SCHEMA.md](examples/init/form/SCHEMA.md)
+    * /field/[README.md](examples/init/field/README.md) and [SCHEMA.md](examples/init/field/SCHEMA.md) for a technical documentation
+    * /model/[README.md](examples/init/model/README.md) and [SCHEMA.md](examples/init/model/SCHEMA.md) for a technical documentation
+    * /form/[README.md](examples/init/form/README.md) and [SCHEMA.md](examples/init/form/SCHEMA.md) for a technical documentation
     * /smw_query/[README.md](examples/init/smw_query/README.md)
     * /smw_page/[README.md](examples/init/smw_page/README.md)
     * /smw_template/[README.md](examples/init/smw_template/README.md)
