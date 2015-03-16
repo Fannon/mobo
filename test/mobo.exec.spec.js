@@ -67,9 +67,18 @@ describe('mobo cli ', function() {
      * TODO: Can't test the upload without an demo / testing wiki
      */
     it('can generate wiki structure from the sample project (async)', function(done){
+
+        this.timeout(120000); // Set timeout to two minutes, since this task involves some uploading
+
         var settings = readSettings.exec({
             "cwd": mockProjectPath,
-            "uploadWikiPages": false,
+
+            "uploadWikiPages": true,
+            "mw_server_url": "http://smw.fannon.de",
+            "mw_server_path": "",
+            "mw_username": "mobo",
+            "mw_password": "mobopw",
+
             "writeExportFiles": true,
             "formEditHelper": true,
             "hideFormEditHelper": true

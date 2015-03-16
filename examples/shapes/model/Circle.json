@@ -9,11 +9,11 @@
     },
     "required": ["x", "y", "radius"],
 
-    "prefix": {
+    "smw_prefix": {
         "header": 1
     },
 
-    "postfix": {
+    "smw_postfix": {
         "wikitext": "This will be displayed after the model"
     },
 
