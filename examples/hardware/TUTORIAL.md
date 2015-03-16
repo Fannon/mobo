@@ -9,7 +9,7 @@ Create a new empty project and adjust your settings.json. Please refer to the mo
 ### Run mobo the first time
 Now run mobo the first time and check that the settings are correct and the upload to the external wiki is working. At your [localhost:8080](http://localhost:8080) should be a web application ready.
 
-![mobo-first-start](http://up.fannon.de/img/mobo-first-start.png?v=2)
+![mobo-first-start](http://up.fannon.de/img/mobo-first-start.png?v=3)
 
 ### Conceptualization of the model and its domain
 Before heading into the actual model development, some thought should be put into how the domain should be modeled.
@@ -125,16 +125,7 @@ Create `/form/Location.json` with the following content:
 
 This is the simplest possible form, referencing the previous model as its sole content. We can now head to the wiki and try the form in action:
 
-![mobo-simple-location](http://up.fannon.de/img/mobo-simple-location.png)
-
-Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and other processing applied) on the left search box. 
-
-![mobo-viewer-left](http://up.fannon.de/img/mobo-viewer-left.png)
-
-The final resulting wikitext pages can be browsed through the right search box.
-
-![mobo-viewer-right](http://up.fannon.de/img/mobo-viewer-right.png)
-
+![mobo-simple-location](http://up.fannon.de/img/mobo-simple-location.png?v=1)
 
 ### Create a HardwareModel
 #### Create models
@@ -330,6 +321,26 @@ The final form will now look like this:
 
 ![mobo-final-hardware-example](http://up.fannon.de/img/mobo-final-hardware-example.png)
 
+### Excourse: The mobo viewer application
+Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and further processing applied) on the left search box. 
+
+![mobo-viewer-left](http://up.fannon.de/img/mobo-viewer-left.png?v=1)
+
+The final resulting wikitext pages can be browsed through the right search box.
+
+![mobo-viewer-right](http://up.fannon.de/img/mobo-viewer-right.png?v=1)
+
+### Excourse: The mobo graph explorer
+In order to use the mobo graph explorer a layouted version of the graph has to be generated. This can be done through [Gephi](https://gephi.github.io/):
+
+Launch Gephi and open the file _graph.gexf in your projects `/_processed/` directory. Through the layout options, a force algorithm has to be applied (like Force Atlas). This usually involves some try and error with the parameters, since the correct values depend on the nature of the graph itself.Save the layouted graph as `/_processed/_graph_layouted.gexf`.
+
+![mobo-gephi](http://up.fannon.de/img/mobo-gephi.png?v=1)
+
+Now the graph explorer at [localhost:8080/graph.html](http://localhost:8080/graph.html) can be used:
+
+![mobo-graph-explorer](http://up.fannon.de/img/mobo-graph-explorer.png?v=1)
+
 ### Excourse: Using HeaderTabs Extension
 In case the forms are getting more complex, it might be a good idea to seperate them into tabs. The [HeaderTabs Extension](http://www.mediawiki.org/wiki/Extension:Header_Tabs) is supported by mobo. 
 
@@ -370,4 +381,4 @@ The `"swm_prefix"` attribute allows to add automatically generated headers (usin
 
 Now the Location form has got two headings of hierachy one. The HeaderTabs Extension will become active:
 
-![mobo-header-tabs](http://up.fannon.de/img/mobo-header-tabs.png)
+![mobo-header-tabs](http://up.fannon.de/img/mobo-header-tabs.png?v=1)
