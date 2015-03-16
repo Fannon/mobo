@@ -288,7 +288,6 @@ The following JSON Schema properties are not supported:
 ]
 ```
 
-
 #### The mobo viewer application
 Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and further processing applied) on the left search box. 
 

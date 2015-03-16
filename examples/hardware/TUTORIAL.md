@@ -321,6 +321,10 @@ The final form will now look like this:
 
 ![mobo-final-hardware-example](http://up.fannon.de/img/mobo-final-hardware-example.png)
 
+#### Create an ASK Query with mobo
+
+    TODO
+
 ### Excourse: Using HeaderTabs Extension
 In case the forms are getting more complex, it might be a good idea to seperate them into tabs. The [HeaderTabs Extension](http://www.mediawiki.org/wiki/Extension:Header_Tabs) is supported by mobo. 
 
