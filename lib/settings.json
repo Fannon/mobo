@@ -36,8 +36,8 @@
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
         "templateNodeSize": 12,
-        "modelNodeSize": 20,
-        "formNodeSize": 32,
+        "modelNodeSize": 24,
+        "formNodeSize": 36,
 
         "edgeWeight": 2.0,
         "multipleEdgeWeight": 2.0
