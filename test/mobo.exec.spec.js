@@ -51,14 +51,14 @@ describe('mobo cli ', function() {
     });
 
     it('can install the shape example project into a new directory', function() {
-        var success = mobo.install('shapes', mockProjectPath);
+        var success = mobo.install('hardware', mockProjectPath);
         var projectContent = fs.readdirSync(mockProjectPath);
         var projectModelContent = fs.readdirSync(path.resolve(mockProjectPath, './model'));
 
         expect(success).to.equal(true);
         expect(projectContent.length).to.be.at.least(10);
         expect(projectContent).to.include('settings.json');
-        expect(projectModelContent).to.include('Circle.json');
+        expect(projectModelContent).to.include('Location.json');
     });
 
     /**
@@ -91,7 +91,7 @@ describe('mobo cli ', function() {
 
             // Check that the generated object contains the generated wikitext
             expect(generated).to.be.an('object');
-            expect(generated).to.include.keys('template:Circle');
+            expect(generated).to.include.keys('template:Location');
 
             // Check that the _processed directory was correctly populated
             var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
