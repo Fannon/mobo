@@ -2,7 +2,8 @@
     "title": "Hardware Installation",
 
     "properties": [
-        { "$extend": "/field/serialNumber.json" }
+        { "$extend": "/field/serialNumber.json" },
+        { "$extend": "/field/freetext.json" }
     ],
 
     "smw_subobject": true,

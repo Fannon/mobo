@@ -1,0 +1,10 @@
+{
+    "$extend": [
+        "/model/NetworkPrinterModel.json",
+        "/model/NetworkScannerModel.json"
+    ],
+
+    "title": "Multi-function Unit Model",
+
+    "note": "It is possible to inherit from multiple sources."
+}

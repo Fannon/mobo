@@ -12,7 +12,8 @@
 
 \{{#forminput:form={{~name~}}{{smw_params this.formInput}} }}
 </noinclude>
-<includeonly>{{~#if this.formInfo~}}\{{{info {{smw_params this.formInfo}} }}}{{/if~}}
+<includeonly>{{~#if this.formInfo~}}\{{{info{{smw_params this.formInfo}} }}}
+{{/if~}}
 {{~#if this.description~}}<div class="description-box">{{description}}</div>{{/if~}}
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 

@@ -1,0 +1,9 @@
+{
+    "$extend": "/model/_NetworkDeviceInstallation.json",
+
+    "title": "Multi-function unit",
+
+    "properties": [
+        { "$extend": "/field/multiFunctionUnitModel.json" }
+    ]
+}

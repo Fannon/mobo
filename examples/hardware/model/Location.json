@@ -13,6 +13,12 @@
 
     "smw_prefix": {
         "header": 1,
-        "wikitext": "Some description for the location"
-    }
+        "wikitext": "Some prefix-description for the location"
+    },
+
+    "smw_postfix": {
+        "wikitext": "Some postfix-description for the location"
+    },
+
+    "todo": "This is a todo entry and will be displayed if the corresponding option is active."
 }

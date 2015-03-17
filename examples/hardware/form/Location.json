@@ -5,6 +5,7 @@
     "properties": [
         { "$extend": "/model/Location.json" },
 
+
         {
             "$extend": "/smw_template/NetworkPrinterHeader.wikitext",
             "showForm": true,
@@ -15,6 +16,29 @@
             "items": {
                 "$extend": "/model/NetworkPrinterInstallation.json"
             }
+        },
+
+
+        { "$extend": "/smw_template/NetworkScannerHeader.wikitext" },
+        {
+            "type": "array",
+            "items": {
+                "$extend": "/model/NetworkScannerInstallation.json"
+            }
+        },
+
+        { "$extend": "/smw_template/MultiFunctionUnitHeader.wikitext" },
+        {
+            "type": "array",
+            "items": {
+                "$extend": "/model/MultiFunctionUnitInstallation.json"
+            }
         }
-    ]
+
+    ],
+
+    "smw_forminfo": {
+        "create title": "Create a new location",
+        "edit title": "Edit a location"
+    }
 }

@@ -1,0 +1,8 @@
+{
+    "title": "Multi-Function Unit Model",
+
+    "properties": [
+        { "$extend": "/model/MultiFunctionUnitModel.json" }
+    ]
+}
+
