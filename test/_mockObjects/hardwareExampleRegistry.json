@@ -1,0 +1,2150 @@
+{
+    "smw_query": {
+        "NetworkPrinterModels.ask": "{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n"
+    },
+    "smw_page": {
+        "Category___NetworkPrinterModel.wikitext": "==Form==\nSites tagged with this category can be edited through [[Has default form::NetworkPrinterModel|Network Printer Model]]\n\n==Overview==\n{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n"
+    },
+    "field": {
+        "freetext": {
+            "title": "Free text",
+            "type": "string",
+            "smw_property": false,
+            "smw_form": {
+                "input type": "textarea",
+                "autogrow": true
+            },
+            "id": "freetext",
+            "$filepath": "/field/freetext.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "_hardwareModelReference": {
+            "title": "Model",
+            "description": "You may only select already existing mardware models!",
+            "type": "string",
+            "smw_form": {
+                "max values": 1,
+                "input type": "combobox",
+                "existing values only": true
+            },
+            "abstract": true,
+            "id": "_hardwareModelReference",
+            "$filepath": "/field/HardwareInstallation/_hardwareModelReference.json",
+            "ignore": false
+        },
+        "ip": {
+            "title": "IP Adress",
+            "type": "string",
+            "id": "ip",
+            "$filepath": "/field/HardwareInstallation/ip.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "networkScannerModel": {
+            "$extend": "/field/_hardwareModelReference.json",
+            "type": "string",
+            "format": "/form/NetworkScannerModel.json",
+            "smw_form": {
+                "values from category": "NetworkScannerModel"
+            },
+            "id": "networkScannerModel",
+            "$filepath": "/field/HardwareInstallation/networkScannerModel.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "networkPrinterModel": {
+            "$extend": "/field/_hardwareModelReference.json",
+            "type": "string",
+            "format": "/form/NetworkPrinterModel.json",
+            "smw_form": {
+                "values from category": "NetworkPrinterModel"
+            },
+            "id": "networkPrinterModel",
+            "$filepath": "/field/HardwareInstallation/networkPrinterModel.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "serialNumber": {
+            "title": "Serial number",
+            "type": "string",
+            "id": "serialNumber",
+            "$filepath": "/field/HardwareInstallation/serialNumber.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "multiFunctionUnitModel": {
+            "$extend": "/field/_hardwareModelReference.json",
+            "type": "string",
+            "format": "/form/MultiFunctionUnitModel.json",
+            "smw_form": {
+                "values from category": "MultiFunctionUnitModel"
+            },
+            "id": "multiFunctionUnitModel",
+            "$filepath": "/field/HardwareInstallation/multiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "brand": {
+            "title": "Brand",
+            "type": "string",
+            "smw_form": {
+                "input type": "text with autocomplete"
+            },
+            "id": "brand",
+            "$filepath": "/field/HardwareModel/brand.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "colorPrinting": {
+            "title": "Color Printing",
+            "type": "boolean",
+            "id": "colorPrinting",
+            "$filepath": "/field/HardwareModel/colorPrinting.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "modelName": {
+            "title": "Model name",
+            "type": "string",
+            "id": "modelName",
+            "$filepath": "/field/HardwareModel/modelName.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "country": {
+            "title": "Country",
+            "type": "string",
+            "enum": [
+                "USA",
+                "UK",
+                "Germany"
+            ],
+            "default": "Germany",
+            "id": "country",
+            "$filepath": "/field/Location/country.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "streetNumber": {
+            "title": "Street Number",
+            "type": "number",
+            "minimum": 0,
+            "id": "streetNumber",
+            "$filepath": "/field/Location/streetNumber.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "streetAdress": {
+            "title": "Street Adress",
+            "type": "string",
+            "id": "streetAdress",
+            "$filepath": "/field/Location/streetAdress.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "town": {
+            "title": "Town",
+            "type": "string",
+            "smw_form": {
+                "input type": "text with autocomplete"
+            },
+            "id": "town",
+            "$filepath": "/field/Location/town.json",
+            "abstract": false,
+            "ignore": false
+        }
+    },
+    "model": {
+        "Location": {
+            "title": "Location",
+            "description": "Location where hardware is deployed",
+            "properties": {
+                "streetAdress": {
+                    "$extend": "/field/streetAdress.json"
+                },
+                "streetNumber": {
+                    "$extend": "/field/streetNumber.json"
+                },
+                "town": {
+                    "$extend": "/field/town.json"
+                },
+                "country": {
+                    "$extend": "/field/country.json"
+                }
+            },
+            "required": [
+                "streetAdress",
+                "streetNumber",
+                "town"
+            ],
+            "smw_prefix": {
+                "header": 1,
+                "wikitext": "Some prefix-description for the location"
+            },
+            "smw_postfix": {
+                "wikitext": "Some postfix-description for the location"
+            },
+            "todo": "This is a todo entry and will be displayed if the corresponding option is active.",
+            "id": "Location",
+            "$filepath": "/model/Location.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "MultiFunctionUnitModel": {
+            "$extend": [
+                "/model/NetworkPrinterModel.json",
+                "/model/NetworkScannerModel.json"
+            ],
+            "title": "Multi-function Unit Model",
+            "note": "It is possible to inherit from multiple sources.",
+            "id": "MultiFunctionUnitModel",
+            "$filepath": "/model/HardwareModel/MultiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "NetworkPrinterModel": {
+            "$extend": "/model/_HardwareModel.json",
+            "title": "Network Printer Model",
+            "properties": {
+                "colorPrinting": {
+                    "$extend": "/field/colorPrinting.json"
+                }
+            },
+            "propertyOrder": [
+                "brand",
+                "modelName"
+            ],
+            "id": "NetworkPrinterModel",
+            "$filepath": "/model/HardwareModel/NetworkPrinterModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkScannerModel": {
+            "$extend": "/model/_HardwareModel.json",
+            "title": "Network Scanner Model",
+            "id": "NetworkScannerModel",
+            "$filepath": "/model/HardwareModel/NetworkScannerModel.json",
+            "abstract": false,
+            "ignore": false
+        },
+        "_HardwareModel": {
+            "title": "Hardware Model",
+            "properties": {
+                "brand": {
+                    "$extend": "/field/brand.json"
+                },
+                "modelName": {
+                    "$extend": "/field/modelName.json"
+                }
+            },
+            "required": [
+                "brand",
+                "modelName"
+            ],
+            "abstract": true,
+            "id": "_HardwareModel",
+            "$filepath": "/model/HardwareModel/_HardwareModel.json",
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkPrinterInstallation": {
+            "$extend": "/model/_NetworkDeviceInstallation.json",
+            "title": "Network Printer Installation",
+            "properties": {
+                "networkPrinterModel": {
+                    "$extend": "/field/networkPrinterModel.json"
+                }
+            },
+            "id": "NetworkPrinterInstallation",
+            "$filepath": "/model/HardwareInstallation/NetworkPrinterInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "MultiFunctionUnitInstallation": {
+            "$extend": "/model/_NetworkDeviceInstallation.json",
+            "title": "Multi-function unit",
+            "properties": {
+                "multiFunctionUnitModel": {
+                    "$extend": "/field/multiFunctionUnitModel.json"
+                }
+            },
+            "id": "MultiFunctionUnitInstallation",
+            "$filepath": "/model/HardwareInstallation/MultiFunctionUnitInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "_NetworkDeviceInstallation": {
+            "$extend": "/model/_HardwareInstallation.json",
+            "title": "NetworkDevice Installation",
+            "properties": {
+                "ip": {
+                    "$extend": "/field/ip.json"
+                }
+            },
+            "recommended": [
+                "ip"
+            ],
+            "abstract": true,
+            "id": "_NetworkDeviceInstallation",
+            "$filepath": "/model/HardwareInstallation/_NetworkDeviceInstallation.json",
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkScannerInstallation": {
+            "$extend": "/model/_NetworkDeviceInstallation.json",
+            "title": "Network Scanner Installation",
+            "properties": {
+                "networkScannerModel": {
+                    "$extend": "/field/networkScannerModel.json"
+                }
+            },
+            "id": "NetworkScannerInstallation",
+            "$filepath": "/model/HardwareInstallation/NetworkScannerInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "_HardwareInstallation": {
+            "title": "Hardware Installation",
+            "properties": {
+                "serialNumber": {
+                    "$extend": "/field/serialNumber.json"
+                },
+                "freetext": {
+                    "$extend": "/field/freetext.json"
+                }
+            },
+            "smw_subobject": true,
+            "smw_category": false,
+            "abstract": true,
+            "id": "_HardwareInstallation",
+            "$filepath": "/model/HardwareInstallation/_HardwareInstallation.json",
+            "ignore": false,
+            "type": "array"
+        }
+    },
+    "form": {
+        "Location": {
+            "title": "Location",
+            "description": "This creates a new location where hardware is deployed.",
+            "properties": {
+                "Location": {
+                    "$extend": "/model/Location.json"
+                },
+                "NetworkPrinterHeader.wikitext": {
+                    "$extend": "/smw_template/NetworkPrinterHeader.wikitext",
+                    "showForm": true,
+                    "showPage": true
+                },
+                "NetworkPrinterInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$extend": "/model/NetworkPrinterInstallation.json"
+                    }
+                },
+                "NetworkScannerHeader.wikitext": {
+                    "$extend": "/smw_template/NetworkScannerHeader.wikitext"
+                },
+                "NetworkScannerInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$extend": "/model/NetworkScannerInstallation.json"
+                    }
+                },
+                "MultiFunctionUnitHeader.wikitext": {
+                    "$extend": "/smw_template/MultiFunctionUnitHeader.wikitext"
+                },
+                "MultiFunctionUnitInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$extend": "/model/MultiFunctionUnitInstallation.json"
+                    }
+                }
+            },
+            "smw_forminfo": {
+                "create title": "Create a new location",
+                "edit title": "Edit a location"
+            },
+            "id": "Location",
+            "$filepath": "/form/Location.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "MultiFunctionUnitModel": {
+            "title": "Multi-Function Unit Model",
+            "properties": {
+                "MultiFunctionUnitModel": {
+                    "$extend": "/model/MultiFunctionUnitModel.json"
+                }
+            },
+            "id": "MultiFunctionUnitModel",
+            "$filepath": "/form/HardwareModel/MultiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkPrinterModel": {
+            "title": "Network Printer Model",
+            "properties": {
+                "NetworkPrinterModel": {
+                    "$extend": "/model/NetworkPrinterModel.json"
+                }
+            },
+            "id": "NetworkPrinterModel",
+            "$filepath": "/form/HardwareModel/NetworkPrinterModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkScannerModel": {
+            "title": "Network Scanner Model",
+            "properties": {
+                "NetworkScannerModel": {
+                    "$extend": "/model/NetworkScannerModel.json"
+                }
+            },
+            "id": "NetworkScannerModel",
+            "$filepath": "/form/HardwareModel/NetworkScannerModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        }
+    },
+    "smw_template": {
+        "NetworkPrinterHeader.wikitext": "=Network Printer=\n",
+        "MultiFunctionUnitHeader.wikitext": "=Multi-Function Unit=\n",
+        "NetworkScannerHeader.wikitext": "=Network Scanner=\n"
+    },
+    "expandedField": {
+        "freetext": {
+            "title": "Free text",
+            "type": "string",
+            "smw_property": false,
+            "smw_form": {
+                "input type": "textarea",
+                "autogrow": true
+            },
+            "id": "freetext",
+            "$filepath": "/field/freetext.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 4,
+            "target": "freetext"
+        },
+        "_hardwareModelReference": {
+            "title": "Model",
+            "description": "You may only select already existing mardware models!",
+            "type": "string",
+            "smw_form": {
+                "max values": 1,
+                "input type": "combobox",
+                "existing values only": true
+            },
+            "abstract": true,
+            "id": "_hardwareModelReference",
+            "$filepath": "/field/HardwareInstallation/_hardwareModelReference.json",
+            "ignore": false,
+            "$referenceCounter": 3
+        },
+        "ip": {
+            "title": "IP Adress",
+            "type": "string",
+            "id": "ip",
+            "$filepath": "/field/HardwareInstallation/ip.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 3,
+            "target": "ip"
+        },
+        "networkScannerModel": {
+            "type": "string",
+            "format": "/form/NetworkScannerModel.json",
+            "smw_form": {
+                "values from category": "NetworkScannerModel",
+                "max values": 1,
+                "input type": "combobox",
+                "existing values only": true
+            },
+            "id": "networkScannerModel",
+            "$filepath": "/field/HardwareInstallation/networkScannerModel.json",
+            "abstract": false,
+            "ignore": false,
+            "$reference": {
+                "path": "/field/_hardwareModelReference.json",
+                "type": "field",
+                "filename": "_hardwareModelReference.json",
+                "id": "_hardwareModelReference"
+            },
+            "$parent": "field/_hardwareModelReference",
+            "title": "Model",
+            "description": "You may only select already existing mardware models!",
+            "$referenceCounter": 1,
+            "target": "NetworkScannerModel"
+        },
+        "networkPrinterModel": {
+            "type": "string",
+            "format": "/form/NetworkPrinterModel.json",
+            "smw_form": {
+                "values from category": "NetworkPrinterModel",
+                "max values": 1,
+                "input type": "combobox",
+                "existing values only": true
+            },
+            "id": "networkPrinterModel",
+            "$filepath": "/field/HardwareInstallation/networkPrinterModel.json",
+            "abstract": false,
+            "ignore": false,
+            "$reference": {
+                "path": "/field/_hardwareModelReference.json",
+                "type": "field",
+                "filename": "_hardwareModelReference.json",
+                "id": "_hardwareModelReference"
+            },
+            "$parent": "field/_hardwareModelReference",
+            "title": "Model",
+            "description": "You may only select already existing mardware models!",
+            "$referenceCounter": 2,
+            "target": "NetworkPrinterModel"
+        },
+        "serialNumber": {
+            "title": "Serial number",
+            "type": "string",
+            "id": "serialNumber",
+            "$filepath": "/field/HardwareInstallation/serialNumber.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 4,
+            "target": "serialNumber"
+        },
+        "multiFunctionUnitModel": {
+            "type": "string",
+            "format": "/form/MultiFunctionUnitModel.json",
+            "smw_form": {
+                "values from category": "MultiFunctionUnitModel",
+                "max values": 1,
+                "input type": "combobox",
+                "existing values only": true
+            },
+            "id": "multiFunctionUnitModel",
+            "$filepath": "/field/HardwareInstallation/multiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false,
+            "$reference": {
+                "path": "/field/_hardwareModelReference.json",
+                "type": "field",
+                "filename": "_hardwareModelReference.json",
+                "id": "_hardwareModelReference"
+            },
+            "$parent": "field/_hardwareModelReference",
+            "title": "Model",
+            "description": "You may only select already existing mardware models!",
+            "$referenceCounter": 3,
+            "target": "MultiFunctionUnitModel"
+        },
+        "brand": {
+            "title": "Brand",
+            "type": "string",
+            "smw_form": {
+                "input type": "text with autocomplete"
+            },
+            "id": "brand",
+            "$filepath": "/field/HardwareModel/brand.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 4,
+            "target": "brand"
+        },
+        "colorPrinting": {
+            "title": "Color Printing",
+            "type": "boolean",
+            "id": "colorPrinting",
+            "$filepath": "/field/HardwareModel/colorPrinting.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 2,
+            "target": "colorPrinting"
+        },
+        "modelName": {
+            "title": "Model name",
+            "type": "string",
+            "id": "modelName",
+            "$filepath": "/field/HardwareModel/modelName.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 4,
+            "target": "modelName"
+        },
+        "country": {
+            "title": "Country",
+            "type": "string",
+            "enum": [
+                "USA",
+                "UK",
+                "Germany"
+            ],
+            "default": "Germany",
+            "id": "country",
+            "$filepath": "/field/Location/country.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 1,
+            "target": "country"
+        },
+        "streetNumber": {
+            "title": "Street Number",
+            "type": "number",
+            "minimum": 0,
+            "id": "streetNumber",
+            "$filepath": "/field/Location/streetNumber.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 1,
+            "target": "streetNumber"
+        },
+        "streetAdress": {
+            "title": "Street Adress",
+            "type": "string",
+            "id": "streetAdress",
+            "$filepath": "/field/Location/streetAdress.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 1,
+            "target": "streetAdress"
+        },
+        "town": {
+            "title": "Town",
+            "type": "string",
+            "smw_form": {
+                "input type": "text with autocomplete"
+            },
+            "id": "town",
+            "$filepath": "/field/Location/town.json",
+            "abstract": false,
+            "ignore": false,
+            "$referenceCounter": 1,
+            "target": "town"
+        }
+    },
+    "expandedModel": {
+        "Location": {
+            "title": "Location",
+            "description": "Location where hardware is deployed",
+            "properties": {
+                "streetAdress": {
+                    "$reference": {
+                        "path": "/field/streetAdress.json",
+                        "type": "field",
+                        "filename": "streetAdress.json",
+                        "id": "streetAdress"
+                    },
+                    "$parent": "field/streetAdress",
+                    "title": "Street Adress",
+                    "type": "string",
+                    "id": "streetAdress",
+                    "$filepath": "/field/Location/streetAdress.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "streetNumber": {
+                    "$reference": {
+                        "path": "/field/streetNumber.json",
+                        "type": "field",
+                        "filename": "streetNumber.json",
+                        "id": "streetNumber"
+                    },
+                    "$parent": "field/streetNumber",
+                    "title": "Street Number",
+                    "type": "number",
+                    "minimum": 0,
+                    "id": "streetNumber",
+                    "$filepath": "/field/Location/streetNumber.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "town": {
+                    "$reference": {
+                        "path": "/field/town.json",
+                        "type": "field",
+                        "filename": "town.json",
+                        "id": "town"
+                    },
+                    "$parent": "field/town",
+                    "title": "Town",
+                    "type": "string",
+                    "smw_form": {
+                        "input type": "text with autocomplete"
+                    },
+                    "id": "town",
+                    "$filepath": "/field/Location/town.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "country": {
+                    "$reference": {
+                        "path": "/field/country.json",
+                        "type": "field",
+                        "filename": "country.json",
+                        "id": "country"
+                    },
+                    "$parent": "field/country",
+                    "title": "Country",
+                    "type": "string",
+                    "enum": [
+                        "USA",
+                        "UK",
+                        "Germany"
+                    ],
+                    "default": "Germany",
+                    "id": "country",
+                    "$filepath": "/field/Location/country.json",
+                    "abstract": false,
+                    "ignore": false
+                }
+            },
+            "required": [
+                "streetAdress",
+                "streetNumber",
+                "town"
+            ],
+            "smw_prefix": {
+                "header": 1,
+                "wikitext": "Some prefix-description for the location"
+            },
+            "smw_postfix": {
+                "wikitext": "Some postfix-description for the location"
+            },
+            "todo": "This is a todo entry and will be displayed if the corresponding option is active.",
+            "id": "Location",
+            "$filepath": "/model/Location.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array",
+            "$referenceCounter": 1
+        },
+        "MultiFunctionUnitModel": {
+            "title": "Multi-function Unit Model",
+            "note": "It is possible to inherit from multiple sources.",
+            "id": "MultiFunctionUnitModel",
+            "$filepath": "/model/HardwareModel/MultiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false,
+            "$reference": {
+                "path": "/model/NetworkScannerModel.json",
+                "type": "model",
+                "filename": "NetworkScannerModel.json",
+                "id": "NetworkScannerModel"
+            },
+            "$parent": "model/NetworkScannerModel",
+            "properties": {
+                "brand": {
+                    "$reference": {
+                        "path": "/field/brand.json",
+                        "type": "field",
+                        "filename": "brand.json",
+                        "id": "brand"
+                    },
+                    "$parent": "field/brand",
+                    "title": "Brand",
+                    "type": "string",
+                    "smw_form": {
+                        "input type": "text with autocomplete"
+                    },
+                    "id": "brand",
+                    "$filepath": "/field/HardwareModel/brand.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "modelName": {
+                    "$reference": {
+                        "path": "/field/modelName.json",
+                        "type": "field",
+                        "filename": "modelName.json",
+                        "id": "modelName"
+                    },
+                    "$parent": "field/modelName",
+                    "title": "Model name",
+                    "type": "string",
+                    "id": "modelName",
+                    "$filepath": "/field/HardwareModel/modelName.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "colorPrinting": {
+                    "$reference": {
+                        "path": "/field/colorPrinting.json",
+                        "type": "field",
+                        "filename": "colorPrinting.json",
+                        "id": "colorPrinting"
+                    },
+                    "$parent": "field/colorPrinting",
+                    "title": "Color Printing",
+                    "type": "boolean",
+                    "id": "colorPrinting",
+                    "$filepath": "/field/HardwareModel/colorPrinting.json",
+                    "abstract": false,
+                    "ignore": false
+                }
+            },
+            "propertyOrder": [
+                "brand",
+                "modelName"
+            ],
+            "type": "array",
+            "required": [
+                "brand",
+                "modelName"
+            ],
+            "$referenceCounter": 2
+        },
+        "NetworkPrinterModel": {
+            "title": "Network Printer Model",
+            "properties": {
+                "brand": {
+                    "$reference": {
+                        "path": "/field/brand.json",
+                        "type": "field",
+                        "filename": "brand.json",
+                        "id": "brand"
+                    },
+                    "$parent": "field/brand",
+                    "title": "Brand",
+                    "type": "string",
+                    "smw_form": {
+                        "input type": "text with autocomplete"
+                    },
+                    "id": "brand",
+                    "$filepath": "/field/HardwareModel/brand.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                },
+                "modelName": {
+                    "$reference": {
+                        "path": "/field/modelName.json",
+                        "type": "field",
+                        "filename": "modelName.json",
+                        "id": "modelName"
+                    },
+                    "$parent": "field/modelName",
+                    "title": "Model name",
+                    "type": "string",
+                    "id": "modelName",
+                    "$filepath": "/field/HardwareModel/modelName.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                },
+                "colorPrinting": {
+                    "$reference": {
+                        "path": "/field/colorPrinting.json",
+                        "type": "field",
+                        "filename": "colorPrinting.json",
+                        "id": "colorPrinting"
+                    },
+                    "$parent": "field/colorPrinting",
+                    "title": "Color Printing",
+                    "type": "boolean",
+                    "id": "colorPrinting",
+                    "$filepath": "/field/HardwareModel/colorPrinting.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                }
+            },
+            "propertyOrder": [
+                "brand",
+                "modelName"
+            ],
+            "id": "NetworkPrinterModel",
+            "$filepath": "/model/HardwareModel/NetworkPrinterModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array",
+            "$reference": {
+                "path": "/model/_HardwareModel.json",
+                "type": "model",
+                "filename": "_HardwareModel.json",
+                "id": "_HardwareModel"
+            },
+            "$parent": "model/_HardwareModel",
+            "required": [
+                "brand",
+                "modelName"
+            ],
+            "$referenceCounter": 2
+        },
+        "NetworkScannerModel": {
+            "title": "Network Scanner Model",
+            "id": "NetworkScannerModel",
+            "$filepath": "/model/HardwareModel/NetworkScannerModel.json",
+            "abstract": false,
+            "ignore": false,
+            "$reference": {
+                "path": "/model/_HardwareModel.json",
+                "type": "model",
+                "filename": "_HardwareModel.json",
+                "id": "_HardwareModel"
+            },
+            "$parent": "model/_HardwareModel",
+            "properties": {
+                "brand": {
+                    "$reference": {
+                        "path": "/field/brand.json",
+                        "type": "field",
+                        "filename": "brand.json",
+                        "id": "brand"
+                    },
+                    "$parent": "field/brand",
+                    "title": "Brand",
+                    "type": "string",
+                    "smw_form": {
+                        "input type": "text with autocomplete"
+                    },
+                    "id": "brand",
+                    "$filepath": "/field/HardwareModel/brand.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                },
+                "modelName": {
+                    "$reference": {
+                        "path": "/field/modelName.json",
+                        "type": "field",
+                        "filename": "modelName.json",
+                        "id": "modelName"
+                    },
+                    "$parent": "field/modelName",
+                    "title": "Model name",
+                    "type": "string",
+                    "id": "modelName",
+                    "$filepath": "/field/HardwareModel/modelName.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                }
+            },
+            "required": [
+                "brand",
+                "modelName"
+            ],
+            "type": "array",
+            "$referenceCounter": 3
+        },
+        "_HardwareModel": {
+            "title": "Hardware Model",
+            "properties": {
+                "brand": {
+                    "$reference": {
+                        "path": "/field/brand.json",
+                        "type": "field",
+                        "filename": "brand.json",
+                        "id": "brand"
+                    },
+                    "$parent": "field/brand",
+                    "title": "Brand",
+                    "type": "string",
+                    "smw_form": {
+                        "input type": "text with autocomplete"
+                    },
+                    "id": "brand",
+                    "$filepath": "/field/HardwareModel/brand.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 3
+                },
+                "modelName": {
+                    "$reference": {
+                        "path": "/field/modelName.json",
+                        "type": "field",
+                        "filename": "modelName.json",
+                        "id": "modelName"
+                    },
+                    "$parent": "field/modelName",
+                    "title": "Model name",
+                    "type": "string",
+                    "id": "modelName",
+                    "$filepath": "/field/HardwareModel/modelName.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 3
+                }
+            },
+            "required": [
+                "brand",
+                "modelName"
+            ],
+            "abstract": true,
+            "id": "_HardwareModel",
+            "$filepath": "/model/HardwareModel/_HardwareModel.json",
+            "ignore": false,
+            "type": "array",
+            "$referenceCounter": 2
+        },
+        "NetworkPrinterInstallation": {
+            "title": "Network Printer Installation",
+            "properties": {
+                "networkPrinterModel": {
+                    "$reference": {
+                        "path": "/field/networkPrinterModel.json",
+                        "type": "field",
+                        "filename": "networkPrinterModel.json",
+                        "id": "networkPrinterModel"
+                    },
+                    "$parent": "field/networkPrinterModel",
+                    "type": "string",
+                    "format": "/form/NetworkPrinterModel.json",
+                    "smw_form": {
+                        "values from category": "NetworkPrinterModel",
+                        "max values": 1,
+                        "input type": "combobox",
+                        "existing values only": true
+                    },
+                    "id": "networkPrinterModel",
+                    "$filepath": "/field/HardwareInstallation/networkPrinterModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "title": "Model",
+                    "description": "You may only select already existing mardware models!",
+                    "$referenceCounter": 1
+                },
+                "ip": {
+                    "$reference": {
+                        "path": "/field/ip.json",
+                        "type": "field",
+                        "filename": "ip.json",
+                        "id": "ip"
+                    },
+                    "$parent": "field/ip",
+                    "title": "IP Adress",
+                    "type": "string",
+                    "id": "ip",
+                    "$filepath": "/field/HardwareInstallation/ip.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "serialNumber": {
+                    "$reference": {
+                        "path": "/field/serialNumber.json",
+                        "type": "field",
+                        "filename": "serialNumber.json",
+                        "id": "serialNumber"
+                    },
+                    "$parent": "field/serialNumber",
+                    "title": "Serial number",
+                    "type": "string",
+                    "id": "serialNumber",
+                    "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                    "abstract": false,
+                    "ignore": false
+                },
+                "freetext": {
+                    "$reference": {
+                        "path": "/field/freetext.json",
+                        "type": "field",
+                        "filename": "freetext.json",
+                        "id": "freetext"
+                    },
+                    "$parent": "field/freetext",
+                    "title": "Free text",
+                    "type": "string",
+                    "smw_property": false,
+                    "smw_form": {
+                        "input type": "textarea",
+                        "autogrow": true
+                    },
+                    "id": "freetext",
+                    "$filepath": "/field/freetext.json",
+                    "abstract": false,
+                    "ignore": false
+                }
+            },
+            "id": "NetworkPrinterInstallation",
+            "$filepath": "/model/HardwareInstallation/NetworkPrinterInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array",
+            "$reference": {
+                "path": "/model/_NetworkDeviceInstallation.json",
+                "type": "model",
+                "filename": "_NetworkDeviceInstallation.json",
+                "id": "_NetworkDeviceInstallation"
+            },
+            "$parent": "model/_NetworkDeviceInstallation",
+            "recommended": [
+                "ip"
+            ],
+            "smw_subobject": true,
+            "smw_category": false,
+            "$referenceCounter": 1
+        },
+        "MultiFunctionUnitInstallation": {
+            "title": "Multi-function unit",
+            "properties": {
+                "multiFunctionUnitModel": {
+                    "$reference": {
+                        "path": "/field/multiFunctionUnitModel.json",
+                        "type": "field",
+                        "filename": "multiFunctionUnitModel.json",
+                        "id": "multiFunctionUnitModel"
+                    },
+                    "$parent": "field/multiFunctionUnitModel",
+                    "type": "string",
+                    "format": "/form/MultiFunctionUnitModel.json",
+                    "smw_form": {
+                        "values from category": "MultiFunctionUnitModel",
+                        "max values": 1,
+                        "input type": "combobox",
+                        "existing values only": true
+                    },
+                    "id": "multiFunctionUnitModel",
+                    "$filepath": "/field/HardwareInstallation/multiFunctionUnitModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "title": "Model",
+                    "description": "You may only select already existing mardware models!",
+                    "$referenceCounter": 2
+                },
+                "ip": {
+                    "$reference": {
+                        "path": "/field/ip.json",
+                        "type": "field",
+                        "filename": "ip.json",
+                        "id": "ip"
+                    },
+                    "$parent": "field/ip",
+                    "title": "IP Adress",
+                    "type": "string",
+                    "id": "ip",
+                    "$filepath": "/field/HardwareInstallation/ip.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                },
+                "serialNumber": {
+                    "$reference": {
+                        "path": "/field/serialNumber.json",
+                        "type": "field",
+                        "filename": "serialNumber.json",
+                        "id": "serialNumber"
+                    },
+                    "$parent": "field/serialNumber",
+                    "title": "Serial number",
+                    "type": "string",
+                    "id": "serialNumber",
+                    "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                },
+                "freetext": {
+                    "$reference": {
+                        "path": "/field/freetext.json",
+                        "type": "field",
+                        "filename": "freetext.json",
+                        "id": "freetext"
+                    },
+                    "$parent": "field/freetext",
+                    "title": "Free text",
+                    "type": "string",
+                    "smw_property": false,
+                    "smw_form": {
+                        "input type": "textarea",
+                        "autogrow": true
+                    },
+                    "id": "freetext",
+                    "$filepath": "/field/freetext.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 1
+                }
+            },
+            "id": "MultiFunctionUnitInstallation",
+            "$filepath": "/model/HardwareInstallation/MultiFunctionUnitInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array",
+            "$reference": {
+                "path": "/model/_NetworkDeviceInstallation.json",
+                "type": "model",
+                "filename": "_NetworkDeviceInstallation.json",
+                "id": "_NetworkDeviceInstallation"
+            },
+            "$parent": "model/_NetworkDeviceInstallation",
+            "recommended": [
+                "ip"
+            ],
+            "smw_subobject": true,
+            "smw_category": false,
+            "$referenceCounter": 2
+        },
+        "_NetworkDeviceInstallation": {
+            "title": "NetworkDevice Installation",
+            "properties": {
+                "ip": {
+                    "$reference": {
+                        "path": "/field/ip.json",
+                        "type": "field",
+                        "filename": "ip.json",
+                        "id": "ip"
+                    },
+                    "$parent": "field/ip",
+                    "title": "IP Adress",
+                    "type": "string",
+                    "id": "ip",
+                    "$filepath": "/field/HardwareInstallation/ip.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                },
+                "serialNumber": {
+                    "$reference": {
+                        "path": "/field/serialNumber.json",
+                        "type": "field",
+                        "filename": "serialNumber.json",
+                        "id": "serialNumber"
+                    },
+                    "$parent": "field/serialNumber",
+                    "title": "Serial number",
+                    "type": "string",
+                    "id": "serialNumber",
+                    "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                },
+                "freetext": {
+                    "$reference": {
+                        "path": "/field/freetext.json",
+                        "type": "field",
+                        "filename": "freetext.json",
+                        "id": "freetext"
+                    },
+                    "$parent": "field/freetext",
+                    "title": "Free text",
+                    "type": "string",
+                    "smw_property": false,
+                    "smw_form": {
+                        "input type": "textarea",
+                        "autogrow": true
+                    },
+                    "id": "freetext",
+                    "$filepath": "/field/freetext.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                }
+            },
+            "recommended": [
+                "ip"
+            ],
+            "abstract": true,
+            "id": "_NetworkDeviceInstallation",
+            "$filepath": "/model/HardwareInstallation/_NetworkDeviceInstallation.json",
+            "ignore": false,
+            "type": "array",
+            "$reference": {
+                "path": "/model/_HardwareInstallation.json",
+                "type": "model",
+                "filename": "_HardwareInstallation.json",
+                "id": "_HardwareInstallation"
+            },
+            "$parent": "model/_HardwareInstallation",
+            "smw_subobject": true,
+            "smw_category": false,
+            "$referenceCounter": 3
+        },
+        "NetworkScannerInstallation": {
+            "title": "Network Scanner Installation",
+            "properties": {
+                "networkScannerModel": {
+                    "$reference": {
+                        "path": "/field/networkScannerModel.json",
+                        "type": "field",
+                        "filename": "networkScannerModel.json",
+                        "id": "networkScannerModel"
+                    },
+                    "$parent": "field/networkScannerModel",
+                    "type": "string",
+                    "format": "/form/NetworkScannerModel.json",
+                    "smw_form": {
+                        "values from category": "NetworkScannerModel",
+                        "max values": 1,
+                        "input type": "combobox",
+                        "existing values only": true
+                    },
+                    "id": "networkScannerModel",
+                    "$filepath": "/field/HardwareInstallation/networkScannerModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "title": "Model",
+                    "description": "You may only select already existing mardware models!"
+                },
+                "ip": {
+                    "$reference": {
+                        "path": "/field/ip.json",
+                        "type": "field",
+                        "filename": "ip.json",
+                        "id": "ip"
+                    },
+                    "$parent": "field/ip",
+                    "title": "IP Adress",
+                    "type": "string",
+                    "id": "ip",
+                    "$filepath": "/field/HardwareInstallation/ip.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                },
+                "serialNumber": {
+                    "$reference": {
+                        "path": "/field/serialNumber.json",
+                        "type": "field",
+                        "filename": "serialNumber.json",
+                        "id": "serialNumber"
+                    },
+                    "$parent": "field/serialNumber",
+                    "title": "Serial number",
+                    "type": "string",
+                    "id": "serialNumber",
+                    "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                },
+                "freetext": {
+                    "$reference": {
+                        "path": "/field/freetext.json",
+                        "type": "field",
+                        "filename": "freetext.json",
+                        "id": "freetext"
+                    },
+                    "$parent": "field/freetext",
+                    "title": "Free text",
+                    "type": "string",
+                    "smw_property": false,
+                    "smw_form": {
+                        "input type": "textarea",
+                        "autogrow": true
+                    },
+                    "id": "freetext",
+                    "$filepath": "/field/freetext.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 2
+                }
+            },
+            "id": "NetworkScannerInstallation",
+            "$filepath": "/model/HardwareInstallation/NetworkScannerInstallation.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array",
+            "$reference": {
+                "path": "/model/_NetworkDeviceInstallation.json",
+                "type": "model",
+                "filename": "_NetworkDeviceInstallation.json",
+                "id": "_NetworkDeviceInstallation"
+            },
+            "$parent": "model/_NetworkDeviceInstallation",
+            "recommended": [
+                "ip"
+            ],
+            "smw_subobject": true,
+            "smw_category": false,
+            "$referenceCounter": 3
+        },
+        "_HardwareInstallation": {
+            "title": "Hardware Installation",
+            "properties": {
+                "serialNumber": {
+                    "$reference": {
+                        "path": "/field/serialNumber.json",
+                        "type": "field",
+                        "filename": "serialNumber.json",
+                        "id": "serialNumber"
+                    },
+                    "$parent": "field/serialNumber",
+                    "title": "Serial number",
+                    "type": "string",
+                    "id": "serialNumber",
+                    "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 3
+                },
+                "freetext": {
+                    "$reference": {
+                        "path": "/field/freetext.json",
+                        "type": "field",
+                        "filename": "freetext.json",
+                        "id": "freetext"
+                    },
+                    "$parent": "field/freetext",
+                    "title": "Free text",
+                    "type": "string",
+                    "smw_property": false,
+                    "smw_form": {
+                        "input type": "textarea",
+                        "autogrow": true
+                    },
+                    "id": "freetext",
+                    "$filepath": "/field/freetext.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "$referenceCounter": 3
+                }
+            },
+            "smw_subobject": true,
+            "smw_category": false,
+            "abstract": true,
+            "id": "_HardwareInstallation",
+            "$filepath": "/model/HardwareInstallation/_HardwareInstallation.json",
+            "ignore": false,
+            "type": "array",
+            "$referenceCounter": 1
+        }
+    },
+    "expandedForm": {
+        "Location": {
+            "title": "Location",
+            "description": "This creates a new location where hardware is deployed.",
+            "properties": {
+                "Location": {
+                    "$reference": {
+                        "path": "/model/Location.json",
+                        "type": "model",
+                        "filename": "Location.json",
+                        "id": "Location"
+                    },
+                    "$parent": "model/Location",
+                    "title": "Location",
+                    "description": "Location where hardware is deployed",
+                    "properties": {
+                        "streetAdress": {
+                            "$reference": {
+                                "path": "/field/streetAdress.json",
+                                "type": "field",
+                                "filename": "streetAdress.json",
+                                "id": "streetAdress"
+                            },
+                            "$parent": "field/streetAdress",
+                            "title": "Street Adress",
+                            "type": "string",
+                            "id": "streetAdress",
+                            "$filepath": "/field/Location/streetAdress.json",
+                            "abstract": false,
+                            "ignore": false
+                        },
+                        "streetNumber": {
+                            "$reference": {
+                                "path": "/field/streetNumber.json",
+                                "type": "field",
+                                "filename": "streetNumber.json",
+                                "id": "streetNumber"
+                            },
+                            "$parent": "field/streetNumber",
+                            "title": "Street Number",
+                            "type": "number",
+                            "minimum": 0,
+                            "id": "streetNumber",
+                            "$filepath": "/field/Location/streetNumber.json",
+                            "abstract": false,
+                            "ignore": false
+                        },
+                        "town": {
+                            "$reference": {
+                                "path": "/field/town.json",
+                                "type": "field",
+                                "filename": "town.json",
+                                "id": "town"
+                            },
+                            "$parent": "field/town",
+                            "title": "Town",
+                            "type": "string",
+                            "smw_form": {
+                                "input type": "text with autocomplete"
+                            },
+                            "id": "town",
+                            "$filepath": "/field/Location/town.json",
+                            "abstract": false,
+                            "ignore": false
+                        },
+                        "country": {
+                            "$reference": {
+                                "path": "/field/country.json",
+                                "type": "field",
+                                "filename": "country.json",
+                                "id": "country"
+                            },
+                            "$parent": "field/country",
+                            "title": "Country",
+                            "type": "string",
+                            "enum": [
+                                "USA",
+                                "UK",
+                                "Germany"
+                            ],
+                            "default": "Germany",
+                            "id": "country",
+                            "$filepath": "/field/Location/country.json",
+                            "abstract": false,
+                            "ignore": false
+                        }
+                    },
+                    "required": [
+                        "streetAdress",
+                        "streetNumber",
+                        "town"
+                    ],
+                    "smw_prefix": {
+                        "header": 1,
+                        "wikitext": "Some prefix-description for the location"
+                    },
+                    "smw_postfix": {
+                        "wikitext": "Some postfix-description for the location"
+                    },
+                    "todo": "This is a todo entry and will be displayed if the corresponding option is active.",
+                    "id": "Location",
+                    "$filepath": "/model/Location.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "type": "array"
+                },
+                "NetworkPrinterHeader.wikitext": {
+                    "showForm": true,
+                    "showPage": true,
+                    "$reference": {
+                        "path": "/smw_template/NetworkPrinterHeader.wikitext",
+                        "type": "smw_template",
+                        "filename": "NetworkPrinterHeader.wikitext",
+                        "id": "NetworkPrinterHeader.wikitext"
+                    },
+                    "$parent": "smw_template/NetworkPrinterHeader.wikitext",
+                    "id": "NetworkPrinterHeader",
+                    "type": "string",
+                    "template": "=Network Printer=\n"
+                },
+                "NetworkPrinterInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$reference": {
+                            "path": "/model/NetworkPrinterInstallation.json",
+                            "type": "model",
+                            "filename": "NetworkPrinterInstallation.json",
+                            "id": "NetworkPrinterInstallation"
+                        },
+                        "$parent": "model/NetworkPrinterInstallation",
+                        "title": "Network Printer Installation",
+                        "properties": {
+                            "networkPrinterModel": {
+                                "$reference": {
+                                    "path": "/field/networkPrinterModel.json",
+                                    "type": "field",
+                                    "filename": "networkPrinterModel.json",
+                                    "id": "networkPrinterModel"
+                                },
+                                "$parent": "field/networkPrinterModel",
+                                "type": "string",
+                                "format": "/form/NetworkPrinterModel.json",
+                                "smw_form": {
+                                    "values from category": "NetworkPrinterModel",
+                                    "max values": 1,
+                                    "input type": "combobox",
+                                    "existing values only": true
+                                },
+                                "id": "networkPrinterModel",
+                                "$filepath": "/field/HardwareInstallation/networkPrinterModel.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "title": "Model",
+                                "description": "You may only select already existing mardware models!",
+                                "$referenceCounter": 1
+                            },
+                            "ip": {
+                                "$reference": {
+                                    "path": "/field/ip.json",
+                                    "type": "field",
+                                    "filename": "ip.json",
+                                    "id": "ip"
+                                },
+                                "$parent": "field/ip",
+                                "title": "IP Adress",
+                                "type": "string",
+                                "id": "ip",
+                                "$filepath": "/field/HardwareInstallation/ip.json",
+                                "abstract": false,
+                                "ignore": false
+                            },
+                            "serialNumber": {
+                                "$reference": {
+                                    "path": "/field/serialNumber.json",
+                                    "type": "field",
+                                    "filename": "serialNumber.json",
+                                    "id": "serialNumber"
+                                },
+                                "$parent": "field/serialNumber",
+                                "title": "Serial number",
+                                "type": "string",
+                                "id": "serialNumber",
+                                "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                                "abstract": false,
+                                "ignore": false
+                            },
+                            "freetext": {
+                                "$reference": {
+                                    "path": "/field/freetext.json",
+                                    "type": "field",
+                                    "filename": "freetext.json",
+                                    "id": "freetext"
+                                },
+                                "$parent": "field/freetext",
+                                "title": "Free text",
+                                "type": "string",
+                                "smw_property": false,
+                                "smw_form": {
+                                    "input type": "textarea",
+                                    "autogrow": true
+                                },
+                                "id": "freetext",
+                                "$filepath": "/field/freetext.json",
+                                "abstract": false,
+                                "ignore": false
+                            }
+                        },
+                        "id": "NetworkPrinterInstallation",
+                        "$filepath": "/model/HardwareInstallation/NetworkPrinterInstallation.json",
+                        "abstract": false,
+                        "ignore": false,
+                        "type": "array",
+                        "recommended": [
+                            "ip"
+                        ],
+                        "smw_subobject": true,
+                        "smw_category": false
+                    }
+                },
+                "NetworkScannerHeader.wikitext": {
+                    "$reference": {
+                        "path": "/smw_template/NetworkScannerHeader.wikitext",
+                        "type": "smw_template",
+                        "filename": "NetworkScannerHeader.wikitext",
+                        "id": "NetworkScannerHeader.wikitext"
+                    },
+                    "$parent": "smw_template/NetworkScannerHeader.wikitext",
+                    "id": "NetworkScannerHeader",
+                    "type": "string",
+                    "template": "=Network Scanner=\n"
+                },
+                "NetworkScannerInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$reference": {
+                            "path": "/model/NetworkScannerInstallation.json",
+                            "type": "model",
+                            "filename": "NetworkScannerInstallation.json",
+                            "id": "NetworkScannerInstallation"
+                        },
+                        "$parent": "model/NetworkScannerInstallation",
+                        "title": "Network Scanner Installation",
+                        "properties": {
+                            "networkScannerModel": {
+                                "$reference": {
+                                    "path": "/field/networkScannerModel.json",
+                                    "type": "field",
+                                    "filename": "networkScannerModel.json",
+                                    "id": "networkScannerModel"
+                                },
+                                "$parent": "field/networkScannerModel",
+                                "type": "string",
+                                "format": "/form/NetworkScannerModel.json",
+                                "smw_form": {
+                                    "values from category": "NetworkScannerModel",
+                                    "max values": 1,
+                                    "input type": "combobox",
+                                    "existing values only": true
+                                },
+                                "id": "networkScannerModel",
+                                "$filepath": "/field/HardwareInstallation/networkScannerModel.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "title": "Model",
+                                "description": "You may only select already existing mardware models!"
+                            },
+                            "ip": {
+                                "$reference": {
+                                    "path": "/field/ip.json",
+                                    "type": "field",
+                                    "filename": "ip.json",
+                                    "id": "ip"
+                                },
+                                "$parent": "field/ip",
+                                "title": "IP Adress",
+                                "type": "string",
+                                "id": "ip",
+                                "$filepath": "/field/HardwareInstallation/ip.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 2
+                            },
+                            "serialNumber": {
+                                "$reference": {
+                                    "path": "/field/serialNumber.json",
+                                    "type": "field",
+                                    "filename": "serialNumber.json",
+                                    "id": "serialNumber"
+                                },
+                                "$parent": "field/serialNumber",
+                                "title": "Serial number",
+                                "type": "string",
+                                "id": "serialNumber",
+                                "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 2
+                            },
+                            "freetext": {
+                                "$reference": {
+                                    "path": "/field/freetext.json",
+                                    "type": "field",
+                                    "filename": "freetext.json",
+                                    "id": "freetext"
+                                },
+                                "$parent": "field/freetext",
+                                "title": "Free text",
+                                "type": "string",
+                                "smw_property": false,
+                                "smw_form": {
+                                    "input type": "textarea",
+                                    "autogrow": true
+                                },
+                                "id": "freetext",
+                                "$filepath": "/field/freetext.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 2
+                            }
+                        },
+                        "id": "NetworkScannerInstallation",
+                        "$filepath": "/model/HardwareInstallation/NetworkScannerInstallation.json",
+                        "abstract": false,
+                        "ignore": false,
+                        "type": "array",
+                        "recommended": [
+                            "ip"
+                        ],
+                        "smw_subobject": true,
+                        "smw_category": false,
+                        "$referenceCounter": 2
+                    }
+                },
+                "MultiFunctionUnitHeader.wikitext": {
+                    "$reference": {
+                        "path": "/smw_template/MultiFunctionUnitHeader.wikitext",
+                        "type": "smw_template",
+                        "filename": "MultiFunctionUnitHeader.wikitext",
+                        "id": "MultiFunctionUnitHeader.wikitext"
+                    },
+                    "$parent": "smw_template/MultiFunctionUnitHeader.wikitext",
+                    "id": "MultiFunctionUnitHeader",
+                    "type": "string",
+                    "template": "=Multi-Function Unit=\n"
+                },
+                "MultiFunctionUnitInstallation": {
+                    "type": "array",
+                    "items": {
+                        "$reference": {
+                            "path": "/model/MultiFunctionUnitInstallation.json",
+                            "type": "model",
+                            "filename": "MultiFunctionUnitInstallation.json",
+                            "id": "MultiFunctionUnitInstallation"
+                        },
+                        "$parent": "model/MultiFunctionUnitInstallation",
+                        "title": "Multi-function unit",
+                        "properties": {
+                            "multiFunctionUnitModel": {
+                                "$reference": {
+                                    "path": "/field/multiFunctionUnitModel.json",
+                                    "type": "field",
+                                    "filename": "multiFunctionUnitModel.json",
+                                    "id": "multiFunctionUnitModel"
+                                },
+                                "$parent": "field/multiFunctionUnitModel",
+                                "type": "string",
+                                "format": "/form/MultiFunctionUnitModel.json",
+                                "smw_form": {
+                                    "values from category": "MultiFunctionUnitModel",
+                                    "max values": 1,
+                                    "input type": "combobox",
+                                    "existing values only": true
+                                },
+                                "id": "multiFunctionUnitModel",
+                                "$filepath": "/field/HardwareInstallation/multiFunctionUnitModel.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "title": "Model",
+                                "description": "You may only select already existing mardware models!",
+                                "$referenceCounter": 2
+                            },
+                            "ip": {
+                                "$reference": {
+                                    "path": "/field/ip.json",
+                                    "type": "field",
+                                    "filename": "ip.json",
+                                    "id": "ip"
+                                },
+                                "$parent": "field/ip",
+                                "title": "IP Adress",
+                                "type": "string",
+                                "id": "ip",
+                                "$filepath": "/field/HardwareInstallation/ip.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 1
+                            },
+                            "serialNumber": {
+                                "$reference": {
+                                    "path": "/field/serialNumber.json",
+                                    "type": "field",
+                                    "filename": "serialNumber.json",
+                                    "id": "serialNumber"
+                                },
+                                "$parent": "field/serialNumber",
+                                "title": "Serial number",
+                                "type": "string",
+                                "id": "serialNumber",
+                                "$filepath": "/field/HardwareInstallation/serialNumber.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 1
+                            },
+                            "freetext": {
+                                "$reference": {
+                                    "path": "/field/freetext.json",
+                                    "type": "field",
+                                    "filename": "freetext.json",
+                                    "id": "freetext"
+                                },
+                                "$parent": "field/freetext",
+                                "title": "Free text",
+                                "type": "string",
+                                "smw_property": false,
+                                "smw_form": {
+                                    "input type": "textarea",
+                                    "autogrow": true
+                                },
+                                "id": "freetext",
+                                "$filepath": "/field/freetext.json",
+                                "abstract": false,
+                                "ignore": false,
+                                "$referenceCounter": 1
+                            }
+                        },
+                        "id": "MultiFunctionUnitInstallation",
+                        "$filepath": "/model/HardwareInstallation/MultiFunctionUnitInstallation.json",
+                        "abstract": false,
+                        "ignore": false,
+                        "type": "array",
+                        "recommended": [
+                            "ip"
+                        ],
+                        "smw_subobject": true,
+                        "smw_category": false,
+                        "$referenceCounter": 1
+                    }
+                }
+            },
+            "smw_forminfo": {
+                "create title": "Create a new location",
+                "edit title": "Edit a location"
+            },
+            "id": "Location",
+            "$filepath": "/form/Location.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "MultiFunctionUnitModel": {
+            "title": "Multi-Function Unit Model",
+            "properties": {
+                "MultiFunctionUnitModel": {
+                    "$reference": {
+                        "path": "/model/MultiFunctionUnitModel.json",
+                        "type": "model",
+                        "filename": "MultiFunctionUnitModel.json",
+                        "id": "MultiFunctionUnitModel"
+                    },
+                    "$parent": "model/MultiFunctionUnitModel",
+                    "title": "Multi-function Unit Model",
+                    "note": "It is possible to inherit from multiple sources.",
+                    "id": "MultiFunctionUnitModel",
+                    "$filepath": "/model/HardwareModel/MultiFunctionUnitModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "properties": {
+                        "brand": {
+                            "$reference": {
+                                "path": "/field/brand.json",
+                                "type": "field",
+                                "filename": "brand.json",
+                                "id": "brand"
+                            },
+                            "$parent": "field/brand",
+                            "title": "Brand",
+                            "type": "string",
+                            "smw_form": {
+                                "input type": "text with autocomplete"
+                            },
+                            "id": "brand",
+                            "$filepath": "/field/HardwareModel/brand.json",
+                            "abstract": false,
+                            "ignore": false
+                        },
+                        "modelName": {
+                            "$reference": {
+                                "path": "/field/modelName.json",
+                                "type": "field",
+                                "filename": "modelName.json",
+                                "id": "modelName"
+                            },
+                            "$parent": "field/modelName",
+                            "title": "Model name",
+                            "type": "string",
+                            "id": "modelName",
+                            "$filepath": "/field/HardwareModel/modelName.json",
+                            "abstract": false,
+                            "ignore": false
+                        },
+                        "colorPrinting": {
+                            "$reference": {
+                                "path": "/field/colorPrinting.json",
+                                "type": "field",
+                                "filename": "colorPrinting.json",
+                                "id": "colorPrinting"
+                            },
+                            "$parent": "field/colorPrinting",
+                            "title": "Color Printing",
+                            "type": "boolean",
+                            "id": "colorPrinting",
+                            "$filepath": "/field/HardwareModel/colorPrinting.json",
+                            "abstract": false,
+                            "ignore": false
+                        }
+                    },
+                    "propertyOrder": [
+                        "brand",
+                        "modelName"
+                    ],
+                    "type": "array",
+                    "required": [
+                        "brand",
+                        "modelName"
+                    ],
+                    "$referenceCounter": 1
+                }
+            },
+            "id": "MultiFunctionUnitModel",
+            "$filepath": "/form/HardwareModel/MultiFunctionUnitModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkPrinterModel": {
+            "title": "Network Printer Model",
+            "properties": {
+                "NetworkPrinterModel": {
+                    "$reference": {
+                        "path": "/model/NetworkPrinterModel.json",
+                        "type": "model",
+                        "filename": "NetworkPrinterModel.json",
+                        "id": "NetworkPrinterModel"
+                    },
+                    "$parent": "model/NetworkPrinterModel",
+                    "title": "Network Printer Model",
+                    "properties": {
+                        "brand": {
+                            "$reference": {
+                                "path": "/field/brand.json",
+                                "type": "field",
+                                "filename": "brand.json",
+                                "id": "brand"
+                            },
+                            "$parent": "field/brand",
+                            "title": "Brand",
+                            "type": "string",
+                            "smw_form": {
+                                "input type": "text with autocomplete"
+                            },
+                            "id": "brand",
+                            "$filepath": "/field/HardwareModel/brand.json",
+                            "abstract": false,
+                            "ignore": false,
+                            "$referenceCounter": 1
+                        },
+                        "modelName": {
+                            "$reference": {
+                                "path": "/field/modelName.json",
+                                "type": "field",
+                                "filename": "modelName.json",
+                                "id": "modelName"
+                            },
+                            "$parent": "field/modelName",
+                            "title": "Model name",
+                            "type": "string",
+                            "id": "modelName",
+                            "$filepath": "/field/HardwareModel/modelName.json",
+                            "abstract": false,
+                            "ignore": false,
+                            "$referenceCounter": 1
+                        },
+                        "colorPrinting": {
+                            "$reference": {
+                                "path": "/field/colorPrinting.json",
+                                "type": "field",
+                                "filename": "colorPrinting.json",
+                                "id": "colorPrinting"
+                            },
+                            "$parent": "field/colorPrinting",
+                            "title": "Color Printing",
+                            "type": "boolean",
+                            "id": "colorPrinting",
+                            "$filepath": "/field/HardwareModel/colorPrinting.json",
+                            "abstract": false,
+                            "ignore": false,
+                            "$referenceCounter": 1
+                        }
+                    },
+                    "propertyOrder": [
+                        "brand",
+                        "modelName"
+                    ],
+                    "id": "NetworkPrinterModel",
+                    "$filepath": "/model/HardwareModel/NetworkPrinterModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "type": "array",
+                    "required": [
+                        "brand",
+                        "modelName"
+                    ],
+                    "$referenceCounter": 1
+                }
+            },
+            "id": "NetworkPrinterModel",
+            "$filepath": "/form/HardwareModel/NetworkPrinterModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        },
+        "NetworkScannerModel": {
+            "title": "Network Scanner Model",
+            "properties": {
+                "NetworkScannerModel": {
+                    "$reference": {
+                        "path": "/model/NetworkScannerModel.json",
+                        "type": "model",
+                        "filename": "NetworkScannerModel.json",
+                        "id": "NetworkScannerModel"
+                    },
+                    "$parent": "model/NetworkScannerModel",
+                    "title": "Network Scanner Model",
+                    "id": "NetworkScannerModel",
+                    "$filepath": "/model/HardwareModel/NetworkScannerModel.json",
+                    "abstract": false,
+                    "ignore": false,
+                    "properties": {
+                        "brand": {
+                            "$reference": {
+                                "path": "/field/brand.json",
+                                "type": "field",
+                                "filename": "brand.json",
+                                "id": "brand"
+                            },
+                            "$parent": "field/brand",
+                            "title": "Brand",
+                            "type": "string",
+                            "smw_form": {
+                                "input type": "text with autocomplete"
+                            },
+                            "id": "brand",
+                            "$filepath": "/field/HardwareModel/brand.json",
+                            "abstract": false,
+                            "ignore": false,
+                            "$referenceCounter": 2
+                        },
+                        "modelName": {
+                            "$reference": {
+                                "path": "/field/modelName.json",
+                                "type": "field",
+                                "filename": "modelName.json",
+                                "id": "modelName"
+                            },
+                            "$parent": "field/modelName",
+                            "title": "Model name",
+                            "type": "string",
+                            "id": "modelName",
+                            "$filepath": "/field/HardwareModel/modelName.json",
+                            "abstract": false,
+                            "ignore": false,
+                            "$referenceCounter": 2
+                        }
+                    },
+                    "required": [
+                        "brand",
+                        "modelName"
+                    ],
+                    "type": "array",
+                    "$referenceCounter": 2
+                }
+            },
+            "id": "NetworkScannerModel",
+            "$filepath": "/form/HardwareModel/NetworkScannerModel.json",
+            "abstract": false,
+            "ignore": false,
+            "type": "array"
+        }
+    },
+    "generated": {
+        "property:freetext": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:ip": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:networkScannerModel": "==Description==\n<div class=\"description-box\">You may only select already existing mardware models!</div>\n\n* This is an attribute of the datatype [[Has type::Page]].\n* It uses the form  „[[Has default form::NetworkScannerModel]]“.\n",
+        "property:networkPrinterModel": "==Description==\n<div class=\"description-box\">You may only select already existing mardware models!</div>\n\n* This is an attribute of the datatype [[Has type::Page]].\n* It uses the form  „[[Has default form::NetworkPrinterModel]]“.\n",
+        "property:serialNumber": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:multiFunctionUnitModel": "==Description==\n<div class=\"description-box\">You may only select already existing mardware models!</div>\n\n* This is an attribute of the datatype [[Has type::Page]].\n* It uses the form  „[[Has default form::MultiFunctionUnitModel]]“.\n",
+        "property:brand": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:colorPrinting": "* This is an attribute of the datatype [[Has type::Boolean]].\n",
+        "property:modelName": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:country": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:streetNumber": "* This is an attribute of the datatype [[Has type::Number]].\n",
+        "property:streetAdress": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "property:town": "* This is an attribute of the datatype [[Has type::Text]].\n",
+        "category:Location": "<div class=\"description-box\">Location where hardware is deployed</div>\n\n==Form==\nSites tagged with this category can be edited through [[Has default form::Location|Location]]\n\n==Tabular Overview==\n{{#ask: [[Category:Location]]| ?streetAdress\n| ?streetNumber\n| ?town\n| ?country\n| format=broadtable\n| limit=0\n| searchlabel=Click here for a tabular overview\n}}",
+        "template:Location": "<noinclude>==Description==\n<templatedata>{\n    \"description\": \"Location where hardware is deployed\",\n    \"params\": {\n        \"streetAdress\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Street Adress\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"streetNumber\": {\n            \"type\": \"number\",\n            \"suggested\": true,\n            \"label\": \"Street Number\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"town\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Town\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"country\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Country\",\n            \"description\": \"\",\n            \"default\": \"Germany\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{Location\n|streetAdress=\n|streetNumber=\n|town=\n|country=\n\\}}</pre>\n</noinclude>\n<includeonly>=Location=\nSome prefix-description for the location\n{| class=\"wikitable formdata\"\n! colspan=\"2\"|Location\n|- {{#if: {{{streetAdress|}}} | | style=\"display: none;\" \\}}\n| '''Street Adress'''\n| {{{streetAdress|}}}\n|- {{#if: {{{streetNumber|}}} | | style=\"display: none;\" \\}}\n| '''Street Number'''\n| {{{streetNumber|}}}\n|- {{#if: {{{town|}}} | | style=\"display: none;\" \\}}\n| '''Town'''\n| {{{town|}}}\n|- {{#if: {{{country|}}} | | style=\"display: none;\" \\}}\n| '''Country'''\n| {{{country|}}}\n|-\n|}Some postfix-description for the location\n{{#set:\n |streetAdress={{{streetAdress|}}}\n |streetNumber={{{streetNumber|}}}\n |town={{{town|}}}\n |country={{{country|}}}\n}}[[category:Location]]</includeonly>\n",
+        "category:MultiFunctionUnitModel": "==Form==\nSites tagged with this category can be edited through [[Has default form::MultiFunctionUnitModel|Multi-function Unit Model]]\n\n==Tabular Overview==\n{{#ask: [[Category:MultiFunctionUnitModel]]| ?brand\n| ?modelName\n| ?colorPrinting\n| format=broadtable\n| limit=0\n| searchlabel=Click here for a tabular overview\n}}",
+        "template:MultiFunctionUnitModel": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"brand\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Brand\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"modelName\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Model name\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"colorPrinting\": {\n            \"type\": \"unknown\",\n            \"suggested\": true,\n            \"label\": \"Color Printing\",\n            \"description\": \"\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{MultiFunctionUnitModel\n|brand=\n|modelName=\n|colorPrinting=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|MultiFunctionUnitModel\n|- {{#if: {{{brand|}}} | | style=\"display: none;\" \\}}\n| '''Brand'''\n| {{{brand|}}}\n|- {{#if: {{{modelName|}}} | | style=\"display: none;\" \\}}\n| '''Model name'''\n| {{{modelName|}}}\n|- {{#if: {{{colorPrinting|}}} | | style=\"display: none;\" \\}}\n| '''Color Printing'''\n| {{{colorPrinting|}}}\n|-\n|}{{#set:\n |brand={{{brand|}}}\n |modelName={{{modelName|}}}\n |colorPrinting={{{colorPrinting|}}}\n}}[[category:MultiFunctionUnitModel]]</includeonly>\n",
+        "category:NetworkPrinterModel": "==Form==\nSites tagged with this category can be edited through [[Has default form::NetworkPrinterModel|Network Printer Model]]\n\n==Tabular Overview==\n{{#ask: [[Category:NetworkPrinterModel]]| ?brand\n| ?modelName\n| ?colorPrinting\n| format=broadtable\n| limit=0\n| searchlabel=Click here for a tabular overview\n}}",
+        "template:NetworkPrinterModel": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"brand\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Brand\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"modelName\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Model name\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"colorPrinting\": {\n            \"type\": \"unknown\",\n            \"suggested\": true,\n            \"label\": \"Color Printing\",\n            \"description\": \"\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{NetworkPrinterModel\n|brand=\n|modelName=\n|colorPrinting=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|NetworkPrinterModel\n|- {{#if: {{{brand|}}} | | style=\"display: none;\" \\}}\n| '''Brand'''\n| {{{brand|}}}\n|- {{#if: {{{modelName|}}} | | style=\"display: none;\" \\}}\n| '''Model name'''\n| {{{modelName|}}}\n|- {{#if: {{{colorPrinting|}}} | | style=\"display: none;\" \\}}\n| '''Color Printing'''\n| {{{colorPrinting|}}}\n|-\n|}{{#set:\n |brand={{{brand|}}}\n |modelName={{{modelName|}}}\n |colorPrinting={{{colorPrinting|}}}\n}}[[category:NetworkPrinterModel]]</includeonly>\n",
+        "category:NetworkScannerModel": "==Form==\nSites tagged with this category can be edited through [[Has default form::NetworkScannerModel|Network Scanner Model]]\n\n==Tabular Overview==\n{{#ask: [[Category:NetworkScannerModel]]| ?brand\n| ?modelName\n| format=broadtable\n| limit=0\n| searchlabel=Click here for a tabular overview\n}}",
+        "template:NetworkScannerModel": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"brand\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Brand\",\n            \"description\": \"\",\n            \"required\": true\n        },\n        \"modelName\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Model name\",\n            \"description\": \"\",\n            \"required\": true\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{NetworkScannerModel\n|brand=\n|modelName=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|NetworkScannerModel\n|- {{#if: {{{brand|}}} | | style=\"display: none;\" \\}}\n| '''Brand'''\n| {{{brand|}}}\n|- {{#if: {{{modelName|}}} | | style=\"display: none;\" \\}}\n| '''Model name'''\n| {{{modelName|}}}\n|-\n|}{{#set:\n |brand={{{brand|}}}\n |modelName={{{modelName|}}}\n}}[[category:NetworkScannerModel]]</includeonly>\n",
+        "category:_HardwareModel": "==Tabular Overview==\n{{#ask: [[Category:HardwareModel]]| ?brand\n| ?modelName\n| format=broadtable\n| limit=0\n| searchlabel=Click here for a tabular overview\n}}",
+        "template:NetworkPrinterInstallation": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"networkPrinterModel\": {\n            \"type\": \"wiki-page-name\",\n            \"suggested\": true,\n            \"label\": \"Model\",\n            \"description\": \"You may only select already existing mardware models!\"\n        },\n        \"ip\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"IP Adress\",\n            \"description\": \"\"\n        },\n        \"serialNumber\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Serial number\",\n            \"description\": \"\"\n        },\n        \"freetext\": {\n            \"type\": \"string\",\n            \"suggested\": true,\n            \"label\": \"Free text\",\n            \"description\": \"\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{NetworkPrinterInstallation\n|networkPrinterModel=\n|ip=\n|serialNumber=\n|freetext=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|NetworkPrinterInstallation\n|- {{#if: {{{networkPrinterModel|}}} | | style=\"display: none;\" \\}}\n| '''Model'''\n| {{#formredlink:target={{{networkPrinterModel|}}}|form=NetworkPrinterModel|link text={{{networkPrinterModel}}} }}\n|- {{#if: {{{ip|}}} | | style=\"display: none;\" \\}}\n| '''IP Adress'''\n| {{{ip|}}}\n|- {{#if: {{{serialNumber|}}} | | style=\"display: none;\" \\}}\n| '''Serial number'''\n| {{{serialNumber|}}}\n|- {{#if: {{{freetext|}}} | | style=\"display: none;\" \\}}\n| '''Free text'''\n| {{{freetext|}}}\n|-\n|}{{#subobject:|\n|subobject=NetworkPrinterInstallation|superobject={{FULLPAGENAME}} |networkPrinterModel={{{networkPrinterModel|}}}\n |ip={{{ip|}}}\n |serialNumber={{{serialNumber|}}}\n}}</includeonly>\n",
+        "template:MultiFunctionUnitInstallation": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"multiFunctionUnitModel\": {\n            \"type\": \"wiki-page-name\",\n            \"suggested\": true,\n            \"label\": \"Model\",\n            \"description\": \"You may only select already existing mardware models!\"\n        },\n        \"ip\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"IP Adress\",\n            \"description\": \"\"\n        },\n        \"serialNumber\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Serial number\",\n            \"description\": \"\"\n        },\n        \"freetext\": {\n            \"type\": \"string\",\n            \"suggested\": true,\n            \"label\": \"Free text\",\n            \"description\": \"\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{MultiFunctionUnitInstallation\n|multiFunctionUnitModel=\n|ip=\n|serialNumber=\n|freetext=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|MultiFunctionUnitInstallation\n|- {{#if: {{{multiFunctionUnitModel|}}} | | style=\"display: none;\" \\}}\n| '''Model'''\n| {{#formredlink:target={{{multiFunctionUnitModel|}}}|form=MultiFunctionUnitModel|link text={{{multiFunctionUnitModel}}} }}\n|- {{#if: {{{ip|}}} | | style=\"display: none;\" \\}}\n| '''IP Adress'''\n| {{{ip|}}}\n|- {{#if: {{{serialNumber|}}} | | style=\"display: none;\" \\}}\n| '''Serial number'''\n| {{{serialNumber|}}}\n|- {{#if: {{{freetext|}}} | | style=\"display: none;\" \\}}\n| '''Free text'''\n| {{{freetext|}}}\n|-\n|}{{#subobject:|\n|subobject=MultiFunctionUnitInstallation|superobject={{FULLPAGENAME}} |multiFunctionUnitModel={{{multiFunctionUnitModel|}}}\n |ip={{{ip|}}}\n |serialNumber={{{serialNumber|}}}\n}}</includeonly>\n",
+        "template:NetworkScannerInstallation": "<noinclude>==Description==\n<templatedata>{\n    \"params\": {\n        \"networkScannerModel\": {\n            \"type\": \"wiki-page-name\",\n            \"suggested\": true,\n            \"label\": \"Model\",\n            \"description\": \"You may only select already existing mardware models!\"\n        },\n        \"ip\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"IP Adress\",\n            \"description\": \"\"\n        },\n        \"serialNumber\": {\n            \"type\": \"line\",\n            \"suggested\": true,\n            \"label\": \"Serial number\",\n            \"description\": \"\"\n        },\n        \"freetext\": {\n            \"type\": \"string\",\n            \"suggested\": true,\n            \"label\": \"Free text\",\n            \"description\": \"\"\n        }\n    }\n}</templatedata>\n==Usage==\n<pre>{{NetworkScannerInstallation\n|networkScannerModel=\n|ip=\n|serialNumber=\n|freetext=\n\\}}</pre>\n</noinclude>\n<includeonly>{| class=\"wikitable formdata\"\n! colspan=\"2\"|NetworkScannerInstallation\n|- {{#if: {{{networkScannerModel|}}} | | style=\"display: none;\" \\}}\n| '''Model'''\n| {{#formredlink:target={{{networkScannerModel|}}}|form=NetworkScannerModel|link text={{{networkScannerModel}}} }}\n|- {{#if: {{{ip|}}} | | style=\"display: none;\" \\}}\n| '''IP Adress'''\n| {{{ip|}}}\n|- {{#if: {{{serialNumber|}}} | | style=\"display: none;\" \\}}\n| '''Serial number'''\n| {{{serialNumber|}}}\n|- {{#if: {{{freetext|}}} | | style=\"display: none;\" \\}}\n| '''Free text'''\n| {{{freetext|}}}\n|-\n|}{{#subobject:|\n|subobject=NetworkScannerInstallation|superobject={{FULLPAGENAME}} |networkScannerModel={{{networkScannerModel|}}}\n |ip={{{ip|}}}\n |serialNumber={{{serialNumber|}}}\n}}</includeonly>\n",
+        "form:Location": "<noinclude><div class=\"description-box\">This creates a new location where hardware is deployed.</div>\n\n{{#forminput:form=Location }}\n</noinclude>\n<includeonly>{{{info|create title=Create a new location|edit title=Edit a location }}}\n<div class=\"description-box\">This creates a new location where hardware is deployed.</div><div id=\"wikiPreview\" style=\"display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;\"></div>\n\n=Location=\nSome prefix-description for the location\n{{{for template|Location|Location}}}\n{| class=\"formtable\"\n! Street Adress:\n| {{{field|streetAdress|size=none|class=attr_streetAdress|input type=text|mandatory}}}\n|-\n! Street Number:\n| {{{field|streetNumber|size=none|class=attr_streetNumber|input type=text|mandatory}}}\n|-\n! Town:\n| {{{field|town|size=none|class=attr_town|input type=text with autocomplete|mandatory}}}\n|-\n! Country:\n| {{{field|country|size=none|class=attr_country|input type=dropdown|values=USA, UK, Germany|default=Germany}}}\n|-\n|}\n{{{end template}}}Some postfix-description for the location\n\n=Network Printer=\n{{{for template|NetworkPrinterHeader}}} {{{end template}}}\n{{{for template|NetworkPrinterInstallation|Network Printer Installation|label=Network Printer Installation|multiple|minimum instances=0}}}\n{| class=\"formtable\"\n! Model:\n| {{{field|networkPrinterModel|size=none|class=attr_networkPrinterModel|input type=combobox|values from category=NetworkPrinterModel|max values=1|existing values only}}}\n|-\n! IP Adress:\n| {{{field|ip|size=none|class=attr_ip|input type=text}}}\n|-\n! Serial number:\n| {{{field|serialNumber|size=none|class=attr_serialNumber|input type=text}}}\n|-\n! Free text:\n| {{{field|freetext|size=none|class=attr_freetext|input type=textarea|autogrow}}}\n|-\n|}\n{{{end template}}}\n=Network Scanner=\n{{{for template|NetworkScannerHeader}}} {{{end template}}}\n{{{for template|NetworkScannerInstallation|Network Scanner Installation|label=Network Scanner Installation|multiple|minimum instances=0}}}\n{| class=\"formtable\"\n! Model:\n| {{{field|networkScannerModel|size=none|class=attr_networkScannerModel|input type=combobox|values from category=NetworkScannerModel|max values=1|existing values only}}}\n|-\n! IP Adress:\n| {{{field|ip|size=none|class=attr_ip|input type=text}}}\n|-\n! Serial number:\n| {{{field|serialNumber|size=none|class=attr_serialNumber|input type=text}}}\n|-\n! Free text:\n| {{{field|freetext|size=none|class=attr_freetext|input type=textarea|autogrow}}}\n|-\n|}\n{{{end template}}}\n=Multi-Function Unit=\n{{{for template|MultiFunctionUnitHeader}}} {{{end template}}}\n{{{for template|MultiFunctionUnitInstallation|Multi-function unit|label=Multi-function unit|multiple|minimum instances=0}}}\n{| class=\"formtable\"\n! Model:\n| {{{field|multiFunctionUnitModel|size=none|class=attr_multiFunctionUnitModel|input type=combobox|values from category=MultiFunctionUnitModel|max values=1|existing values only}}}\n|-\n! IP Adress:\n| {{{field|ip|size=none|class=attr_ip|input type=text}}}\n|-\n! Serial number:\n| {{{field|serialNumber|size=none|class=attr_serialNumber|input type=text}}}\n|-\n! Free text:\n| {{{field|freetext|size=none|class=attr_freetext|input type=textarea|autogrow}}}\n|-\n|}\n{{{end template}}}\n{{{for template|HeaderTabs}}} {{{end template}}}<headertabs />\n\n==Freetext==\n{{{standard input|free text|rows=8}}}\n\n<div class=\"formbuttons\">{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|watch}}}</div></includeonly>\n",
+        "form:MultiFunctionUnitModel": "<noinclude>{{#forminput:form=MultiFunctionUnitModel }}\n</noinclude>\n<includeonly><div id=\"wikiPreview\" style=\"display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;\"></div>\n\n{{{for template|MultiFunctionUnitModel|Multi-function Unit Model}}}\n{| class=\"formtable\"\n! Brand:\n| {{{field|brand|size=none|class=attr_brand|input type=text with autocomplete|mandatory}}}\n|-\n! Model name:\n| {{{field|modelName|size=none|class=attr_modelName|input type=text|mandatory}}}\n|-\n! Color Printing:\n| {{{field|colorPrinting|size=none|class=attr_colorPrinting|input type=checkbox}}}\n|-\n|}\n{{{end template}}}\n{{{for template|HeaderTabs}}} {{{end template}}}<headertabs />\n\n==Freetext==\n{{{standard input|free text|rows=8}}}\n\n<div class=\"formbuttons\">{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|watch}}}</div></includeonly>\n",
+        "form:NetworkPrinterModel": "<noinclude>{{#forminput:form=NetworkPrinterModel }}\n</noinclude>\n<includeonly><div id=\"wikiPreview\" style=\"display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;\"></div>\n\n{{{for template|NetworkPrinterModel|Network Printer Model}}}\n{| class=\"formtable\"\n! Brand:\n| {{{field|brand|size=none|class=attr_brand|input type=text with autocomplete|mandatory}}}\n|-\n! Model name:\n| {{{field|modelName|size=none|class=attr_modelName|input type=text|mandatory}}}\n|-\n! Color Printing:\n| {{{field|colorPrinting|size=none|class=attr_colorPrinting|input type=checkbox}}}\n|-\n|}\n{{{end template}}}\n{{{for template|HeaderTabs}}} {{{end template}}}<headertabs />\n\n==Freetext==\n{{{standard input|free text|rows=8}}}\n\n<div class=\"formbuttons\">{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|watch}}}</div></includeonly>\n",
+        "form:NetworkScannerModel": "<noinclude>{{#forminput:form=NetworkScannerModel }}\n</noinclude>\n<includeonly><div id=\"wikiPreview\" style=\"display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;\"></div>\n\n{{{for template|NetworkScannerModel|Network Scanner Model}}}\n{| class=\"formtable\"\n! Brand:\n| {{{field|brand|size=none|class=attr_brand|input type=text with autocomplete|mandatory}}}\n|-\n! Model name:\n| {{{field|modelName|size=none|class=attr_modelName|input type=text|mandatory}}}\n|-\n|}\n{{{end template}}}\n{{{for template|HeaderTabs}}} {{{end template}}}<headertabs />\n\n==Freetext==\n{{{standard input|free text|rows=8}}}\n\n<div class=\"formbuttons\">{{{standard input|save}}} {{{standard input|preview}}} {{{standard input|changes}}} {{{standard input|watch}}}</div></includeonly>\n",
+        "template:NetworkPrinterModels-ask": "<noinclude>==Usage==\n<pre>{{NetworkPrinterModels-ask}}</pre>\n==Query Text==\n<pre>{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n</pre>\n==Query Result==\nNote: Some querys are context dependend, those won't work on this site and show no result.\n{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n\n[[category:Query]][[category:ASK-Query]]\n</noinclude>\n<includeonly>{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n</includeonly>\n",
+        "template:HeaderTabs": "<headertabs />",
+        "property:subobject": "This is an attribute of the datatype [[Has type::Page]]",
+        "property:superobject": "This is an attribute of the datatype [[Has type::Page]]",
+        "template:NetworkPrinterHeader": "=Network Printer=\n",
+        "template:MultiFunctionUnitHeader": "=Multi-Function Unit=\n",
+        "template:NetworkScannerHeader": "=Network Scanner=\n",
+        "Category:NetworkPrinterModel": "==Form==\nSites tagged with this category can be edited through [[Has default form::NetworkPrinterModel|Network Printer Model]]\n\n==Overview==\n{{#ask: [[category:NetworkPrinterModel]]\n| ?brand\n| ?modelName\n| limit=999\n}}\n"
+    }
+}

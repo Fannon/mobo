@@ -285,12 +285,12 @@ These are the default settings that mobo comes with:
 
 ```json
 {
-    "mw_server_url": false,
+    "mw_server_url": "http://smw.fannon.de",
     "mw_server_path": "",
     "mw_server_port": false,
-    "mw_username": "username",
-    "mw_password": "password",
-    "debug": false,
+    "mw_username": "mobo",
+    "mw_password": "mobopw",
+    "debug": true,
     "verbose": false,
     "displayTodos": true,
     "watchFilesystem": true,
@@ -299,15 +299,15 @@ These are the default settings that mobo comes with:
     "deleteWikiPages": false,
     "forceUpload": false,
     "buildGraph": true,
-    "writeExportFiles": false,
+    "writeExportFiles": true,
     "writeLogFile": false,
     "uploadConcurrency": 4,
     "webAppPort": 8080,
     "autoRefreshWebGui": true,
     "autoRefreshPort": 8081,
     "headerTabs": false,
-    "formEditHelper": false,
-    "hideFormEditHelper": false,
+    "formEditHelper": true,
+    "hideFormEditHelper": true,
     "arraymapSeparator": ";",
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,
@@ -321,6 +321,11 @@ These are the default settings that mobo comes with:
         "formNodeSize": 32,
         "edgeWeight": 2,
         "multipleEdgeWeight": 2
-    }
+    },
+    "cwd": "c:\\Dropbox\\Software Projekte\\mobo",
+    "importModelDir": "c:\\Dropbox\\Software Projekte\\mobo",
+    "templateDir": "c:\\Dropbox\\Software Projekte\\mobo\\mobo_template\\",
+    "logDir": "c:\\Dropbox\\Software Projekte\\mobo\\_logfiles\\",
+    "processedModelDir": "c:\\Dropbox\\Software Projekte\\mobo\\_processed\\"
 }
 ```

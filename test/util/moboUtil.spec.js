@@ -1,9 +1,17 @@
 /*global describe,it*/
 'use strict';
 
-var expect = require('chai').expect;
+//////////////////////////////////////////
+// REQUIREMENTS                         //
+//////////////////////////////////////////
 
+var expect = require('chai').expect;
 var moboUtil = require('../../lib/util/moboUtil.js');
+
+
+//////////////////////////////////////////
+// TESTS                                //
+//////////////////////////////////////////
 
 describe('mobo utilities ', function() {
 
@@ -53,10 +61,5 @@ describe('mobo utilities ', function() {
         expect(logArchive).to.be.instanceof(Array);
         expect(logArchive.length).to.be.least(1);
     });
-
-    //it('writes the log history to a file', function() {
-    //    // TODO: Test history log file
-    //    //moboUtil.writeLogHistory('');
-    //});
 
 });

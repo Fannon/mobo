@@ -46,6 +46,13 @@ describe('mobo cli ', function() {
         expect(projectContent).to.include('settings.json');
     });
 
+    it('updates the templates of the init project', function() {
+        expect(mobo.update({
+            "cwd": mockProjectPath,
+            "templateDir": path.join(mockProjectPath, '/mobo_template')
+        })).to.equal(true);
+    });
+
     it('empties mockProject test directory', function() {
         expect(emptyMockProject(mockProjectPath)).to.equal(true);
     });

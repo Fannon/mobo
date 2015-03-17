@@ -7,6 +7,7 @@
 
 var expect = require('chai').expect;
 var validate = require('../../lib/util/validate.js');
+var mockRegistry = require('../_mockObjects/hardwareExampleRegistry.json');
 
 
 //////////////////////////////////////////
@@ -34,18 +35,31 @@ describe('Schema Validator ', function() {
 
     it('validates valid objects against JSON Schema', function() {
         var result = validate.validate(testObject, testSchema);
-        expect(result.valid).to.be.true();
+        expect(result.valid).to.equal(true);
     });
 
     it('validates invalid objects against JSON Schema', function() {
         testObject.number = "wrong input type";
         var result = validate.validate(testObject, testSchema);
-        expect(result.valid).to.be.false();
+        expect(result.valid).to.equal(false);
     });
 
     it('writes/updates automatic schema documentation', function() {
         var schemaDescriptions = validate.writeSchemas();
         expect(Object.keys(schemaDescriptions).length).to.be.least(3);
+    });
+
+    it('validates the registry', function() {
+        return validate.validateRegistry(mockRegistry);
+    });
+
+    it('validates the deep registry', function() {
+        return validate.validateExpandedRegistry(mockRegistry);
+    });
+
+    it('builds HTML tables from JSON Schema', function() {
+        var result = validate.convertSchemaToTable(testSchema);
+        expect(result).to.contain('<table');
     });
 
 });
