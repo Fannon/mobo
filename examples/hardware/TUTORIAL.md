@@ -323,7 +323,33 @@ The final form will now look like this:
 
 #### Create an ASK Query with mobo
 
-    TODO
+Create `/smw_query/NetworkPrinterModels.json` with the following content:
+
+```text
+{{#ask: [[category:NetworkPrinterModel]]
+| ?brand
+| ?modelName
+| limit=999
+}}
+```
+
+This will cause mobo to generate the query as a new template with the pagename `Template:NetworkPrinterModels-ask`. If you head there, you will find a small usage snippet for embedding, the query text documented and a live query. The live query may not work if it's dependend on a specific context, though.
+
+It might make sense to include this query in the already generated `Category:NetworkPrinterModel`. To do this, we need to overwrite the generated wikipage. This can easily be done by creating a .wikitext file in the `smw_page` directory:
+
+Create `/smw_page/Overwrite/Category___NetworkPrinterModel.wikitext` with the following content:
+
+```text
+{{#ask: [[category:NetworkPrinterModel]]
+| ?brand
+| ?modelName
+| limit=999
+}}
+```
+
+Note that we can't use `:`` in filenames, so we have to replace it with `___`.
+
+Now we've overwritten the generated category and embedded our new query in it. 
 
 ### Excourse: Using HeaderTabs Extension
 In case the forms are getting more complex, it might be a good idea to seperate them into tabs. The [HeaderTabs Extension](http://www.mediawiki.org/wiki/Extension:Header_Tabs) is supported by mobo. 

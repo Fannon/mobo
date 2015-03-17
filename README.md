@@ -152,7 +152,7 @@ If you create a new project via `mobo --init` they will be placed in your projec
     * /mobo_template/[README.md](examples/init/templates/README.md)
 
 ## Screenshots
-> Your model is developed with your favorite text editor:
+> The mobo model is developed with your favorite text editor:
 
 ![text-editor](http://up.fannon.de/img/mobo-intro-editor.png)
 
