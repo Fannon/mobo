@@ -1,0 +1,10 @@
+{
+    "$extend": "/field/_hardwareModelReference.json",
+
+    "type": "string",
+    "format": "/form/NetworkScannerModel.json",
+
+    "smw_form": {
+        "values from category": "NetworkScannerModel"
+    }
+}

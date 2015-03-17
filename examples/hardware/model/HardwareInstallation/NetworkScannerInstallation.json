@@ -1,0 +1,9 @@
+{
+    "$extend": "/model/_NetworkDeviceInstallation.json",
+
+    "title": "Network Scanner Installation",
+
+    "properties": [
+        { "$extend": "/field/networkScannerModel.json" }
+    ]
+}

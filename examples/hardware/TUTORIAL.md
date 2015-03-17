@@ -321,7 +321,7 @@ The final form will now look like this:
 
 ![mobo-final-hardware-example](http://up.fannon.de/img/mobo-final-hardware-example.png)
 
-#### Create an ASK Query with mobo
+### Create an ASK Query with mobo
 
 Create `/smw_query/NetworkPrinterModels.json` with the following content:
 

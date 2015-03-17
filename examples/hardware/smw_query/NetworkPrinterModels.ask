@@ -1,0 +1,5 @@
+{{#ask: [[category:NetworkPrinterModel]]
+| ?brand
+| ?modelName
+| limit=999
+}}
