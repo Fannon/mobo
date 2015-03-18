@@ -80,6 +80,7 @@ describe('mobo cli ', function() {
             "cwd": mockProjectPath,
 
             "uploadWikiPages": true,
+            "deleteWikiPages": true,
             "mw_server_url": "http://smw.fannon.de",
             "mw_server_path": "",
             "mw_username": "mobo",

@@ -1,5 +1,5 @@
 ## Tutorial: Hardware Management
-* Read this file online at GitHub: [it/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/it/TUTORIAL.md)
+* Read this file online at GitHub: [hardware/TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md)
 
 This tutorial explains how to build a mobo development model along the hardware management example. Please note that the example and the tutorial are greatly simplified!
 

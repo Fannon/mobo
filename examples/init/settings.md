@@ -252,13 +252,13 @@ SemanticForms itself does not support / supply this for a div based layout.</sub
        <tr>
            <td><sub>modelNodeSize</sub></td>
            <td><sub>number</sub></td>
-           <td><sub>20</sub></td>
+           <td><sub>24</sub></td>
            <td><sub></sub></td>
        </tr>
        <tr>
            <td><sub>formNodeSize</sub></td>
            <td><sub>number</sub></td>
-           <td><sub>32</sub></td>
+           <td><sub>36</sub></td>
            <td><sub></sub></td>
        </tr>
        <tr>
@@ -296,7 +296,7 @@ These are the default settings that mobo comes with:
     "watchFilesystem": true,
     "serveWebApp": true,
     "uploadWikiPages": true,
-    "deleteWikiPages": false,
+    "deleteWikiPages": true,
     "forceUpload": false,
     "buildGraph": true,
     "writeExportFiles": true,
@@ -317,8 +317,8 @@ These are the default settings that mobo comes with:
     "buildGraphSettings": {
         "dataTypeNodeSize": 8,
         "templateNodeSize": 12,
-        "modelNodeSize": 20,
-        "formNodeSize": 32,
+        "modelNodeSize": 24,
+        "formNodeSize": 36,
         "edgeWeight": 2,
         "multipleEdgeWeight": 2
     },

@@ -298,7 +298,7 @@ The final resulting wikitext pages can be browsed through the right search box.
 ![mobo-viewer-right](http://up.fannon.de/img/mobo-viewer-right.png?v=1)
 
 #### The mobo graph explorer
-In order to use the mobo graph explorer a layouted version of the graph has to be generated. This can be done through [Gephi](https://gephi.github.io/):
+In order to use the mobo graph explorer, a layouted version of the graph has to be generated first. This can be done through [Gephi](https://gephi.github.io/):
 
 Launch Gephi and open the file _graph.gexf in your projects `/_processed/` directory. Through the layout options, a force algorithm has to be applied (like Force Atlas). This usually involves some try and error with the parameters, since the correct values depend on the nature of the graph itself.Save the layouted graph as `/_processed/_graph_layouted.gexf`.
 
