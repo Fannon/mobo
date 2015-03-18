@@ -1,6 +1,7 @@
 # Forms
-* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/README.md)
-* See the corresponding [form/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md) for a technical description of all possible properties.
+> Read this file online at GitHub: [model/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/SCHEMA.md)
+
+> Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/form/README.md) for a more verbose documentation.
 
 ## Description
 Forms will create Semantic Forms. They are much more lightweight than regular SF Forms, since most information have already been declared on the field or model level.

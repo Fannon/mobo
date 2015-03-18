@@ -1,6 +1,8 @@
 # FIELD JSON Schema
 > Read this file online at GitHub: [field/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md)
 
+> Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/README.md) for a more verbose documentation.
+
 This file documents all available attributes mobo will use and validate for your fields.
 
 ## field specific properties

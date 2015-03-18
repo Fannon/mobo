@@ -1,6 +1,8 @@
 # MODEL JSON Schema
 > Read this file online at GitHub: [model/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md)
 
+> Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md) for a more verbose documentation.
+
 This file documents all available attributes mobo will use and validate for your models.
 
 ## model specific properties

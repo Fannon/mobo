@@ -22,12 +22,13 @@ They usually declare:
 
 ### smw_categories
 
-### smw_prefix and smw_postfix
+### smw_prefix / smw_postfix
 
-### smw_postfix
+### required / mandatory
 
+### smw_subobject
 
-
+### smw_display
 
 
 

@@ -26,6 +26,7 @@
     "formEditHelper": false,
     "hideFormEditHelper": false,
 
+    "firstAlternativeFormAsDefault": false,
     "arraymapSeparator": ";",
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,
