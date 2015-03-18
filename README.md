@@ -33,11 +33,11 @@ Those steps can run in a few seconds total. This makes mobo a great tool for rea
 
 ## Getting Started
 ### Requirements
-Mobo requires a Node.js runtime of version 0.10.x or higher to run. 
+Mobo requires a Node.js runtime of version 0.10.x or higher to run.
 
-The target wiki must have the [Semantic MediaWiki](http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki) and [Semantic Forms](http://www.mediawiki.org/wiki/Extension:Semantic_Forms) extension installed. 
+The target wiki must have the [Semantic MediaWiki](http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki) and [Semantic Forms](http://www.mediawiki.org/wiki/Extension:Semantic_Forms) extension installed.
 
-Mobo has optional support for the [HeaderTabs](http://www.mediawiki.org/wiki/Extension:Header_Tabs) and [TemplateData](http://www.mediawiki.org/wiki/Extension:TemplateData) extension. 
+Mobo has optional support for the [HeaderTabs](http://www.mediawiki.org/wiki/Extension:Header_Tabs) and [TemplateData](http://www.mediawiki.org/wiki/Extension:TemplateData) extension.
 
 ### Installation
 In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
@@ -147,7 +147,7 @@ The README.md files contain basic documentation about the section of the develop
     * /smw_query/[README.md](examples/init/smw_query/README.md)
     * /smw_page/[README.md](examples/init/smw_page/README.md)
     * /smw_template/[README.md](examples/init/smw_template/README.md)
-    * /mobo_template/[README.md](examples/init/templates/README.md)
+    * /mobo_template/[README.md](examples/init/mobo_template/README.md)
 
 ## Screenshots
 The mobo model is developed with your favorite text editor:
