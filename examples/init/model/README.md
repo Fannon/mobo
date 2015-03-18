@@ -1,11 +1,13 @@
 # Models
-* Read this file online at GitHub: [model/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md)
-* See the corresponding [model/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) for a technical description of all possible properties.
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md).
+
+> Refer to the corresponding [SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md) for a technical description of all possible properties.
 
 ## Description
-Models will create Templates and Categories. They define the actual struc-ture of the development model. 
+Models will create Templates and Categories. They define the actual structure of the development model. 
 
 They usually declare:
+
 * Which models they inherit from
 * Which fields are used
 * The order of the fields
@@ -15,15 +17,21 @@ They usually declare:
 * MediaWiki Categories
 * Prefix and Postfix wikitext
 
-## Additional properties
+## Model specific features
+### smw_category
 
-$extend
--------
-$extend will inherit all attributes from the referenced file. The current object overwrites the inherited one. See Example below:
+### smw_categories
+
+### smw_prefix and smw_postfix
+
+### smw_postfix
 
 
-Examples
---------
+
+
+
+
+## Examples
 Model inheritance:
 
 ### /model/_Shape.json
@@ -58,5 +66,4 @@ Model inheritance:
 }
 ```
 
-In this example the Circle inherits all attributes of _Shape, especially the fields x and y.
-The Circle overwrites attributes like "title" and "abstract" and introduces a new field "radius"
+In this example the Circle inherits all attributes of _Shape, especially the fields x and y. The Circle overwrites attributes like "title" and "abstract" and introduces a new field "radius"
