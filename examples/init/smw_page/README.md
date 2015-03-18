@@ -1,5 +1,5 @@
 # MediaWiki Pages
-* Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/smw_page/README.md)
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/smw_page/README.md).
 
 ## Description
 In this directory .wikitext files can be stored. They will be uploaded to the wiki and overwrite any page that mobo have created before. 

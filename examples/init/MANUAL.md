@@ -1,5 +1,5 @@
 ## mobo model development HOWTO
-> Read this file online at GitHub: [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md)
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/init/MANUAL.md).
 
 ### Premises
 In order to learn mobo, it is mandatory to understand the basic concepts of JSON Schema  first. It is a very simple and concise standard and it should only take a few hours to learn it. There is a great tutorial  published by the Space Telescope Science Institute. This time is a good investment anyhow, since JSON Schema can be used in other contexts as well.
