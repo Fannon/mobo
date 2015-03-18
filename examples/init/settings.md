@@ -274,11 +274,11 @@ SemanticForms itself does not support / supply this for a div based layout.</sub
            <td><sub></sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 </sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 
 ## Default settings
 These are the default settings that mobo comes with:

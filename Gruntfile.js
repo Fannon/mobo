@@ -40,18 +40,11 @@ module.exports = function(grunt) {
         },
         mocha_istanbul: {
             coverage: {
-                src: ['test/**/*.spec.js'],
+                src: ['test/'],
                 options: {
                     mask: '*.spec.js',
                     coverage: true,
-                    check: {
-                        lines: 0,
-                        statements: 0,
-                        branches: 0,
-                        functions: 0
-                    },
-                    root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
-                    reportFormats: ['lcov','text']
+                    reportFormats: ['lcov', 'text']
                 }
             }
         },

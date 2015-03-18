@@ -1,5 +1,5 @@
 ## mobo model development HOWTO
-* Read this file online at GitHub: [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md)
+> Read this file online at GitHub: [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md)
 
 ### Premises
 In order to learn mobo, it is mandatory to understand the basic concepts of JSON Schema  first. It is a very simple and concise standard and it should only take a few hours to learn it. There is a great tutorial  published by the Space Telescope Science Institute. This time is a good investment anyhow, since JSON Schema can be used in other contexts as well.
@@ -9,7 +9,7 @@ Basic understanding of MW / SMW and SF is also highly recommended, since this is
 If the default templates are changed, an understanding of the Handlebars.js  template engine is of advantage.
 
 ### Create a new project
-To start with the model development, an empty project structure has to be created first. This is done through a mobo command within an empty direc-tory.
+To start with the model development, an empty project structure has to be created first. This is done through a mobo command within an empty directory.
 
 ```sh
 $ mkdir newProject  # Create new dir

@@ -81,7 +81,7 @@ These properties will only work in context of models.
            <td><sub>Display prefix in page-view</sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 </sub></td>
        </tr>
        <tr>
@@ -123,7 +123,7 @@ These properties will only work in context of models.
            <td><sub>Display postfix in page-view</sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 </sub></td>
        </tr>
        <tr>
@@ -157,7 +157,7 @@ These properties will only work in context of models.
            <td><sub></sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 
 ## mobo specific properties
 These mobo custom properties are global and can be used for fields, models and forms. 
@@ -256,7 +256,7 @@ These mobo custom properties are global and can be used for fields, models and f
            <td><sub>Notes can be strings or objects and their content will be ignored</sub></td>
        </tr>
    </tbody>
-   </table>
+</table>
 
 ## Unsupported JSON Schema Core features
 These features / properties of JSON Schema Core are not supported by mobo: 

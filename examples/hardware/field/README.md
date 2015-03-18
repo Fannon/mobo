@@ -1,6 +1,7 @@
 # Fields
-* Read this file online at GitHub: [field/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/README.md)
-* See the corresponding [field/SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md) for a technical description of all possible properties.
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/field/README.md).
+
+> Refer to the corresponding [SCHEMA.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md) for a technical description of all possible properties.
 
 ## Description
 Fields are the mobo equivalent to SMW attributes. 
@@ -8,18 +9,19 @@ Fields are the mobo equivalent to SMW attributes.
 The biggest difference to SMW attributes is that mobo fields already declare how they will be rendered and validated. Those information will be inherited through the models up to the final form. 
 
 Fields usually declare:
-* The machine name will be the filename.
-* A tittle that is human readable.
+
+* The id (machine name) through the filename.
+* A human readable title
 * An optional description.
 * The datatype, consisting of type and format (see JSON Schema Spec).
 * Additional validation (some datatypes already come with validation).
-* The format can link to other forms, in this case the datatype is ‘page’.
+* The format can link to other forms, in this case the datatype is page.
 * Semantic Forms options that define how SF will render the final field.
 
 
 ## Supported Datatypes
 
-### Primitive Datatypes
+### Primitive Datatypes (type)
 * number / integer
 * boolean
 * string / text
@@ -27,33 +29,41 @@ Fields usually declare:
 To define a primitive datatype, just declare the "type" attribute:
 
 ```json
-"type": "number",
+{
+    "type": "number"
+}
 ```
 
-### "Semantic" Datatypes
-Semantic Datatypes are defined through the "format" attribute. Usually the primitive "type" datatype is "string"
+### "Semantic" Datatypes (format)
+Semantic Datatypes are defined through the "format" attribute. Usually the primitive "type" datatype is "string". 
 
-```json
-"type": "string",
-"format": "date"
-```
+* JSON Schema Datatypes
+    * date / date-time
+    * url
+    * email
+    * tel
+* SMW only Datatypes
+    * Code
+    * Geographic coordinate
+    * Quantity
+    * Record
+    * Temperature
+* Pages
+    * page
+    * /form/*
 
-#### Pages
 If the "format" attribute defines an "URL" to a form, it has the data type "Page" and will link to sites created by this form.
 If that site does not exist yet, it will be created through that form if clicked on.
 
-#### JSON-Schema Datatypes
-* date / date-time
-* url
-* email
-* tel
+To define a semantic datatype, declare the "format" in addition to the "type":
 
-#### SMW only Datatypes
-* Code
-* Geographic coordinate
-* Quantity
-* Record
-* Temperature
+```json
+{
+    "type": "string",
+    "format": "date"
+}
+```
+
 
 ## Examples
 ### Simple (number) field

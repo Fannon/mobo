@@ -44,22 +44,12 @@ describe('Schema Validator ', function() {
         expect(result.valid).to.equal(false);
     });
 
-    it('writes/updates automatic schema documentation', function() {
-        var schemaDescriptions = validate.writeSchemas();
-        expect(Object.keys(schemaDescriptions).length).to.be.least(3);
-    });
-
     it('validates the registry', function() {
         return validate.validateRegistry(mockRegistry);
     });
 
     it('validates the deep registry', function() {
         return validate.validateExpandedRegistry(mockRegistry);
-    });
-
-    it('builds HTML tables from JSON Schema', function() {
-        var result = validate.convertSchemaToTable(testSchema);
-        expect(result).to.contain('<table');
     });
 
 });
