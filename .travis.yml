@@ -4,7 +4,7 @@ node_js:
   - '0.12'
   - 'iojs'
 before_install:
-  - export CODACY_PROJECT_TOKEN=a7daff185e694c3d853bb35cbc6405c8
+
 before_script:
   - npm install -g grunt-cli
 addons:
@@ -18,5 +18,4 @@ notifications:
       - info@fannon.de
 after_script:
   - cat coverage/lcov.info | codeclimate
-  - cat coverage/lcov.info | ./node_modules/codacy-coverage/bin/codacy-coverage.js
 after_success:

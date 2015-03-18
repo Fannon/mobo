@@ -1,7 +1,7 @@
 ## Tutorial: Hardware Management
 > Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md).
 
-This tutorial explains how to build a mobo development model along the hardware management example. Please note that the example and the tutorial are greatly simplified!
+This tutorial explains how to build a mobo development model along the [hardware management example](https://github.com/Fannon/mobo/tree/master/examples/hardware). Please note that the example and the tutorial are greatly simplified!
 
 ### Set up new project
 Create a new empty project and adjust your settings.json. Please refer to the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md#create-a-new-project) how do this.
