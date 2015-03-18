@@ -10,16 +10,17 @@
 </p>
 
 ## About mobo
-Mobo is a command line toolset that helps to build Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. The model is developed on the local file system, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor of choice and Version Control Systems like Git can be used.
+[Mobo](https://www.npmjs.com/package/mobo) is a command line toolset that helps to build Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. The model is developed on the local file system, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor of choice and Version Control Systems like Git can be used.
 
 The main function of the mobo toolset is the JSON Schema based model de-velopment workflow. To support this, it also features a web application that documents the development model in its various stages. There is also an interactive graph explorer that gives a more visual representation.
 
 Mobo can also be used to batch-upload wiki pages in general and it is planned to support some basic external data transformation and importing capabilities.
 
-Mobo is open source (https://github.com/Fannon/mobo) and cross platform.
+Mobo is open source and cross platform.
 
 ## Model Development Workflow
 Mobo can be run in either an interactive or run-through mode. By default the interactive mode is used, which serves the web application, watches the file system and (re)triggers the model generation process if changes are detected.
+
 Following tasks are executed by mobo:
 
 * Read the development model and project settings from the local file system
@@ -32,12 +33,11 @@ Those steps can run in a few seconds total. This makes mobo a great tool for rea
 
 ## Getting Started
 ### Requirements
-* The [Node.js](http://nodejs.org/) runtime 0.10.x or newer is required.
-* A MediaWiki installation with following extensions:
-  * `REQUIRED:` Semantic MediaWiki
-  * `REQUIRED:` Semantic Forms
-  * `SUPPORTED:` HeaderTabs
-  * `SUPPORTED:`  TemplateData (VisualEditor)
+Mobo requires a Node.js runtime of version 0.10.x or higher to run. 
+
+The target wiki must have the [Semantic MediaWiki](http://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki) and [Semantic Forms](http://www.mediawiki.org/wiki/Extension:Semantic_Forms) extension installed. 
+
+Mobo has optional support for the [HeaderTabs](http://www.mediawiki.org/wiki/Extension:Header_Tabs) and [TemplateData](http://www.mediawiki.org/wiki/Extension:TemplateData) extension. 
 
 ### Installation
 In most cases mobo should be installed locally on the machine the model is developed on. It is possible to install and use mobo on a server for more advanced use cases, like automatic deployment.
@@ -131,17 +131,15 @@ $ mobo --update
 ### General Documentation
 * Read the mobo [MANUAL.md](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
 * Read the /hardware/[TUTORIAL.md](https://github.com/Fannon/mobo/blob/master/examples/hardware/TUTORIAL.md) and check out mobos example projects.
-* Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's also a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/) from the Space Telescope Science Institute.
+* Learn JSON Schema at [json-schema.org](http://json-schema.org/). There's a [great tutorial](http://spacetelescope.github.io/understanding-json-schema/) from the Space Telescope Science Institute.
 * For more documentation on the templating language, used in the /templates/ folder, visit [Handlebars.js](http://handlebarsjs.com/)
 
 ### Specific Documentation
-There are a few context specific README.md and SCHEMA.md files within the project.
-The README.md files contain basic documentation about the section of the development model,
-while the SCHEMA.md files contain an auto-generated technical documentation of all possible JSON Schema attributes.
+There are a few context specific README.md and SCHEMA.md files coming with the initial project structure (`mobo --init`).
 
-If you create a new project via `mobo --init` they will be placed in your project directory.
+The README.md files contain basic documentation about the section of the development model, while the SCHEMA.md files contain an auto-generated technical documentation of all possible JSON Schema attributes.
 
-* [Command Line Options](lib/cli.md) (`mobo -h`)
+* [/cli.md](lib/cli.md) documenting the command line options (`mobo -h`)
 * [/settings.md](examples/init/settings.md)
     * /field/[README.md](examples/init/field/README.md) and [SCHEMA.md](examples/init/field/SCHEMA.md) for a technical documentation
     * /model/[README.md](examples/init/model/README.md) and [SCHEMA.md](examples/init/model/SCHEMA.md) for a technical documentation
@@ -152,25 +150,35 @@ If you create a new project via `mobo --init` they will be placed in your projec
     * /mobo_template/[README.md](examples/init/templates/README.md)
 
 ## Screenshots
-> The mobo model is developed with your favorite text editor:
+The mobo model is developed with your favorite text editor:
 
 ![text-editor](http://up.fannon.de/img/mobo-intro-editor.png)
 
-> mobo is a console application. It validates, generates and uploads your model in realtime:
+----------------------------------------------------------------
+
+Mobo is a console application. It validates, generates and uploads your model in realtime:
 
 ![cli](http://up.fannon.de/img/mobo-intro-run.gif)
 
-> There is a webapp that allows you to browse your development model and the resulting wikitext:
+----------------------------------------------------------------
+
+There is a webapp that allows you to browse your development model and the resulting wikitext:
 
 ![webapp](http://up.fannon.de/img/mobo-intro-viewer.gif)
 
-> mobo can generate a graph (which has to be layouted via Gephi) that can be explored in an interactive application:
+----------------------------------------------------------------
+
+Mobo can generate a graph (which has to be layouted via Gephi) that can be explored in an interactive application:
 
 ![graph](http://up.fannon.de/img/mobo-intro-graphexplorer.gif)
 
-> The final result in the wiki:
+----------------------------------------------------------------
+
+The final result in the wiki:
 
 ![forms](http://up.fannon.de/img/mobo-intro-sf.png)
+
+----------------------------------------------------------------
 
 ## License
 Copyright (c) 2015 Simon Heimler
