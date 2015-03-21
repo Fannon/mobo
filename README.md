@@ -19,16 +19,16 @@ Mobo can also be used to batch-upload wiki pages in general and it is planned to
 Mobo is open source and cross platform.
 
 ## Model Development Workflow
-Mobo can be run in either an interactive or run-through mode. By default the interactive mode is used, which serves the web application, watches the file system and (re)triggers the model generation process if changes are detected.
+Mobo can be run in either an interactive or a run-through mode. By default the interactive mode is used, which serves the web application, watches the file system and (re)triggers the model generation process if changes are detected.
 
-Following tasks are executed by mobo:
+Following tasks are executed when using mobo for generating SMW structure:
 
-* Read the development model and project settings from the local file system
-* Validates the development model and gives feedback on syntax, structural and semantic errors
-* Applies inheritance
-* Generates SMW wikitext structure
-* Calculates the differences between the last upload state and the cur-rent state and uploads / updates those pages on an external wiki
-
+First, mobo will read the development model and project settings from the local file system.
+The model will be pre-validated for errors.
+Now mobo will apply inheritance and further processing to generate the “processed development model and do some post-validation on it.
+The processed development model will be uses as the basis to generate the SMW wikitext structure.
+A good part of this model to final result processing will be internal, but mobo uses customizable templates which will be used to generate the final wikitext.
+Finally, mobo calculates the differences between the last upload state and the current state and uploads the wikitext pages on an external wiki
 Those steps can run in a few seconds total. This makes mobo a great tool for real-time, iterative model development.
 
 ## Getting Started
