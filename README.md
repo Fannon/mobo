@@ -26,9 +26,12 @@ Following tasks are executed when using mobo for generating SMW structure:
 First, mobo will read the development model and project settings from the local file system.
 The model will be pre-validated for errors.
 Now mobo will apply inheritance and further processing to generate the “processed development model and do some post-validation on it.
+
 The processed development model will be uses as the basis to generate the SMW wikitext structure.
 A good part of this model to final result processing will be internal, but mobo uses customizable templates which will be used to generate the final wikitext.
+
 Finally, mobo calculates the differences between the last upload state and the current state and uploads the wikitext pages on an external wiki
+
 Those steps can run in a few seconds total. This makes mobo a great tool for real-time, iterative model development.
 
 ## Getting Started
