@@ -10,6 +10,8 @@
 </p>
 
 ## About mobo
+
+[![Join the chat at https://gitter.im/Fannon/mobo](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Fannon/mobo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [Mobo](https://www.npmjs.com/package/mobo) is a command line toolset that helps to build Semantic MediaWiki structure in an agile, model driven engineering (MDE) way. The model is developed on the local file system, using an object oriented, customized JSON Schema notation. Since the model is written in plain JSON files, any editor of choice and Version Control Systems like Git can be used.
 
 The main function of the mobo toolset is the JSON Schema based model de-velopment workflow. To support this, it also features a web application that documents the development model in its various stages. There is also an interactive graph explorer that gives a more visual representation.
