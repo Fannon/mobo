@@ -1,7 +1,7 @@
 [![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](https://www.npmjs.com/package/mobo)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Fannon/mobo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)](https://david-dm.org/Fannon/mobo)
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
-[![Codacy](https://img.shields.io/codacy/a7daff185e694c3d853bb35cbc6405c8.svg)](https://www.codacy.com/public/heimlersimon/mobo/dashboard)
 [![Code Climate](https://codeclimate.com/github/Fannon/mobo/badges/gpa.svg)](https://codeclimate.com/github/Fannon/mobo)
 [![Test Coverage](https://codeclimate.com/github/Fannon/mobo/badges/coverage.svg)](https://codeclimate.com/github/Fannon/mobo)
 
@@ -180,9 +180,3 @@ Mobo can generate a graph (which has to be layouted via Gephi) that can be explo
 The final result in the wiki:
 
 ![forms](http://up.fannon.de/img/mobo-intro-sf.png)
-
-----------------------------------------------------------------
-
-## License
-Copyright (c) 2015 Simon Heimler
-Licensed under the MIT license.
