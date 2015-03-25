@@ -289,7 +289,7 @@ The following JSON Schema properties are not supported:
 ```
 
 #### The mobo viewer application
-Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and further processing applied) on the left search box. 
+Head to the mobo viewer application at your [localhost:8080](http://localhost:8080) to browse through the development model (with inheritance and further processing applied) on the left search box.
 
 ![mobo-viewer-left](http://up.fannon.de/img/mobo-viewer-left.png?v=1)
 
@@ -302,6 +302,8 @@ In order to use the mobo graph explorer, a layouted version of the graph has to 
 
 Launch Gephi and open the file _graph.gexf in your projects `/_processed/` directory. Through the layout options, a force algorithm has to be applied (like Force Atlas). This usually involves some try and error with the parameters, since the correct values depend on the nature of the graph itself.Save the layouted graph as `/_processed/_graph_layouted.gexf`.
 
+A short screenshot guided tutorial on [how to do force layouting with Gephi](https://github.com/Fannon/mobo/wiki/Use-Gephi-to-layout-the-graph) is available at the wiki.
+
 ![mobo-gephi](http://up.fannon.de/img/mobo-gephi.png?v=1)
 
 Now the graph explorer at [localhost:8080/graph.html](http://localhost:8080/graph.html) can be used:
@@ -310,8 +312,8 @@ Now the graph explorer at [localhost:8080/graph.html](http://localhost:8080/grap
 
 The size of the nodes can be adjusted through `settings.json`.
 
-## Continue learning 
-There are a few context specific README.md and SCHEMA.md files coming with the initial project structure (`mobo --init`). 
+## Continue learning
+There are a few context specific README.md and SCHEMA.md files coming with the initial project structure (`mobo --init`).
 The README.md files contain basic documentation about the section of the development model, while the SCHEMA.md files contain an auto-generated technical documentation of all possible JSON Schema attributes.
 
 * [Command Line Options](lib/cli.md) (`mobo -h`)
