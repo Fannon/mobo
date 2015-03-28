@@ -1,5 +1,5 @@
 ## settings.json documentation 
-> Read this file online at GitHub: [form/README.md](https://github.com/Fannon/mobo/blob/master/examples/settings.md) 
+ > Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/settings.md). 
 
 This file documents all available options for the settings.json and their defaults. 
 
@@ -152,6 +152,12 @@ This can sometimes be useful, if some changes were lost or you want to go for su
            <td><sub>boolean</sub></td>
            <td><sub>false</sub></td>
            <td><sub>If true this will hide the introduced Helper Categories from the display</sub></td>
+       </tr>
+       <tr>
+           <td><sub>firstAlternativeFormAsDefault</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If more than one form is defined through an oneOf array, this setting will set the first form as the default if true. If set to false, no form will be used as default and the user has to choose first.</sub></td>
        </tr>
        <tr>
            <td><sub>arraymapSeparator</sub></td>
@@ -308,6 +314,7 @@ These are the default settings that mobo comes with:
     "headerTabs": false,
     "formEditHelper": false,
     "hideFormEditHelper": false,
+    "firstAlternativeFormAsDefault": false,
     "arraymapSeparator": ";",
     "defaultTemplateDisplay": "table",
     "useSimpleTooltipDescriptions": false,

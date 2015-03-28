@@ -1,5 +1,5 @@
 # MODEL JSON Schema
-> Read this file online at GitHub: [model/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md)
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md)
 
 > Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md) for a more verbose documentation.
 

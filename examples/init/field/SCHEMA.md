@@ -1,5 +1,5 @@
 # FIELD JSON Schema
-> Read this file online at GitHub: [field/README.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md)
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/field/SCHEMA.md)
 
 > Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/field/README.md) for a more verbose documentation.
 
