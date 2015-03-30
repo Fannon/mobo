@@ -75,13 +75,28 @@ mobo.loadData = function() {
 
             mobo.route();
 
-            $('#select-schema').select2().on("change", function(e) {
-                var selection = e.val.split('/');
-                window.location.hash = '#' + selection[0] + '/' + selection[1];
+            var $selectSchema = $('#select-schema').select2();
+            var $selectWikitext = $('#select-wikitext').select2();
+
+            // Select Schema events
+            $selectSchema.on("select2:select", function(e) {
+                if (e && e.params && e.params.data && e.params.data.id) {
+                    var selection = e.params.data.id.split('/');
+                    window.location.hash = '#' + selection[0] + '/' + selection[1];
+                } else {
+                    console.log('Error with selection!');
+                    console.dir(e);
+                }
             });
 
-            $('#select-wikitext').select2().on("change", function(e) {
-                window.location.hash = '#' + e.val;
+            // Select Wikitext events
+            $selectWikitext.on("select2:select", function(e) {
+                if (e && e.params && e.params.data && e.params.data.id) {
+                    window.location.hash = '#' + e.params.data.id;
+                } else {
+                    console.log('Error with selection!');
+                    console.dir(e);
+                }
             });
 
             mobo.populateSelect('selection');
