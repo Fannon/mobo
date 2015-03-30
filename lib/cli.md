@@ -7,25 +7,29 @@ For documentation please head over to: https://github.com/Fannon/mobo
 CONSOLE COMMANDS
 ----------------
 
--v  --version           Display version
--h  --help              Display help text
--s  --settings          Displays current settings
-                        Includes inherited and calculated settings
+--version (-v)              Display version
+--help (-h)                 Display help text
+--settings (-s)             Displays current settings
+                            Includes inherited and calculated settings
 
--u  --update            Updates the current project templates with the latest mobo default templates
-                        This might be necessary if new features are introduced
-                        Creates a Backup from your current templates first.
+--update (-u)               Updates the current project templates with the latest mobo default templates
+                            This might be necessary if new features are introduced
+                            Creates a Backup from your current templates first.
 
--i  --init              Creates a new raw project in the current directory
-    --example hardware  Installs the "hardware" sample project
-    --example shapes    Installs the "shapes" sample project
+--init (i)                  Creates a new raw project in the current directory
+--example hardware          Installs the "hardware" sample project
+--example shapes            Installs the "shapes" sample project
 
--f  --force             Forces the upload of the complete model
--r  --run-through       Skips watching the filesystem and serving the webapp
-                        mobo will exit after completion. This might be
-                        useful if mobo is triggered through other skripts.
+--force (-f)                Forces the upload of the complete model
+--run-through (-r)          Skips watching the filesystem and serving the webapp
+                            mobo will exit after completion. This might be
+                            useful if mobo is triggered through other skripts.
 
-    --skip-upload       Skips the upload (and deletion) to the wiki
+--skip-upload               Skips the upload (and deletion) to the wiki
+
+--nuke-content              Nukes all maint content wiki pages
+--nuke-structure            Nukes all structural wiki pages (templates, categories, ...)
+--nuke-custom-namespaces    Nukes all content from custom namespaces
 
 
 DEVELOPER CONSOLE COMMANDS

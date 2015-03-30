@@ -1,6 +1,6 @@
 {
   "name": "mobo",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "lib/mobo.js",
   "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
   "homepage": "https://github.com/Fannon/mobo",
@@ -44,10 +44,13 @@
     "colors": "^1.0.3",
     "fs-extra": "^0.16.5",
     "handlebars": "^3.0.0",
+    "inquirer": "^0.8.2",
     "lodash": "^3.5.0",
     "minimist": "^1.1.1",
     "node-static": "^0.7.6",
     "nodemw": "^0.4.*",
+    "prompt": "^0.2.14",
+    "readline-sync": "^0.8.0",
     "tv4": "^1.1.9",
     "ws": "^0.7.1"
   },
