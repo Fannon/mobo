@@ -46,7 +46,7 @@
                         if(segments[0]) {
                             function render(schema) {
                                 try {
-                                    docson.doc("doc", schema, segments[1]).done(function() {
+                                    docson.doc("doc", schema, segments[1], segments[0].replace(/\/[^\/]*\/?$/, '/')).done(function() {
                                         maybeExpand(segments);
                                     });
                                 } catch (e) {
@@ -63,7 +63,9 @@
                                 $.get(segments[0])
                                         .done(render)
                                         .fail(function (xhr, status, err) {
-                                            error("Could not load " + segments[0] + ": " + status + " " + err);
+                                            error("Could not load " + segments[0].replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+                                                   return '&#'+i.charCodeAt(0)+';';
+                                            }) + ": " + status + " " + err);
                                         });
                             }
                         }
