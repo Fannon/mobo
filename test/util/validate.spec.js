@@ -17,20 +17,20 @@ var mockRegistry = require('../_mockObjects/hardwareExampleRegistry.json');
 describe('Schema Validator ', function() {
 
     var testObject = {
-        "string": "test-string",
-        "number": 3
+        'string': 'test-string',
+        'number': 3
     };
     var testSchema = {
-        type: "object",
-        "properties": {
-            "string": {
-                "type": "string"
+        type: 'object',
+        'properties': {
+            'string': {
+                'type': 'string'
             },
-            "number": {
-                "type": "number"
+            'number': {
+                'type': 'number'
             }
         },
-        "additionalProperties": false
+        'additionalProperties': false
     };
 
     it('validates valid objects against JSON Schema', function() {
@@ -39,7 +39,7 @@ describe('Schema Validator ', function() {
     });
 
     it('validates invalid objects against JSON Schema', function() {
-        testObject.number = "wrong input type";
+        testObject.number = 'wrong input type';
         var result = validate.validate(testObject, testSchema);
         expect(result.valid).to.equal(false);
     });

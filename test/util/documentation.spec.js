@@ -16,16 +16,16 @@ var documentation = require('../../lib/util/documentation.js');
 describe('Documentation Generator ', function() {
 
     var testSchema = {
-        type: "object",
-        "properties": {
-            "string": {
-                "type": "string"
+        type: 'object',
+        'properties': {
+            'string': {
+                'type': 'string'
             },
-            "number": {
-                "type": "number"
+            'number': {
+                'type': 'number'
             }
         },
-        "additionalProperties": false
+        'additionalProperties': false
     };
 
     it('writes/updates automatic schema documentation', function() {

@@ -27,7 +27,7 @@ describe('mobo ', function() {
     it('loads and inherits settings', function() {
         var settings  = require('../lib/settings.json');
         var customSettings = {
-            "debug": true
+            debug: true
         };
 
         // Test with empty option object (no overwrites)

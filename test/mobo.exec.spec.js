@@ -48,8 +48,8 @@ describe('mobo cli ', function() {
 
     it('updates the templates of the init project', function() {
         expect(mobo.update({
-            "cwd": mockProjectPath,
-            "templateDir": path.join(mockProjectPath, '/mobo_template')
+            'cwd': mockProjectPath,
+            'templateDir': path.join(mockProjectPath, '/mobo_template')
         })).to.equal(true);
     });
 
@@ -71,24 +71,24 @@ describe('mobo cli ', function() {
     /**
      * Generates the wiki structure from the example project.
      */
-    it('can generate wiki structure from the sample project (async)', function(done){
+    it('can generate wiki structure from the sample project (async)', function(done) {
 
         // Set timeout to two minutes, since this task involves some uploading
         this.timeout(120000);
 
         var settings = readSettings.exec({
-            "cwd": mockProjectPath,
+            'cwd': mockProjectPath,
 
-            "uploadWikiPages": true,
-            "deleteWikiPages": true,
-            "mw_server_url": "http://smw.fannon.de",
-            "mw_server_path": "",
-            "mw_username": "mobo",
-            "mw_password": "mobopw",
+            'uploadWikiPages': true,
+            'deleteWikiPages': true,
+            'mw_server_url': 'http://smw.fannon.de',
+            'mw_server_path': '',
+            'mw_username': 'mobo',
+            'mw_password': 'mobopw',
 
-            "writeExportFiles": true,
-            "formEditHelper": true,
-            "hideFormEditHelper": true
+            'writeExportFiles': true,
+            'formEditHelper': true,
+            'hideFormEditHelper': true
         });
         expect(settings).to.include.keys('debug');
 
@@ -104,14 +104,11 @@ describe('mobo cli ', function() {
             // Check that the _processed directory was correctly populated
             var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
 
-            // "writeExportFiles": true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
+            // 'writeExportFiles': true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
             expect(processedModelContent).to.include('_registry.json');
 
             done();
         });
     });
-
-    // TODO: Check "writeExportFiles": true
-
 
 });

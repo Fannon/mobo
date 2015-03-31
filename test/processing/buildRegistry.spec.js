@@ -29,18 +29,18 @@ describe('Registry Builder ', function() {
 
         /** Unordered model mock-object */
         var unorderedModel = {
-            "properties": {
-                "3": {  },
-                "1": {  },
-                "2": {  },
-                "4": {  },
-                "5": {  }
+            'properties': {
+                '3': {  },
+                '1': {  },
+                '2': {  },
+                '4': {  },
+                '5': {  }
             },
-            "propertyOrder": [
-                "1",
-                "2",
-                "3",
-                "4"
+            'propertyOrder': [
+                '1',
+                '2',
+                '3',
+                '4'
             ]
         };
 
@@ -49,7 +49,7 @@ describe('Registry Builder ', function() {
         for (property in orderedModel.properties) {
             orderedModelArray.push(property);
         }
-        expect(orderedModelArray).to.deep.equal(["1", "2", "3", "4", "5"]);
+        expect(orderedModelArray).to.deep.equal(['1', '2', '3', '4', '5']);
     });
 
     it('inherits $extend properties', function() {

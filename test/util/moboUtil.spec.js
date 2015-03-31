@@ -44,7 +44,7 @@ describe('mobo utilities ', function() {
 
     it('logs a string message to the console', function() {
         moboUtil.log(new Error('error log entry'), true);
-        moboUtil.log({"title": "Object log entry"}, true);
+        moboUtil.log({title: 'Object log entry'}, true);
         moboUtil.log(' [i] info log entry ', true);
         moboUtil.log(' [W] warning log entry', true);
         moboUtil.log(' [E] error log entry', true);
