@@ -9,8 +9,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
-    grunt.loadNpmTasks('grunt-coveralls');
-    grunt.loadNpmTasks("grunt-jscs");
+    grunt.loadNpmTasks('grunt-jscs');
 
     // Project configuration.
     grunt.initConfig({
@@ -74,8 +73,9 @@ module.exports = function(grunt) {
     });
 
     // Default task.
+    grunt.registerTask('lint', ['jshint', 'jscs']);
     grunt.registerTask('coverage', ['mocha_istanbul:coverage']);
-    grunt.registerTask('default', ['jshint', 'jscs', 'coverage']);
+    grunt.registerTask('default', ['lint', 'coverage']);
 
     grunt.event.on('coverage', function(content, done) {
         done();

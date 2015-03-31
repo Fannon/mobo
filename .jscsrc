@@ -21,7 +21,7 @@
     ","
   ],
   "disallowMixedSpacesAndTabs": true,
-  "disallowTrailingWhitespace": true,
+  "disallowTrailingWhitespace": "ignoreEmptyLines",
   "disallowTrailingComma": true,
   "disallowYodaConditions": true,
   "disallowKeywords": [ "with" ],
