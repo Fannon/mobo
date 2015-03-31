@@ -14,7 +14,7 @@
     "deleteWikiPages": false,
     "forceUpload": false,
     "buildGraph": true,
-    "complexityStatistics": true,
+    "statistics": true,
     "writeExportFiles": false,
     "writeLogFile": false,
 
