@@ -86,6 +86,9 @@ describe('mobo cli ', function() {
             'mw_username': 'mobo',
             'mw_password': 'mobopw',
 
+            'verbose': true,
+            'debug': true,
+            'writeLogFile': true,
             'writeExportFiles': true,
             'formEditHelper': true,
             'hideFormEditHelper': true
