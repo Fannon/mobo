@@ -5,6 +5,7 @@
     "mw_username": "username",
     "mw_password": "password",
 
+    "force": false,
     "debug": false,
     "verbose": false,
     "displayTodos": true,
