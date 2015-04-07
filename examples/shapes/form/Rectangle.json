@@ -13,7 +13,7 @@
         "Rectangle": {
             "type": "array",
             "items": {
-                "$extend": "/model/Rectangle.json"
+                "$extend": "/model/Rectangle"
             }
         },
 
@@ -22,7 +22,7 @@
             "showForm": true,
             "showPage": true
         },
-        "quality": { "$extend": "/model/Quality.json" }
+        "quality": { "$extend": "/model/Quality" }
     }
 }
 

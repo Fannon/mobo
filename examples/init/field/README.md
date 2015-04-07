@@ -67,7 +67,7 @@ If the url links to a page that does not exist yet, it will be created through t
 ```json
 {
     "type": "string",
-    "format": "/form/Location.json"
+    "format": "/form/Location"
 }
 ```
 
@@ -135,7 +135,7 @@ If `smw_property` is set to false the templates won't use #set or #subobject to 
     "type": "array",
     "items": {
         "type": "string",
-        "format": "/form/Location.json"
+        "format": "/form/Location"
     }
 }
 ```

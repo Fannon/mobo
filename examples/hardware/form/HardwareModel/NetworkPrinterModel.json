@@ -2,7 +2,7 @@
     "title": "Network Printer Model",
 
     "properties": [
-        { "$extend": "/model/NetworkPrinterModel.json" }
+        { "$extend": "/model/NetworkPrinterModel" }
     ]
 }
 

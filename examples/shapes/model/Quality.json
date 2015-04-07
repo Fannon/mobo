@@ -6,9 +6,9 @@
     "type": "object",
 
     "properties": {
-        "inProcess": { "$extend": "/field/inProcess.json" },
-        "deprecated": { "$extend": "/field/deprecated.json" },
-        "completeness": { "$extend": "/field/completeness.json" }
+        "inProcess": { "$extend": "/field/inProcess" },
+        "deprecated": { "$extend": "/field/deprecated" },
+        "completeness": { "$extend": "/field/completeness" }
     },
     "required": [],
 

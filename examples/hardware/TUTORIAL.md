@@ -31,10 +31,10 @@ Create `/model/Location.json` with the following content:
     "description": "Location where hardware is deployed",
 
     "properties": [
-        { "$extend": "/field/streetAdress.json" },
-        { "$extend": "/field/streetNumber.json" },
-        { "$extend": "/field/town.json" },
-        { "$extend": "/field/country.json" }
+        { "$extend": "/field/streetAdress" },
+        { "$extend": "/field/streetNumber" },
+        { "$extend": "/field/town" },
+        { "$extend": "/field/country" }
     ],
 
     "required": ["streetAdress", "streetNumber", "town" ]
@@ -118,7 +118,7 @@ Create `/form/Location.json` with the following content:
     "title": "Location",
 
     "properties": [
-        { "$extend": "/model/Location.json" }
+        { "$extend": "/model/Location" }
     ]
 }
 ```
@@ -138,8 +138,8 @@ Create `/model/HardwareModel/_HardwareModel.json` with the following content:
     "title": "Hardware Model",
 
     "properties": [
-        { "$extend": "/field/brand.json" },
-        { "$extend": "/field/modelName.json" }
+        { "$extend": "/field/brand" },
+        { "$extend": "/field/modelName" }
     ],
 
     "required": ["brand", "modelName"],
@@ -154,12 +154,12 @@ Create `/model/HardwareModel/NetworkPrinterModel.json` with the following conten
 
 ```json
 {
-    "$extend": "/model/_HardwareModel.json",
+    "$extend": "/model/_HardwareModel",
 
     "title": "Network Printer Model",
 
     "properties": [
-        { "$extend": "/field/colorPrinting.json" }
+        { "$extend": "/field/colorPrinting" }
     ],
 
     "propertyOrder": ["brand", "modelName"]
@@ -187,7 +187,7 @@ Create `/model/HardwareInstallation/_HardwareInstallation.json` with the followi
     "title": "Hardware Installation",
 
     "properties": [
-        { "$extend": "/field/serialNumber.json" }
+        { "$extend": "/field/serialNumber" }
     ],
 
     "smw_subobject": true,
@@ -205,12 +205,12 @@ Create `/model/HardwareInstallation/_NetworkDeviceInstallation.json` with the fo
 
 ```json
 {
-    "$extend": "/model/_HardwareInstallation.json",
+    "$extend": "/model/_HardwareInstallation",
 
     "title": "NetworkDevice Installation",
 
     "properties": [
-        { "$extend": "/field/ip.json" }
+        { "$extend": "/field/ip" }
     ],
 
     "abstract": true
@@ -221,12 +221,12 @@ Create `/model/HardwareInstallation/_NetworkDeviceInstallation.json` with the fo
 
 ```json
 {
-    "$extend": "/model/_NetworkDeviceInstallation.json",
+    "$extend": "/model/_NetworkDeviceInstallation",
 
     "title": "Network Printer Installation",
 
     "properties": [
-        { "$extend": "/field/networkPrinterModel.json" }
+        { "$extend": "/field/networkPrinterModel" }
     ]
 }
 ```
@@ -261,10 +261,10 @@ Create `/field/HardwareInstallation/networkPrinterModel.json` with the following
 
 ```json
 {
-    "$extend": "/field/_hardwareModelReference.json",
+    "$extend": "/field/_hardwareModelReference",
 
     "type": "string",
-    "format": "/form/NetworkPrinterModel.json",
+    "format": "/form/NetworkPrinterModel",
 
     "smw_form": {
         "values from category": "NetworkPrinterModel"
@@ -287,7 +287,7 @@ Adjust `/field/HardwareInstallation/networkPrinterModel.json` to the following c
     "description": "This creates a new location where hardware is deployed.",
 
     "properties": [
-        { "$extend": "/model/Location.json" },
+        { "$extend": "/model/Location" },
 
         { 
             "$extend": "/smw_template/NetworkPrinterHeader.wikitext",
@@ -297,7 +297,7 @@ Adjust `/field/HardwareInstallation/networkPrinterModel.json` to the following c
         {
             "type": "array",
             "items": {
-                "$extend": "/model/NetworkPrinterInstallation.json"
+                "$extend": "/model/NetworkPrinterInstallation"
             }
         }
     ]
@@ -372,10 +372,10 @@ Adjust `/model/Location.json` to the following content:
     "description": "Location where hardware is deployed",
 
     "properties": [
-        { "$extend": "/field/streetAdress.json" },
-        { "$extend": "/field/streetNumber.json" },
-        { "$extend": "/field/town.json" },
-        { "$extend": "/field/country.json" }
+        { "$extend": "/field/streetAdress" },
+        { "$extend": "/field/streetNumber" },
+        { "$extend": "/field/town" },
+        { "$extend": "/field/country" }
     ],
 
     "required": ["streetAdress", "streetNumber", "town" ],

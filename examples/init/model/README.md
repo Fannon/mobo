@@ -65,10 +65,10 @@ Please not that recommended fields are not officially supported by Semantic Form
 ```json 
 {
     "properties": [
-        { "$extend": "/field/streetAdress.json" },
-        { "$extend": "/field/streetNumber.json" },
-        { "$extend": "/field/town.json" },
-        { "$extend": "/field/country.json" }
+        { "$extend": "/field/streetAdress" },
+        { "$extend": "/field/streetNumber" },
+        { "$extend": "/field/town" },
+        { "$extend": "/field/country" }
     ],
 
     "required": ["streetAdress", "streetNumber", "town" ],
@@ -108,8 +108,8 @@ Model inheritance:
     "type": "object",
 
     "properties": {
-        "x": { "$extend": "/field/x.json" },
-        "y": { "$extend": "/field/y.json" }
+        "x": { "$extend": "/field/x" },
+        "y": { "$extend": "/field/y" }
     },
     "required": ["x", "y"],
 
@@ -120,13 +120,13 @@ Model inheritance:
 ### /model/Circle.json
 ```json
 {
-    "$extend": "/model/_Shape.json",
+    "$extend": "/model/_Shape",
 
     "title": "Circle",
     "type": "object",
 
     "properties": {
-        "radius": { "$extend": "/field/radius.json" },
+        "radius": { "$extend": "/field/radius" },
     },
     "required": ["x", "y", "radius"]
 }

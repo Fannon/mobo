@@ -1,5 +1,5 @@
 {
-    "$extend": "/model/_HardwareModel.json",
+    "$extend": "/model/_HardwareModel",
 
     "title": "Network Scanner Model"
 }

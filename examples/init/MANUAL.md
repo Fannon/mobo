@@ -122,13 +122,13 @@ They usually declare:
 
 ```json
 {
-    "$extend": "/model/_Shape.json",
+    "$extend": "/model/_Shape",
 
     "title": "Circle",
     "type": "object",
 
     "properties": {
-        "radius": { "$extend": "/field/radius.json" },
+        "radius": { "$extend": "/field/radius" },
     },
     "required": ["x", "y", "radius"]
 }
@@ -159,12 +159,12 @@ They usually declare:
         "circle": {
             "type": "array",
             "items": {
-                "$extend": "/model/Circle.json"
+                "$extend": "/model/Circle"
             }
         },
 
         "qualityHeader": { "wikitext": "=Quality=" },
-        "quality": { "$extend": "/model/Quality.json" }
+        "quality": { "$extend": "/model/Quality" }
     }
 }
 ```
@@ -202,7 +202,7 @@ Mobo uses JSON Schema as a basis for the model development. To fit the model dev
 The most important addition to JSON Schema is the “$extend” keyword. It takes a string (or an array of strings) which describe the path to another model file.
 
 ```json
-"$extend": "/model/_Shape.json",
+"$extend": "/model/_Shape",
 ```
 
 Mobo will inherit all properties of the referenced (parent) object to the ob-ject where this statement was made. Properties of the child object will over-write inherited properties. If an array of parent objects is given, the inher-itance order will be the order of the array.
@@ -246,9 +246,9 @@ This is the JSON Schema default property object notation:
 
 ```json
 "properties": {
-    "x": { "$extend": "/field/x.json" },
-    "y": { "$extend": "/field/y.json" },
-    "color": { "$extend": "/field/color.json" }
+    "x": { "$extend": "/field/x" },
+    "y": { "$extend": "/field/y" },
+    "color": { "$extend": "/field/color" }
 },
 ```
 
@@ -256,9 +256,9 @@ This is the mobo Schema alternative property array notation:
 
 ```json
 "properties": [
-    { "$extend": "/field/x.json" },
-    { "$extend": "/field/y.json" },
-    { "$extend": "/field/color.json" }
+    { "$extend": "/field/x" },
+    { "$extend": "/field/y" },
+    { "$extend": "/field/color" }
 ],
 ```
 

@@ -1,11 +1,11 @@
 {
-    "$extend": "/model/Square.json",
+    "$extend": "/model/Square",
 
     "title": "Rectangle",
     "type": "object",
 
     "properties": {
-        "height": { "$extend": "/field/height.json" }
+        "height": { "$extend": "/field/height" }
     },
 
     "required": ["x", "y", "width", "height"],

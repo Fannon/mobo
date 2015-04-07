@@ -2,8 +2,8 @@
     "title": "Hardware Model",
 
     "properties": [
-        { "$extend": "/field/brand.json" },
-        { "$extend": "/field/modelName.json" }
+        { "$extend": "/field/brand" },
+        { "$extend": "/field/modelName" }
     ],
 
     "required": ["brand", "modelName"],

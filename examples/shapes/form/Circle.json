@@ -13,7 +13,7 @@
         "circle": {
             "type": "array",
             "items": {
-                "$extend": "/model/Circle.json"
+                "$extend": "/model/Circle"
             }
         },
 
@@ -22,7 +22,7 @@
             "showForm": true,
             "showPage": true
         },
-        "quality": { "$extend": "/model/Quality.json" }
+        "quality": { "$extend": "/model/Quality" }
     },
 
     "smw_forminput": {

@@ -1,11 +1,11 @@
 {
-    "$extend": "/model/_Shape.json",
+    "$extend": "/model/_Shape",
 
     "title": "Circle",
     "type": "object",
 
     "properties": {
-        "radius": { "$extend": "/field/radius.json" }
+        "radius": { "$extend": "/field/radius" }
     },
     "required": ["x", "y", "radius"],
 

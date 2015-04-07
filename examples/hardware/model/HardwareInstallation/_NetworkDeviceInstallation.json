@@ -1,10 +1,10 @@
 {
-    "$extend": "/model/_HardwareInstallation.json",
+    "$extend": "/model/_HardwareInstallation",
 
     "title": "NetworkDevice Installation",
 
     "properties": [
-        { "$extend": "/field/ip.json" }
+        { "$extend": "/field/ip" }
     ],
 
     "recommended": [

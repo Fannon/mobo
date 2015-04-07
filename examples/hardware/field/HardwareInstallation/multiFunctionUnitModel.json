@@ -1,8 +1,8 @@
 {
-    "$extend": "/field/_hardwareModelReference.json",
+    "$extend": "/field/_hardwareModelReference",
 
     "type": "string",
-    "format": "/form/MultiFunctionUnitModel.json",
+    "format": "/form/MultiFunctionUnitModel",
 
     "smw_form": {
         "values from category": "MultiFunctionUnitModel"

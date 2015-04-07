@@ -6,9 +6,9 @@
     "type": "object",
 
     "properties": [
-        { "$extend": "/field/x.json" },
-        { "$extend": "/field/y.json" },
-        { "$extend": "/field/color.json" }
+        { "$extend": "/field/x" },
+        { "$extend": "/field/y" },
+        { "$extend": "/field/color" }
     ],
     "required": ["x", "y"],
 

@@ -3,7 +3,7 @@
     "description": "This creates a new location where hardware is deployed.",
 
     "properties": [
-        { "$extend": "/model/Location.json" },
+        { "$extend": "/model/Location" },
 
 
         {
@@ -14,7 +14,7 @@
         {
             "type": "array",
             "items": {
-                "$extend": "/model/NetworkPrinterInstallation.json"
+                "$extend": "/model/NetworkPrinterInstallation"
             }
         },
 
@@ -23,7 +23,7 @@
         {
             "type": "array",
             "items": {
-                "$extend": "/model/NetworkScannerInstallation.json"
+                "$extend": "/model/NetworkScannerInstallation"
             }
         },
 
@@ -31,7 +31,7 @@
         {
             "type": "array",
             "items": {
-                "$extend": "/model/MultiFunctionUnitInstallation.json"
+                "$extend": "/model/MultiFunctionUnitInstallation"
             }
         }
 

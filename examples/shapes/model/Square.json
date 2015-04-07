@@ -1,11 +1,11 @@
 {
-  "$extend": "/model/_Shape.json",
+  "$extend": "/model/_Shape",
 
   "title": "Square",
   "type": "object",
 
   "properties": {
-    "width": { "$extend": "/field/width.json" }
+    "width": { "$extend": "/field/width" }
   },
 
   "required": ["x", "y", "width"],

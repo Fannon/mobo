@@ -60,7 +60,7 @@ This is useful for introducion headers into a form / resulting site. If you use 
     "description": "This creates a new location where hardware is deployed.",
 
     "properties": [
-        { "$extend": "/model/Location.json" },
+        { "$extend": "/model/Location" },
 
 
         {
@@ -71,7 +71,7 @@ This is useful for introducion headers into a form / resulting site. If you use 
         {
             "type": "array",
             "items": {
-                "$extend": "/model/NetworkPrinterInstallation.json"
+                "$extend": "/model/NetworkPrinterInstallation"
             }
         }
     ],

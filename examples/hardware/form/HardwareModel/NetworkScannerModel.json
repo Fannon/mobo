@@ -2,7 +2,7 @@
     "title": "Network Scanner Model",
 
     "properties": [
-        { "$extend": "/model/NetworkScannerModel.json" }
+        { "$extend": "/model/NetworkScannerModel" }
     ]
 }
 

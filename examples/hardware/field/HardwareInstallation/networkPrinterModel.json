@@ -1,8 +1,8 @@
 {
-    "$extend": "/field/_hardwareModelReference.json",
+    "$extend": "/field/_hardwareModelReference",
 
     "type": "string",
-    "format": "/form/NetworkPrinterModel.json",
+    "format": "/form/NetworkPrinterModel",
 
     "smw_form": {
         "values from category": "NetworkPrinterModel"
