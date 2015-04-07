@@ -1,0 +1,5 @@
+$extend: /model/_NetworkDeviceInstallation
+title: 'Network Printer Installation'
+properties:
+    -
+        $extend: /field/networkPrinterModel

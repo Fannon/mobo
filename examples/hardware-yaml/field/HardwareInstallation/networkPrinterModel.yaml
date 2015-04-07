@@ -1,0 +1,5 @@
+$extend: /field/_hardwareModelReference
+type: string
+format: /form/NetworkPrinterModel
+smw_form:
+    'values from category': NetworkPrinterModel

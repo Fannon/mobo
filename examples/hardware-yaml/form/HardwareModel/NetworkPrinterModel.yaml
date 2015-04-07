@@ -1,0 +1,4 @@
+title: 'Network Printer Model'
+properties:
+    -
+        $extend: /model/NetworkPrinterModel

@@ -1,0 +1,5 @@
+title: x
+description: 'X Coordinate'
+type: number
+smw_form:
+    'input type': text

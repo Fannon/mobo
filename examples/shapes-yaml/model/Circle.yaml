@@ -1,0 +1,17 @@
+$extend: /model/_Shape
+title: Circle
+type: object
+properties:
+    radius:
+        $extend: /field/radius
+required:
+    - x
+    - y
+    - radius
+smw_prefix:
+    header: 1
+smw_postfix:
+    wikitext: 'This will be displayed after the model'
+smw_subobject: true
+smw_category: true
+abstract: false

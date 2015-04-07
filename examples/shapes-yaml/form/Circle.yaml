@@ -1,0 +1,24 @@
+title: Circle
+description: 'Create a new Circle through a form'
+type: object
+properties:
+    circleHeader:
+        $extend: /smw_template/HeaderCircle.wikitext
+        showForm: true
+        showPage: true
+    circle:
+        type: array
+        items:
+            $extend: /model/Circle
+    qualityHeader:
+        $extend: /smw_template/HeaderQuality.wikitext
+        showForm: true
+        showPage: true
+    quality:
+        $extend: /model/Quality
+smw_forminput:
+    'button text': 'Create a new Circle'
+    'autocomplete on category': Circle
+smw_forminfo:
+    'add title': 'Create a new Circle'
+    'edit title': 'Edit Circle'

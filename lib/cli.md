@@ -18,7 +18,9 @@ CONSOLE COMMANDS
 
 --init              (i)     Creates a new raw project in the current directory
 --example hardware          Installs the "hardware" sample project
+--example hardware-yaml     Installs the "hardware" sample project, using YAML instead of JSON
 --example shapes            Installs the "shapes" sample project
+--example shapes-yaml       Installs the "shapes" sample project, using YAML instead of JSON
 
 --force             (-f)    Forces the upload of the complete model
 --run-through       (-r)    Skips watching the filesystem and serving the webapp

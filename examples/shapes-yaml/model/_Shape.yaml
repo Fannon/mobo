@@ -1,0 +1,15 @@
+$schema: 'http://json-schema.org/draft-04/schema#'
+title: Shape
+description: 'Generic Shape'
+type: object
+properties:
+    -
+        $extend: /field/x
+    -
+        $extend: /field/y
+    -
+        $extend: /field/color
+required:
+    - x
+    - y
+abstract: true

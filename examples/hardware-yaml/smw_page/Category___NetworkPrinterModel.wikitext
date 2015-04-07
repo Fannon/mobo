@@ -1,0 +1,9 @@
+==Form==
+Sites tagged with this category can be edited through [[Has default form::NetworkPrinterModel|Network Printer Model]]
+
+==Overview==
+{{#ask: [[category:NetworkPrinterModel]]
+| ?brand
+| ?modelName
+| limit=999
+}}
