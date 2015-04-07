@@ -5,6 +5,7 @@
   "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
   "homepage": "https://github.com/Fannon/mobo",
   "bugs": "https://github.com/Fannon/mobo/issues",
+  "engine": "node >= 0.12.0",
   "author": {
     "name": "Simon Heimler",
     "email": "heimlersimon@gmail.com",
