@@ -90,6 +90,7 @@ describe('mobo cli ', function() {
             'debug': true,
             'writeLogFile': true,
             'writeExportFiles': true,
+            'uploadLogFile': true,
             'formEditHelper': true,
             'hideFormEditHelper': true
         });

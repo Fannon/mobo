@@ -18,6 +18,8 @@
     "statistics": true,
     "writeExportFiles": false,
     "writeLogFile": true,
+    "uploadReport": true,
+    "uploadLogFile": false,
 
     "uploadConcurrency": 4,
     "webAppPort": 8080,
