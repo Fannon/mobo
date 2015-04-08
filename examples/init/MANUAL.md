@@ -1,12 +1,16 @@
 ## Mobo Model Development MANUAL
-> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/init/MANUAL.md).
+> Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/MANUAL.md).
 
 ### Premises
-In order to learn mobo, it is mandatory to understand the basic concepts of JSON Schema  first. It is a very simple and concise standard and it should only take a few hours to learn it. There is a great tutorial  published by the Space Telescope Science Institute. This time is a good investment anyhow, since JSON Schema can be used in other contexts as well.
+In order to learn mobo, it is mandatory to understand the basic concepts of JSON and JSON Schema first.
+
+It is a very simple and concise standard and it should only take a few hours to learn it. 
+There is a great tutorial published by the Space Telescope Science Institute. 
+This time is a good investment anyhow, since JSON Schema can be used in other contexts as well.
 
 Basic understanding of MW / SMW and SF is also highly recommended, since this is the target system and its architecture has a huge impact on how models are developed.
 
-If the default templates are changed, an understanding of the Handlebars.js  template engine is of advantage.
+If the default templates are changed, an understanding of the Handlebars.js template engine is of advantage.
 
 ### Create a new project
 To start with the model development, an empty project structure has to be created first. This is done through a mobo command within an empty directory.
@@ -22,6 +26,64 @@ Mobo comes with two example projects, which may be a good starting point to lear
 ```sh
 $ mobo --example shapes
 ```
+
+### How to write the mobo-model (JSON vs YAML)
+It is possible to write the model in either the [JSON](http://json.org/) or the [YAML](http://yaml.org/) notation. 
+It is even possible to mix both, though this might get confusing.
+In either case, the structure of JSON / mobo Schema must be adhered to.
+
+It is a matter of personal taste which notation might be prefered. JSON is barebone, explicit and very strict. 
+This is so, because it is a data-serialization format by design. JSON does not even support comments for example.
+YAML is a bit more concise and more implicit (and therefore more forgiving). It is arguably easier to read and write by humans.
+
+The mobo examples are available in both JSON and YAML notation. A comparison:
+
+**JSON-Notation:**
+
+```json
+{
+    "title": "Location",
+    "description": "Location where hardware is deployed",
+    "properties": [
+        { "$extend": "/field/streetAdress" },
+        { "$extend": "/field/streetNumber" },
+        { "$extend": "/field/town" },
+        { "$extend": "/field/country" }
+    ],
+    "required": ["streetAdress", "streetNumber", "town" ],
+    "smw_prefix": {
+        "header": 1,
+        "wikitext": "Some prefix-description for the location"
+    },
+    "smw_postfix": {
+        "wikitext": "Some postfix-description for the location"
+    }
+}
+```
+
+**YAML-Notation:**
+
+```yaml
+title: Location
+description: Location where hardware is deployed
+properties:
+    - $extend: /field/streetAdress
+    - $extend: /field/streetNumber
+    - $extend: /field/town
+    - $extend: /field/country
+required:
+    - streetAdress
+    - streetNumber
+    - town
+smw_prefix:
+    header: 1
+    wikitext: Some prefix-description for the location
+smw_postfix:
+    wikitext: Some postfix-description for the location
+```
+
+To convert a project from JSON to YAML notation (or the other way around), the [yamljs](https://www.npmjs.com/package/yamljs) CLI tool is very helpful. 
+Conversion should be easy and fast, so the notation format has no lock-in effect.
 
 ### The Development Model Structure
 #### Overview
@@ -59,6 +121,8 @@ Please note that subdirectories can be created freely, but they will be flat-ten
     ├── report.wikitext
     └── template.wikitext
 ```
+
+
 
 #### /settings.json
 The settings.json file will hold all project specific options. It has already been explained in the Getting Started Section.
