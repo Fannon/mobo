@@ -50,7 +50,11 @@ The mobo examples are available in both JSON and YAML notation. A comparison:
         { "$extend": "/field/town" },
         { "$extend": "/field/country" }
     ],
-    "required": ["streetAdress", "streetNumber", "town" ],
+    "required": [
+        "streetAdress", 
+        "streetNumber", 
+        "town" 
+    ],
     "smw_prefix": {
         "header": 1,
         "wikitext": "Some prefix-description for the location"
@@ -82,7 +86,7 @@ smw_postfix:
     wikitext: Some postfix-description for the location
 ```
 
-To convert a project from JSON to YAML notation (or the other way around), the [yamljs](https://www.npmjs.com/package/yamljs) CLI tool is very helpful. 
+To batch-convert a project from JSON to YAML notation (or the other way around), the [yamljs](https://www.npmjs.com/package/yamljs) CLI tool is recommended. 
 Conversion should be easy and fast, so the notation format has no lock-in effect.
 
 ### The Development Model Structure
