@@ -1,8 +1,6 @@
-## settings.json documentation 
- > Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/settings.md). 
-
-This file documents all available options for the settings.json and their defaults. 
-
+## settings.json documentation
+ > Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/settings.md).
+This file documents all available options for the settings.json and their defaults.
 <table class="schema-description">
    <thead>
        <tr>
@@ -64,8 +62,20 @@ This file documents all available options for the settings.json and their defaul
        <tr>
            <td><sub>writeLogFile</sub></td>
            <td><sub>boolean</sub></td>
-           <td><sub>false</sub></td>
+           <td><sub>true</sub></td>
            <td><sub>If this is enabled, mobo will create logfiles in /_processed/logfiles/*</sub></td>
+       </tr>
+       <tr>
+           <td><sub>uploadReport</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>true</sub></td>
+           <td><sub>If this is enabled, mobo will upload a report to the wiki at its userpage</sub></td>
+       </tr>
+       <tr>
+           <td><sub>uploadLogFile</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If this is enabled, mobo will upload the logfile in addition to the report</sub></td>
        </tr>
        <tr>
            <td><sub>watchFilesystem</sub></td>
@@ -98,17 +108,28 @@ This file documents all available options for the settings.json and their defaul
            <td><sub>WebSocket port the server and the WebGui are using to notify the change. Change this if the port is already used.</sub></td>
        </tr>
        <tr>
+           <td><sub>statistics</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>true</sub></td>
+           <td><sub>Displays simple statistics about the project model. Statistics will also be written / appended to `/_processed/_statistics.csv`</sub></td>
+       </tr>
+       <tr>
            <td><sub>buildGraph</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>true</sub></td>
-           <td><sub>Builds graph files from the model. This also includes a lot of structural validation. 
-So it might make sense to keep this activated, even if the graph is not used afterwards.</sub></td>
+           <td><sub>Builds graph files (.gexf) from the model.</sub></td>
        </tr>
        <tr>
            <td><sub>writeExportFiles</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>false</sub></td>
            <td><sub>If true mobo will write every generated file as a single file into the filesystem. This can be slow due to a lot of HDD I/O</sub></td>
+       </tr>
+       <tr>
+           <td><sub>force</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>Forces mobo to continue despite possible errors</sub></td>
        </tr>
        <tr>
            <td><sub>uploadWikiPages</sub></td>
@@ -286,9 +307,9 @@ SemanticForms itself does not support / supply this for a div based layout.</sub
    </tbody>
 </table>
 
+
 ## Default settings
 These are the default settings that mobo comes with:
-
 ```json
 {
     "mw_server_url": false,
@@ -296,6 +317,7 @@ These are the default settings that mobo comes with:
     "mw_server_port": false,
     "mw_username": "username",
     "mw_password": "password",
+    "force": false,
     "debug": false,
     "verbose": false,
     "displayTodos": true,
@@ -305,8 +327,11 @@ These are the default settings that mobo comes with:
     "deleteWikiPages": false,
     "forceUpload": false,
     "buildGraph": true,
+    "statistics": true,
     "writeExportFiles": false,
-    "writeLogFile": false,
+    "writeLogFile": true,
+    "uploadReport": true,
+    "uploadLogFile": false,
     "uploadConcurrency": 4,
     "webAppPort": 8080,
     "autoRefreshWebGui": true,

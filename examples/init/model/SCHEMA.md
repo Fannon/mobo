@@ -1,4 +1,4 @@
-# MODEL JSON Schema
+# model - technical description
 > Read the latest version [online at GitHub](https://github.com/Fannon/mobo/blob/master/examples/init/model/SCHEMA.md)
 
 > Refer to the corresponding [README.md](https://github.com/Fannon/mobo/blob/master/examples/init/model/README.md) for a more verbose documentation.
@@ -152,6 +152,7 @@ These properties will only work in context of models.
    </tbody>
 </table>
 
+
 ## mobo specific properties
 These mobo custom properties are global and can be used for fields, models and forms. 
 <table class="schema-description">
@@ -201,10 +202,16 @@ These mobo custom properties are global and can be used for fields, models and f
            <td><sub>For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)</sub></td>
        </tr>
        <tr>
+           <td><sub>$path</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>For internal use only! This stores the path of the object, as used in "$extend" or "format". Used for improved debugging messages</sub></td>
+       </tr>
+       <tr>
            <td><sub>$filepath</sub></td>
            <td><sub>string</sub></td>
            <td><sub></sub></td>
-           <td><sub>For internal use only! This stores the relative path of the .json file. Used for improved debugging messages</sub></td>
+           <td><sub>For internal use only! This stores the complete relative path of the .json file. Used for improved debugging messages</sub></td>
        </tr>
        <tr>
            <td><sub>ignore</sub></td>
@@ -245,11 +252,14 @@ These mobo custom properties are global and can be used for fields, models and f
    </tbody>
 </table>
 
+
 ## Unsupported JSON Schema Core features
 These features / properties of JSON Schema Core are not supported by mobo: 
 
+
 ## Complete JSON Schema
 This is the final JSON Schema, including a simplified JSON Schema core and all mobo and model specific addons / changes. 
+
 ```json
 {
     "id": "http://json-schema.org/draft-04/schema#",
@@ -473,9 +483,13 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "object",
             "description": "For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)"
         },
+        "$path": {
+            "type": "string",
+            "description": "For internal use only! This stores the path of the object, as used in \"$extend\" or \"format\". Used for improved debugging messages"
+        },
         "$filepath": {
             "type": "string",
-            "description": "For internal use only! This stores the relative path of the .json file. Used for improved debugging messages"
+            "description": "For internal use only! This stores the complete relative path of the .json file. Used for improved debugging messages"
         },
         "ignore": {
             "type": "boolean",
