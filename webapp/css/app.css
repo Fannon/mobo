@@ -22,9 +22,11 @@
     color: #FFF;
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: #555;
-    border-left: 1px solid #ccc;
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>.dropdown-toggle {
+    color: #333;
+    border-left: 1px solid #CCC;
     background-color: #EEE;
 }
 
@@ -62,7 +64,7 @@ pre {
 
 a:hover {
     text-decoration: none;
-    color: #7247CA;
+    color: #65A4DB;
 }
 
 textarea {
