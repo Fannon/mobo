@@ -3,6 +3,11 @@
 /** global namespace */
 var mobo = {};
 
+/** Set default settings */
+mobo.settings = {
+    autoRefreshPort: 8081,
+    autoRefreshWebGui: true
+};
 
 //////////////////////////////////////////
 // Options / Config                     //
@@ -10,8 +15,9 @@ var mobo = {};
 
 mobo.displayForm = true;
 
+
 require.config({
-    baseUrl: ".."
+    baseUrl: '..'
 });
 
 
@@ -21,97 +27,99 @@ require.config({
 
 $(document).ready(function() {
 
+    //////////////////////////////////////////
+    // EVENTS                               //
+    //////////////////////////////////////////
 
-
-    // Get project settings (for URL to external wiki)
-    $.getJSON("settings.json", function(settings) {
-
-        mobo.settings = settings;
-        mobo.remoteWiki = settings.mw_server_url + '/' + settings.mw_server_path + '/index.php';
-
-        $(window).on('hashchange', function() {
-            mobo.route();
-        });
-
-        mobo.loadData();
-
-        // Connect to WebSocket Server, if available
-        // This allows automatically triggering of GUI Refreshes from the server
-        var webSockets = settings.autoRefreshWebGui || true;
-
-        if (webSockets) {
-            var host = window.document.location.host.replace(/:.*/, '');
-            var port = settings.autoRefreshPort || 8081;
-
-            var ws = new WebSocket('ws://' + host + ':' + port);
-            ws.onmessage = function() {
-                mobo.loadData();
-                console.log('Refreshing data...');
-                $('#refresh').show().delay(800).fadeOut(400);
-            };
-        }
-
+    // Detect hash changes in URL
+    $(window).on('hashchange', function() {
+        mobo.route();
     });
 
+    // Refresh Data on click
+    $('#logo').on('click', function() {
+        mobo.loadData();
+    });
 
+    // Select 2 Init & Event handling
+    var $selectSchema = $('#select-schema').select2();
+    var $selectWikitext = $('#select-wikitext').select2();
+
+    // Select Schema events
+    $selectSchema.on('select2:select', function(e) {
+        if (e && e.params && e.params.data && e.params.data.id) {
+            var selection = e.params.data.id.split('/');
+            window.location.hash = '#/' + selection[0] + '/' + selection[1];
+        } else {
+            console.log('Error with selection!');
+            console.dir(e);
+        }
+    });
+
+    // Select Wikitext events
+    $selectWikitext.on('select2:select', function(e) {
+        if (e && e.params && e.params.data && e.params.data.id) {
+            window.location.hash = '#' + e.params.data.id;
+        } else {
+            console.log('Error with selection!');
+            console.dir(e);
+        }
+    });
+
+    // Connect to WebSocket Server, if available
+    // This allows automatically triggering of GUI Refreshes from the server
+    var webSockets = mobo.settings.autoRefreshWebGui || true;
+
+    if (webSockets) {
+        var host = window.document.location.host.replace(/:.*/, '');
+        var port = mobo.settings.autoRefreshPort || 8081;
+
+        var ws = new WebSocket('ws://' + host + ':' + port);
+        ws.onmessage = function() {
+            mobo.loadData();
+        };
+    }
+
+    mobo.loadData();
 
 });
 
-mobo.loadData = function() {
 
-    // Get registry.json first
-    $.getJSON( "_processed/_registry.json", function(registry) {
-
-        mobo.registry = registry;
-
-        mobo.wikitext = registry.generated || {};
-
-
-        //////////////////////////////////////////
-        // BOOTSTRAP WEBAPP                     //
-        //////////////////////////////////////////
-
-        if (Object.keys(mobo.wikitext).length > 0) {
-
-            mobo.route();
-
-            var $selectSchema = $('#select-schema').select2();
-            var $selectWikitext = $('#select-wikitext').select2();
-
-            // Select Schema events
-            $selectSchema.on("select2:select", function(e) {
-                if (e && e.params && e.params.data && e.params.data.id) {
-                    var selection = e.params.data.id.split('/');
-                    window.location.hash = '#' + selection[0] + '/' + selection[1];
-                } else {
-                    console.log('Error with selection!');
-                    console.dir(e);
-                }
-            });
-
-            // Select Wikitext events
-            $selectWikitext.on("select2:select", function(e) {
-                if (e && e.params && e.params.data && e.params.data.id) {
-                    window.location.hash = '#' + e.params.data.id;
-                } else {
-                    console.log('Error with selection!');
-                    console.dir(e);
-                }
-            });
-
-            mobo.populateSelect('selection');
-
-        } else {
-            $('#default-view').html('<div class="description">The model is empty, please create one first.</div>');
-        }
-
-    });
-};
 
 
 //////////////////////////////////////////
 // Main Functions                       //
 //////////////////////////////////////////
+
+mobo.loadData = function(err, callback) {
+
+    $('#refresh').show();
+
+    // Get project settings (for URL to external wiki)
+    $.getJSON('_processed/_registry.json', function(registry) {
+
+        mobo.registry = registry;
+        mobo.settings = registry.settings;
+
+        mobo.wikitext = registry.generated || {};
+        mobo.remoteWiki = mobo.settings.mw_server_url + '/' + mobo.settings.mw_server_path + '/index.php';
+
+        if (Object.keys(mobo.wikitext).length > 0) {
+            mobo.populateSelect('selection');
+        }
+
+        mobo.route();
+
+        $('#refresh').delay(200).fadeOut(500);
+
+        if (callback) {
+            callback();
+        }
+
+    });
+
+
+};
 
 /**
  * Displays a specific part of the model depending on the current URL Hash
@@ -122,11 +130,11 @@ mobo.route = function() {
 
     // If no hash, use the first model as default entry point
     if (!hash) {
-
         for (var title in mobo.registry.model) {
             if (title) {
-                hash = '#model/' + title;
+                hash = '#/model/' + title;
                 window.location.hash = hash;
+                mobo.route();
                 break;
             }
         }
@@ -135,28 +143,28 @@ mobo.route = function() {
     hash = hash.replace('#', '');
     var hashArray = hash.split('/');
 
-    if (hash.indexOf(":") > -1) {
+    console.log(hash);
 
-        hashArray = hash.split(':');
-        mobo.showDetail(hashArray[0], hashArray[1]);
-
-    } else {
+    if (hash.charAt(0) === '/') {
 
         $('#default-view').show();
         $('#detail-view').hide();
 
-        require(["lib/docson/docson"], function(docson) {
+        require(['lib/docson/docson'], function(docson) {
 
             mobo.docson = docson;
 
-            if (hashArray.length === 2) {
-                mobo.loadSchema(hashArray[0], hashArray[1]);
+            if (hashArray.length === 3) {
+                mobo.loadSchema(hashArray[1], hashArray[2]);
             } else {
-//                mobo.loadSchema('model', 'Abteilung');
                 console.log('Invalid url-hash');
             }
         });
+    } else {
+        hashArray = hash.split(':');
+        mobo.showDetail(hash);
     }
+
 };
 
 /**
@@ -186,13 +194,16 @@ mobo.loadSchema = function(type, name) {
         schema = mobo.registry.expandedField[name];
     }
 
+    $('#sub-nav-title').html('/' + type + '/' + name);
+    $('#sub-nav-link').html(mobo.settings.cwd + schema.$filepath);
+
     mobo.schemaOrig = schema;
 
     $('#schema-orig').text(JSON.stringify(schema, false, 4));
 
-    mobo.docson.templateBaseUrl = "../lib/docson/templates";
+    mobo.docson.templateBaseUrl = '../lib/docson/templates';
 
-    mobo.docson.doc("doc", schema);
+    mobo.docson.doc('doc', schema);
     mobo.schemaFull = schema;
     $('#schema').text(JSON.stringify(schema, false, 4));
 
@@ -202,7 +213,7 @@ mobo.loadSchema = function(type, name) {
         mobo.editor = new JSONEditor(element, {
             schema: schema,
             theme: 'bootstrap3',
-            iconlib: "fontawesome4",
+            iconlib: 'fontawesome4',
             disable_edit_json: true,
             disable_collapse: true,
             no_additional_properties: true,
@@ -282,27 +293,16 @@ mobo.getResult = function() {
 /**
  * Handles the JSON Schema text rendering
  *
- * @param type
- * @param name
+ * @param siteName
  */
-mobo.showDetail = function(type, name) {
-
-    var schema;
-    var siteName = type + ':' + name;
-
-    if (type === 'model') {
-        schema = mobo.registry.expandedModel[name];
-    } else if (type === 'form') {
-        schema = mobo.registry.expandedForm[name];
-    } else if (type === 'field') {
-        schema = mobo.registry.field[name];
-    }
+mobo.showDetail = function(siteName) {
 
     $('#default-view').hide();
-    $('#detail-title').text(siteName);
-    $('#detail-links').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">[remote-view]</a>');
-    $('#detail-links').append(' <a href="' + mobo.remoteWiki + '?title=' +  siteName + '&action=edit" target="_blank">[remote-edit]</a>');
-    $('#detail-markup').text(mobo.wikitext[type + ':' + name]);
+
+    $('#sub-nav-title').html(siteName);
+    $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank"">' + mobo.remoteWiki + '/' +  siteName + '</a>');
+
+    $('#detail-markup').text(mobo.registry.generated[siteName]);
     $('#detail-view').show();
 };
 
@@ -317,12 +317,12 @@ mobo.showDetail = function(type, name) {
  * @param obj
  * @returns {{}}
  */
-mobo.sortObjectByKey = function(obj){
+mobo.sortObjectByKey = function(obj) {
     var keys = [];
     var sorted_obj = {};
 
-    for(var key in obj){
-        if(obj.hasOwnProperty(key)){
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
             keys.push(key);
         }
     }
@@ -331,7 +331,7 @@ mobo.sortObjectByKey = function(obj){
     keys.sort();
 
     // create new array based on Sorted Keys
-    $.each(keys, function(i, key){
+    $.each(keys, function(i, key) {
         sorted_obj[key] = obj[key];
     });
 
@@ -350,7 +350,6 @@ mobo.escapeWikitext = function(wikitext) {
         if (!wikitext.replace) {
             console.dir(wikitext);
         }
-
 
         var tagsToReplace = {
             '&': '&amp;',

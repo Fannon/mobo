@@ -21,24 +21,52 @@
 
 </head>
 <body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a id="logo" class="navbar-brand" href="#"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+            <form class="navbar-form navbar-left" role="search">
+
+                <select id="select-schema" class="select2-widget" data-placeholder="Select Schema">
+                    <option></option>
+                </select>
+
+                <select id="select-wikitext" class="select2-widget" data-placeholder="Select Wikitext">
+                    <option></option>
+                </select>
+
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="graph.html">Graph Explorer</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="sub-nav">
+    <h2 id="sub-nav-title"></h2>
+    <small id="sub-nav-link"></small>
+</div>
+
 <div class="container">
-
-    <h1><img src="img/logo.svg" alt="mobo" id="logo" /> Viewer
-        <small><br><a href="graph.html">Graph View of model</a></small>
-    </h1>
-    <h2>Select Schema / Wikitext</h2>
-
-    <select id="select-schema" style="width: 300px" data-placeholder="Select Schema">
-        <option></option>
-    </select>
-
-    <select id="select-wikitext" style="width: 300px" data-placeholder="Select Wikitext">
-        <option></option>
-    </select>
 
     <div id="default-view">
 
-        <br>
+        <div id="schema-title"></div>
 
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a data-target="#jsonschema"  data-toggle="tab">JSON Schema</a></li>
@@ -68,10 +96,14 @@
     </div>
 
     <div id="detail-view">
-        <h2><span id="detail-title"></span> <small id="detail-links"></small></h2>
+        <div id="detail-title"></div>
         <pre><code id="detail-markup"></code></pre>
     </div>
 
+    <div id="footer">
+        mobo viewer by <a href="http://www.fannon.de/" target="_blank">Simon Heimler</a><br>
+        Documentation and Open Source <a href="https://github.com/Fannon/mobo" target="_blank">https://github.com/Fannon/mobo</a>
+    </div>
 
     <div id="refresh" style="display: none;">Refreshing...</div>
 

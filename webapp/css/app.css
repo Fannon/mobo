@@ -1,18 +1,44 @@
+/** LAYOUT */
 .container {
+    margin-top: 12px;
     min-width: 360px;
     max-width: 880px;
 }
 
-h1 {
-    text-align: center;
-    color: #777;
-    font-size: 3rem;
+
+/** NAVBAR DESIGN */
+.navbar-default {
+    background-color: #f8f8f8;
+    border-color: #CCC;
+}
+#logo, #logo:hover, #logo:focus, #logo-refreshing {
+    width: 120px;
+    background: #000 url("../img/logo.svg") center center no-repeat;
+    background-size: 112px;
 }
 
+#logo-refreshing {
+    background: #1F6AB4;
+    color: #FFF;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #555;
+    border-left: 1px solid #ccc;
+    background-color: #EEE;
+}
+
+.navbar-form {
+    margin-top: 11px;
+}
+
+
+/** TYPOGRAPHY */
 h2 {
-    font-size: 2.4rem;
-    border-bottom: 1px dotted #CCC;
-    margin-top: 1.2em;
+    font-size: 2rem;
+    display: inline-block;
+    margin: 8px 0;
+    text-align: center;
 }
 
 h4 {
@@ -28,22 +54,56 @@ h4 {
     line-height: 1.4em;
 }
 
-#logo {
-    height: 42px;
-    margin-top: -4px;
-}
-
 pre {
     font-size: 0.85em;
     padding: 5px 10px;
+    margin: 8px 0;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #7247CA;
 }
 
 textarea {
     min-height: 200px !important;
 }
 
+
+/** Select2 */
+.select2-widget {
+    width: 260px;
+}
 .select2-container {
-    margin-right: 8px;
+    margin-right: 10px;
+}
+.select2-results__option {
+    font-size: 0.95em;
+}
+
+
+
+/** MISC */
+#sub-nav {
+    margin-top: 50px;
+    text-align: left;
+    background: #EEE;
+    border-bottom: 1px solid #CCC;
+    color: #333;
+    padding: 0 12px;
+}
+#sub-nav-link {
+    color: #777;
+    margin-left: 4px;
+}
+
+#footer {
+    font-size: 0.85em;
+    margin: 12px 0;
+    padding-top: 4px;
+    border-top: 1px dotted #CCC;
+    text-align: center;
+    color: #AAA;
 }
 
 .description {
@@ -64,10 +124,6 @@ textarea {
     padding: 2px 8px;
     /*border-radius: 3px;*/
     border-left: 4px solid #6499CB;
-}
-
-div[data-schematype] {
-
 }
 
 .well {
@@ -107,8 +163,13 @@ div[data-schematype] {
     position: fixed;
     top: 0;
     left: 0;
+    width: 120px;
+    height: 50px;
+
+    font-size: 1.6rem;
     background: #1F6AB4;
     color: #FFF;
-    padding: 2px 8px;
-    border-radius: 0 0 3px 0;
+    text-align: center;
+    padding: 14px 0;
+    z-index: 9999;
 }
