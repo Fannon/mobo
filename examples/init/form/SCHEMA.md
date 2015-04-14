@@ -432,17 +432,21 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "smw_hideInPage": {
             "type": "boolean",
             "description": "If true the field will not be visibly renderd in the page view",
-            "additionalProperties": true
+            "default": false
         },
         "smw_hideInForm": {
             "type": "boolean",
             "description": "If true, the field will not be visible in the form edit view",
-            "additionalProperties": true
+            "default": false
         },
         "smw_output": {
             "type": "string",
-            "description": "Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)",
-            "additionalProperties": true
+            "description": "Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)"
+        },
+        "smw_forceSet": {
+            "type": "boolean",
+            "description": "Forces the semantic storage of the attribute through the #set parser function. This is useful for #subobject models that want to expose one or more fields as regular #set properties.",
+            "default": false
         },
         "recommended": {
             "$ref": "#/definitions/schemaArray",
