@@ -168,8 +168,10 @@ textarea {
     width: 120px;
     height: 50px;
 
+    cursor: hand;
+
     font-size: 1.6rem;
-    background: #1F6AB4;
+    background: #08527D;
     color: #FFF;
     text-align: center;
     padding: 14px 0;

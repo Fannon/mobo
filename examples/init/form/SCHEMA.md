@@ -429,6 +429,21 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "Object, containing SemanticForms option, that will be redirected to the form",
             "additionalProperties": true
         },
+        "smw_hideInPage": {
+            "type": "boolean",
+            "description": "If true the field will not be visibly renderd in the page view",
+            "additionalProperties": true
+        },
+        "smw_hideInForm": {
+            "type": "boolean",
+            "description": "If true, the field will not be visible in the form edit view",
+            "additionalProperties": true
+        },
+        "smw_output": {
+            "type": "string",
+            "description": "Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)",
+            "additionalProperties": true
+        },
         "recommended": {
             "$ref": "#/definitions/schemaArray",
             "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"

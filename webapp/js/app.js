@@ -143,8 +143,6 @@ mobo.route = function() {
     hash = hash.replace('#', '');
     var hashArray = hash.split('/');
 
-    console.log(hash);
-
     if (hash.charAt(0) === '/') {
 
         $('#default-view').show();
@@ -299,8 +297,8 @@ mobo.showDetail = function(siteName) {
 
     $('#default-view').hide();
 
-    $('#sub-nav-title').html(siteName);
-    $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank"">' + mobo.remoteWiki + '/' +  siteName + '</a>');
+    $('#sub-nav-title').html(siteName.trim());
+    $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">' + mobo.remoteWiki + '/' +  siteName + '</a>');
 
     $('#detail-markup').text(mobo.registry.generated[siteName]);
     $('#detail-view').show();

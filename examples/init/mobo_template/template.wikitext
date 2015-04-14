@@ -10,12 +10,12 @@
 {{~#if this.prefix}}{{this.prefix}}{{/if~}}
 
 {{~#if display_table~}}
-{| class="wikitable formdata"{{!-- TABLE DISPLAY --}}
+{| class="wikitable formdata formdata-{{name}}"{{!-- TABLE DISPLAY --}}
 ! colspan="2"|{{name}}
 {{#each attr}}
-|- \{{#if: \{{{ {{~this.id~}} |}}} | | style="display: none;" \}}
+|- \{{#if: \{{{ {{~this.id~}} |}}} | | style="display: none;" \}} {{~#if this.smw_hideInPage}} style="display: none;"{{~/if}}
 | '''{{this.title}}'''
-| {{smw_templ_attr this }}
+| <span data-property="{{this.id}}" data-value="{{smw_templ_attr this}}">{{smw_templ_attr this}}</span>
 {{/each}}
 |-
 |}
@@ -23,10 +23,25 @@
 
 
 {{~#if display_ul~}}{{!-- UL (UNORDERED LIST) DISPLAY --}}
+<div class="wiki-ul formdata formdata-{{name}}">
 {{~#each attr~}}
-\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}''': {{smw_templ_attr this}} |}}
-{{~/each}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}:''' <span data-property="{{this.id}}" data-value="{{smw_templ_attr this}}">{{smw_templ_attr this}}</span> |}}
+{{~/each~}}
+</div>
 {{~/if~}}
+
+
+{{~#if display_hidden~}}{{!-- HIDDEN DISPLAY --}}
+<div class="wiki-hidden formdata formdata-{{name}}" style="display: none;">
+{{~#each attr~}}
+\{{#if: \{{{ {{~@key~}} |}}} | * '''{{this.title}}:''' <span data-property="{{this.id}}" data-value="{{smw_templ_attr this}}">{{smw_templ_attr this}}</span> |}}
+{{~/each~}}
+</div>
+{{~/if~}}
+
+
+{{~#if display_none~}}{{!-- NONE DISPLAY --}}{{~/if~}}
+
 
 {{~#if this.postfix}}{{this.postfix}}{{/if~}}
 

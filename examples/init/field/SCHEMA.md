@@ -29,6 +29,24 @@ These properties will only work in context of fields.
            <td><sub></sub></td>
            <td><sub>Object, containing SemanticForms option, that will be redirected to the form</sub></td>
        </tr>
+       <tr>
+           <td><sub>smw_hideInPage</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub></sub></td>
+           <td><sub>If true the field will not be visibly renderd in the page view</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_hideInForm</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub></sub></td>
+           <td><sub>If true, the field will not be visible in the form edit view</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_output</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)</sub></td>
+       </tr>
    </tbody>
 </table>
 
@@ -409,6 +427,21 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "smw_form": {
             "type": "object",
             "description": "Object, containing SemanticForms option, that will be redirected to the form",
+            "additionalProperties": true
+        },
+        "smw_hideInPage": {
+            "type": "boolean",
+            "description": "If true the field will not be visibly renderd in the page view",
+            "additionalProperties": true
+        },
+        "smw_hideInForm": {
+            "type": "boolean",
+            "description": "If true, the field will not be visible in the form edit view",
+            "additionalProperties": true
+        },
+        "smw_output": {
+            "type": "string",
+            "description": "Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)",
             "additionalProperties": true
         },
         "recommended": {
