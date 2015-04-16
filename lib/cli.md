@@ -34,6 +34,7 @@ CONSOLE COMMANDS
 --nuke content              Nukes all maint content wiki pages
 --nuke structure            Nukes all structural wiki pages (templates, categories, ...)
 --nuke custom-namespaces    Nukes all content from custom namespaces
+--nuke <namespaceNumber>    Nukes the namespace of the given number
 
 
 DEVELOPER CONSOLE COMMANDS
