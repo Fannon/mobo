@@ -29,9 +29,11 @@ CONSOLE COMMANDS
 
 --skip-upload               Skips uploading and deleting on the external wiki
 
---nuke-content              Nukes all maint content wiki pages
---nuke-structure            Nukes all structural wiki pages (templates, categories, ...)
---nuke-custom-namespaces    Nukes all content from custom namespaces
+--import <director>         Imports all files from /import/<director> to the wiki
+
+--nuke content              Nukes all maint content wiki pages
+--nuke structure            Nukes all structural wiki pages (templates, categories, ...)
+--nuke custom-namespaces    Nukes all content from custom namespaces
 
 
 DEVELOPER CONSOLE COMMANDS
