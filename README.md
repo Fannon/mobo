@@ -56,6 +56,14 @@ $ mkdir newProject && cd newProject # Creates and enters new directory
 $ npm install mobo --save-dev       # Installs mobo locally
 ```
 
+Advanced Installation (latest master, for developers)
+```sh
+$ git clone https://github.com/Fannon/mobo.git
+$ cd mobo
+$ npm install # Installs all dependencies
+$ npm link # Creates / links the global alias to the current mobo installation
+```
+
 ### Configuration
 First your wiki needs a bot account for mobo. The user should have the "bot" and possibly the "administrator" (if you want to upload special pages) privileges.
 
