@@ -29,7 +29,7 @@ CONSOLE COMMANDS
 
 --skip-upload               Skips uploading and deleting on the external wiki
 
---import <director>         Imports all files from /import/<director> to the wiki
+--import <directory>        Imports all files from /import/<director> to the wiki
 
 --nuke content              Nukes all maint content wiki pages
 --nuke structure            Nukes all structural wiki pages (templates, categories, ...)
