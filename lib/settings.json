@@ -20,6 +20,8 @@
     "writeLogFile": true,
     "uploadReport": true,
     "uploadLogFile": false,
+    "logDate": true,
+    "logLongDate": false,
 
     "uploadConcurrency": 4,
     "webAppPort": 8080,
