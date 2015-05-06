@@ -1,0 +1,12 @@
+# Bot login settings
+mw_server_url: http://example.com
+mw_server_path: "/wiki"
+mw_server_port: false
+mw_username: username
+mw_password: password
+
+# Custom Settings
+watchFilesystem: true
+serveWebApp: true
+uploadWikiPages: true
+deleteWikiPages: false
