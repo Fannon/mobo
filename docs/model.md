@@ -79,7 +79,7 @@ Please not that recommended fields are not officially supported by Semantic Form
 ### smw_subobject
 If `smw_subobject` is set to true, mobo will use the #subobject function instead of the #set function. 
 
-Mobo will automantically introduce two additional helper attributes `subobject` and `superobject` that help with querying subobjects.
+Mobo will automantically introduce two additional helper attributes `subobjectType` and `subobjectParent` that help with querying subobjects.
 
 ```json 
 {
