@@ -43,7 +43,7 @@ describe('mobo cli ', function() {
 
         expect(success).to.equal(true);
         expect(projectContent.length).to.be.at.least(10);
-        expect(projectContent).to.include('settings.json');
+        expect(projectContent).to.include('settings.yaml');
     });
 
     it('updates the templates of the init project', function() {
@@ -64,7 +64,7 @@ describe('mobo cli ', function() {
 
         expect(success).to.equal(true);
         expect(projectContent.length).to.be.at.least(10);
-        expect(projectContent).to.include('settings.json');
+        expect(projectContent).to.include('settings.yaml');
         expect(projectModelContent).to.include('Location.json');
     });
 
