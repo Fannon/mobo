@@ -19,6 +19,8 @@
     "writeExportFiles": false,
     "writeLogFile": true,
     "uploadReport": true,
+    "uploadOutline": true,
+    "uploadOutlineCountRefs": false,
     "uploadLogFile": false,
     "logDate": true,
     "logLongDate": false,

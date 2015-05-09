@@ -3,8 +3,9 @@
 ==Query Text==
 <pre>{{{query}}}</pre>
 ==Query Result==
-Note: Some querys are context dependend, those won't work on this site and show no result.
 {{{query}}}
+
+<div class="description-box">Note: Some querys are context dependend, those won't work on this site and show no result.</div>
 [[category:Query]][[category:ASK-Query]]
 </noinclude>
 <includeonly>{{{query}}}</includeonly>

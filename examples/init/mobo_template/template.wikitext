@@ -22,6 +22,20 @@
 {{~/if~}}
 
 
+{{~#if display_bootstrap-table~}}
+{| class="formdata formdata-{{name}} table table-bordered table-hover table-condensed"{{!-- TABLE DISPLAY --}}
+! colspan="2"|{{name}}
+{{#each attr}}
+|- \{{#if: \{{{ {{~this.id~}} |}}} | | style="display: none;" \}} {{~#if this.smw_hideInPage}} style="display: none;"{{~/if}}
+| '''{{this.title}}'''
+| <span data-property="{{this.id}}" data-value="{{smw_templ_attr this}}">{{smw_templ_attr this}}</span>
+{{/each}}
+|-
+|}
+{{~/if~}}
+
+
+
 {{~#if display_ul~}}{{!-- UL (UNORDERED LIST) DISPLAY --}}
 <div class="wiki-ul formdata formdata-{{name}}">
 {{~#each attr~}}
