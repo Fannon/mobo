@@ -36,7 +36,7 @@
 
     "firstAlternativeFormAsDefault": false,
     "arraymapSeparator": ";",
-    "defaultTemplateDisplay": "table",
+    "defaultTemplateDisplay": "ul",
     "useSimpleTooltipDescriptions": false,
     "sfDivLayout": false,
     "generatedByMobo": false,

@@ -19,7 +19,7 @@
 
 {{#each template~}}
 
-{{~#if this.prefix}}{{this.prefix}}{{/if~}}
+{{~#if this.prefix}}{{{this.prefix}}}{{/if~}}
 
 {{#if this.template~}}
 {{#if this.showForm}}
@@ -35,7 +35,7 @@
 \{{{end template}}}
 {{~/if}} {{~/if}}
 
-{{~#if this.postfix}}{{this.postfix}}{{/if}}
+{{~#if this.postfix}}{{{this.postfix}}}{{/if}}
 {{/each}}
 
 {{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}}
