@@ -1,10 +1,11 @@
 <noinclude>
-{{~#if this.description~}}
+
+{{~#if description~}}
 <div class="description-box">{{description}}</div>
 
 {{/if~}}
 
-{{~#if this.naming}}
+{{~#if naming}}
 <div class="naming-box"><strong>Naming convention:</strong> {{naming}}</div>
 
 {{/if~}}
@@ -12,9 +13,9 @@
 
 \{{#forminput:form={{~name~}}{{smw_params this.formInput}} }}
 </noinclude>
-<includeonly>{{~#if this.formInfo~}}\{{{info{{smw_params this.formInfo}} }}}
+<includeonly>{{~#if formInfo~}}\{{{info{{smw_params formInfo}} }}}
 {{/if~}}
-{{~#if this.description~}}<div class="description-box">{{description}}</div>{{/if~}}
+{{~#if description~}}<div class="description-box">{{description}}</div>{{/if~}}
 <div id="wikiPreview" style="display: none; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #AAAAAA;"></div>
 
 {{#each template~}}
@@ -41,21 +42,25 @@
 {{~#if this.formEdit}}\{{{for template|{{this.name}} FormEdit}}} \{{{end template}}}
 {{/if~}}
 
-{{~#if this.headerTabs}}
+{{~#if headerTabs}}
 \{{{for template|HeaderTabs}}} \{{{end template}}}<headertabs />
 
 {{/if~}}
 
-{{~#if this.freetext}}
+{{~#if freetext}}
 ==Freetext==
 \{{{standard input|free text|rows=8}}}
 
 {{/if~}}
 
 
-{{~#if this.summary}}
+{{~#if summary}}
 \{{{standard input|summary}}}
 
 {{/if~}}
 
-<div class="formbuttons">\{{{standard input|save}}} \{{{standard input|preview}}} \{{{standard input|changes}}} \{{{standard input|watch}}}</div></includeonly>
+<div class="formbuttons">\{{{standard input|save}}}
+{{~#if settingsObj.sf_wpPreview}}\{{{standard input|preview}}} {{/if~}}
+{{~#if settingsObj.sf_wpDiff}}\{{{standard input|changes}}} {{/if~}}
+{{~#if settingsObj.sf_wpWatchthis}}\{{{standard input|watch}}} {{/if~}}
+ </div></includeonly>
