@@ -42,16 +42,40 @@ These properties will only work in context of fields.
            <td><sub>If true, the field will not be visible in the form edit view</sub></td>
        </tr>
        <tr>
-           <td><sub>smw_output</sub></td>
+           <td><sub>smw_overwriteOutput</sub></td>
            <td><sub>string</sub></td>
            <td><sub></sub></td>
-           <td><sub>Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)</sub></td>
+           <td><sub>Overwrites the final value of the field, used for both display and data set</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_overwriteOutputToLink</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub></sub></td>
+           <td><sub>If true, this will create a link in display mode, but the data will not receive the appended [[]]</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_overwriteData</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Overwrites the final #set or #subobject value of the field. This will also overwrite smw_overwriteOutput.</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_outputLink</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>Force the overwritten output to be a wiki link</sub></td>
        </tr>
        <tr>
            <td><sub>smw_forceSet</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>false</sub></td>
            <td><sub>Forces the semantic storage of the attribute through the #set parser function. This is useful for #subobject models that want to expose one or more fields as regular #set properties.</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_arraymaptemplate</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>Name of the arraymap template (https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate) to use. Field needs to be of type "array".</sub></td>
        </tr>
    </tbody>
 </table>
@@ -98,6 +122,12 @@ These mobo custom properties are global and can be used for fields, models and f
            <td><sub>string,array</sub></td>
            <td><sub></sub></td>
            <td><sub>This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten.</sub></td>
+       </tr>
+       <tr>
+           <td><sub>$remove</sub></td>
+           <td><sub>array</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Array, containing all properties to remove from the current object</sub></td>
        </tr>
        <tr>
            <td><sub>$reference</sub></td>
@@ -383,6 +413,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             ],
             "description": "This references another mobo json file. It will be included through inheritance, all existing attributes in the parent object will be overwritten."
         },
+        "$remove": {
+            "type": "array",
+            "description": "Array, containing all properties to remove from the current object"
+        },
         "$reference": {
             "type": "object",
             "description": "For internal use only! After inheritance is applied, $extend will be replaced through reference. (For keeping info on the heritage)"
@@ -445,13 +479,31 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "If true, the field will not be visible in the form edit view",
             "default": false
         },
-        "smw_output": {
+        "smw_overwriteOutput": {
             "type": "string",
-            "description": "Overwrites the final wikitext output of the field. This is also applied on the semantic attribute (#set or #subobject)"
+            "description": "Overwrites the final value of the field, used for both display and data set"
+        },
+        "smw_overwriteOutputToLink": {
+            "type": "boolean",
+            "description": "If true, this will create a link in display mode, but the data will not receive the appended [[]]"
+        },
+        "smw_overwriteData": {
+            "type": "string",
+            "description": "Overwrites the final #set or #subobject value of the field. This will also overwrite smw_overwriteOutput."
+        },
+        "smw_outputLink": {
+            "type": "boolean",
+            "description": "Force the overwritten output to be a wiki link",
+            "default": false
         },
         "smw_forceSet": {
             "type": "boolean",
             "description": "Forces the semantic storage of the attribute through the #set parser function. This is useful for #subobject models that want to expose one or more fields as regular #set properties.",
+            "default": false
+        },
+        "smw_arraymaptemplate": {
+            "type": "string",
+            "description": "Name of the arraymap template (https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate) to use. Field needs to be of type \"array\".",
             "default": false
         },
         "recommended": {
@@ -465,10 +517,6 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         },
         "smw_display": {
             "type": "string",
-            "enum": [
-                "table",
-                "ul"
-            ],
             "default": "table",
             "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
         },

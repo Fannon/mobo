@@ -54,6 +54,18 @@ This file documents all available options for the settings.json and their defaul
            <td><sub>More verbose console output. This will also tighten the model validation and display minor notices</sub></td>
        </tr>
        <tr>
+           <td><sub>logDate</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>true</sub></td>
+           <td><sub>Prepend the time (and eventually date) on each logging message</sub></td>
+       </tr>
+       <tr>
+           <td><sub>logLongDate</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If true and logDate is enabled, the full date will be logged in addition to the time</sub></td>
+       </tr>
+       <tr>
            <td><sub>displayTodos</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>true</sub></td>
@@ -69,7 +81,19 @@ This file documents all available options for the settings.json and their defaul
            <td><sub>uploadReport</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>true</sub></td>
-           <td><sub>If this is enabled, mobo will upload a report to the wiki at its userpage</sub></td>
+           <td><sub>If this is enabled, mobo will upload a report at User at /User:<bot username>"</sub></td>
+       </tr>
+       <tr>
+           <td><sub>uploadOutline</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>true</sub></td>
+           <td><sub>If this is enabled, mobo will upload an outline of the model at /User:<bot username>/outline</sub></td>
+       </tr>
+       <tr>
+           <td><sub>uploadOutlineCountRefs</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>Adds an counter how often a template / property was internally referenced</sub></td>
        </tr>
        <tr>
            <td><sub>uploadLogFile</sub></td>
@@ -141,7 +165,7 @@ This file documents all available options for the settings.json and their defaul
            <td><sub>deleteWikiPages</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>false</sub></td>
-           <td><sub>Deletes removed WikiPages from the external Wiki (use with care!)</sub></td>
+           <td><sub>Deletes removed WikiPages from the external Wiki (use with care, this destroys the polymorphism!)</sub></td>
        </tr>
        <tr>
            <td><sub>forceUpload</sub></td>
@@ -195,7 +219,7 @@ This can sometimes be useful, if some changes were lost or you want to go for su
        <tr>
            <td><sub>defaultTemplateDisplay</sub></td>
            <td><sub>string</sub></td>
-           <td><sub>table</sub></td>
+           <td><sub>ul</sub></td>
            <td><sub>Default Template Display renderer. See mobo_template/template.wikitext to see or change how they are rendered.</sub></td>
        </tr>
        <tr>
@@ -331,7 +355,11 @@ These are the default settings that mobo comes with:
     "writeExportFiles": false,
     "writeLogFile": true,
     "uploadReport": true,
+    "uploadOutline": true,
+    "uploadOutlineCountRefs": false,
     "uploadLogFile": false,
+    "logDate": true,
+    "logLongDate": false,
     "uploadConcurrency": 4,
     "webAppPort": 8080,
     "autoRefreshWebGui": true,
@@ -341,7 +369,7 @@ These are the default settings that mobo comes with:
     "hideFormEditHelper": false,
     "firstAlternativeFormAsDefault": false,
     "arraymapSeparator": ";",
-    "defaultTemplateDisplay": "table",
+    "defaultTemplateDisplay": "ul",
     "useSimpleTooltipDescriptions": false,
     "sfDivLayout": false,
     "generatedByMobo": false,
