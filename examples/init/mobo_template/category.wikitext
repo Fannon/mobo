@@ -2,6 +2,11 @@
 
 {{/if~}}
 
+{{~#if this.prefix}}{{{this.prefix}}}{{/if~}}
+
+{{~#if drilldowninfo}}{{{drilldowninfo}}}
+{{/if~}}
+
 {{~#if form}}
 ==Form==
 Sites tagged with this category can be edited through [[Has default form::{{name}}|{{title}}]]
@@ -23,5 +28,7 @@ Sites tagged with this category can be edited through [[Has default form::{{name
 | searchlabel=Click here for a tabular overview
 }}
 {{~/if~}}
+
+{{~#if this.postfix}}{{{this.postfix}}}{{/if~}}
 
 {{~#if hidden}} __HIDDENCAT__ {{/if~}}

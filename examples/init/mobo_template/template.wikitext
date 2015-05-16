@@ -59,12 +59,11 @@
 {{~#if this.postfix}}{{{this.postfix}}}{{/if~}}
 
 
-
 {{~#if smw_subobject~}}
 {{~smw_subobject attr name~}}
 {{~else~}}
 {{smw_set attr}}
 {{~/if~}}
 
-{{~#if category~}}[[category:{{category}}]]{{~/if~}}
-{{~#if categories~}}{{#each categories~}}[[category:{{this}}]]{{/each~}}{{/if~}}</includeonly>
+{{~#if category}} [[category:{{category}}]]{{~/if~}}
+{{~#if categories~}}{{#each categories}} [[category:{{this}}]]{{/each~}}{{/if~}}</includeonly>
