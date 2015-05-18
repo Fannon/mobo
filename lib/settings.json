@@ -33,7 +33,7 @@
     "headerTabs": false,
     "formEditHelper": false,
     "hideFormEditHelper": false,
-    "autoGenerateSemanticDrilldown": false,
+    "smw_semanticDrilldown": false,
 
     "firstAlternativeFormAsDefault": false,
     "arraymapSeparator": ";",
