@@ -22,6 +22,7 @@
     "uploadOutline": true,
     "uploadOutlineCountRefs": false,
     "uploadLogFile": false,
+    "overwriteImportedPages": false,
     "logDate": true,
     "logLongDate": false,
 
