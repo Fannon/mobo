@@ -6,6 +6,7 @@
 ## MID-TERM
  * TODO: Read all template with readProject(), make custom subtemplates (especially smw_display modues) available
  * TODO: Mobo Quality bot
+ * TODO: Support smw_showPage = false
 
 ## LONG-TERM (v2.0?)
  * TODO: Create own model generation JSON Schema standard ($ prefixes)
@@ -20,6 +21,7 @@
          Problem: $inject keyword may not be uses more than once, since keynames have to be unique!
  * TODO: Custom smw_display templates, each having its own file (so they won't get overwritten by an update)
  * TODO: Replace Template Engine (http://paularmstrong.github.io/swig/ ?)
+ * TODO: importHelper could support "intelligent" data cleaning, always applying Trim, but also making arrays to sets if the Schema declares so
 
 ## DISCUSSION
  * TODO: Current values from namespace behaviour: smw property doesn't include the namespace in the property declaration
