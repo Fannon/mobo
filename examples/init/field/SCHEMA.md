@@ -21,7 +21,7 @@ These properties will only work in context of fields.
            <td><sub>smw_property</sub></td>
            <td><sub>boolean</sub></td>
            <td><sub>true</sub></td>
-           <td><sub>Declares if this field should be saved as a SMW property, through #set or #subobject</sub></td>
+           <td><sub>If set to false, the property will not be saved as a SMW property, through #set or #subobject</sub></td>
        </tr>
        <tr>
            <td><sub>smw_form</sub></td>
@@ -54,16 +54,16 @@ These properties will only work in context of fields.
            <td><sub>If true, this will create a link in display mode, but the data will not receive the appended [[]]</sub></td>
        </tr>
        <tr>
+           <td><sub>smw_overwriteDisplay</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Overwrites only the display value of the current field</sub></td>
+       </tr>
+       <tr>
            <td><sub>smw_overwriteData</sub></td>
            <td><sub>string</sub></td>
            <td><sub></sub></td>
            <td><sub>Overwrites the final #set or #subobject value of the field. This will also overwrite smw_overwriteOutput.</sub></td>
-       </tr>
-       <tr>
-           <td><sub>smw_outputLink</sub></td>
-           <td><sub>boolean</sub></td>
-           <td><sub>false</sub></td>
-           <td><sub>Force the overwritten output to be a wiki link</sub></td>
        </tr>
        <tr>
            <td><sub>smw_forceSet</sub></td>
@@ -76,6 +76,12 @@ These properties will only work in context of fields.
            <td><sub>string</sub></td>
            <td><sub>false</sub></td>
            <td><sub>Name of the arraymap template (https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate) to use. Field needs to be of type "array".</sub></td>
+       </tr>
+       <tr>
+           <td><sub>smw_drilldown</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If the global settings "smw_semanticDrilldown" is enabled, fields with smw_drilldown set to true will be filterable. </sub></td>
        </tr>
    </tbody>
 </table>
@@ -116,6 +122,12 @@ These mobo custom properties are global and can be used for fields, models and f
            <td><sub>string</sub></td>
            <td><sub></sub></td>
            <td><sub>Description of the field. Can be displayed as tooltip info</sub></td>
+       </tr>
+       <tr>
+           <td><sub>format</sub></td>
+           <td><sub>string</sub></td>
+           <td><sub></sub></td>
+           <td><sub>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</sub></td>
        </tr>
        <tr>
            <td><sub>$extend</sub></td>
@@ -160,10 +172,10 @@ These mobo custom properties are global and can be used for fields, models and f
            <td><sub>If true this object is only used for inheritance and will not be created itself.</sub></td>
        </tr>
        <tr>
-           <td><sub>format</sub></td>
-           <td><sub>string</sub></td>
-           <td><sub></sub></td>
-           <td><sub>Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend</sub></td>
+           <td><sub>deprecated</sub></td>
+           <td><sub>boolean</sub></td>
+           <td><sub>false</sub></td>
+           <td><sub>If true, the field will be deprecated. This means it will not be displayed in forms, but the template will keep it in order to display old entries.</sub></td>
        </tr>
        <tr>
            <td><sub>propertyOrder</sub></td>
@@ -406,6 +418,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "not": {
             "$ref": "#"
         },
+        "format": {
+            "type": "string",
+            "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
+        },
         "$extend": {
             "type": [
                 "string",
@@ -431,17 +447,18 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         },
         "ignore": {
             "type": "boolean",
-            "default": false,
-            "description": "If true this file will be ignored."
+            "description": "If true this file will be ignored.",
+            "default": false
         },
         "abstract": {
             "type": "boolean",
             "default": false,
             "description": "If true this object is only used for inheritance and will not be created itself."
         },
-        "format": {
-            "type": "string",
-            "description": "Contains the JSON format. This can alternatively be a reference to a mobo file, like $extend"
+        "deprecated": {
+            "type": "boolean",
+            "description": "If true, the field will be deprecated. This means it will not be displayed in forms, but the template will keep it in order to display old entries.",
+            "default": false
         },
         "propertyOrder": {
             "$ref": "#/definitions/schemaArray",
@@ -462,7 +479,7 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
         "smw_property": {
             "type": "boolean",
             "default": true,
-            "description": "Declares if this field should be saved as a SMW property, through #set or #subobject"
+            "description": "If set to false, the property will not be saved as a SMW property, through #set or #subobject"
         },
         "smw_form": {
             "type": "object",
@@ -487,14 +504,13 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "boolean",
             "description": "If true, this will create a link in display mode, but the data will not receive the appended [[]]"
         },
+        "smw_overwriteDisplay": {
+            "type": "string",
+            "description": "Overwrites only the display value of the current field"
+        },
         "smw_overwriteData": {
             "type": "string",
             "description": "Overwrites the final #set or #subobject value of the field. This will also overwrite smw_overwriteOutput."
-        },
-        "smw_outputLink": {
-            "type": "boolean",
-            "description": "Force the overwritten output to be a wiki link",
-            "default": false
         },
         "smw_forceSet": {
             "type": "boolean",
@@ -506,6 +522,11 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "description": "Name of the arraymap template (https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate) to use. Field needs to be of type \"array\".",
             "default": false
         },
+        "smw_drilldown": {
+            "type": "boolean",
+            "description": "If the global settings \"smw_semanticDrilldown\" is enabled, fields with smw_drilldown set to true will be filterable. ",
+            "default": false
+        },
         "recommended": {
             "$ref": "#/definitions/schemaArray",
             "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
@@ -514,6 +535,10 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
             "type": "boolean",
             "default": false,
             "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
+        },
+        "smw_subobjectExtend": {
+            "type": "object",
+            "description": "Contains a set (object) of additional #subobject properties"
         },
         "smw_display": {
             "type": "string",
@@ -575,6 +600,14 @@ This is the final JSON Schema, including a simplified JSON Schema core and all m
                 }
             },
             "additionalProperties": false
+        },
+        "smw_categoryPrefix": {
+            "type": "string",
+            "description": "wikitext to prefix on the category page"
+        },
+        "smw_categoryPostfix": {
+            "type": "string",
+            "description": "wikitext to postfix on the category page"
         },
         "smw_category": {
             "type": "boolean",
