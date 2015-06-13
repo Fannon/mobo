@@ -1,8 +1,8 @@
 {{#if description}}<div class="description-box">{{description}}</div>
-
 {{/if~}}
 
-{{~#if this.prefix}}{{{this.prefix}}}{{/if~}}
+{{~#if this.prefix}}{{{this.prefix}}}
+{{/if~}}
 
 {{~#if drilldowninfo}}{{{drilldowninfo}}}
 {{/if~}}
@@ -29,6 +29,7 @@ Sites tagged with this category can be edited through [[Has default form::{{name
 }}
 {{~/if~}}
 
-{{~#if this.postfix}}{{{this.postfix}}}{{/if~}}
+{{~#if this.postfix}}{{{this.postfix}}}
+{{/if~}}
 
 {{~#if hidden}} __HIDDENCAT__ {{/if~}}
