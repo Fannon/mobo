@@ -7,7 +7,7 @@
 </noinclude>
 <includeonly>
 
-{{~#if this.prefix}}{{{this.prefix}}}{{/if~}}
+{{~#if this.prepend}}{{{this.prepend}}}{{/if~}}
 
 
 
@@ -56,7 +56,7 @@
 
 
 
-{{~#if this.postfix}}{{{this.postfix}}}{{/if~}}
+{{~#if this.append}}{{{this.append}}}{{/if~}}
 
 
 {{~#if smw_subobject~}}

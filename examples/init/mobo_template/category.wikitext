@@ -1,7 +1,7 @@
 {{#if description}}<div class="description-box">{{description}}</div>
 {{/if~}}
 
-{{~#if this.prefix}}{{{this.prefix}}}
+{{~#if this.prepend}}{{{this.prepend}}}
 {{/if~}}
 
 {{~#if drilldowninfo}}{{{drilldowninfo}}}
