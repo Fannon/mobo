@@ -303,13 +303,12 @@ mobo.showDetail = function(siteName) {
 
     var generated = mobo.registry.generated[siteName];
     var lastUploadState = mobo.lastUploadState[siteName];
-    var display = $('#detail-markup');
+    var diffDisplay = $('#diff-markup');
 
     $('#default-view').hide();
 
     $('#sub-nav-title').html(siteName.trim());
     $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">' + mobo.remoteWiki + '/' +  siteName + '</a>');
-
 
     if (generated !== lastUploadState) {
 
@@ -324,12 +323,13 @@ mobo.showDetail = function(siteName) {
             span.className  = cssClass;
             span.appendChild(document
                 .createTextNode(part.value));
-            $('#detail-markup').append(span);
+            diffDisplay.append(span);
+            //$('#detail-markup').text(mobo.registry.generated[siteName]);
         });
 
     } else {
         console.log('No DIFF!');
-        display.text(mobo.registry.generated[siteName]);
+        diffDisplay.text(mobo.registry.generated[siteName]);
     }
 
     $('#detail-view').show();
