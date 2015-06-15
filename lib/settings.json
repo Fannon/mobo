@@ -17,6 +17,7 @@
     "buildGraph": true,
     "statistics": true,
     "writeExportFiles": false,
+    "compatibilityLayer": true,
     "writeLogFile": true,
     "uploadReport": true,
     "uploadOutline": true,
