@@ -1,4 +1,12 @@
 .DS_Store
 .svn
-_processed/
+
+.idea/
 node_modules/
+
+/_processed/logfiles/
+/_processed/_graph.gexf
+/_processed/_registry.json
+# /_processed/_lastUploadState.json
+
+/*.log
