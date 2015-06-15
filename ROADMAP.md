@@ -1,12 +1,11 @@
 ## SHORT-TERM
- * TODO: Importer: Option not to overwrite existing pages
- * TODO: smw_deprecated property (will be kept, but not displayed in form anymore)
  * TODO: More display formats for templates
 
 ## MID-TERM
  * TODO: Read all template with readProject(), make custom subtemplates (especially smw_display modues) available
  * TODO: Mobo Quality bot
  * TODO: Support smw_showPage = false
+ * TODO: Split moboSchema.js to several JSON files?
 
 ## LONG-TERM (v2.0?)
  * TODO: Create own model generation JSON Schema standard ($ prefixes)
@@ -19,8 +18,8 @@
  * TODO: Internationalization and Localization capabilities (model & templates)
  * TODO: "$inject": "/module/modulename to inject arbitrary model parts on the current hierachy at it's current place.. ?
          Problem: $inject keyword may not be uses more than once, since keynames have to be unique!
+ * TODO: Replace template engine (http://paularmstrong.github.io/swig/ ?)
  * TODO: Custom smw_display templates, each having its own file (so they won't get overwritten by an update)
- * TODO: Replace Template Engine (http://paularmstrong.github.io/swig/ ?)
  * TODO: importHelper could support "intelligent" data cleaning, always applying Trim, but also making arrays to sets if the Schema declares so
 
 ## DISCUSSION
