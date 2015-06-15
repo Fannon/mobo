@@ -26,6 +26,7 @@
     "overwriteImportedPages": false,
     "logDate": true,
     "logLongDate": false,
+    "logObjectsAsYaml": true,
 
     "arrayMergeOptions": {
         "$remove": ["@unique"],
@@ -34,7 +35,7 @@
         "recommended": ["@unique"],
         "required": ["@unique"],
         "itemsOrder": ["@unique", "@prepend"],
-        "smw_categories": ["@unique", "@prepend"]
+        "smw_categories": ["@unique", "@append"]
     },
 
     "uploadConcurrency": 4,
