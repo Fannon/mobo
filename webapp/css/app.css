@@ -134,6 +134,15 @@ textarea {
     box-shadow: none;
 }
 
+.diff-added {
+    background: #6CC008;
+    color: #FFF;
+}
+.diff-removed {
+    background: #C02B08;
+    color: #FFF;
+}
+
 .json-editor-btn-edit {
     display: none;
 }

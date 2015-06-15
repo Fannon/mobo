@@ -80,6 +80,10 @@ $(document).ready(function() {
         };
     }
 
+    require(['lib/diff'], function(diffLib) {
+        mobo.diffLib = diffLib;
+    });
+
     mobo.loadData();
 
 });
@@ -95,29 +99,31 @@ mobo.loadData = function(err, callback) {
 
     $('#refresh').show();
 
-    // Get project settings (for URL to external wiki)
-    $.getJSON('_processed/_registry.json', function(registry) {
+    $.getJSON('_processed/_lastUploadState.json', function(lastUploadState) {
+        mobo.lastUploadState = lastUploadState;
+        // Get project settings (for URL to external wiki)
+        $.getJSON('_processed/_registry.json', function(registry) {
 
-        mobo.registry = registry;
-        mobo.settings = registry.settings;
+            mobo.registry = registry;
+            mobo.settings = registry.settings;
 
-        mobo.wikitext = registry.generated || {};
-        mobo.remoteWiki = mobo.settings.mw_server_url + '/' + mobo.settings.mw_server_path + '/index.php';
+            mobo.wikitext = registry.generated || {};
+            mobo.remoteWiki = mobo.settings.mw_server_url + '/' + mobo.settings.mw_server_path + '/index.php';
 
-        if (Object.keys(mobo.wikitext).length > 0) {
-            mobo.populateSelect('selection');
-        }
+            if (Object.keys(mobo.wikitext).length > 0) {
+                mobo.populateSelect('selection');
+            }
 
-        mobo.route();
+            mobo.route();
 
-        $('#refresh').delay(200).fadeOut(500);
+            $('#refresh').delay(200).fadeOut(500);
 
-        if (callback) {
-            callback();
-        }
+            if (callback) {
+                callback();
+            }
 
+        });
     });
-
 
 };
 
@@ -295,12 +301,37 @@ mobo.getResult = function() {
  */
 mobo.showDetail = function(siteName) {
 
+    var generated = mobo.registry.generated[siteName];
+    var lastUploadState = mobo.lastUploadState[siteName];
+    var display = $('#detail-markup');
+
     $('#default-view').hide();
 
     $('#sub-nav-title').html(siteName.trim());
     $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">' + mobo.remoteWiki + '/' +  siteName + '</a>');
 
-    $('#detail-markup').text(mobo.registry.generated[siteName]);
+
+    if (generated !== lastUploadState) {
+
+        console.log('DIFF!');
+        var diff = mobo.diffLib.diffWordsWithSpace(generated, lastUploadState);
+
+        diff.forEach(function(part) {
+            // green for additions, red for deletions
+            // grey for common parts
+            var cssClass = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
+            var span = document.createElement('span');
+            span.className  = cssClass;
+            span.appendChild(document
+                .createTextNode(part.value));
+            $('#detail-markup').append(span);
+        });
+
+    } else {
+        console.log('No DIFF!');
+        display.text(mobo.registry.generated[siteName]);
+    }
+
     $('#detail-view').show();
 };
 
