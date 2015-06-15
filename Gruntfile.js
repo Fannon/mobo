@@ -48,7 +48,8 @@ module.exports = function(grunt) {
                 force: true,
                 timeout: 16000
             },
-            all: ['test/**/*.spec.js']
+            all: ['test/**/*.spec.js'],
+            extendProject: ['test/processing/extendProject.spec.js']
         },
         mocha_istanbul: {
             coverage: {

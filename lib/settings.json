@@ -27,6 +27,8 @@
     "logDate": true,
     "logLongDate": false,
 
+    "mergeArrays": false,
+
     "uploadConcurrency": 4,
     "webAppPort": 8080,
     "autoRefreshWebGui": true,

@@ -54,6 +54,8 @@ describe('Registry Builder ', function() {
 
     it('inherits $extend properties', function() {
 
+        extendProject.inheritanceStack = [];
+
         // Mock Circle model
         var Circle = _.clone(mockModel.model.Circle, true);
 
