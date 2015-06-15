@@ -304,16 +304,17 @@ mobo.showDetail = function(siteName) {
     var generated = mobo.registry.generated[siteName];
     var lastUploadState = mobo.lastUploadState[siteName];
     var diffDisplay = $('#diff-markup');
+    diffDisplay.text('');
 
     $('#default-view').hide();
 
     $('#sub-nav-title').html(siteName.trim());
     $('#sub-nav-link').html('<a href="' + mobo.remoteWiki + '/' +  siteName + '" target="_blank">' + mobo.remoteWiki + '/' +  siteName + '</a>');
 
-    if (generated !== lastUploadState) {
+    if (lastUploadState && generated !== lastUploadState) {
 
         console.log('DIFF!');
-        var diff = mobo.diffLib.diffWordsWithSpace(generated, lastUploadState);
+        var diff = mobo.diffLib.diffWordsWithSpace(lastUploadState, generated);
 
         diff.forEach(function(part) {
             // green for additions, red for deletions

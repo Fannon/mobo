@@ -8,6 +8,7 @@
 var expect = require('chai').expect;
 var _ = require('lodash');
 
+var settings = require('./../../lib/settings.json');
 var mockModel = require('./../_mockObjects/mockModel.json');
 var extendProject = require('../../lib/processing/extendProject.js');
 
@@ -55,6 +56,7 @@ describe('Registry Builder ', function() {
     it('inherits $extend properties', function() {
 
         extendProject.inheritanceStack = [];
+        extendProject.settings = settings;
 
         // Mock Circle model
         var Circle = _.clone(mockModel.model.Circle, true);
