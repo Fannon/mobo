@@ -324,7 +324,7 @@ mobo.showDetail = function(siteName) {
             span.appendChild(document
                 .createTextNode(part.value));
             diffDisplay.append(span);
-            //$('#detail-markup').text(mobo.registry.generated[siteName]);
+            $('#detail-markup').text(mobo.registry.generated[siteName]);
         });
 
     } else {
