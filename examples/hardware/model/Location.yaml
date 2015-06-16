@@ -1,17 +1,26 @@
 title: Location
 description: Location where hardware is deployed
-properties:
-    - $extend: /field/streetAdress
-    - $extend: /field/streetNumber
-    - $extend: /field/town
-    - $extend: /field/country
+todo: This is a todo entry and will be displayed if the corresponding option is active.
+
+items:
+  - $extend: /field/streetAdress
+  - $extend: /field/streetNumber
+  - $extend: /field/town
+  - $extend: /field/country
+
 required:
-    - streetAdress
-    - streetNumber
-    - town
-smw_prefix:
-    header: 1
-    wikitext: Some prefix-description for the location
-smw_postfix:
-    wikitext: Some postfix-description for the location
-todo: This is a todo entry and will be displayed if the corresponding option is active.'
+  - streetAdress
+  - streetNumber
+  - town
+
+# Prepends a h1 header to both form and page display
+# After the header, adds arbitrary wikitext
+smw_prepend:
+  header: 1
+  wikitext: Some prefix-description for the location
+
+# Will only append wikitext to the page display
+# If there is only wikitext to append, it can be directly given as a string
+# The pipe | allows for easier line breaks
+smw_appendPage: |
+  Some postfix-description for the location

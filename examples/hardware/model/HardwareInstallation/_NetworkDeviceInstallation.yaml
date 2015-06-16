@@ -1,8 +1,11 @@
 $extend: /model/_HardwareInstallation
-title: 'NetworkDevice Installation'
-properties:
-    -
-        $extend: /field/ip
+
+title: NetworkDevice Installation
+
+items:
+  - $extend: /field/ip
+
 recommended:
-    - ip
+  - ip
+
 abstract: true

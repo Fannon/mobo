@@ -1,6 +1,8 @@
-title: 'Free text'
+title: Free text
+
 type: string
 smw_property: false
-smw_form:
-    'input type': textarea
+
+sf_form:
+    input type: textarea
     autogrow: true

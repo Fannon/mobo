@@ -1,9 +1,10 @@
-title: 'Hardware Installation'
-properties:
-    -
-        $extend: /field/serialNumber
-    -
-        $extend: /field/freetext
+title: Hardware Installation
+
+items:
+  - $extend: /field/serialNumber
+  - $extend: /field/freetext
+
 smw_subobject: true
 smw_category: false
+
 abstract: true

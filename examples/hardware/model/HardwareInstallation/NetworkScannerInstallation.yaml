@@ -1,5 +1,6 @@
 $extend: /model/_NetworkDeviceInstallation
-title: 'Network Scanner Installation'
-properties:
-    -
-        $extend: /field/networkScannerModel
+
+title: Network Scanner Installation
+
+items:
+  - $extend: /field/networkScannerModel

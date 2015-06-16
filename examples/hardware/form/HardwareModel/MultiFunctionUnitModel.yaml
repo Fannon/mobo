@@ -1,4 +1,4 @@
-title: 'Multi-Function Unit Model'
-properties:
-    -
-        $extend: /model/MultiFunctionUnitModel
+title: Multi-Function Unit Model
+
+items:
+  - $extend: /model/MultiFunctionUnitModel

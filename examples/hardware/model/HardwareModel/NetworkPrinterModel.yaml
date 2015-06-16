@@ -1,8 +1,10 @@
 $extend: /model/_HardwareModel
-title: 'Network Printer Model'
-properties:
-    -
-        $extend: /field/colorPrinting
-propertyOrder:
-    - brand
-    - modelName
+
+title: Network Printer Model
+
+items:
+  - $extend: /field/colorPrinting
+
+itemsOrder:
+  - brand
+  - modelName

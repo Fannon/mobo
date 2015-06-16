@@ -1,4 +1,4 @@
-title: 'Network Scanner Model'
-properties:
-    -
-        $extend: /model/NetworkScannerModel
+title: Network Scanner Model
+
+items:
+  - $extend: /model/NetworkScannerModel

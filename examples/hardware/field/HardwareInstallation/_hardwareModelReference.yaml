@@ -1,8 +1,11 @@
 title: Model
-description: 'You may only select already existing mardware models!'
+description: You may only select already existing mardware models!
+
 type: string
-smw_form:
-    'max values': 1
-    'input type': combobox
-    'existing values only': true
+
+sf_form:
+  max values: 1
+  input type: combobox
+  existing values only: true
+
 abstract: true

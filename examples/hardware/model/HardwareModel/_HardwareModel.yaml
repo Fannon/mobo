@@ -1,10 +1,11 @@
-title: 'Hardware Model'
-properties:
-    -
-        $extend: /field/brand
-    -
-        $extend: /field/modelName
+title: Hardware Model
+
+items:
+  - $extend: /field/brand
+  - $extend: /field/modelName
+
 required:
-    - brand
-    - modelName
+  - brand
+  - modelName
+
 abstract: true

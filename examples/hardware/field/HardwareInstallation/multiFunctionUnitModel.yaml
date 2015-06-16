@@ -1,5 +1,7 @@
 $extend: /field/_hardwareModelReference
-type: string
-format: /form/MultiFunctionUnitModel
-smw_form:
-    'values from category': MultiFunctionUnitModel
+
+# type and format can be omitted, since form implies type: string and format: Page
+form: MultiFunctionUnitModel
+
+sf_form:
+  values from category: MultiFunctionUnitModel

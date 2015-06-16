@@ -1,5 +1,6 @@
 $extend:
     - /model/NetworkPrinterModel
     - /model/NetworkScannerModel
-title: 'Multi-function Unit Model'
-note: 'It is possible to inherit from multiple sources.'
+
+title: Multi-function Unit Model
+note: It is possible to inherit from multiple sources.

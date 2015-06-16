@@ -1,28 +1,23 @@
 title: Location
-description: 'This creates a new location where hardware is deployed.'
-properties:
-    -
-        $extend: /model/Location
-    -
-        $extend: /smw_template/NetworkPrinterHeader.wikitext
-        showForm: true
-        showPage: true
-    -
-        type: array
-        items:
-            $extend: /model/NetworkPrinterInstallation
-    -
-        $extend: /smw_template/NetworkScannerHeader.wikitext
-    -
-        type: array
-        items:
-            $extend: /model/NetworkScannerInstallation
-    -
-        $extend: /smw_template/MultiFunctionUnitHeader.wikitext
-    -
-        type: array
-        items:
-            $extend: /model/MultiFunctionUnitInstallation
-smw_forminfo:
-    'create title': 'Create a new location'
-    'edit title': 'Edit a location'
+description: This creates a new location where hardware is deployed.
+
+items:
+  - $extend: /model/Location
+  - $extend: /smw_template/NetworkPrinterHeader.wikitext
+    showForm: true
+    showPage: true
+  - type: array
+    items:
+      $extend: /model/NetworkPrinterInstallation
+  - $extend: /smw_template/NetworkScannerHeader.wikitext
+  - type: array
+    items:
+      $extend: /model/NetworkScannerInstallation
+  - $extend: /smw_template/MultiFunctionUnitHeader.wikitext
+  - type: array
+    items:
+      $extend: /model/MultiFunctionUnitInstallation
+
+sf_forminfo:
+  create title: Create a new location
+  edit title: Edit a location

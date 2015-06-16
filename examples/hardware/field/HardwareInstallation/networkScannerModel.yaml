@@ -1,5 +1,6 @@
 $extend: /field/_hardwareModelReference
-type: string
-format: /form/NetworkScannerModel
-smw_form:
-    'values from category': NetworkScannerModel
+
+form: NetworkScannerModel
+
+sf_form:
+    values from category: NetworkScannerModel
