@@ -1,5 +1,0 @@
-$extend: /model/_NetworkDeviceInstallation
-title: 'Multi-function unit'
-properties:
-    -
-        $extend: /field/multiFunctionUnitModel

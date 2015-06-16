@@ -1,6 +1,0 @@
-title: 'Free text'
-type: string
-smw_property: false
-smw_form:
-    'input type': textarea
-    autogrow: true

@@ -1,6 +1,0 @@
-==Shapes Example==
-This site is part of the mobo shapes example
-
-===List of all Circles===
-Uses the [[Template:Circles-ask]] template
-{{Circles-ask}}

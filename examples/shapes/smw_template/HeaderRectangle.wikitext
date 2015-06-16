@@ -1,3 +1,0 @@
-=Rectangle=
-
-Short description about rectangles...
