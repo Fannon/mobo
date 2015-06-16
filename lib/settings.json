@@ -16,6 +16,7 @@
     "forceUpload": false,
     "buildGraph": true,
     "statistics": true,
+    "gitStatistics": false,
     "writeExportFiles": false,
     "compatibilityLayer": true,
     "writeLogFile": true,
