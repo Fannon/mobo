@@ -1,0 +1,166 @@
+{
+    "description": "mobo model JSON Schema",
+
+    "properties": {
+        "recommended": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
+        },
+        "smw_subobject": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
+        },
+        "smw_subobjectExtend": {
+            "type": "object",
+            "description": "Contains a set (object) of additional #subobject properties"
+        },
+        "smw_display": {
+            "type": "string",
+            "default": "table",
+            "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
+        },
+        "smw_prepend": {
+            "type": ["object", "string"],
+            "description": "Prefixes wikitext to both forms and templates. Can either be a string or an object for more advanced features (auto-generate headers, inject templates or add arbitrary wikitext)",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "header": {
+                    "type": "number",
+                    "description": "Inserts auto generated header of given hierachy (1-6)",
+                    "minimum": 1,
+                    "maximum": 6
+                },
+                "template": {
+                    "type": "string",
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_prependForm": {
+            "type": ["object", "string"],
+            "description": "Prefixes wikitext only to forms (edit-view). Can either be a string or an object for more advanced features (auto-generate headers, inject templates or add arbitrary wikitext)",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "header": {
+                    "type": "number",
+                    "description": "Inserts auto generated header of given hierachy (1-6)",
+                    "minimum": 1,
+                    "maximum": 6
+                },
+                "template": {
+                    "type": ["string", "array"],
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_prependPage": {
+            "type": ["object", "string"],
+            "description": "Prefixes wikitext only to templates (page-view). Can either be a string or an object for more advanced features (auto-generate headers, inject templates or add arbitrary wikitext)",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "header": {
+                    "type": "number",
+                    "description": "Inserts auto generated header of given hierachy (1-6)",
+                    "minimum": 1,
+                    "maximum": 6
+                },
+                "template": {
+                    "type": ["string", "array"],
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_prependCategory": {
+            "type": "string",
+            "description": "wikitext to prefix on the category page"
+        },
+        "smw_append": {
+            "type": ["object", "string"],
+            "description": "Adds a postfix wikitext to forms and models",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to postfix"
+                },
+                "template": {
+                    "type": "string",
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_appendForm": {
+            "type": ["object", "string"],
+            "description": "Postfixes wikitext only to forms (edit-view). Can either be a string or an object for more advanced features (auto-generate headers, inject templates or add arbitrary wikitext)",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "template": {
+                    "type": ["string", "array"],
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_appendPage": {
+            "type": ["object", "string"],
+            "description": "Postfixes wikitext only to templates (page-view). Can either be a string or an object for more advanced features (auto-generate headers, inject templates or add arbitrary wikitext)",
+            "properties": {
+                "wikitext": {
+                    "type": "string",
+                    "description": "wikitext to prefix"
+                },
+                "template": {
+                    "type": ["string", "array"],
+                    "description": "name of a template to inject. Must exist"
+                }
+            },
+            "additionalProperties": false
+        },
+        "smw_appendCategory": {
+            "type": "string",
+            "description": "wikitext to postfix on the category page"
+        },
+        "smw_category": {
+            "type": "boolean",
+            "default": true,
+            "description": "This property decides whether the template should tag the page as a category of the model-name."
+        },
+        "smw_categories": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Array of additional categories the template should set."
+        },
+        "showForm": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true the template/model will be hidden in the form view. This will usually be declared in the forms by adding this after the model $extend."
+        },
+        "showPage": {
+            "type": "boolean",
+            "default": true,
+            "description": "If true the template/model will be hidden in the page view. This will usually be declared in the forms by adding this after the model $extend."
+        },
+        "additionalProperties": false
+    }
+}
