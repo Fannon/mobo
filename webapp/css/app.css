@@ -7,12 +7,12 @@
 
 
 /** NAVBAR DESIGN */
-.navbar-default {
-    background-color: #f8f8f8;
-    border-color: #CCC;
+.navbar-inverse {
+    background-color: #000000;
+    border: 0;
 }
 #logo, #logo:hover, #logo:focus, #logo-refreshing {
-    width: 120px;
+    width: 112px;
     background: #000 url("../img/logo.svg") center center no-repeat;
     background-size: 112px;
 }
@@ -20,6 +20,19 @@
 #logo-refreshing {
     background: #1F6AB4;
     color: #FFF;
+}
+
+.mobo-search {
+    padding: 0 2px;
+}
+.mobo-menu {
+    border-left: 1px solid #444;
+}
+.mobo-menu,
+.navbar-inverse .navbar-nav>.open>a,
+.navbar-inverse .navbar-nav>.open>a:hover,
+.navbar-inverse .navbar-nav>.open>a:focus {
+    background: #222;
 }
 
 .navbar-default .navbar-nav>li>a,
@@ -74,13 +87,13 @@ textarea {
 
 /** Select2 */
 .select2-widget {
-    width: 300px;
+    width: 270px;
 }
 .select2-container {
-    margin-right: 10px;
+    margin-right: 4px;
 }
 .select2-results__option {
-    font-size: 0.95em;
+    font-size: 0.92em;
 }
 
 
@@ -174,7 +187,7 @@ textarea {
     position: fixed;
     top: 0;
     left: 0;
-    width: 120px;
+    width: 106px;
     height: 50px;
 
     cursor: hand;
