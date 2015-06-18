@@ -80,12 +80,12 @@
             "description": "For internal use only! This contains wikitext to inject",
             "internal": true
         },
-        "ignore": {
+        "$ignore": {
             "type": "boolean",
             "description": "If true this file will be ignored.",
             "default": false
         },
-        "abstract": {
+        "$abstract": {
             "type": "boolean",
             "default": false,
             "description": "If true this object is only used for inheritance and will not be created itself."
