@@ -4,8 +4,8 @@ description: This creates a new location where hardware is deployed.
 items:
   - $extend: /model/Location
   - $extend: /smw_template/NetworkPrinterHeader.wikitext
-    showForm: true
-    showPage: true
+    showForm: true # True by default, can be ommited
+    showPage: true # True by default, can be ommited
   - type: array
     items:
       $extend: /model/NetworkPrinterInstallation

@@ -1,3 +1,5 @@
+$abstract: true
+
 title: Hardware Installation
 
 items:
@@ -6,5 +8,3 @@ items:
 
 smw_subobject: true
 smw_category: false
-
-abstract: true

@@ -1,6 +1,6 @@
 title: Location
 description: Location where hardware is deployed
-todo: This is a todo entry and will be displayed if the corresponding option is active.
+todo: This is a todo entry.
 
 items:
   - $extend: /field/streetAdress

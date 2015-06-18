@@ -1,3 +1,5 @@
+$abstract: true
+
 title: Hardware Model
 
 items:
@@ -7,5 +9,3 @@ items:
 required:
   - brand
   - modelName
-
-abstract: true

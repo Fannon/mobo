@@ -1,6 +1,7 @@
 $extend: /model/_HardwareModel
 
 title: Network Printer Model
+description: A Network Printer Model
 
 items:
   - $extend: /field/colorPrinting

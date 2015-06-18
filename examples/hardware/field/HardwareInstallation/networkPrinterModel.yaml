@@ -1,6 +1,6 @@
 $extend: /field/_hardwareModelReference
 
-
+# Implicit: type: string and format: Page
 form: NetworkPrinterModel
 
 sf_form:

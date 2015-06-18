@@ -3,4 +3,4 @@ title: Town
 type: string
 
 sf_form:
-    input type: text with autocomplete
+  input type: text with autocomplete
