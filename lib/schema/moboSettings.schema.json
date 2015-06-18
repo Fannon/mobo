@@ -233,6 +233,10 @@
             "type": "string",
             "description": "Wikitext that will be prefixed to each mobo generated page"
         },
+        "generateTemplateData": {
+            "type": "boolean",
+            "description": "Whether to generate a TemplateData (a VisualEditor extension) to describe templates"
+        },
 
         "sf_responsiveForms": {
             "type": "boolean",

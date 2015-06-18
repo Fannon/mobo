@@ -22,6 +22,7 @@
     "writeLogFile": true,
     "uploadReport": true,
     "uploadOutline": true,
+    "generateTemplateData": false,
     "uploadOutlineCountRefs": false,
     "uploadLogFile": false,
     "overwriteImportedPages": false,

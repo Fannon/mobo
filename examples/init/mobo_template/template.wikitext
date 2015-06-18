@@ -1,5 +1,7 @@
 <noinclude>==Description==
-<templatedata>{{{templatedata}}}</templatedata>
+{{#if templatedata}}<templatedata>{{{templatedata}}}</templatedata>
+{{/if~}}
+
 ==Usage==
 <pre>\{{ {{~name}}
 {{#each attr}}|{{this.id}}=
@@ -7,7 +9,7 @@
 </noinclude>
 <includeonly>
 
-{{~#if this.prepend}}{{{this.prepend}}}{{/if~}}
+{{~#if prepend}}{{{prepend}}}{{/if~}}
 
 
 
@@ -56,7 +58,7 @@
 
 
 
-{{~#if this.append}}{{{this.append}}}{{/if~}}
+{{~#if append}}{{{append}}}{{/if~}}
 
 
 {{~#if smw_subobject~}}
