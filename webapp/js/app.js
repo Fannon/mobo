@@ -15,7 +15,6 @@ mobo.settings = {
 
 mobo.displayForm = true;
 
-
 require.config({
     baseUrl: '..'
 });
@@ -304,6 +303,7 @@ mobo.showDetail = function(siteName) {
     var generated = mobo.registry.generated[siteName];
     var lastUploadState = mobo.lastUploadState[siteName];
     var diffDisplay = $('#diff-markup');
+    var detailDisplay = $('#detail-markup');
     diffDisplay.text('');
 
     $('#default-view').hide();
@@ -313,24 +313,36 @@ mobo.showDetail = function(siteName) {
 
     if (lastUploadState && generated !== lastUploadState) {
 
-        console.log('DIFF!');
+        $('#diff-box').show();
         var diff = mobo.diffLib.diffWordsWithSpace(lastUploadState, generated);
+        var addedCounter = 0;
+        var removedCounter = 0;
 
         diff.forEach(function(part) {
-            // green for additions, red for deletions
-            // grey for common parts
-            var cssClass = part.added ? 'diff-added' : part.removed ? 'diff-removed' : '';
+
+            var cssClass = '';
+
+            if (part.added) {
+                addedCounter += part.value.length;
+                cssClass = 'diff-added';
+            } else if (part.removed) {
+                removedCounter += part.value.length;
+                cssClass = 'diff-removed';
+            }
+
             var span = document.createElement('span');
             span.className  = cssClass;
-            span.appendChild(document
-                .createTextNode(part.value));
+            span.appendChild(document.createTextNode(part.value));
             diffDisplay.append(span);
-            //$('#detail-markup').text(mobo.registry.generated[siteName]);
+            detailDisplay.text(mobo.registry.generated[siteName]);
         });
 
+        $('#diff-addedCounter').text('Added: ' + addedCounter);
+        $('#diff-removedCounter').text('Removed: ' + removedCounter);
+
     } else {
-        console.log('No DIFF!');
-        diffDisplay.text(mobo.registry.generated[siteName]);
+        $('#diff-box').hide();
+        detailDisplay.text(mobo.registry.generated[siteName]);
     }
 
     $('#detail-view').show();
