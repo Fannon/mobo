@@ -1,0 +1,6 @@
+# Wheter to overwrite already existing pages
+overwriteImportedPages: true
+
+# Blacklist. Every page listed will not be uploaded
+blacklist:
+ - Ignored Page

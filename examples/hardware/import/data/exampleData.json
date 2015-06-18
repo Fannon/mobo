@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "5582c30d5a7364111eb8bc54",
+    "index": 0,
+    "streetAdress": "Provost Street",
+    "streetNumber": 215,
+    "town": "Robinson"
+  },
+  {
+    "_id": "5582c30d58f1eea4edabf88b",
+    "index": 1,
+    "streetAdress": "Stewart Street",
+    "streetNumber": 883,
+    "town": "Winchester"
+  },
+  {
+    "_id": "5582c30d0afe255073d0285b",
+    "index": 2,
+    "streetAdress": "Harwood Place",
+    "streetNumber": 906,
+    "town": "Bentley"
+  },
+  {
+    "_id": "5582c30d041463c57fd1c9b4",
+    "index": 3,
+    "streetAdress": "Graham Avenue",
+    "streetNumber": 154,
+    "town": "Needmore"
+  },
+  {
+    "_id": "5582c30d0b458657e14f2f6d",
+    "index": 4,
+    "streetAdress": "Ross Street",
+    "streetNumber": 985,
+    "town": "Snyderville"
+  }
+]

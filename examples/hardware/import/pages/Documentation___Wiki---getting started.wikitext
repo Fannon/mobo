@@ -1,0 +1,2 @@
+== Example Documentation ==
+This wiki page is imported with mobo --import docs
