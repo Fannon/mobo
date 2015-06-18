@@ -6,7 +6,7 @@ exports.exec = function(fileMap, importHelper, lib, registry, callback) {
     //////////////////////////////////////
 
     // The lib object contains some useful, injected libraries
-    // It is also possible to install local npm modules into the current dir and require() them
+    // It also possible to install local npm modules (current dir) and require() them
 
     var log   = exports.log = lib.semlog.log; // https://www.npmjs.com/package/semlog
     var chalk = lib.semlog.chalk;             // https://www.npmjs.com/package/chalk
@@ -45,7 +45,7 @@ exports.exec = function(fileMap, importHelper, lib, registry, callback) {
     // * Statistics
     // * The generated wikitext
     // * ...
-    log('[D] Found Registry, containing: ' + Object.keys(registry).join(', '))
+    log('[D] Found Registry, containing: ' + Object.keys(registry).join(', '));
     log('[D] Current Working Directory: ' + registry.settings.cwd);
 
 
@@ -59,14 +59,14 @@ exports.exec = function(fileMap, importHelper, lib, registry, callback) {
     generatedPages['Import Test Page'] = wikitext;
 
     // Pages on the blacklist (see import.yaml) will be ignored
-    generatedPages['Ignored Page'] = 'Will be ignored, because of the blacklist (see import.yaml)';
+    generatedPages['Ignored Page'] = 'Will be ignored, because of the blacklist';
 
 
     //////////////////////////////////////
     // Advanced Data Import             //
     //////////////////////////////////////
 
-    // Advanced case: Import data into existing wiki structure and automatically validate / enhance
+    // Import data into existing wiki structure and automatically validate / enhance
     // Using random locations from http://beta.json-generator.com/CQJneWj
 
     // Deliberatly sabotage one dataset: (The validation will notice and give feedback)
@@ -109,8 +109,9 @@ exports.exec = function(fileMap, importHelper, lib, registry, callback) {
         importHelper.validate(locationColl, registry);
 
         // Enhance the Location Collection through Location form
-        // This rearranges the order of the templates and adds empty template if they need to be added
-        var locationEnhColl = importHelper.enhanceWithForm(locationColl, registry.expandedForm.Location);
+        // This rearranges the order of the templates and adds missing (empty) templates
+        var locationForm    = registry.expandedForm.Location;
+        var locationEnhColl = importHelper.enhanceWithForm(locationColl, locationForm);
 
         // Convert the (enhanced) objColletion to wikitext
         var locationWikitext = importHelper.objCollectionToWikitext(locationEnhColl);
@@ -121,7 +122,7 @@ exports.exec = function(fileMap, importHelper, lib, registry, callback) {
         // Add the page to the generated page object
         generatedPages[pageName] = locationWikitext;
 
-    };
+    }
 
     // Execute the callback when the import is completed.
     // This allows to use async actions like AJAX within the import script
