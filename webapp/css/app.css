@@ -147,13 +147,18 @@ textarea {
     box-shadow: none;
 }
 
-.diff-added {
-    background: #6CC008;
+.diff-added,
+.diff-removed {
     color: #FFF;
+    padding: 1px 4px;
+    border-radius: .25em;
+}
+.diff-added {
+    background: #5CB85C;
+
 }
 .diff-removed {
-    background: #C02B08;
-    color: #FFF;
+    background: #D9534F;
 }
 
 .json-editor-btn-edit {
