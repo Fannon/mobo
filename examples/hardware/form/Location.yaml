@@ -3,19 +3,19 @@ description: This creates a new location where hardware is deployed.
 
 items:
   - $extend: /model/Location
-  - $extend: /smw_template/NetworkPrinterHeader.wikitext
+  - $extend: /smw_template/NetworkPrinterHeader
     showForm: true # True by default, can be ommited
     showPage: true # True by default, can be ommited
   - type: array
     items:
       $extend: /model/NetworkPrinterInstallation
-  - $extend: /smw_template/NetworkScannerHeader.wikitext
+  - $extend: /smw_template/NetworkScannerHeader
   - type: array
     items:
       $extend: /model/NetworkScannerInstallation
-  - $extend: /smw_template/MultiFunctionUnitHeader.wikitext
-  - type: array
-    items:
+  - $extend: /smw_template/MultiFunctionUnitHeader
+  - items:
+      # Note that the type: array declaration can be ommited too, since its implicit
       $extend: /model/MultiFunctionUnitInstallation
 
 sf_forminfo:

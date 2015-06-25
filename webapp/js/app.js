@@ -245,21 +245,21 @@ mobo.populateSelect = function() {
     // Forms
     html += ('<optgroup label="Form">');
     for (name in mobo.registry.form) {
-        html += '<option value="form/' + name + '">' + name + '</option>';
+        html += '<option value="form/' + name + '">form/' + name + '</option>';
     }
     html += '</optgroup>';
 
     // Models
     html += ('<optgroup label="Model">');
     for (name in mobo.registry.expandedModel) {
-        html += '<option value="model/' + name + '">' + name + '</option>';
+        html += '<option value="model/' + name + '">model/' + name + '</option>';
     }
     html += '</optgroup>';
 
     // Fields
     html += ('<optgroup label="Field">');
     for (name in mobo.registry.field) {
-        html += '<option value="field/' + name + '">' + name + '</option>';
+        html += '<option value="field/' + name + '">field/' + name + '</option>';
     }
     html += '</optgroup>';
 
@@ -267,8 +267,30 @@ mobo.populateSelect = function() {
 
 
     html = '<option></option>';
+    var dict = {};
+
     for (var siteName in mobo.wikitext) {
-        html += '<option value="' + siteName + '">' + siteName + '</option>';
+        var a = siteName.split(':');
+        var namespace;
+        if (a.length > 0) {
+            namespace = a.shift();
+        } else {
+            namespace = 'MAIN';
+        }
+
+        if (!dict[namespace]) {
+            dict[namespace] = [];
+        }
+        dict[namespace].push(a.join(':'));
+    }
+    console.dir(dict);
+    for (var namespaceName in dict) {
+        html += ('<optgroup label="' + namespaceName + '">');
+        for (var i = 0; i < dict[namespaceName].length; i++) {
+            name = dict[namespaceName][i];
+            html += '<option value="' + namespaceName + ':' + name + '">' + namespaceName + ':' + name + '</option>';
+        }
+        html += '</optgroup>';
     }
     $('#select-wikitext').html(html);
 

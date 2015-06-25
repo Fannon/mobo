@@ -10,7 +10,7 @@ var _ = require('lodash');
 
 var settings = require('./../../lib/settings.json');
 var mockModel = require('./../_mockObjects/mockModel.json');
-var extendProject = require('../../lib/processing/extendProject.js');
+var extendProject = require('../../lib/modelToModel/extendProject.js');
 
 
 //////////////////////////////////////////
