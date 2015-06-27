@@ -14,9 +14,16 @@ properties:
     type:
     - string
     - array
-    description: Defines which form should be automatically used if the red link is
-      clicked
     specific: domain
+    description: |
+      Defines which form should be automatically used if the red link is clicked
+    example:
+      - |
+        form: formName
+      - |
+        form:
+          - formName1
+          - formName2
 
   smw_property:
     type: boolean
