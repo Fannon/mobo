@@ -3,16 +3,20 @@ title: Mobo Fields
 
 properties:
 
-  deprecated:
-    type: boolean
-    default: false
-    specific: domain
-    appliesNot:
-        - model
-        - form
+####################################################
+# JSON Schema annotations                          #
+####################################################
+
+  items:
     description: |
-      If true, the field will be deprecated. This means it will not be
-      displayed in forms, but the template will keep it in order to display old entries.
+      Some fields have multiple values (e.g. comma seperated).<br>
+      In this case the items property needs to be used.<br>
+      The items object then defines the actual data type, format and form
+    example:
+      - |
+        title: Tags
+        items:
+          type: string
 
   format:
     type: string
@@ -43,6 +47,11 @@ properties:
       Describes the semantic format (how to interpret the type).
       E.g. 'email' or SMW specific datatypes like 'Temperature'
 
+
+####################################################
+# Domain Specific                                  #
+####################################################
+
   form:
     type:
       - string
@@ -53,7 +62,9 @@ properties:
         - model
         - form
     description: |
-      Defines which form should be automatically used if the red link is clicked
+      Defines which form should be automatically used if the red link is clicked.
+      It can link to one multiple forms.<br>
+      It sets implicitly: `type: string`  and `format: Page`
     example:
       - |
         form: formName
@@ -61,6 +72,38 @@ properties:
         form:
           - formName1
           - formName2
+
+  deprecated:
+    type: boolean
+    default: false
+    specific: domain
+    appliesNot:
+        - model
+        - form
+    description: |
+      If true, the field will be deprecated. This means it will not be
+      displayed in forms, but the template will keep it in order to display old entries.
+
+  showPage:
+    type: boolean
+    default: true
+    specific: domain
+    appliesNot:
+      - form
+    description: Whether to display this element in the page view.
+
+  showForm:
+    type: boolean
+    default: true
+    specific: domain
+    important: true
+    appliesNot:
+      - form
+    description: Whether to display this element in the form-edit view.
+
+####################################################
+# Platform Specific                                #
+####################################################
 
   smw_property:
     type: boolean
@@ -71,11 +114,11 @@ properties:
         - model
         - form
     description: |
-      If set to false, the property will not be saved as a SMW property, through #set or #subobject
+      If smw_property is set to false the templates won't declare it as a semantic property.
+      Please note that the field can't be queried then.
 
   sf_form:
     type: object
-    link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
     additionalProperties: true
     important: true
     specific: platform
@@ -83,7 +126,17 @@ properties:
         - model
         - form
     description: |
-      Object, containing SemanticForms option, that will be redirected to the form
+      The sf_form property is an object that redirects all settings directly to Semantic Forms.
+      If no value is necessary (e.g. "existing values only"), use true.
+      To see which options are supported, refer to the Semantic Forms manual
+    link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
+    example:
+      - |
+        sf_form:
+          input type: combobox
+          values from namespace: Manufacturer
+          max values: 1
+          existing values only: true
 
   smw_overwriteOutput:
     type: string
@@ -154,20 +207,3 @@ properties:
     description: |
       If the global settings `smw_semanticDrilldown` is enabled, fields
       with smw_drilldown set to true will be filterable.
-
-  showPage:
-    type: boolean
-    default: true
-    specific: domain
-    appliesNot:
-      - form
-    description: Whether to display this element in the page view.
-
-  showForm:
-    type: boolean
-    default: true
-    specific: domain
-    important: true
-    appliesNot:
-      - form
-    description: Whether to display this element in the form-edit view.

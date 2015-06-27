@@ -46,10 +46,6 @@ properties:
       - array
       - object
     important: true
-    description: |
-        Lists all models that the form uses.<br>
-        Those are included by `$extend`.<br>
-        If multiple instance templates need to be created, use another items hierachy.
 
   required:
     appliesNot:
@@ -90,6 +86,7 @@ properties:
       This is currently not supported by Semantic Forms.
 
   maxItems:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -98,6 +95,7 @@ properties:
       How many instances are allowed at most.
 
   minItems:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -106,6 +104,7 @@ properties:
       How many instances are required at least.
 
   maximum:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -114,6 +113,7 @@ properties:
       The maximum value of a number
 
   minimum:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -122,6 +122,7 @@ properties:
       The minimum value of a number
 
   maxLength:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -129,8 +130,8 @@ properties:
     description: |
       The maximum length of a string
 
-
   minLength:
+    type: number
     unsupported: true
     appliesNot:
       - model
@@ -235,8 +236,14 @@ properties:
     specific: domain
     important: true
     description: |
-      Array that sets the display order of all (including inherited) properties.<br>
-      Unmentioned fields will be appended at the bottom in their original order.
+      In case that fields have been inherited, they might not end up in the correct order.
+      The itemsOrder array lists the order of the fields.
+      Every field that is not listed will be appended at the bottom, in their regular order.
+    example:
+      - |
+        itemsOrder:
+          - brand
+          - modelName
 
   todo:
     type: string

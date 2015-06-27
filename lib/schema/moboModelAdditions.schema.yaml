@@ -10,6 +10,19 @@ properties:
   type:
     important: false
 
+  items:
+    description: |
+      The items property contains an array of all fields that are used by the model.
+      Fields usually should be implemented using $extend, so every field can have its own file and inheritance.
+      It is possible to overwrite properties from the field directly in the mode.
+    example:
+      - |
+        items:
+        - $extend: /field/brand
+          title: Overwritten brand title
+        - $extend: /field/modelName
+
+
 ####################################################
 # Model Specific Properties                        #
 ####################################################
@@ -155,7 +168,17 @@ properties:
     appliesNot:
       - form
     description: |
-      Adds a postfix wikitext to forms and models
+      Adds a postfix wikitext to forms and models.
+    example:
+      - |
+        smw_append:
+          header: 1
+          wikitext: |
+            Some appended wikitext
+            Will be inserted after the H1 header
+      - |
+        smw_append: 'Some prepended wikitext'
+
 
   smw_appendForm:
     type:
