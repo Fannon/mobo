@@ -9,8 +9,6 @@ properties:
       Provides naming conventions / guideline. Will appear on the form page itself.
 
   items:
-    type:
-      - object
     description: |
         Lists all models that the form uses.<br>
         Those are included by `$extend`.<br>
