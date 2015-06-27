@@ -10,7 +10,7 @@ properties:
     appliesNot:
         - model
         - form
-    description:
+    description: |
       If true, the field will be deprecated. This means it will not be
       displayed in forms, but the template will keep it in order to display old entries.
 
@@ -34,8 +34,12 @@ properties:
       - Temperature
       - temperature
     specific: domain
+    appliesNot:
+        - model
+        - form
     description: |
-      Describe the semantic format, how to interpret the type. E.g. 'email' or SMW specific datatypes like 'Temperature'
+      Describes the semantic format (how to interpret the type).
+      E.g. 'email' or SMW specific datatypes like 'Temperature'
 
   form:
     type:
@@ -73,8 +77,8 @@ properties:
     appliesNot:
         - model
         - form
-    description: Object, containing SemanticForms option, that will be redirected
-      to the form
+    description: |
+      Object, containing SemanticForms option, that will be redirected to the form
 
   smw_overwriteOutput:
     type: string
@@ -100,7 +104,8 @@ properties:
     appliesNot:
         - model
         - form
-    description: Overwrites only the display value of the current field
+    description: |
+      Overwrites only the display value of the current field
 
   smw_overwriteData:
     type: string
@@ -125,32 +130,38 @@ properties:
 
   smw_arraymaptemplate:
     type: string
-    description: Name of the arraymap template to use. Field needs to be of type `array`.
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate
     default: false
     specific: platform
     appliesNot:
         - model
         - form
+    description: |
+      Name of the arraymap template to use. Field needs to be of type `array`.
 
   smw_drilldown:
     type: boolean
-    description: If the global settings `smw_semanticDrilldown` is enabled, fields
-      with smw_drilldown set to true will be filterable.
     default: false
     specific: platform
     appliesNot:
         - model
         - form
+    description: |
+      If the global settings `smw_semanticDrilldown` is enabled, fields
+      with smw_drilldown set to true will be filterable.
 
   showPage:
     type: boolean
-    description: If false the field will not be visibly renderd in the page view
     default: true
     specific: domain
+    appliesNot:
+      - form
+    description: Whether to display this element in the page view.
 
   showForm:
     type: boolean
-    description: If false, the field will not be visible in the form edit view
     default: true
     specific: domain
+    appliesNot:
+      - form
+    description: Whether to display this element in the form-edit view.

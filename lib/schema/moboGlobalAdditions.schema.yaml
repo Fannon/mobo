@@ -9,129 +9,215 @@ properties:
     internal: true
 
   id:
-    description: Usually auto generated id, consisting of the filename
     format:
     internal: true
     specific: domain
+    description: |
+      Usually auto generated ID, should be identical to the filename
 
   title:
-    description: Human readable title of the field
     specific: domain
+    important: true
+    description: |
+      Human readable title.
 
   description:
-    description: Description of the field. Can be displayed as tooltip info
     specific: domain
+    important: true
+    description: |
+      Description of the field. Can be displayed as tooltip info
 
+  type:
+    type:
+      - array
+      - string
+    important: true
+    description: |
+      Defines the data-type.
+      
   properties:
-    description: Mobo Schema does not use 'properties', it prefers 'items' because
-      the order of the element can be garantueed. Internally, properties are still
-      used because of their easier accessing.
     internal: true
+    description: |
+      Mobo Schema does not use 'properties', it prefers 'items' because the order of the element can be garantueed.
+      Internally, properties are still because of their easier accessing.
 
   items:
     type:
       - object
+    important: true
     description: |
         Lists all models that the form uses.<br>
         Those are included by `$extend`.<br>
         If multiple instance templates need to be created, use another items hierachy.
 
+  required:
+    appliesNot:
+      - field
+      - form
+    description: |
+      Array containing the IDs of all required fields
+
+  maxItems:
+    appliesNot:
+      - model
+      - form
+
+  maxLength:
+    appliesNot:
+      - model
+      - form
+
+  maximum:
+    appliesNot:
+      - model
+      - form
+
+  minItems:
+    appliesNot:
+      - model
+      - form
+
+  minLength:
+    appliesNot:
+      - model
+      - form
+
+  minimum:
+    appliesNot:
+      - model
+      - form
+
+  pattern:
+    appliesNot:
+      - model
+      - form
+  default:
+    appliesNot:
+      - model
+      - form
+  enum:
+    appliesNot:
+      - model
+      - form
+
+
+
 ####################################################
-# Metadata (for internal use only)                 #
+# Intermediary System Properties                   #
 ####################################################
 
-  "$extend":
+  $extend:
     type:
     - string
     - array
-    description: This references another mobo json file. It will be included through
-      inheritance, all existing attributes in the parent object will be overwritten.
     pattern: "^/.*/_*.*$"
     uniqueItems: true
+    important: true
+    specific: intermediary
+    description: |
+      This references another mobo json file.
+      It will be included through inheritance, all existing attributes in the parent object will be overwritten.
 
-  "$remove":
+  $remove:
     type: array
-    description: Array, containing the IDs of all items/properties to remove from
-      the current object.
     minItems: 1
     uniqueItems: true
+    specific: intermediary
+    description: |
+      Array, containing the IDs of all items/properties to remove from current object.
 
-  "$ignore":
-    type: boolean
-    description: If true this file will be ignored.
-    default: false
-    specific: domain
-
-  "$abstract":
+  $ignore:
     type: boolean
     default: false
-    description: If true this object is only used for inheritance and will not be
-      created itself.
     specific: domain
+    specific: intermediary
+    description: |
+      If true, this file will be ignored completely.
+
+  $abstract:
+    type: boolean
+    default: false
+    specific: domain
+    important: true
+    specific: intermediary
+    description: |
+      If true this object is only used for inheritance and will not be itself.
 
 ####################################################
 # Metadata (for internal use only)                 #
 ####################################################
 
-  "$reference":
+  $reference:
     type: object
-    description: For internal use only! After inheritance is applied, $extend will
-      be replaced through reference. (For keeping info on the heritage)
     minItems: 1
     uniqueItems: true
     internal: true
     specific: metadata
+    description: |
+      For internal use only!
+      After inheritance is applied, $extend will be replaced through $reference.
+      (For keeping info on the heritage)
 
-  "$path":
+  $path:
     type: string
-    description: For internal use only! This stores the path of the object, as used
-      in '$extend' or 'format'. Used for improved debugging messages
     internal: true
     specific: metadata
+    description: |
+      For internal use only!
+      This stores the path of the object, as used '$extend' or 'format'.
+      Used for improved debugging messages
 
-  "$filepath":
+  $filepath:
     type: string
-    description: For internal use only! This stores the complete relative path of
-      the .json file. Used for improved debugging messages
     internal: true
     specific: metadata
+    description: |
+      For internal use only!
+      This stores the complete relative path of the development model file.
+      Used for improved debugging messages
 
-  "$modelPart":
+  $modelPart:
     type: string
-    description: For internal use only! This declares the part from the model where
-      the object originated (field, form,...)
     internal: true
     specific: metadata
+    description: |
+      For internal use only!
+      This declares the part from the model where object originated (field, form,...)
 
 
 ####################################################
 # Global Mobo Schema Properties                    #
 ####################################################
 
+  itemsOrder:
+    type: array
+    items:
+      type: string
+    minItems: 1
+    uniqueItems: true
+    specific: domain
+    important: true
+    description: |
+      Array that sets the display order of all (including inherited) properties.<br>
+      Unmentioned fields will be appended at the bottom in their original order.
+
   todo:
     type: string
-    description: If todo notes are placed here, mobo can output them (this is a setting)
     specific: domain
+    description: |
+      If TODO notes are placed here, mobo can print them in the CLI (If the corresponding global setting is enabled)
 
   note:
     type:
     - string
     - object
-    description: Notes can be strings or objects and their content will be ignored
     specific: domain
+    description: |
+      Notes can be strings or objects and their content will be ignored
 
   wikitext:
     type: string
-    description: For internal use only! This contains wikitext to inject
     internal: true
     specific: metadata
-
-  itemsOrder:
-    type: array
-    items:
-      type: string
-    description: Array that sets the display order of all (including inherited) properties.
-      Unmentioned fields will be appended at the bottom in their original order.
-    minItems: 1
-    uniqueItems: true
-    specific: domain
+    description: |
+      For internal use only! This contains wikitext to inject
