@@ -34,7 +34,7 @@ properties:
     important: true
     description: |
       Defines the data-type.
-      
+
   properties:
     internal: true
     description: |
@@ -43,6 +43,7 @@ properties:
 
   items:
     type:
+      - array
       - object
     important: true
     description: |
@@ -57,49 +58,85 @@ properties:
     description: |
       Array containing the IDs of all required fields
 
-  maxItems:
-    appliesNot:
-      - model
-      - form
-
-  maxLength:
-    appliesNot:
-      - model
-      - form
-
-  maximum:
-    appliesNot:
-      - model
-      - form
-
-  minItems:
-    appliesNot:
-      - model
-      - form
-
-  minLength:
-    appliesNot:
-      - model
-      - form
-
-  minimum:
-    appliesNot:
-      - model
-      - form
-
-  pattern:
-    appliesNot:
-      - model
-      - form
   default:
     appliesNot:
       - model
       - form
+    description: |
+      The default value of the field.
+
   enum:
     appliesNot:
       - model
       - form
+    description: |
+      List of all possible values.<br>
+      Defaults to a dropdown widget.
+    example:
+      - |
+        type: string
+        enum:
+          - red
+          - green
+          - blue
 
+  pattern:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      Regular Expression (Regex) pattern<br>
+      This is currently not supported by Semantic Forms.
+
+  maxItems:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      How many instances are allowed at most.
+
+  minItems:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      How many instances are required at least.
+
+  maximum:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      The maximum value of a number
+
+  minimum:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      The minimum value of a number
+
+  maxLength:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      The maximum length of a string
+
+
+  minLength:
+    unsupported: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      The minimum length of a string
 
 
 ####################################################
@@ -206,14 +243,6 @@ properties:
     specific: domain
     description: |
       If TODO notes are placed here, mobo can print them in the CLI (If the corresponding global setting is enabled)
-
-  note:
-    type:
-    - string
-    - object
-    specific: domain
-    description: |
-      Notes can be strings or objects and their content will be ignored
 
   wikitext:
     type: string
