@@ -39,6 +39,12 @@ properties:
     description: More verbose console output. This will also tighten the model validation
       and display minor notices
 
+  allowAdditionalProperties:
+    type: boolean
+    description: |
+      If false, mobo will warn when the development model contains unsupported/unknown properties.
+      This is very helpful to spot typos and other accidents when modeling
+
   logDate:
     type: boolean
     description: Prepend the time (and eventually date) on each logging message

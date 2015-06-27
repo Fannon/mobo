@@ -1,6 +1,6 @@
 ---
 global:
-  - "$ref"
+  - $ref
   - dependencies
 
 properties:
@@ -19,3 +19,9 @@ properties:
   - allOf
   - anyOf
   - oneOf
+
+field:
+
+model:
+
+form:

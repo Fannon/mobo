@@ -8,6 +8,7 @@
     "force": false,
     "debug": false,
     "verbose": false,
+    "allowAdditionalProperties": false,
     "displayTodos": true,
     "watchFilesystem": true,
     "serveWebApp": true,

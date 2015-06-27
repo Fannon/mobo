@@ -189,5 +189,3 @@ properties:
     description: If true the template/model will be hidden in the page view. This
       will usually be declared in the forms by adding this after the model $extend.
     specific: domain
-
-  additionalProperties: false
