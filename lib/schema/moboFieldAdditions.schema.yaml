@@ -1,6 +1,5 @@
 ---
-title: mobo fields
-description: mobo field JSON Schema
+title: Mobo Fields
 
 properties:
 
@@ -8,7 +7,11 @@ properties:
     type: boolean
     default: false
     specific: domain
-    description: If true, the field will be deprecated. This means it will not be
+    appliesNot:
+        - model
+        - form
+    description:
+      If true, the field will be deprecated. This means it will not be
       displayed in forms, but the template will keep it in order to display old entries.
 
   format:
@@ -39,6 +42,9 @@ properties:
     - string
     - array
     specific: domain
+    appliesNot:
+        - model
+        - form
     description: |
       Defines which form should be automatically used if the red link is clicked
     example:
@@ -53,6 +59,9 @@ properties:
     type: boolean
     default: true
     specific: platform
+    appliesNot:
+        - model
+        - form
     description: |
       If set to false, the property will not be saved as a SMW property, through #set or #subobject
 
@@ -61,29 +70,44 @@ properties:
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
     additionalProperties: true
     specific: platform
+    appliesNot:
+        - model
+        - form
     description: Object, containing SemanticForms option, that will be redirected
       to the form
 
   smw_overwriteOutput:
     type: string
-    description: Overwrites the final value of the field, used for both display and
-      data set
     specific: implementation
+    appliesNot:
+        - model
+        - form
+    description: |
+      Overwrites the final value of the field, used for both display and data set
 
   smw_overwriteOutputToLink:
     type: boolean
     specific: platform
+    appliesNot:
+        - model
+        - form
     description: |
       If true, this will create a link in display mode, using #formredlink if applicable
 
   smw_overwriteDisplay:
     type: string
     specific: implementation
+    appliesNot:
+        - model
+        - form
     description: Overwrites only the display value of the current field
 
   smw_overwriteData:
     type: string
     specific: implementation
+    appliesNot:
+        - model
+        - form
     description: |
       Overwrites the final #set or #subobject value of the field. This
       will also overwrite smw_overwriteOutput.
@@ -92,6 +116,9 @@ properties:
     type: boolean
     default: false
     specific: platform
+    appliesNot:
+        - model
+        - form
     description: |
       Forces the semantic storage of the attribute through the #set parser function.
       This is useful for #subobject models that want to expose one or more fields as regular #set properties.
@@ -102,6 +129,9 @@ properties:
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Semantic_Forms_and_templates#arraymaptemplate
     default: false
     specific: platform
+    appliesNot:
+        - model
+        - form
 
   smw_drilldown:
     type: boolean
@@ -109,6 +139,9 @@ properties:
       with smw_drilldown set to true will be filterable.
     default: false
     specific: platform
+    appliesNot:
+        - model
+        - form
 
   showPage:
     type: boolean

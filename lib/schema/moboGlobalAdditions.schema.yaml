@@ -1,5 +1,10 @@
 ---
 properties:
+
+####################################################
+# JSON Schema annotations                          #
+####################################################
+
   $schema:
     internal: true
 
@@ -23,11 +28,17 @@ properties:
       used because of their easier accessing.
     internal: true
 
-  "$meta":
-    type: object
-    description: Internal metadata
-    internal: true
-    specific: metadata
+  items:
+    type:
+      - object
+    description: |
+        Lists all models that the form uses.<br>
+        Those are included by `$extend`.<br>
+        If multiple instance templates need to be created, use another items hierachy.
+
+####################################################
+# Metadata (for internal use only)                 #
+####################################################
 
   "$extend":
     type:
@@ -44,6 +55,23 @@ properties:
       the current object.
     minItems: 1
     uniqueItems: true
+
+  "$ignore":
+    type: boolean
+    description: If true this file will be ignored.
+    default: false
+    specific: domain
+
+  "$abstract":
+    type: boolean
+    default: false
+    description: If true this object is only used for inheritance and will not be
+      created itself.
+    specific: domain
+
+####################################################
+# Metadata (for internal use only)                 #
+####################################################
 
   "$reference":
     type: object
@@ -75,34 +103,10 @@ properties:
     internal: true
     specific: metadata
 
-  wikitext:
-    type: string
-    description: For internal use only! This contains wikitext to inject
-    internal: true
-    specific: metadata
 
-  "$ignore":
-    type: boolean
-    description: If true this file will be ignored.
-    default: false
-    specific: domain
-
-  "$abstract":
-    type: boolean
-    default: false
-    description: If true this object is only used for inheritance and will not be
-      created itself.
-    specific: domain
-
-  itemsOrder:
-    type: array
-    items:
-      type: string
-    description: Array that sets the display order of all (including inherited) properties.
-      Unmentioned fields will be appended at the bottom in their original order.
-    minItems: 1
-    uniqueItems: true
-    specific: domain
+####################################################
+# Global Mobo Schema Properties                    #
+####################################################
 
   todo:
     type: string
@@ -116,20 +120,18 @@ properties:
     description: Notes can be strings or objects and their content will be ignored
     specific: domain
 
-  showForm:
-    type: boolean
-    default: true
-    specific: domain
-    appliesNot:
-      - form
-    description: If true the template/model will be hidden in the form view. This
-      will usually be declared in the forms by adding this after the model $extend.
+  wikitext:
+    type: string
+    description: For internal use only! This contains wikitext to inject
+    internal: true
+    specific: metadata
 
-  showPage:
-    type: boolean
-    default: true
+  itemsOrder:
+    type: array
+    items:
+      type: string
+    description: Array that sets the display order of all (including inherited) properties.
+      Unmentioned fields will be appended at the bottom in their original order.
+    minItems: 1
+    uniqueItems: true
     specific: domain
-    appliesNot:
-      - form
-    description: If true the template/model will be hidden in the page view. This
-      will usually be declared in the forms by adding this after the model $extend.

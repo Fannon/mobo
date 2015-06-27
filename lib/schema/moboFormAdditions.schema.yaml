@@ -5,9 +5,6 @@ properties:
   naming:
     type: string
     specific: domain
-    appliesNot:
-      - field
-      - model
     description: |
       Provides naming conventions / guideline. Will appear on the form page itself.
 
@@ -23,9 +20,6 @@ properties:
     type: object
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#The_.23forminput_function
     specific: platform
-    appliesNot:
-      - field
-      - model
     description: |
       Object, containing SemanticForms #forminput options
 
@@ -34,9 +28,6 @@ properties:
     description: Object (Set), containing all SemanticForms info parameters.
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27info.27_tag
     specific: platform
-    appliesNot:
-      - field
-      - model
 
   sf_freetext:
     type: boolean
@@ -44,9 +35,6 @@ properties:
     description: Decides whether the freetext textarea will be displayed below the
       form.
     specific: platform
-    appliesNot:
-      - field
-      - model
 
   sf_summary:
     type: boolean
@@ -54,6 +42,3 @@ properties:
     description: Decides whether a summary field will be displayed at the bottom of
       the form.
     specific: platform
-    appliesNot:
-      - field
-      - model
