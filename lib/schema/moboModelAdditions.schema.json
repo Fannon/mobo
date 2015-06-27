@@ -7,21 +7,25 @@
             "items": {
                 "type": "string"
             },
-            "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)"
+            "description": "Array of fields that should be highlighted as recommended (complementary to mandatory)",
+            "specific": "domain"
         },
         "smw_subobject": {
             "type": "boolean",
             "default": false,
-            "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances."
+            "description": "If true, this models attributes will be created as subobjects. Useful if this model is used through multiple instances.",
+            "specific": "platform"
         },
         "smw_subobjectExtend": {
             "type": "object",
-            "description": "Contains a set (object) of additional #subobject properties"
+            "description": "Contains a set (object) of additional #subobject properties",
+            "specific": "platform"
         },
         "smw_display": {
             "type": "string",
             "default": "table",
-            "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc."
+            "description": "Defines the template output rendering mode, whether the template should use tables, ul, etc.",
+            "specific": "platform"
         },
         "smw_prepend": {
             "type": ["object", "string"],
@@ -42,7 +46,8 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_prependForm": {
             "type": ["object", "string"],
@@ -63,7 +68,8 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_prependPage": {
             "type": ["object", "string"],
@@ -84,11 +90,13 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_prependCategory": {
             "type": "string",
-            "description": "wikitext to prefix on the category page"
+            "description": "wikitext to prefix on the category page",
+            "specific": "implementation"
         },
         "smw_append": {
             "type": ["object", "string"],
@@ -103,7 +111,8 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_appendForm": {
             "type": ["object", "string"],
@@ -118,7 +127,8 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_appendPage": {
             "type": ["object", "string"],
@@ -133,33 +143,39 @@
                     "description": "name of a template to inject. Must exist"
                 }
             },
-            "additionalProperties": false
+            "additionalProperties": false,
+            "specific": "implementation"
         },
         "smw_appendCategory": {
             "type": "string",
-            "description": "wikitext to postfix on the category page"
+            "description": "wikitext to postfix on the category page",
+            "specific": "implementation"
         },
         "smw_category": {
             "type": "boolean",
             "default": true,
-            "description": "This property decides whether the template should tag the page as a category of the model-name."
+            "description": "This property decides whether the template should tag the page as a category of the model-name.",
+            "specific": "platform"
         },
         "smw_categories": {
             "type": "array",
             "items": {
                 "type": "string"
             },
-            "description": "Array of additional categories the template should set."
+            "description": "Array of additional categories the template should set.",
+            "specific": "platform"
         },
         "showForm": {
             "type": "boolean",
             "default": true,
-            "description": "If true the template/model will be hidden in the form view. This will usually be declared in the forms by adding this after the model $extend."
+            "description": "If true the template/model will be hidden in the form view. This will usually be declared in the forms by adding this after the model $extend.",
+            "specific": "domain"
         },
         "showPage": {
             "type": "boolean",
             "default": true,
-            "description": "If true the template/model will be hidden in the page view. This will usually be declared in the forms by adding this after the model $extend."
+            "description": "If true the template/model will be hidden in the page view. This will usually be declared in the forms by adding this after the model $extend.",
+            "specific": "domain"
         },
         "additionalProperties": false
     }
