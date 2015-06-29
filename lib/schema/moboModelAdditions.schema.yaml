@@ -46,6 +46,7 @@ properties:
     description: |
       If true, this models attributes will be created as subobjects.
       Useful if this model is used through multiple instances.
+      Mobo will automantically introduce two additional helper attributes `subobjectType` and `subobjectParent` that help with querying subobjects.
 
   smw_subobjectExtend:
     type: object
@@ -54,6 +55,10 @@ properties:
       - form
     description: |
       Contains a set (object) of additional #subobject properties
+    example:
+      - |
+        smw_subobjectExtend:
+          additionalSubObjProp2: 'Some fixed text'
 
   smw_display:
     type: string
@@ -64,6 +69,9 @@ properties:
     description: |
       Defines the template output rendering mode, whether the template should use tables, ul, etc.<br>
       The rendering mode must be available in  /mobo_template/template.wikitext!
+    example:
+      - |
+        smw_display: ul
 
   smw_prepend:
     type:
@@ -239,7 +247,8 @@ properties:
     appliesNot:
       - form
     description: |
-      Whether the template should tag the page as a category of the model-name.
+      If true, the models template will assign a category.
+      The name of the category is the model ID.
 
   smw_categories:
     type: array
