@@ -105,6 +105,15 @@ properties:
 # Platform Specific                                #
 ####################################################
 
+  smw_type:
+    type: string
+    internal: true
+    appliesNot:
+      - model
+      - form
+    description: |
+      The final SMW Type of the field. Please avoid to set this manually - use "type" and "format" instead.
+
   smw_property:
     type: boolean
     default: true
