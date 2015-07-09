@@ -7,20 +7,23 @@ properties:
     type:
     - string
     - boolean
-    description: URL to your MediaWiki server without trailing slash. Do not include
-      the port or relative path to MediaWiki here!
+    description: |
+      URL to your MediaWiki server without trailing slash.
+      Do not include the port or relative path to MediaWiki!
 
   mw_server_path:
     type:
     - string
     - boolean
-    description: Relative path to the MediaWiki installation without trailing slash
+    description: |
+      Relative path to the MediaWiki installation without trailing slash
 
   mw_server_port:
     type:
     - string
     - boolean
-    description: The port your MW installation is using.
+    description: |
+      The port your MW installation is using.
 
   mw_username:
     type: string

@@ -7,12 +7,27 @@ properties:
     specific: domain
     description: |
       Provides naming conventions / guideline. Will appear on the form page itself.
+    example:
+      - |
+        naming: 'lastname, firstname'
 
   items:
     description: |
-        Lists all models that the form uses.<br>
-        Those are included by `$extend`.<br>
-        If multiple instance templates need to be created, use another items hierachy.
+      Declares all models and templates that the form uses and imports them through `$extend`.<br>
+      To create multiple instance templates, add another items hierachy (see example).
+    example:
+      - |
+        items:
+        # Import a template and show it only in the page-view
+        - $extend: /smw_template/SomeTemplate
+          showForm: false
+
+        # Include a single instance model
+        - $extend: /model/SingleInstanceModel
+
+        # Include a multiple instance model
+        - items:
+            $extend: /model/MultipleInstanceModel
 
   sf_forminput:
     type: object
@@ -20,6 +35,10 @@ properties:
     specific: platform
     description: |
       Object, containing SemanticForms #forminput options
+    example:
+      - |
+        smw_forminput:
+          autocomplete on category: SomeCategory
 
   sf_forminfo:
     type: object
@@ -39,6 +58,9 @@ properties:
     specific: platform
     description: |
       Decides whether the freetext textarea will be displayed below the form.
+    example:
+      - |
+        sf_freetext: false
 
   sf_summary:
     type: boolean
@@ -46,3 +68,6 @@ properties:
     specific: platform
     description: |
       Decides whether the summary field will be displayed below the form.
+    example:
+      - |
+        sf_summary: false

@@ -46,7 +46,10 @@ properties:
     description: |
       Describes the semantic format (how to interpret the type).
       E.g. 'email' or SMW specific datatypes like 'Temperature'
-
+    example:
+      - |
+        type: string
+        format: email
 
 ####################################################
 # Domain Specific                                  #
@@ -64,7 +67,7 @@ properties:
     description: |
       Defines which form should be automatically used if the red link is clicked.
       It can link to one multiple forms.<br>
-      It sets implicitly: `type: string`  and `format: Page`
+      When form it used, it implies: `type: string` and `format: Page`
     example:
       - |
         form: formName
@@ -81,8 +84,11 @@ properties:
         - model
         - form
     description: |
-      If true, the field will be deprecated. This means it will not be
-      displayed in forms, but the template will keep it in order to display old entries.
+      If true, the field will be deprecated.
+      It will not be displayed in forms, but the template will keep it in order to display old entries.
+    example:
+      - |
+        deprecated: true
 
   showPage:
     type: boolean
@@ -90,7 +96,11 @@ properties:
     specific: domain
     appliesNot:
       - form
-    description: Whether to display this element in the page view.
+    description: |
+      Whether to display this element in the page view.
+    example:
+      - |
+        showPage: false
 
   showForm:
     type: boolean
@@ -99,7 +109,11 @@ properties:
     important: true
     appliesNot:
       - form
-    description: Whether to display this element in the form-edit view.
+    description: |
+      Whether to display this element in the form-edit view.
+    example:
+      - |
+        showForm: false
 
 ####################################################
 # Platform Specific                                #
@@ -112,7 +126,8 @@ properties:
       - model
       - form
     description: |
-      The final SMW Type of the field. Please avoid to set this manually - use "type" and "format" instead.
+      The final SMW Type of the field. <br>
+      Avoid to set this manually - use the domain specific "type" and "format" instead, if possible.
 
   smw_property:
     type: boolean
@@ -125,6 +140,9 @@ properties:
     description: |
       If smw_property is set to false the templates won't declare it as a semantic property.
       Please note that the field can't be queried then.
+    example:
+      - |
+        smw_property: false
 
   sf_form:
     type: object
@@ -135,9 +153,10 @@ properties:
         - model
         - form
     description: |
-      The sf_form property is an object that redirects all settings directly to Semantic Forms.
+      The sf_form property is an object that redirects all settings directly to Semantic Forms.<br>
       If no value is necessary (e.g. "existing values only"), use true.
-      To see which options are supported, refer to the Semantic Forms manual
+      To see which options are supported, refer to the Semantic Forms manual.
+
     link: https://www.mediawiki.org/wiki/Extension:Semantic_Forms/Defining_forms#.27field.27_tag
     example:
       - |
@@ -155,6 +174,11 @@ properties:
         - form
     description: |
       Overwrites the final value of the field, used for both display and data set
+    example:
+      - |
+        smw_overwriteOutput: '[[CustomNamespace:{{FULLPAGENAME}}]]'
+      - |
+        smw_overwriteOutput: '{{FULLPAGENAME}}/subpath/&#123;&#123;&#123;fieldId|}}}'
 
   smw_overwriteOutputToLink:
     type: boolean
@@ -163,7 +187,12 @@ properties:
         - model
         - form
     description: |
-      If true, this will create a link in display mode, using #formredlink if applicable
+      If true, this will create a link in display mode, using #formredlink if applicable.<br>
+      This needs to be used together with `smw_overwriteOutput`.
+    example:
+      - |
+        smw_overwriteOutput: 'CustomNamespace:{{FULLPAGENAME}}'
+        smw_overwriteOutputToLink: true
 
   smw_overwriteDisplay:
     type: string
@@ -172,7 +201,8 @@ properties:
         - model
         - form
     description: |
-      Overwrites only the display value of the current field
+      Overwrites only the display value of the current field<br>
+      Is used similar to `smw_overwriteOutput`.
 
   smw_overwriteData:
     type: string
@@ -181,8 +211,8 @@ properties:
         - model
         - form
     description: |
-      Overwrites the final #set or #subobject value of the field. This
-      will also overwrite smw_overwriteOutput.
+      Overwrites the final #set or #subobject value of the field.<br>
+      Is used similar to `smw_overwriteOutput`
 
   smw_forceSet:
     type: boolean
@@ -192,8 +222,11 @@ properties:
         - model
         - form
     description: |
-      Forces the semantic storage of the attribute through the #set parser function.
+      Forces the semantic storage of the attribute through the #set parser function.<br>
       This is useful for #subobject models that want to expose one or more fields as regular #set properties.
+    example:
+      - |
+        smw_forceSet: true
 
   smw_arraymaptemplate:
     type: string
@@ -204,7 +237,11 @@ properties:
         - model
         - form
     description: |
-      Name of the arraymap template to use. Field needs to be of type `array`.
+      Name of the arraymap template to use.<br>
+      Field needs to be of type `array`.
+    example:
+      - |
+        smw_arraymaptemplate: ArrayMapRemoveNamespaceTags
 
   smw_drilldown:
     type: boolean
@@ -214,5 +251,8 @@ properties:
         - model
         - form
     description: |
-      If the global settings `smw_semanticDrilldown` is enabled, fields
-      with smw_drilldown set to true will be filterable.
+      If the global settings `smw_semanticDrilldown` is enabled,
+      fields with smw_drilldown set to true will be filterable.
+    example:
+      - |
+        smw_drilldown: true

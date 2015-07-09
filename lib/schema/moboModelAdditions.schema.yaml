@@ -35,7 +35,13 @@ properties:
     appliesNot:
       - form
     description: |
-      Array of fields that should be highlighted as recommended (complementary to mandatory)
+      Array of fields that should be marked as recommended (complementary to mandatory).<br>
+      Please note that the template and the MediaWiki skin have to support this, since it is not an official feature.
+    example:
+      - |
+        recommended:
+          - fieldA
+          - fieldB
 
   smw_subobject:
     type: boolean
@@ -44,9 +50,12 @@ properties:
     appliesNot:
       - form
     description: |
-      If true, this models attributes will be created as subobjects.
-      Useful if this model is used through multiple instances.
+      If true, this models attributes will be created as subobjects.<br>
+      This may be appropiate when model is used through multiple instances.<br><br>
       Mobo will automantically introduce two additional helper attributes `subobjectType` and `subobjectParent` that help with querying subobjects.
+    example:
+      - |
+        smw_subobject: true
 
   smw_subobjectExtend:
     type: object
@@ -54,11 +63,12 @@ properties:
     appliesNot:
       - form
     description: |
-      Contains a set (object) of additional #subobject properties
+      Contains a set (object) of additional #subobject properties.
     example:
       - |
         smw_subobjectExtend:
           additionalSubObjProp2: 'Some fixed text'
+          additionalSubObjProp3: '{{FULLPAGENAME}}/subpath/&#123;&#123;&#123;fieldId|}}}'
 
   smw_display:
     type: string
@@ -80,7 +90,7 @@ properties:
     properties:
       wikitext:
         type: string
-        description: wikitext to prefix
+        description: wikitext to prepend
       header:
         type: number
         description: Inserts auto generated header of given hierachy (1-6)
@@ -94,9 +104,18 @@ properties:
     appliesNot:
       - form
     description: |
-      Prefixes wikitext to both forms and templates. Can either be a string
-      or an object for more advanced features (auto-generate headers, inject templates
-      or add arbitrary wikitext)
+      Prepends wikitext to both forms and templates.
+      Can either be a string or an object for more advanced features (auto-generate headers, inject templates
+      or add arbitrary wikitext).
+    example:
+      - |
+        smw_prepend:
+          header: 1
+          wikitext: |
+            Some prepended wikitext
+            Will be inserted after the H1 header
+      - |
+        smw_prepend: 'Some prepended wikitext'
 
   smw_prependForm:
     type:
@@ -105,7 +124,7 @@ properties:
     properties:
       wikitext:
         type: string
-        description: wikitext to prefix
+        description: wikitext to prepend
       header:
         type: number
         description: Inserts auto generated header of given hierachy (1-6)
@@ -121,7 +140,7 @@ properties:
     appliesNot:
       - form
     description: |
-      Prefixes wikitext only to forms (edit-view). Can either be a string
+      Prepends wikitext only to forms (edit-view). Can either be a string
       or an object for more advanced features (auto-generate headers, inject templates
       or add arbitrary wikitext)
 
@@ -132,7 +151,7 @@ properties:
     properties:
       wikitext:
         type: string
-        description: wikitext to prefix
+        description: wikitext to prepend
       header:
         type: number
         description: Inserts auto generated header of given hierachy (1-6)
@@ -148,7 +167,7 @@ properties:
     appliesNot:
       - form
     description: |
-      Prefixes wikitext only to templates (page-view). Can either be a
+      Prepends wikitext only to templates (page-view). Can either be a
       string or an object for more advanced features (auto-generate headers, inject
       templates or add arbitrary wikitext)
 
@@ -159,6 +178,10 @@ properties:
       - form
     description: |
       Wikitext to prepend on the category page
+    example:
+      - |
+        smw_prependCategory: |
+          Some wikitext to prepend on the category page
 
   smw_append:
     type:
@@ -176,17 +199,12 @@ properties:
     appliesNot:
       - form
     description: |
-      Adds a postfix wikitext to forms and models.
+      Adds a append wikitext to forms and models.
     example:
       - |
-        smw_append:
-          header: 1
-          wikitext: |
-            Some appended wikitext
-            Will be inserted after the H1 header
-      - |
-        smw_append: 'Some prepended wikitext'
-
+        smw_append: |
+          Some appended wikitext
+          Will be inserted after the H1 header
 
   smw_appendForm:
     type:
@@ -195,7 +213,7 @@ properties:
     properties:
       wikitext:
         type: string
-        description: wikitext to prefix
+        description: wikitext to prepend
       template:
         type:
         - string
@@ -217,7 +235,7 @@ properties:
     properties:
       wikitext:
         type: string
-        description: wikitext to prefix
+        description: wikitext to prepend
       template:
         type:
         - string
@@ -238,7 +256,11 @@ properties:
     appliesNot:
       - form
     description: |
-      Wikitext to postfix on the category page
+      Wikitext to append on the category page
+    example:
+      - |
+        smw_appendCategory: |
+          Some wikitext to append on the category page
 
   smw_category:
     type: boolean
@@ -249,6 +271,9 @@ properties:
     description: |
       If true, the models template will assign a category.
       The name of the category is the model ID.
+    example:
+      - |
+        smw_category: false
 
   smw_categories:
     type: array
@@ -259,6 +284,11 @@ properties:
       - form
     description: |
       Array of additional categories the template should set.
+    example:
+      - |
+        smw_categories:
+          - additionalCategoryA
+          - additionalCategoryB
 
   showForm:
     type: boolean
@@ -269,6 +299,10 @@ properties:
     description: |
       If true the template/model will be hidden in the form view.
       This will usually be declared in the forms by adding this after the model $extend.
+    example:
+      - |
+        showForm: false
+
 
   showPage:
     type: boolean
@@ -279,3 +313,6 @@ properties:
     description: |
       If true the template/model will be hidden in the page view.
       This will usually be declared in the forms by adding this after the model $extend.
+    example:
+      - |
+        showPage: false

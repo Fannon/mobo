@@ -13,19 +13,27 @@ properties:
     internal: true
     specific: domain
     description: |
-      Usually auto generated ID, should be identical to the filename
+      Usually auto generated ID, identical to the filename.
 
   title:
     specific: domain
     important: true
     description: |
       Human readable title.
+    example:
+      - |
+        title: Some title
 
   description:
     specific: domain
     important: true
     description: |
-      Description of the field. Can be displayed as tooltip info
+      General Description. Fields may use them as tooltips, forms can display a small description box.
+      This depends on the used template.
+    example:
+      - |
+        description: |
+          Longer description of the current model part.
 
   type:
     type:
@@ -39,11 +47,14 @@ properties:
     important: true
     description: |
       Defines the data-type.
+    example:
+      - |
+        type: number
 
   properties:
     internal: true
     description: |
-      Mobo Schema does not use 'properties', it prefers 'items' because the order of the element can be garantueed.
+      Mobo Schema does not use 'properties', it prefers 'items' since the order of the element must be garantueed.
       Internally, properties are still because of their easier accessing.
 
   items:
@@ -53,18 +64,25 @@ properties:
     important: true
 
   required:
+    type:
+      - array
     appliesNot:
       - field
       - form
     description: |
-      Array containing the IDs of all required fields
+      Array containing the IDs of all required fields.
+    example:
+      - |
+        required:
+          - fieldA
+          - fieldB
 
   default:
     appliesNot:
       - model
       - form
     description: |
-      The default value of the field.
+      The default value. Applies only to fields.
 
   enum:
     appliesNot:
@@ -87,8 +105,11 @@ properties:
       - model
       - form
     description: |
-      Regular Expression (Regex) pattern<br>
+      Provides a Regular Expression (Regex) pattern to validate the field value.<br>
       This is currently not supported by Semantic Forms.
+    example:
+      - |
+        pattern: '/^[\d]{4,5}/$'
 
   maxItems:
     type: number
@@ -115,7 +136,7 @@ properties:
       - model
       - form
     description: |
-      The maximum value of a number
+      The maximum value of a number.
 
   minimum:
     type: number
@@ -124,7 +145,7 @@ properties:
       - model
       - form
     description: |
-      The minimum value of a number
+      The minimum value of a number.
 
   maxLength:
     type: number
@@ -133,7 +154,7 @@ properties:
       - model
       - form
     description: |
-      The maximum length of a string
+      The maximum length of a string.
 
   minLength:
     type: number
@@ -142,7 +163,7 @@ properties:
       - model
       - form
     description: |
-      The minimum length of a string
+      The minimum length of a string.
 
 
 ####################################################
@@ -158,8 +179,23 @@ properties:
     important: true
     specific: intermediary
     description: |
-      This references another mobo json file.
-      It will be included through inheritance, all existing attributes in the parent object will be overwritten.
+      This includes and extends another file of the development.<br>
+      Inheritance is applied, the children (the current file) overwrites the parent properties.
+    example:
+      - |
+        # Inherit a single parent
+        $extend: /model/_Shape
+      - |
+        # Multiple parents are possible
+        $extend:
+          - /field/fieldA
+          - /field/fieldB
+      - |
+        # extend is also used to import fields into models or models into forms.
+        title: A Model with two fields
+        items:
+          - $extend: /field/fieldA
+          - $extend: /field/fieldB
 
   $remove:
     type: array
@@ -168,6 +204,11 @@ properties:
     specific: intermediary
     description: |
       Array, containing the IDs of all items/properties to remove from current object.
+    example:
+      - |
+        $remove:
+          - fieldA
+          - fieldB
 
   $ignore:
     type: boolean
@@ -175,7 +216,11 @@ properties:
     specific: domain
     specific: intermediary
     description: |
-      If true, this file will be ignored completely.
+      If true, this file will be ignored completely.<br>
+      Use this to temporarily remove parts of the development model without deleting them.
+    example:
+      - |
+        $ignore: true
 
   $abstract:
     type: boolean
@@ -184,7 +229,10 @@ properties:
     important: true
     specific: intermediary
     description: |
-      If true this object is only used for inheritance and will not be itself.
+      If true this object is only used for inheritance and will not be created by itself.
+    example:
+      - |
+        $abstract: true
 
 ####################################################
 # Metadata (for internal use only)                 #
@@ -241,7 +289,7 @@ properties:
     specific: domain
     important: true
     description: |
-      In case that fields have been inherited, they might not end up in the correct order.
+      In case that fields have been inherited, they might not end up in the correct order.<br>
       The itemsOrder array lists the order of the fields.
       Every field that is not listed will be appended at the bottom, in their regular order.
     example:
@@ -249,16 +297,24 @@ properties:
         itemsOrder:
           - brand
           - modelName
+      - |
+        itemsOrder:
+          - '@unique'
+          - '@sorted'
+          - b
+          - c
+          - a
+          - b
 
   todo:
     type: string
     specific: domain
     description: |
-      If TODO notes are placed here, mobo can print them in the CLI (If the corresponding global setting is enabled)
+      If TODO notes are placed here, mobo can print them in the CLI (If the corresponding global setting is enabled).
 
   wikitext:
     type: string
     internal: true
     specific: metadata
     description: |
-      For internal use only! This contains wikitext to inject
+      For internal use only! This contains wikitext to inject.
