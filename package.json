@@ -1,66 +1,66 @@
 {
-    "name": "mobo",
-    "version": "1.6.6",
-    "main": "lib/mobo.js",
-    "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
-    "homepage": "https://github.com/Fannon/mobo",
-    "bugs": "https://github.com/Fannon/mobo/issues",
-    "engine": "node >= 0.12.0",
-    "author": {
-        "name": "Simon Heimler",
-        "email": "heimlersimon@gmail.com",
-        "url": "http://www.fannon.de"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Fannon/mobo"
-    },
-    "license": "MIT",
-    "keywords": [
-        "JSON Schema",
-        "MediaWiki",
-        "Semantic MediaWiki",
-        "Semantic Forms",
-        "Data Model",
-        "SMW",
-        "Bot"
-    ],
-    "devDependencies": {
-        "chai": "^3.1.0",
-        "codeclimate-test-reporter": "0.1.0",
-        "grunt": "^0.4.5",
-        "grunt-contrib-jshint": "^0.11.2",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-jscs": "^1.8.0",
-        "grunt-mocha-cli": "^1.13.1",
-        "grunt-mocha-istanbul": "^2.4.0",
-        "istanbul": "^0.3.17",
-        "jshint-stylish": "^2.0.1",
-        "load-grunt-tasks": "^3.2.0",
-        "mocha": "^2.2.5",
-        "time-grunt": "^1.2.1"
-    },
-    "dependencies": {
-        "bluebird": "^2.9.34",
-        "chokidar": "^1.0.4",
-        "colors": "^1.1.2",
-        "fs-extra": "^0.22.1",
-        "handlebars": "^3.0.3",
-        "js-yaml": "^3.3.1",
-        "lodash": "^3.10.0",
-        "minimist": "^1.1.1",
-        "node-static": "^0.7.6",
-        "nodemw": "^0.7.*",
-        "readline-sync": "^1.2.19",
-        "semlog": "^0.3.3",
-        "tv4": "^1.1.12",
-        "ws": "^0.7.2"
-    },
-    "scripts": {
-        "test": "grunt"
-    },
-    "bin": {
-        "mobo": "lib/cli.js"
-    },
-    "preferGlobal": "true"
+  "name": "mobo",
+  "version": "1.6.6",
+  "main": "lib/mobo.js",
+  "description": "A JSON Schema based modeling bot for Semantic MediaWiki",
+  "homepage": "https://github.com/Fannon/mobo",
+  "bugs": "https://github.com/Fannon/mobo/issues",
+  "engine": "node >= 0.12.0",
+  "author": {
+    "name": "Simon Heimler",
+    "email": "heimlersimon@gmail.com",
+    "url": "http://www.fannon.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fannon/mobo"
+  },
+  "license": "MIT",
+  "keywords": [
+    "JSON Schema",
+    "MediaWiki",
+    "Semantic MediaWiki",
+    "Semantic Forms",
+    "Data Model",
+    "SMW",
+    "Bot"
+  ],
+  "devDependencies": {
+    "chai": "^3.1.0",
+    "codeclimate-test-reporter": "0.1.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.8.0",
+    "grunt-mocha-cli": "^1.13.1",
+    "grunt-mocha-istanbul": "^2.4.0",
+    "istanbul": "^0.3.17",
+    "jshint-stylish": "^2.0.1",
+    "load-grunt-tasks": "^3.2.0",
+    "mocha": "^2.2.5",
+    "time-grunt": "^1.2.1"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "chokidar": "^1.0.4",
+    "colors": "^1.1.2",
+    "fs-extra": "^0.22.1",
+    "handlebars": "^3.0.3",
+    "js-yaml": "^3.3.1",
+    "lodash": "^3.10.0",
+    "minimist": "^1.1.1",
+    "node-static": "^0.7.6",
+    "nodemw": "^0.7.*",
+    "readline-sync": "^1.2.19",
+    "semlog": "^0.3.3",
+    "tv4": "^1.1.12",
+    "ws": "^0.7.2"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "bin": {
+    "mobo": "lib/cli.js"
+  },
+  "preferGlobal": "true"
 }
