@@ -26,7 +26,7 @@ module.exports = function(grunt) {
                 src: ['lib/**/*.js']
             },
             test: {
-                src: ['test/**/*.js']
+                src: ['test/**/*.spec.js']
             }
         },
         jscs: {
