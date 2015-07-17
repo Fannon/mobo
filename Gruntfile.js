@@ -48,14 +48,13 @@ module.exports = function(grunt) {
                 force: true,
                 timeout: 16000
             },
-            all: ['test/**/*.spec.js'],
-            extendProject: ['test/processing/extendProject.spec.js']
+            all: ['test/**/*.spec.js']
         },
         mocha_istanbul: {
             coverage: {
                 src: ['test/'],
                 options: {
-                    mask: '*.spec.js',
+                    mask: '**/*.spec.js',
                     coverage: true,
                     reportFormats: ['lcov', 'text']
                 }

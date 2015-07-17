@@ -10,7 +10,7 @@ var _ = require('lodash');
 
 var settings = require('./../../lib/settings.json');
 var mockModel = require('./../_mockObjects/mockModel.json');
-var extendProject = require('../../lib/modelToModel/extendProject.js');
+var intermediaryLayer = require('../../lib/modelToModel/intermediaryLayer.js');
 
 
 //////////////////////////////////////////
@@ -45,7 +45,7 @@ describe('Registry Builder ', function() {
             ]
         };
 
-        var orderedModel = extendProject.orderObjectProperties(unorderedModel);
+        var orderedModel = intermediaryLayer.orderObjectProperties(unorderedModel);
 
         for (property in orderedModel.properties) {
             orderedModelArray.push(property);
@@ -55,8 +55,8 @@ describe('Registry Builder ', function() {
 
     it('inherits $extend properties', function() {
 
-        extendProject.inheritanceStack = [];
-        extendProject.settings = settings;
+        intermediaryLayer.inheritanceStack = [];
+        intermediaryLayer.settings = settings;
 
         // Mock Circle model
         var Circle = _.clone(mockModel.model.Circle, true);
@@ -65,7 +65,7 @@ describe('Registry Builder ', function() {
         mockModel.expandedModel = _.clone(mockModel.model, true);
 
 
-        var extendedCircle = extendProject.extend(Circle, Circle.$extend, mockModel);
+        var extendedCircle = intermediaryLayer.extend(Circle, Circle.$extend, mockModel);
 
         // $extend is replaced through $reference
         expect(extendedCircle).to.not.include.keys(['$extend']);
@@ -77,18 +77,18 @@ describe('Registry Builder ', function() {
     });
 
     it('expands the fields', function() {
-        mockModel.expandedFields = extendProject.expandRegistry(mockModel, 'field');
+        mockModel.expandedFields = intermediaryLayer.expandRegistry(mockModel, 'field');
         expect(mockModel.expandedFields).to.include.keys(['radius']);
     });
 
     it('applies one-step inhertitance to models', function() {
-        var extendedCircle = extendProject.inherit(mockModel.model.Circle, mockModel);
+        var extendedCircle = intermediaryLayer.inherit(mockModel.model.Circle, mockModel);
         expect(extendedCircle.properties.radius.title).to.equal('radius');
         expect(extendedCircle.properties.radius.$reference.path).to.equal('/field/radius.json');
     });
 
     it('expands the models', function() {
-        mockModel.expandedModel = extendProject.expandRegistry(mockModel, 'model');
+        mockModel.expandedModel = intermediaryLayer.expandRegistry(mockModel, 'model');
 
         expect(mockModel.expandedModel).to.include.keys(['_Shape', 'Circle']);
 
@@ -100,7 +100,7 @@ describe('Registry Builder ', function() {
 
     it('expands the forms', function() {
 
-        mockModel.expandedForms = extendProject.expandRegistry(mockModel, 'form');
+        mockModel.expandedForms = intermediaryLayer.expandRegistry(mockModel, 'form');
 
         expect(mockModel.expandedForms).to.include.keys(['Rectangle', 'Circle']);
 

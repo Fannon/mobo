@@ -100,25 +100,25 @@ describe('mobo cli ', function() {
         expect(finalSettings).to.include.keys('debug');
 
         // TODO: UnitTest is not running anymore
-        done();
+        //done();
 
-        //mobo.exec(finalSettings, false, function(err, generated) {
-        //
-        //    // Check that no error was returned
-        //    expect(err).to.equal(false);
-        //
-        //    // Check that the generated object contains the generated wikitext
-        //    expect(generated).to.be.an('object');
-        //    expect(generated).to.include.keys('template:Location');
-        //
-        //    // Check that the _processed directory was correctly populated
-        //    var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
-        //
-        //    // 'writeExportFiles': true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
-        //    expect(processedModelContent).to.include('_registry.json');
-        //
-        //    done();
-        //});
+        mobo.exec(finalSettings, false, function(err, generated) {
+
+            // Check that no error was returned
+            expect(err).to.equal(false);
+
+            // Check that the generated object contains the generated wikitext
+            expect(generated).to.be.an('object');
+            expect(generated).to.include.keys('template:Location');
+
+            // Check that the _processed directory was correctly populated
+            var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
+
+            // 'writeExportFiles': true - Check that the _processed/wikitext directory was populated var processedModelContent = fs.readdirSync(path.resolve(mockProjectPath, './_processed'));
+            expect(processedModelContent).to.include('_registry.json');
+
+            done();
+        });
     });
 
 });
