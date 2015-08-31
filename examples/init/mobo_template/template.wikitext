@@ -38,7 +38,8 @@
 <div class="bootstrap-row formdata formdata-{{name}}">
 {{~#each attr}}
 
-\{{#if: \{{{ {{~@key~}} |}}} | <div class="row"><div class="col-sm-4 col-md-3 row-label">{{this.title}} </div><div class="col-sm-8 col-md-9 row-value" data-property="{{this.id}}">{{smw_templ_attr this}} </div></div> |}}
+\{{#if: \{{{ {{~@key~}} |}}} | <div class="row"><div class="col-sm-4 col-md-3 row-label">{{this.title}} </div><div class="col-sm-8 col-md-9 row-value" data-property="{{this.id}}">
+{{smw_templ_attr this}} </div></div> |}}
 {{~/each~}}
 </div>
 {{~/if~}}
