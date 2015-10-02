@@ -20,7 +20,7 @@ properties:
 
   mw_server_port:
     type:
-    - string
+    - number
     - boolean
     description: |
       The port your MW installation is using.
