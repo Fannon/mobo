@@ -107,7 +107,16 @@ mobo.loadData = function(err, callback) {
             mobo.settings = registry.settings;
 
             mobo.wikitext = registry.generated || {};
-            mobo.remoteWiki = mobo.settings.mw_server_url + '/' + mobo.settings.mw_server_path + '/index.php';
+
+            // Building and fixing the remote wiki path (linking to the index.php)
+            mobo.remoteWiki = mobo.settings.mw_server_url;
+            if (mobo.settings.mw_server_port && mobo.settings.mw_server_port !== 80) {
+                mobo.remoteWiki += ':' + mobo.settings.mw_server_port;
+            }
+            if (mobo.settings.mw_server_path.indexOf('/') < 0) {
+                mobo.settings.mw_server_path = '/' + mobo.settings.mw_server_path;
+            }
+            mobo.remoteWiki += mobo.settings.mw_server_path + '/index.php';
 
             if (Object.keys(mobo.wikitext).length > 0) {
                 mobo.populateSelect('selection');
