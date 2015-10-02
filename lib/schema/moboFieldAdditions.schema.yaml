@@ -214,6 +214,18 @@ properties:
       Overwrites the final #set or #subobject value of the field.<br>
       Is used similar to `smw_overwriteOutput`
 
+  smw_appendFormField:
+      type: string
+      specific: implementation
+      appliesNot:
+          - model
+          - form
+      description: |
+        Adds wikitext after the form input field. This is only displayed when the form is in edit mode.
+      example:
+        - |
+          smw_appendFormField: ' [[:Category:Location|...]]'
+
   smw_forceSet:
     type: boolean
     default: false
