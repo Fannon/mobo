@@ -3,4 +3,3 @@ $extend:
     - /model/NetworkScannerModel
 
 title: Multi-function Unit Model
-note: It is possible to inherit from multiple sources.
