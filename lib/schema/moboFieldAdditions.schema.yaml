@@ -84,7 +84,7 @@ properties:
         - model
         - form
     description: |
-      If true, the field will be deprecated.
+      If true, the field will be marked as deprecated.
       It will not be displayed in forms, but the template will keep it in order to display old entries.
     example:
       - |
