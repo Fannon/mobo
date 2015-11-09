@@ -90,19 +90,6 @@ properties:
       - |
         deprecated: true
 
-  noEdit:
-      type: boolean
-      default: false
-      specific: domain
-      appliesNot:
-          - model
-          - form
-      description: |
-        If true, the field will not be available for editing, but still included into the template
-      example:
-        - |
-          noEdit: true
-
   showPage:
     type: boolean
     default: true
