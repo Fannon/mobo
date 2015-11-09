@@ -29,7 +29,7 @@
     "overwriteImportedPages": false,
     "logDate": true,
     "logLongDate": false,
-    "logObjectsAsYaml": true,
+    "logObjectsAsYaml": false,
 
     "arrayMergeOptions": {
         "$remove": ["@unique"],
@@ -47,7 +47,7 @@
     "autoRefreshPort": 8081,
 
     "headerTabs": false,
-    "formEditHelper": false,
+    "formEditHelper": true,
     "hideFormEditHelper": false,
     "smw_semanticDrilldown": false,
 
