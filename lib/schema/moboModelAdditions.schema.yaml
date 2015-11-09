@@ -43,7 +43,24 @@ properties:
           - fieldA
           - fieldB
 
+  smw_set:
+    type: object
+    specific: platform
+    appliesNot:
+      - form
+    description: |
+      Contains a set (object) of additional #set properties.
+    example:
+      - |
+        smw_set:
+          additionalProp2: 'Some fixed text'
+          additionalProp3: '{{FULLPAGENAME}}/subpath/&#123;&#123;&#123;fieldId|}}}'
+
   smw_subobject:
+    todo: |
+      This should replace subobjectExtend!
+      Add smw_store enum instead: annotation|set|subobject|none
+
     type: boolean
     default: false
     specific: platform

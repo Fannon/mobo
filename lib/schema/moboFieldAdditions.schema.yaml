@@ -90,6 +90,19 @@ properties:
       - |
         deprecated: true
 
+  noEdit:
+      type: boolean
+      default: false
+      specific: domain
+      appliesNot:
+          - model
+          - form
+      description: |
+        If true, the field will not be available for editing, but still included into the template
+      example:
+        - |
+          noEdit: true
+
   showPage:
     type: boolean
     default: true
@@ -165,6 +178,15 @@ properties:
           values from namespace: Manufacturer
           max values: 1
           existing values only: true
+
+  sf_overwrite:
+    type: string
+    specific: implementation
+    appliesNot:
+        - model
+        - form
+    description: |
+      Overwrites the final wikitext/HTML that is rendered in Semantic Forms Edit mode
 
   smw_overwriteOutput:
     type: string
