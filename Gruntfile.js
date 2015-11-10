@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mocha-cli');
     grunt.loadNpmTasks('grunt-mocha-istanbul');
     grunt.loadNpmTasks('grunt-jscs');
+    grunt.loadNpmTasks('grunt-release');
 
     // Project configuration.
     grunt.initConfig({
@@ -68,6 +69,11 @@ module.exports = function(grunt) {
             test: {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'mochacli']
+            }
+        },
+        release: {
+            options: {
+
             }
         }
     });
