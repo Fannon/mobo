@@ -1,0 +1,9 @@
+{
+    "name" : "mobo",
+    "title" : "mobo",
+    "description" : "Mobo is a command line tool that helps building and deploying Semantic MediaWiki structure in an agile, Schema-Driven Development way.",
+    "url" : "https://www.npmjs.com/package/mobo",
+    "keywords" : "generation, MDE, SDE, json, yaml, json-schema, upload, deployment, automation",
+    "author" : "Simon Heimler",
+    "repository" : "https://github.com/Fannon/mobo.git"
+}
