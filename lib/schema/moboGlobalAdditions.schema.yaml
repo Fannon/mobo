@@ -213,7 +213,6 @@ properties:
   $ignore:
     type: boolean
     default: false
-    specific: domain
     specific: intermediary
     description: |
       If true, this file will be ignored completely.<br>
@@ -225,7 +224,6 @@ properties:
   $abstract:
     type: boolean
     default: false
-    specific: domain
     important: true
     specific: intermediary
     description: |
