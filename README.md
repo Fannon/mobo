@@ -8,6 +8,7 @@
 <p align="center" style="background: #000; border-radius:3px;">
     <img src="http://fannon.de/p/mobo-intro/img/logo.png"/>
 </p>
+
 ## About mobo
 [Mobo](https://www.npmjs.com/package/mobo) is a command line toolset that helps to build [Semantic MediaWiki](http://semantic-mediawiki.org/) structure in an agile,
 Schema-Driven Development (simplified MDE) way.
