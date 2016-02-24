@@ -9,6 +9,10 @@
     <img src="http://fannon.de/p/mobo-intro/img/logo.png"/>
 </p>
 
+## VERSION 2.0 is coming!
+All of the development effor is currently put into the "devel" branch. The new version is very stable, but only the technical documentation is [available](https://fannon.gitbooks.io/mobo2-documentation/content/). The new release is a very big change, making mobo a real framework that is extensible though modules. The model can now also be split into several apps. The mobo-Schema has a majour overhaul, with almost all attributes renamed for consistency.
+It should be possible to convert a mobo1 model to mobo2, but it will require some effort. Look for guidance in the CHANGELOG.md file in the devel branch.
+
 ## About mobo
 [Mobo](https://www.npmjs.com/package/mobo) is a command line toolset that helps to build [Semantic MediaWiki](http://semantic-mediawiki.org/) structure in an agile,
 Schema-Driven Development (simplified MDE) way.
