@@ -30,6 +30,8 @@ Mobo is [Open Source](https://github.com/Fannon/mobo) and Cross-Platform.
 All of the development effor is currently put into the "devel" branch. The new version is very stable, but only the technical documentation is [available](https://fannon.gitbooks.io/mobo2-documentation/content/). The new release is a very big change, making mobo a real framework that is extensible though modules. The model can now also be split into several apps. The mobo-Schema has a majour overhaul, with almost all attributes renamed for consistency.
 It should be possible to convert a mobo1 model to mobo2, but it will require some effort. Look for guidance in the CHANGELOG.md file in the devel branch.
 
+mobo2 will be officially released once the documentation is fully available. (maybe Q2 2016?)
+
 ## Documentation
 * Read the [documentation online](http://fannon.gitbooks.io/mobo-documentation/content/)
 * Download the documentation at [GitBook](https://www.gitbook.com/book/fannon/mobo-documentation)
