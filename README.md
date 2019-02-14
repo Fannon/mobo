@@ -9,6 +9,9 @@
     <img src="http://fannon.de/p/mobo-intro/img/logo.png"/>
 </p>
 
+## Deprecation Warning
+> This project is out of date and won't work with any recent version of [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) anymore. It won't be updated or supported anymore, sorry.
+
 ## About mobo
 [Mobo](https://www.npmjs.com/package/mobo) is a command line toolset that helps to build [Semantic MediaWiki](http://semantic-mediawiki.org/) structure in an agile,
 Schema-Driven Development (simplified MDE) way.
@@ -34,28 +37,28 @@ Mobo is [Open Source](https://github.com/Fannon/mobo) and Cross-Platform.
 ## Screenshots
 The mobo model is developed with your favorite text editor:
 
-![text-editor](http://up.fannon.de/img/editor.png)
+![text-editor](https://fannon.gitbooks.io/mobo-documentation/content/_img/editor.png)
 
 ----------------------------------------------------------------
 
 Mobo is a console application. It validates, generates and uploads your model in realtime:
 
-![cli](http://up.fannon.de/img/mobo-cli.gif)
+![cli](https://fannon.gitbooks.io/mobo-documentation/content/_img/mobo-cli.gif)
 
 ----------------------------------------------------------------
 
 There is a webapp that allows you to browse your development model and the resulting wikitext:
 
-![webapp](http://up.fannon.de/img/mobo-inspector.gif)
+![webapp](https://fannon.gitbooks.io/mobo-documentation/content/_img/mobo-inspector.gif)
 
 ----------------------------------------------------------------
 
 The final result in the wiki:
 
-![forms](http://up.fannon.de/img/mobo-intro-sf.png)
+![forms](https://fannon.gitbooks.io/mobo-documentation/content/_img/mobo-sf-result.png)
 
 ----------------------------------------------------------------
 
 Mobo can generate a graph (which has to be layouted via Gephi) that can be explored in an interactive application:
 
-![graph](http://up.fannon.de/img/mobo-intro-graphexplorer.gif)
+![graph](https://fannon.gitbooks.io/mobo-documentation/content/_img/mobo-graphexplorer.gif)
