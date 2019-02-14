@@ -1,4 +1,3 @@
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg)](https://gitter.im/Fannon/mobo?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)
 [![npm version](https://img.shields.io/npm/v/mobo.svg?style=flat)](https://www.npmjs.com/package/mobo)
 [![Dependency Status](https://img.shields.io/david/Fannon/mobo.svg?style=flat)](https://david-dm.org/Fannon/mobo)
 [![Build Status](https://img.shields.io/travis/Fannon/mobo.svg?style=flat)](http://travis-ci.org/Fannon/mobo)
